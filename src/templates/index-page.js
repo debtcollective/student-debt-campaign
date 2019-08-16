@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-import Hero from "../components/Hero";
+import Hero from "../sections/Hero";
 
 export const IndexPageTemplate = ({ display1, display2, items }) => (
   <>

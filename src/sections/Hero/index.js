@@ -47,7 +47,7 @@ const Hero = ({ title }) => (
           </div>
         </div>
       </div>
-      <div className="row d-none d-lg-flex">
+      <div className="row d-none d-xl-flex">
         <div className="col">
           <div className="social-icons">
             <p className="share-this">Share this</p>

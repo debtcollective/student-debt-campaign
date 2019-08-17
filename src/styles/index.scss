@@ -11,26 +11,27 @@ $body-bg:                   #FAF9F5;
 $font-family-sans-serif:      "Libre Franklin",sans-serif;
 $font-family-monospace:       "More Gothic Bold", Impact, sans-serif;
 
-// This will allow us to create better responsive font sizes
+// this will allow us to create better responsive font sizes
 $display1-size:               6em;
 $display2-size:               5.5em;
 $display3-size:               4.5em;
 $display4-size:               3.5em;
 
-// Bootstrap required
+// bootstrap required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 
-// Bootstrap optional
+// bootstrap optional
 @import "node_modules/bootstrap/scss/reboot";
 @import "node_modules/bootstrap/scss/grid";
 @import "node_modules/bootstrap/scss/type";
 @import "node_modules/bootstrap/scss/utilities";
 
-// Run custom code after bootstrap loaded
+// run custom code after bootstrap loaded
 @import "./functions";
+@import "./layout";
 
 // TODO: ideally, we shouldn't need to import those styles from here
-// Styles from components to allow usage of variables
+// styles from components and sections to allow usage of variables
 @import "../sections/Hero/style";

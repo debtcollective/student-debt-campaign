@@ -3,10 +3,11 @@ import React from "react";
 import fist from "./img/fist.png";
 import handshake from "./img/handshake.png";
 import newspaper from "./img/newspaper.png";
+import ArrowDown from "../../components/ArrowDown";
 
 const Hero = ({ title }) => (
   <section className="hero">
-    <div className="container-fluid">
+    <div className="container-fluid distribute-rows">
       <div className="row">
         <div className="col">
           <div className="text-center">
@@ -40,6 +41,13 @@ const Hero = ({ title }) => (
               </div>
               <p className="action-circle__title">Support!</p>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="row d-none d-lg-flex">
+        <div className="col">
+          <div className="d-flex justify-content-center">
+            <ArrowDown role="button" />
           </div>
         </div>
       </div>

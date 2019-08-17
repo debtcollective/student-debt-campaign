@@ -1,0 +1,12 @@
+.distribute-rows {
+  @include media-breakpoint-up(lg) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  section > & {
+    padding: ($spacer * 3) 0;
+  }
+}

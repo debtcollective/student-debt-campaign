@@ -1,7 +1,7 @@
 .hero {
   font-size: 1rem;
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(xl) {
     font-size: 2.5rem;
   }
 }
@@ -18,7 +18,7 @@
   & + & {
     margin-top: $grid-gutter-width;
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(xl) {
       margin-top: 0;
     }
   }
@@ -37,7 +37,7 @@
     justify-content: center;
     margin-top: $spacer * 3;
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(xl) {
       flex-direction: row;
       justify-content: space-between;
       margin-top: 0;

@@ -1,3 +1,7 @@
+.hero {
+  margin-top: $spacer * 3;
+}
+
 .action-circle {
   border-radius: 100%;
   display: flex;
@@ -7,10 +11,33 @@
   height: 16.25rem;
   width: 16.25rem;
 
+  & + & {
+    margin-top: $grid-gutter-width;
+  }
+
   &-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: $spacer * 3;
+  }
+
+  &__title {
+    @extend .text-monospace;
+    font-size: $h1-font-size;
+  }
+}
+
+.title-line {
+  line-height: 1;
+
+  & + & {
+    position: relative;
+    top: -0.5rem;
+  }
+
+  &:nth-child(even) {
+    color: $red;  
   }
 }

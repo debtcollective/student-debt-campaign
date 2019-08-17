@@ -24,6 +24,13 @@
     }
   }
 
+  &__img {
+    height: 8.125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   &-wrap {
     display: flex;
     flex-direction: column;
@@ -44,6 +51,7 @@
   &__title {
     @extend .text-monospace;
     font-size: $h1-font-size;
+    margin: 0;
   }
 }
 

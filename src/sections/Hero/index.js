@@ -23,30 +23,21 @@ const Hero = ({ title }) => (
         <div className="col">
           <div className="action-circle-wrap">
             <div className="action-circle bg-purple">
-              <img
-                className="action-circle__img"
-                src={fist}
-                alt="fist"
-                width="100px"
-              />
+              <div className="action-circle__img">
+                <img src={fist} alt="fist" width="100px" />
+              </div>
               <p className="action-circle__title">Declare!</p>
             </div>
             <div className="action-circle bg-yellow">
-              <img
-                className="action-circle__img"
-                src={handshake}
-                alt="handshake"
-                width="130px"
-              />
+              <div className="action-circle__img">
+                <img src={handshake} alt="handshake" width="130px" />
+              </div>
               <p className="action-circle__title">Prepare!</p>
             </div>
             <div className="action-circle bg-green">
-              <img
-                className="action-circle__img"
-                src={newspaper}
-                alt="newspaper"
-                width="100px"
-              />
+              <div className="action-circle__img">
+                <img src={newspaper} alt="newspaper" width="100px" />
+              </div>
               <p className="action-circle__title">Support!</p>
             </div>
           </div>

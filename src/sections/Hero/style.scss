@@ -1,5 +1,10 @@
 .hero {
   margin-top: $spacer * 3;
+  font-size: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2.5rem;
+  }
 }
 
 .action-circle {

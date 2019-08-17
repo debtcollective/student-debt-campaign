@@ -1,3 +1,7 @@
+/*
+  This class is intended to work alongside with the layout. Be careful with the styles to not break
+  the layout expectations often related with paddings, margins and sizes.
+*/
 .distribute-rows {
   @include media-breakpoint-up(xl) {
     min-height: 100vh;
@@ -7,6 +11,7 @@
   }
   
   section > & {
-    padding: ($spacer * 3) 0;
+    padding-bottom: ($spacer * 3);
+    padding-top: ($spacer * 3);
   }
 }

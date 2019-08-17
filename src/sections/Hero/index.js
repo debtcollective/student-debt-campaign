@@ -3,7 +3,10 @@ import React from "react";
 import fist from "./img/fist.png";
 import handshake from "./img/handshake.png";
 import newspaper from "./img/newspaper.png";
-import ArrowDown from "../../components/ArrowDown";
+import arrow from "./img/arrow-down.svg";
+import twitter from "./img/twitter.svg";
+import instagram from "./img/instagram.svg";
+import IconWrap from "../../components/IconWrap";
 
 const Hero = ({ title }) => (
   <section className="hero">
@@ -46,10 +49,18 @@ const Hero = ({ title }) => (
       </div>
       <div className="row d-none d-lg-flex">
         <div className="col">
-          <div className="d-flex justify-content-center">
-            <ArrowDown role="button" />
+          <div className="social-icons">
+            <p className="share-this">Share this</p>
+            <IconWrap src={twitter} alt="Twitter" />
+            <IconWrap src={instagram} alt="Instagram" />
           </div>
         </div>
+        <div className="col">
+          <div className="d-flex justify-content-center">
+            <IconWrap role="button" src={arrow} />
+          </div>
+        </div>
+        <div className="col" />
       </div>
     </div>
   </section>

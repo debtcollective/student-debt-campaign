@@ -11,6 +11,9 @@ $body-bg:                   #FAF9F5;
 $font-family-sans-serif:      "Libre Franklin",sans-serif;
 $font-family-monospace:       "More Gothic Bold", Impact, sans-serif;
 
+// Grid needs to be set in px
+$grid-gutter-width:           40px;
+
 // this will allow us to create better responsive font sizes
 $display1-size:               6em;
 $display2-size:               5.5em;

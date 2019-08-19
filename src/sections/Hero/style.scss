@@ -1,0 +1,81 @@
+.hero {
+  font-size: 1rem;
+
+  @include media-breakpoint-up(xl) {
+    font-size: 2.5rem;
+  }  
+}
+
+.share-this {
+  font-size: 0.5625rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.social-icons {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: 9rem;
+}
+
+.action-circle {
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 16.25rem;
+  width: 16.25rem;
+
+  & + & {
+    margin-top: $grid-gutter-width;
+
+    @include media-breakpoint-up(xl) {
+      margin-top: 0;
+    }
+  }
+
+  &__img {
+    height: 8.125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: $spacer * 3;
+
+    @include media-breakpoint-up(xl) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 0;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 53.75rem;
+    }
+  }
+
+  &__title {
+    @extend .text-monospace;
+    font-size: $h1-font-size;
+    margin: 0;
+  }
+}
+
+.title-line {
+  line-height: 1;
+
+  & + & {
+    position: relative;
+    top: -0.5rem;
+  }
+
+  &:nth-child(even) {
+    color: $red;  
+  }
+}

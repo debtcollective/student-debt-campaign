@@ -4,10 +4,12 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import Hero from "../sections/Hero";
+import Informative from "../sections/Informative";
 
 export const IndexPageTemplate = ({ display1, display2, items }) => (
   <>
     <Hero title={[display1, display2]} items={items} />
+    <Informative />
   </>
 );
 

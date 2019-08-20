@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,700");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,600");
 @import url("https://s3.amazonaws.com/tds-static/fonts/moregothic/1.0.0/More+Gothic+Bold.css");
 
+$blue:                        #D8F6FF;
 $red:                         #FF4630;
 $purple:                      #DAC4F5;
 $green:                       #D6FFB8;
@@ -10,6 +11,7 @@ $body-bg:                     #FAF9F5;
 
 $font-family-sans-serif:      "Libre Franklin",sans-serif;
 $font-family-monospace:       "More Gothic Bold", Impact, sans-serif;
+$font-weight-bold:            600;
 
 // Grid needs to be set in px
 $grid-gutter-width:           40px;
@@ -38,3 +40,4 @@ $display4-size:               3.5em;
 // TODO: ideally, we shouldn't need to import those styles from here
 // styles from components and sections to allow usage of variables
 @import "../sections/Hero/style";
+@import "../sections/Informative/style";

@@ -14,4 +14,9 @@
     padding-bottom: ($spacer * 3);
     padding-top: ($spacer * 3);
   }
+
+  section > &.extra-pad {
+    padding-bottom: ($spacer * 6);
+    padding-top: ($spacer * 6);
+  }
 }

@@ -14,12 +14,12 @@ const Hero = ({ title }) => (
       <div className="row">
         <div className="col">
           <div className="text-center">
-            <div className="display-3 text-monospace title-line">
+            <h1 className="display-3 text-monospace title-line">
               End student debt!
-            </div>
-            <div className="display-3 text-monospace title-line">
+            </h1>
+            <h1 className="display-3 text-monospace title-line">
               Join the strike!
-            </div>
+            </h1>
           </div>
         </div>
       </div>

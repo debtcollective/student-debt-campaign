@@ -27,6 +27,11 @@ $display2-size:               5.5em;
 $display3-size:               4.5em;
 $display4-size:               3.5em;
 
+$display1-weight:             $font-weight-bold;
+$display2-weight:             $font-weight-bold;
+$display3-weight:             $font-weight-bold;
+$display4-weight:             $font-weight-bold;
+
 // bootstrap required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";

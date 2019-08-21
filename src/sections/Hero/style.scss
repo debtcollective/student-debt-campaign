@@ -1,3 +1,9 @@
+.display-title {
+  @extend .display-3;
+  @extend .text-monospace;
+  line-height: .85;
+}
+
 .hero {
   font-size: 1rem;
 
@@ -8,7 +14,6 @@
 
 .share-this {
   font-size: 0.5625rem;
-  margin: 0;
   text-transform: uppercase;
 }
 
@@ -63,20 +68,5 @@
   &__title {
     @extend .text-monospace;
     font-size: $h1-font-size;
-    margin: 0;
-  }
-}
-
-.title-line {
-  line-height: 1;
-  margin-bottom: 0;
-
-  & + & {
-    position: relative;
-    top: -0.5rem;
-  }
-
-  &:nth-child(even) {
-    color: $red;  
   }
 }

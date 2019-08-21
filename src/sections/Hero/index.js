@@ -14,11 +14,9 @@ const Hero = ({ title }) => (
       <div className="row">
         <div className="col">
           <div className="text-center">
-            <h1 className="display-3 text-monospace title-line">
-              End student debt!
-            </h1>
-            <h1 className="display-3 text-monospace title-line">
-              Join the strike!
+            <h1 className="display-title">
+              End student debt!{" "}
+              <span className="text-primary">Join the strike!</span>
             </h1>
           </div>
         </div>

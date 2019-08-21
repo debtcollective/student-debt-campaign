@@ -17,7 +17,7 @@ section.informative {
   }
 
   &__title {
-    font-weight: $font-weight-bold;
+    @extend .display-4;
     margin-bottom: $spacer * 3;
     width: 37rem;
     

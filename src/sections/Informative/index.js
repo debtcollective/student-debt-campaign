@@ -6,7 +6,7 @@ const Informative = () => (
       <div className="row">
         <div className="col">
           <div className="text-center">
-            <h1 className="display-4 informative__title">
+            <h1 className="informative__title">
               We demand full cancellation of federal & private student loans.
               Free public college for all!
             </h1>

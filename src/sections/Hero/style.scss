@@ -1,3 +1,10 @@
+.hero {
+  .distribute-rows {
+    // leave extra space for the header to be placed
+    padding-top: 8rem;
+  }
+}
+
 .display-title {
   @extend .display-3;
   @extend .text-monospace;

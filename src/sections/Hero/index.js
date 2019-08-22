@@ -32,13 +32,13 @@ const Hero = ({ title }) => (
             </div>
             <div className="action-circle bg-yellow">
               <div className="action-circle__img">
-                <img src={handshake} alt="handshake" />
+                <img src={newspaper} alt="newspaper" />
               </div>
               <p className="action-circle__title">Prepare!</p>
             </div>
             <div className="action-circle bg-green">
               <div className="action-circle__img">
-                <img src={newspaper} alt="newspaper" />
+                <img src={handshake} alt="handshake" />
               </div>
               <p className="action-circle__title">Support!</p>
             </div>

@@ -1,11 +1,3 @@
-section.informative {
-  font-size: 0.7rem;
-  
-  @include media-breakpoint-up(xl) {
-    font-size: 1rem;
-  }  
-}
-
 .informative {
   background: $blue;
   background: linear-gradient(0deg, $body-bg 0%, $blue 100%);
@@ -19,10 +11,11 @@ section.informative {
   &__title {
     @extend .display-4;
     margin-bottom: $spacer * 3;
-    width: 37rem;
+    width: 90vw;
     
     @include media-breakpoint-up(xl) {
-      width: 54rem;
+      font-size: 3.5vw;
+      width: 60vw;
     }
   }
 

@@ -9,10 +9,6 @@
   @extend .display-3;
   @extend .text-monospace;
   line-height: .85;
-
-  @include media-breakpoint-down(sm) {
-    font-size: 20vw;
-  }
 }
 
 .share-this {

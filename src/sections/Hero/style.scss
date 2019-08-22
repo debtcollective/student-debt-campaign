@@ -2,14 +2,10 @@
   @extend .display-3;
   @extend .text-monospace;
   line-height: .85;
-}
 
-.hero {
-  font-size: 1rem;
-
-  @include media-breakpoint-up(xl) {
-    font-size: 2.5rem;
-  }  
+  @include media-breakpoint-down(sm) {
+    font-size: 20vw;
+  }
 }
 
 .share-this {
@@ -30,22 +26,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 16.25rem;
-  width: 16.25rem;
+  height: 12rem;
+  width: 12rem;
 
-  & + & {
-    margin-top: $grid-gutter-width;
-
-    @include media-breakpoint-up(xl) {
-      margin-top: 0;
-    }
+  @include media-breakpoint-up(md) {
+    height: 20vw;
+    width: 20vw;
   }
-
+  
   &__img {
-    height: 8.125rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    flex: 2;
+
+    img {
+      width: 6rem;
+
+      @include media-breakpoint-up(md) {
+        width: 10vw;
+      }
+    }
+
+    // To compensate visual
+    img[alt="fist"] {
+      margin-bottom: $spacer;
+    }
   }
 
   &-wrap {
@@ -55,18 +61,31 @@
     justify-content: center;
     margin-top: $spacer * 3;
 
-    @include media-breakpoint-up(xl) {
+    .action-circle + .action-circle {
+      margin-top: $grid-gutter-width;
+    }
+
+    @include media-breakpoint-up(md) {
       flex-direction: row;
       justify-content: space-between;
       margin-top: 0;
       margin-left: auto;
       margin-right: auto;
-      max-width: 53.75rem;
+      max-width: 65vw;
+
+      .action-circle + .action-circle {
+        margin-top: 0;
+      }
     }
   }
 
   &__title {
     @extend .text-monospace;
-    font-size: $h1-font-size;
+    font-size: $h3-font-size;
+    flex: 1;
+    
+    @include media-breakpoint-up(md) {
+      font-size: 2.5vw;
+    }
   }
 }

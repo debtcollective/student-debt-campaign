@@ -19,6 +19,9 @@ $font-size-base:              1.5rem;
 $headings-margin-bottom:      0;
 $paragraph-margin-bottom:     0;
 
+// Avoid the need of removing margins
+$headings-margin-bottom:      0;
+
 // Grid needs to be set in px
 $grid-gutter-width:           40px;
 
@@ -62,3 +65,4 @@ $btn-padding-x:               2.8rem;
 @import "../sections/Informative/style";
 @import "../sections/Join/style";
 @import "../sections/Notification/style";
+@import "../sections/FAQ/style";

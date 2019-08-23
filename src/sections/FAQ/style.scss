@@ -1,0 +1,41 @@
+.faq {
+  background: $white;
+
+  .display-title {
+    margin-bottom: $spacer * 3;
+
+    @include media-breakpoint-up(xl) {
+      margin-bottom: $spacer * 5;
+    }
+  }
+
+  .distribute-rows {
+    justify-content: flex-start;
+  }
+}
+
+.collapsable-list {
+  margin: 0 auto;
+  max-width: 50rem;
+  width: 100%;
+}
+
+details {
+  border-top: 0.125rem solid $black;
+  padding: 1.5rem 2rem 2.25rem;
+
+  summary {
+    font-weight: $font-weight-bold;
+  }
+
+  & > summary::-webkit-details-marker {
+    color: $primary;
+  }
+
+  .content {
+    font-size: 1.125rem;
+    padding-left: 1.5rem;
+    margin-top: $spacer * 1.5;
+  }
+}
+

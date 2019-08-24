@@ -43,4 +43,16 @@ details {
     padding-left: 1.5rem;
     margin-top: $spacer * 1.5;
   }
+
+  /*
+    IE doesn't support details as other modern browsers so we remove the boder
+    in order to let the text being shown without bad applied customizations
+  */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    border-top: none;
+  }
+
+  @supports (-ms-ime-align: auto) {
+    border-top: none;
+  }
 }

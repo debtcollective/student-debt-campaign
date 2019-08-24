@@ -76,6 +76,13 @@
 
   .our-voices {
     margin-top: 3rem;
+
+    @media (min-width: 90rem) { 
+      position: absolute;
+      top: 0;
+      right: $grid-gutter-width / 2;
+      margin: 0;
+    }
   }
 }
 

@@ -6,8 +6,14 @@
   }
 
   @include media-breakpoint-down(xl) {
-    padding-bottom: 6rem;
-    padding-top: 7.5rem;
+    > .container-fluid {
+      padding-bottom: 6rem;
+      padding-top: 7.5rem;
+    }
+
+    > .distribute-rows {
+      justify-content: center;
+    }
   }
 
   &::before {
@@ -37,6 +43,10 @@
   &__img {
     margin-bottom: 1.5rem;
     width: 6.5rem;
+
+    @include media-breakpoint-up(xl) {
+      width: 6vw;
+    }
   }
 
   &__title {

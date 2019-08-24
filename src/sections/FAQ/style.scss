@@ -26,9 +26,15 @@ details {
 
   summary {
     font-weight: $font-weight-bold;
+    outline: none;
   }
 
-  & > summary::-webkit-details-marker {
+  // pseudo elements are defined separately check https://bit.ly/2U0pJKb
+  summary::marker {
+    color: $primary;
+  }
+
+  summary::-webkit-details-marker {
     color: $primary;
   }
 
@@ -38,4 +44,3 @@ details {
     margin-top: $spacer * 1.5;
   }
 }
-

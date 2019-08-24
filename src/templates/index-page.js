@@ -5,11 +5,51 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Hero from "../sections/Hero";
 import Informative from "../sections/Informative";
+import Join from "../sections/Join";
+import fist from "./img/fist.png";
+import handshake from "./img/handshake.png";
+import newspaper from "./img/newspaper.png";
+import bgFist from "./img/image_3.png";
+import bgHandshake from "./img/image_1.png";
+import bgNewspaper from "./img/image_2.png";
 
 export const IndexPageTemplate = ({ display1, display2, items }) => (
   <>
     <Hero title={[display1, display2]} items={items} />
     <Informative />
+    <Join
+      background={bgFist}
+      image={fist}
+      count={Math.floor(Math.random() * 900000) + 100000}
+      title="of us are already on strike!"
+      colour="purple"
+    >
+      We are not paying our student loans this means we are already in default
+      or that we have enrolled in programs such as forbearance, deferment or $0
+      IBR in order to halt our payments. The government and the lenders aren’t
+      getting a cent from us!
+    </Join>
+    <Join
+      background={bgNewspaper}
+      image={newspaper}
+      count={Math.floor(Math.random() * 900000) + 100000}
+      title="of us are threatening to strike!"
+      colour="yellow"
+    >
+      We are prepared to stop paying our loans in the future if our demands are
+      not met. These loans are unjust and it is only a matter of time before we
+      stop cooperating.
+    </Join>
+    <Join
+      background={bgHandshake}
+      image={handshake}
+      count={Math.floor(Math.random() * 900000) + 100000}
+      title="of us stand in solidarity with strikers."
+      colour="green"
+    >
+      We do not have student loans, but are standing in solidarity with those
+      who are on strike
+    </Join>
   </>
 );
 

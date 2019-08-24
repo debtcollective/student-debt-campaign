@@ -1,0 +1,16 @@
+%section-title-layout {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: $spacer * 3;
+  width: 90vw;
+  
+  @include media-breakpoint-up(xl) {
+    font-size: 3.5vw;
+    width: 60vw;
+  }
+}
+
+%section-title {
+  @extend .display-2;
+  @extend %section-title-layout;
+}

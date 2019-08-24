@@ -24,7 +24,7 @@ $grid-gutter-width:           40px;
 
 // this will allow us to create better responsive font sizes
 $display1-size:               6em;
-$display2-size:               5.5em;
+$display2-size:               8vw;
 $display3-size:               12.5vw;
 $display4-size:               5.5vw;
 
@@ -32,6 +32,10 @@ $display1-weight:             $font-weight-bold;
 $display2-weight:             $font-weight-bold;
 $display3-weight:             $font-weight-bold;
 $display4-weight:             $font-weight-bold;
+
+// Buttons
+$btn-padding-y:               1.3125rem;
+$btn-padding-x:               2.8rem;
 
 // bootstrap required
 @import "node_modules/bootstrap/scss/functions";
@@ -43,12 +47,16 @@ $display4-weight:             $font-weight-bold;
 @import "node_modules/bootstrap/scss/grid";
 @import "node_modules/bootstrap/scss/type";
 @import "node_modules/bootstrap/scss/utilities";
+@import "node_modules/bootstrap/scss/buttons";
 
 // run custom code after bootstrap loaded
 @import "./functions";
 @import "./layout";
+@import "./type";
+@import "./buttons";
 
 // TODO: ideally, we shouldn't need to import those styles from here
 // styles from components and sections to allow usage of variables
 @import "../sections/Hero/style";
 @import "../sections/Informative/style";
+@import "../sections/Join/style";

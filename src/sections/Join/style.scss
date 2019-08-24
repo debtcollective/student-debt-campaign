@@ -1,0 +1,80 @@
+.join {
+  position: relative;
+
+  &::before {
+    background: $white;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .9;
+  }
+
+  &[data-color="purple"]::before {
+    background: $purple;
+  }
+
+  &[data-color="yellow"]::before {
+    background: $yellow;
+  }
+
+  &[data-color="green"]::before {
+    background: $green;
+  }
+
+  &__img {
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    @extend %section-title;
+  }
+
+  &__content {
+    text-align: left;
+  }
+
+  &__cta {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .our-voices {
+    margin-top: 3rem;
+  }
+}
+
+.our-voices {
+  &__title {
+    @extend .text-monospace;
+    border-bottom: 2px solid $black;
+    font-size: $font-size-base * 0.875;
+    line-height: 3;
+    margin: 0 auto ($spacer * 2);
+    max-width: 20rem;
+    width: 100%;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacer * 2;
+  }
+
+  &__content {
+    font-size: $font-size-base * 0.5;
+    text-align: left;
+    margin-left: $spacer * 0.625;
+  }
+
+  img {
+    width: 7.5rem;
+  }
+}

@@ -66,9 +66,7 @@ const FAQ = () => (
               </p>
             </details>
             <details className="collapsable-list__item">
-              <summary className="summary">
-                OK, but how do we pay for it?
-              </summary>
+              <summary className="summary">How do we pay for it?</summary>
               <p className="content">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Vestibulum hendrerit, erat id feugiat lobortis, enim nulla

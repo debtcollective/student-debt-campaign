@@ -9,14 +9,6 @@
   }
   
   &__content {
-    font-size: 1rem;
-    width: 30rem;
-    margin: 0 auto;
-    margin-bottom: $spacer * 1.5;
-    max-width: 100%;
-    
-    @include media-breakpoint-up(sm) {
-      font-size: $font-size-base;
-    }
+    @extend %section-content;
   }
 }

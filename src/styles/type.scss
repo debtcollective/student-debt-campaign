@@ -15,3 +15,19 @@
 .section-title {
   @extend %section-title;
 }
+
+%section-content {
+  font-size: 1rem;
+  margin: 0 auto ($spacer * 1.5);
+  max-width: 100%;
+  text-align: left;
+  width: 30rem;
+  
+  @include media-breakpoint-up(sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.section-content {
+  @extend %section-content;
+}

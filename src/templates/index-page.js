@@ -47,8 +47,8 @@ export const IndexPageTemplate = ({ display1, display2, items }) => (
       title="of us stand in solidarity with strikers."
       colour="green"
     >
-      We do not have student loans, but are standing in solidarity with those
-      who are on strike
+      We do not have student loans, but we are standing in solidarity with all
+      those people who are on strike
     </Join>
   </>
 );

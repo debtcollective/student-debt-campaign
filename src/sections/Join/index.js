@@ -12,7 +12,7 @@ const Join = ({ image, background, count, title, colour, children }) => (
   <section
     className="join"
     data-color={colour}
-    style={{ background: `url(${background})`, backgroundPosition: "cover" }}
+    style={{ background: `url(${background})`, backgroundSize: "cover" }}
   >
     <div className="container-fluid distribute-rows">
       <div className="row">
@@ -23,7 +23,6 @@ const Join = ({ image, background, count, title, colour, children }) => (
                 className="join__img"
                 src={image}
                 alt={title.toLowerCase()}
-                width="100px"
               />
               <h2 className="join__title">
                 {formatNumber(count)} {title}

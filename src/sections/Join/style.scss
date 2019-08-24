@@ -1,6 +1,10 @@
 .join {
   position: relative;
 
+  @include media-breakpoint-down(md) {
+    background: none !important;
+  }
+
   &::before {
     background: $white;
     content: '';
@@ -27,14 +31,29 @@
 
   &__img {
     margin-bottom: 1.5rem;
+    width: 6.5rem;
   }
 
   &__title {
     @extend %section-title;
+
+    @include media-breakpoint-up(sm) {
+      font-size: $display4-size;
+      // arbitrary width in order to break the words as design suggests
+      width: 60vw;
+    }
   }
 
   &__content {
+    font-size: 1rem;
+    margin: 0 auto ($spacer * 1.5);
+    max-width: 100%;
     text-align: left;
+    width: 30rem;
+    
+    @include media-breakpoint-up(sm) {
+      font-size: $font-size-base;
+    }
   }
 
   &__cta {
@@ -48,6 +67,9 @@
 }
 
 .our-voices {
+  margin: 0 auto;
+  max-width: 25rem;
+
   &__title {
     @extend .text-monospace;
     border-bottom: 2px solid $black;
@@ -60,6 +82,7 @@
 
   &__list {
     list-style: none;
+    padding: 0;
   }
 
   &__list-item {

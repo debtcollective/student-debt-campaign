@@ -5,6 +5,11 @@
     background: none !important;
   }
 
+  @include media-breakpoint-down(xl) {
+    padding-bottom: 6rem;
+    padding-top: 7.5rem;
+  }
+
   &::before {
     background: $white;
     content: '';
@@ -37,10 +42,18 @@
   &__title {
     @extend %section-title;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-between(sm, lg) {
       font-size: $display4-size;
+    }
+
+    @include media-breakpoint-up(sm) {
       // arbitrary width in order to break the words as design suggests
       width: 60vw;
+    }
+
+    @include media-breakpoint-up(lg) {
+      // arbitrary width in order to break the words as design suggests
+      width: 40vw;
     }
   }
 

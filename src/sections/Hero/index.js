@@ -14,11 +14,9 @@ const Hero = ({ title }) => (
       <div className="row">
         <div className="col">
           <div className="text-center">
-            <h1 className="display-3 text-monospace title-line">
-              End student debt!
-            </h1>
-            <h1 className="display-3 text-monospace title-line">
-              Join the strike!
+            <h1 className="display-title mb-sm-5 mb-xl-0">
+              End student debt!{" "}
+              <span className="text-primary">Join the strike!</span>
             </h1>
           </div>
         </div>
@@ -28,19 +26,19 @@ const Hero = ({ title }) => (
           <div className="action-circle-wrap">
             <div className="action-circle bg-purple">
               <div className="action-circle__img">
-                <img src={fist} alt="fist" width="100px" />
+                <img src={fist} alt="fist" />
               </div>
               <p className="action-circle__title">Declare!</p>
             </div>
             <div className="action-circle bg-yellow">
               <div className="action-circle__img">
-                <img src={handshake} alt="handshake" width="130px" />
+                <img src={newspaper} alt="newspaper" />
               </div>
               <p className="action-circle__title">Prepare!</p>
             </div>
             <div className="action-circle bg-green">
               <div className="action-circle__img">
-                <img src={newspaper} alt="newspaper" width="100px" />
+                <img src={handshake} alt="handshake" />
               </div>
               <p className="action-circle__title">Support!</p>
             </div>

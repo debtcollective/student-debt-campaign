@@ -1,14 +1,18 @@
 .hero {
-  font-size: 1rem;
+  .distribute-rows {
+    // leave extra space for the header to be placed
+    padding-top: 8rem;
+  }
+}
 
-  @include media-breakpoint-up(xl) {
-    font-size: 2.5rem;
-  }  
+.display-title {
+  @extend .display-3;
+  @extend .text-monospace;
+  line-height: .85;
 }
 
 .share-this {
   font-size: 0.5625rem;
-  margin: 0;
   text-transform: uppercase;
 }
 
@@ -25,22 +29,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 16.25rem;
-  width: 16.25rem;
+  height: 12rem;
+  width: 12rem;
 
-  & + & {
-    margin-top: $grid-gutter-width;
-
-    @include media-breakpoint-up(xl) {
-      margin-top: 0;
-    }
+  @include media-breakpoint-up(md) {
+    height: 18vw;
+    width: 18vw;
   }
-
+  
   &__img {
-    height: 8.125rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    flex: 2;
+
+    img {
+      width: 6rem;
+
+      @include media-breakpoint-up(md) {
+        width: 8vw;
+      }
+    }
+
+    // To compensate visual
+    img[alt="fist"] {
+      margin-bottom: $spacer;
+    }
   }
 
   &-wrap {
@@ -50,33 +64,32 @@
     justify-content: center;
     margin-top: $spacer * 3;
 
-    @include media-breakpoint-up(xl) {
+    .action-circle + .action-circle {
+      margin-top: $grid-gutter-width;
+    }
+
+    @include media-breakpoint-up(md) {
       flex-direction: row;
       justify-content: space-between;
       margin-top: 0;
       margin-left: auto;
       margin-right: auto;
-      max-width: 53.75rem;
+      max-width: 60vw;
+
+      .action-circle + .action-circle {
+        margin-top: 0;
+      }
     }
   }
 
   &__title {
     @extend .text-monospace;
-    font-size: $h1-font-size;
-    margin: 0;
-  }
-}
-
-.title-line {
-  line-height: 1;
-  margin-bottom: 0;
-
-  & + & {
-    position: relative;
-    top: -0.5rem;
-  }
-
-  &:nth-child(even) {
-    color: $red;  
+    font-size: $h5-font-size;
+    flex: 1;
+    line-height: .75;
+    
+    @include media-breakpoint-up(md) {
+      font-size: 2.5vw;
+    }
   }
 }

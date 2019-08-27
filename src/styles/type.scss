@@ -1,0 +1,33 @@
+%section-title {
+  @extend .display-2;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: $spacer * 3;
+  max-width: 100%;
+  width: 90vw;
+  
+  @include media-breakpoint-up(xl) {
+    font-size: 3.5vw;
+    width: 60vw;
+  }
+}
+
+.section-title {
+  @extend %section-title;
+}
+
+%section-content {
+  font-size: 1rem;
+  margin: 0 auto ($spacer * 1.5);
+  max-width: 100%;
+  text-align: left;
+  width: 30rem;
+  
+  @include media-breakpoint-up(sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.section-content {
+  @extend %section-content;
+}

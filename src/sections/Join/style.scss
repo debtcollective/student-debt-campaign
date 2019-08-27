@@ -1,0 +1,131 @@
+.join {
+  position: relative;
+
+  @include media-breakpoint-down(md) {
+    background: none !important;
+  }
+
+  @include media-breakpoint-down(xl) {
+    > .container-fluid {
+      padding-bottom: 6rem;
+      padding-top: 7.5rem;
+    }
+
+    > .distribute-rows {
+      justify-content: center;
+    }
+  }
+
+  &::before {
+    background: $white;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .9;
+  }
+
+  &[data-color="purple"]::before {
+    background: $purple;
+  }
+
+  &[data-color="yellow"]::before {
+    background: $yellow;
+  }
+
+  &[data-color="green"]::before {
+    background: $green;
+  }
+
+  &__img {
+    margin-bottom: 1.5rem;
+    width: 6.5rem;
+
+    @include media-breakpoint-up(xl) {
+      width: 6vw;
+    }
+  }
+
+  &__title {
+    @extend %section-title;
+
+    // Match right font-size with width for break lines properly
+    @include media-breakpoint-between(sm, lg) {
+      font-size: $display4-size;
+    }
+
+    @include media-breakpoint-up(sm) {
+      // arbitrary width in order to break the words as design suggests
+      width: 60vw;
+    }
+
+    @include media-breakpoint-up(lg) {
+      // arbitrary width in order to break the words as design suggests
+      width: 50vw;
+    }
+
+    @media (min-width: 1440px) {
+      // arbitrary width in order to break the words as design suggests
+      width: 40vw;
+    }
+  }
+
+  &__content {
+    @extend %section-content;
+  }
+
+  &__cta {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .our-voices {
+    margin-top: 3rem;
+
+    @media (min-width: 1440px) { 
+      position: absolute;
+      top: 0;
+      right: $grid-gutter-width / 2;
+      margin: 0;
+    }
+  }
+}
+
+.our-voices {
+  margin: 0 auto;
+  max-width: 25rem;
+
+  &__title {
+    @extend .text-monospace;
+    border-bottom: 2px solid $black;
+    font-size: $font-size-base * 0.875;
+    line-height: 3;
+    margin: 0 auto ($spacer * 2);
+    max-width: 20rem;
+    width: 100%;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacer * 2;
+  }
+
+  &__content {
+    font-size: $font-size-base * 0.5;
+    text-align: left;
+    margin-left: $spacer * 0.625;
+  }
+
+  img {
+    width: 7.5rem;
+  }
+}

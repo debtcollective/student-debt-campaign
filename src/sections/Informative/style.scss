@@ -1,31 +1,14 @@
 .informative {
   background: $blue;
   background: linear-gradient(0deg, $body-bg 0%, $blue 100%);
-
-  &__title,
-  &__content {
-    margin: 0 auto;
-    max-width: 100%;
-  }
-
+  
   &__title {
+    @extend %section-title;
+    // As the title is long we need special treatment
     @extend .display-4;
-    margin-bottom: $spacer * 3;
-    width: 90vw;
-    
-    @include media-breakpoint-up(xl) {
-      font-size: 3.5vw;
-      width: 60vw;
-    }
   }
-
+  
   &__content {
-    font-size: 1rem;
-    width: 30rem;
-    margin-bottom: $spacer * 1.5;
-    
-    @include media-breakpoint-up(sm) {
-      font-size: $font-size-base;
-    }
+    @extend %section-content;
   }
 }

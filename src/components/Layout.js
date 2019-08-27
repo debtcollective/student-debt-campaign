@@ -5,6 +5,12 @@ import "../styles/index.scss";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 
+let $;
+if (typeof window !== `undefined`) {
+  $ = require("jquery");
+  require("bootstrap/js/dist/alert");
+}
+
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (

@@ -42,7 +42,7 @@ const Join = ({ image, background, count, title, colour, children }) => (
               <ul className="our-voices__list">
                 <li className="our-voices__list-item">
                   <div className="our-voices__img">
-                    <img src={user1} />
+                    <img src={user1} alt="user profile picture" />
                   </div>
                   <p className="our-voices__content">
                     <strong>@username</strong> Lorem ipsum dolor sit amet,
@@ -53,7 +53,7 @@ const Join = ({ image, background, count, title, colour, children }) => (
                 </li>
                 <li className="our-voices__list-item">
                   <div className="our-voices__img">
-                    <img src={user2} />
+                    <img src={user2} alt="user profile picture" />
                   </div>
                   <p className="our-voices__content">
                     <strong>@username</strong> Lorem ipsum dolor sit amet,
@@ -64,7 +64,7 @@ const Join = ({ image, background, count, title, colour, children }) => (
                 </li>
                 <li className="our-voices__list-item">
                   <div className="our-voices__img">
-                    <img src={user3} />
+                    <img src={user3} alt="user profile picture" />
                   </div>
                   <p className="our-voices__content">
                     <strong>@username</strong> Lorem ipsum dolor sit amet,
@@ -75,7 +75,7 @@ const Join = ({ image, background, count, title, colour, children }) => (
                 </li>
                 <li className="our-voices__list-item">
                   <div className="our-voices__img">
-                    <img src={user4} />
+                    <img src={user4} alt="user profile picture" />
                   </div>
                   <p className="our-voices__content">
                     <strong>@username</strong> Lorem ipsum dolor sit amet,

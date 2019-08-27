@@ -12,6 +12,7 @@ import newspaper from "./img/newspaper.png";
 import bgFist from "./img/image_3.png";
 import bgHandshake from "./img/image_1.png";
 import bgNewspaper from "./img/image_2.png";
+import Notification from "../sections/Notification";
 
 export const IndexPageTemplate = ({ display1, display2, items }) => (
   <>
@@ -50,6 +51,12 @@ export const IndexPageTemplate = ({ display1, display2, items }) => (
       We do not have student loans, but we are standing in solidarity with all
       those people who are on strike
     </Join>
+    <Notification title="We are winning">
+      <p>
+        <strong>NEW</strong> Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Ut consequat sapien a rhoncus convallis.
+      </p>
+    </Notification>
   </>
 );
 

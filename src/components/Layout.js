@@ -4,7 +4,12 @@ import Footer from "../components/Footer";
 import "../styles/index.scss";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
-import "bootstrap/js/dist/alert";
+
+let $;
+if (typeof window !== `undefined`) {
+  $ = require("jquery");
+  require("bootstrap/js/dist/alert");
+}
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();

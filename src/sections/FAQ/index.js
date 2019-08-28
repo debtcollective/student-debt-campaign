@@ -1,4 +1,5 @@
 import React from "react";
+import "details-polyfill";
 
 const FAQ = () => (
   <section className="faq">

@@ -61,3 +61,30 @@ details {
     border-top: none;
   }
 }
+
+/*
+  styles improvements related to https://github.com/rstacruz/details-polyfill
+*/
+html.no-details details > summary {
+  list-style: none;
+}
+
+html.no-details details > summary::before {
+  content: '' !important;
+  height: 0;
+  width: 0;
+}
+
+html.no-details details > summary::before {
+  border-color: transparent transparent transparent $primary;
+  border-style: solid;
+  border-width: .4em 0 .4em .8em;
+  position: relative;
+  top: 0;
+  transform: rotate(0deg);
+}
+
+html.no-details details[open] > summary::before {
+  top: .4em;
+  transform: rotate(90deg);
+}

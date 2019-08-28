@@ -1,5 +1,8 @@
 import React from "react";
-import "details-polyfill";
+
+if (typeof window !== `undefined`) {
+  require("details-polyfill");
+}
 
 const FAQ = () => (
   <section className="faq">

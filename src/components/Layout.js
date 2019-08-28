@@ -5,9 +5,8 @@ import "../styles/index.scss";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 
-let $;
 if (typeof window !== `undefined`) {
-  $ = require("jquery");
+  require("jquery");
   require("bootstrap/js/dist/alert");
 }
 

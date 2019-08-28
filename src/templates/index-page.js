@@ -13,6 +13,7 @@ import bgFist from "./img/image_3.png";
 import bgHandshake from "./img/image_1.png";
 import bgNewspaper from "./img/image_2.png";
 import Notification from "../sections/Notification";
+import FAQ from "../sections/FAQ";
 
 export const IndexPageTemplate = ({ display1, display2, items }) => (
   <>
@@ -57,6 +58,7 @@ export const IndexPageTemplate = ({ display1, display2, items }) => (
         elit. Ut consequat sapien a rhoncus convallis.
       </p>
     </Notification>
+    <FAQ />
   </>
 );
 

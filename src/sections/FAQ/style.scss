@@ -1,0 +1,90 @@
+.faq {
+  background: $white;
+
+  .display-title {
+    margin-bottom: $spacer * 3;
+
+    @include media-breakpoint-up(xl) {
+      margin-bottom: $spacer * 5;
+    }
+  }
+
+  .distribute-rows {
+    justify-content: flex-start;
+  }
+}
+
+.collapsable-list {
+  margin: 0 auto;
+  max-width: 50rem;
+  width: 100%;
+}
+
+details {
+  border-top: 0.125rem solid $black;
+  padding: 1.5rem 0 2.25rem;
+
+  @include media-breakpoint-up(sm) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  summary {
+    font-weight: $font-weight-bold;
+    outline: none;
+  }
+
+  // pseudo elements are defined separately check https://bit.ly/2U0pJKb
+  summary::marker {
+    color: $primary;
+  }
+
+  summary::-webkit-details-marker {
+    color: $primary;
+  }
+
+  .content {
+    font-size: 1.125rem;
+    padding-left: 1.5rem;
+    margin-top: $spacer * 1.5;
+  }
+
+  /*
+    IE doesn't support details as other modern browsers so we remove the boder
+    in order to let the text being shown without bad applied customizations
+  */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    border-top: none;
+  }
+
+  @supports (-ms-ime-align: auto) {
+    border-top: none;
+  }
+}
+
+/*
+  styles improvements related to https://github.com/rstacruz/details-polyfill
+*/
+html.no-details details > summary {
+  list-style: none;
+}
+
+html.no-details details > summary::before {
+  content: '' !important;
+  height: 0;
+  width: 0;
+}
+
+html.no-details details > summary::before {
+  border-color: transparent transparent transparent $primary;
+  border-style: solid;
+  border-width: .4em 0 .4em .8em;
+  position: relative;
+  top: 0;
+  transform: rotate(0deg);
+}
+
+html.no-details details[open] > summary::before {
+  top: .4em;
+  transform: rotate(90deg);
+}

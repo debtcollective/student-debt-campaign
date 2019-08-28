@@ -13,6 +13,7 @@
   right: $grid-gutter-width / 2;
   width: 28.75rem;
   max-width: 100%;
+  z-index: $zindex-fixed;
 
   @include media-breakpoint-down(xs) {
     flex-direction: column;

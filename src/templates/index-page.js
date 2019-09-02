@@ -14,6 +14,7 @@ import bgHandshake from "./img/image_1.png";
 import bgNewspaper from "./img/image_2.png";
 import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
+import CTA from "../sections/CTA";
 
 export const IndexPageTemplate = ({ display1, display2, items }) => (
   <>
@@ -59,6 +60,7 @@ export const IndexPageTemplate = ({ display1, display2, items }) => (
       </p>
     </Notification>
     <FAQ />
+    <CTA />
   </>
 );
 

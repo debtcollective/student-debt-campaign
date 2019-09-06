@@ -16,9 +16,9 @@ import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
 
-export const IndexPageTemplate = ({ display1, display2, items }) => (
+export const IndexPageTemplate = ({ hero }) => (
   <>
-    <Hero title={[display1, display2]} items={items} />
+    <Hero title={[hero.display1, hero.display2]} actions={hero.actions} />
     <Informative />
     <Join
       background={bgFist}
@@ -68,7 +68,7 @@ IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({
     display1: PropTypes.string,
     display2: PropTypes.string,
-    items: PropTypes.arrayOf({
+    actions: PropTypes.arrayOf({
       title: PropTypes.string,
       image: PropTypes.string
     })
@@ -77,6 +77,8 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+
+  console.log("data", data);
 
   return (
     <Layout>
@@ -99,34 +101,22 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
-        description
-        intro {
-          blurbs {
+        hero {
+          display1
+          display2
+          actions {
+            title
             image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 150, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
-            text
           }
-          heading
-          description
         }
       }
     }

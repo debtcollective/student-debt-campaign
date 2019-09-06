@@ -11,7 +11,12 @@ const Notification = ({ title, children }) => (
     <div className="notification-col">
       <div className="notification__content">{children}</div>
     </div>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <button
+      type="button"
+      className="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

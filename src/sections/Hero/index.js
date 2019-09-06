@@ -24,7 +24,14 @@ const Hero = ({ title, actions }) => (
         <div className="col">
           <div className="text-center">
             <h1 className="display-title mb-sm-5 mb-xl-0">
-              {title[0]} <span className="text-primary">{title[1]}</span>
+              {title.map(({ line }, index) => (
+                <span
+                  key={`line-${index}`}
+                  className={`d-block ${index % 2 === 0 && "text-primary"}`}
+                >
+                  {line}
+                </span>
+              ))}
             </h1>
           </div>
         </div>
@@ -73,11 +80,17 @@ const Hero = ({ title, actions }) => (
 );
 
 Hero.propTypes = {
-  title: PropTypes.string,
-  actions: PropTypes.arrayOf({
-    title: PropTypes.string,
-    image: PropTypes.any
-  })
+  title: PropTypes.arrayOf(
+    PropTypes.shape({
+      line: PropTypes.string
+    })
+  ),
+  actions: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      image: PropTypes.any
+    })
+  )
 };
 
 export default Hero;

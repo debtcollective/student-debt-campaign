@@ -18,7 +18,7 @@ import CTA from "../sections/CTA";
 
 export const IndexPageTemplate = ({ hero }) => (
   <>
-    <Hero title={[hero.display1, hero.display2]} actions={hero.actions} />
+    <Hero title={hero.title} actions={hero.actions} />
     <Informative />
     <Join
       background={bgFist}
@@ -66,19 +66,22 @@ export const IndexPageTemplate = ({ hero }) => (
 
 IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({
-    display1: PropTypes.string,
-    display2: PropTypes.string,
-    actions: PropTypes.arrayOf({
-      title: PropTypes.string,
-      image: PropTypes.string
-    })
+    title: PropTypes.arrayOf(
+      PropTypes.shape({
+        line: PropTypes.string
+      })
+    ),
+    actions: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        image: PropTypes.object
+      })
+    )
   })
 };
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-
-  console.log("data", data);
 
   return (
     <Layout>
@@ -102,8 +105,9 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         hero {
-          display1
-          display2
+          title {
+            line
+          }
           actions {
             title
             image {

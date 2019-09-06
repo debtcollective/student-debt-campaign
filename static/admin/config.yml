@@ -26,14 +26,12 @@ collections:
               fields:
                 [
                   {
-                    label: "Title (first line)",
-                    name: "display1",
-                    widget: string,
-                  },
-                  {
-                    label: "Title (second line)",
-                    name: "display2",
-                    widget: string,
+                    label: "Title",
+                    name: "title",
+                    widget: list,
+                    field: [
+                      { label: "Line", name: 'line', widget: string }
+                    ]
                   },
                   {
                     label: "Actions",

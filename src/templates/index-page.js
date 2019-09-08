@@ -60,7 +60,7 @@ export const IndexPageTemplate = ({ hero, social }) => (
       </p>
     </Notification>
     <FAQ />
-    <CTA />
+    <CTA social={social} />
   </>
 );
 

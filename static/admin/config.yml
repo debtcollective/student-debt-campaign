@@ -54,3 +54,25 @@ collections:
                   },
                 ],
             }
+          - {
+            label: "Social section",
+            name: "social",
+            widget: "object",
+            fields: [
+              {
+                label: 'Social action',
+                name: 'action',
+                widget: 'string'
+              },
+              {
+                label: 'Social accounts',
+                name: 'accounts',
+                widget: 'list',
+                fields: [
+                  { label: Logo, name: logo, widget: image },
+                  { label: Username, name: username, widget: string },
+                  { label: URL, name: url, widget: string },
+                ],
+              },
+            ]
+          }

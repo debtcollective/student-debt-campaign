@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import arrow from "../../img/arrow-down.svg";
-import twitter from "../../img/twitter.svg";
-import instagram from "../../img/instagram.svg";
 import IconWrap from "../../components/IconWrap";
 
 const getBg = index => {
@@ -17,7 +15,7 @@ const getBg = index => {
   }
 };
 
-const Hero = ({ title, actions }) => (
+const Hero = ({ title, actions, social }) => (
   <section className="hero">
     <div className="container-fluid distribute-rows">
       <div className="row">
@@ -63,9 +61,12 @@ const Hero = ({ title, actions }) => (
       <div className="row d-none d-xl-flex">
         <div className="col">
           <div className="social-icons">
-            <p className="share-this">Share this</p>
-            <IconWrap src={twitter} alt="Twitter" />
-            <IconWrap src={instagram} alt="Instagram" />
+            <p className="share-this">{social.action}</p>
+            {social.accounts.map(({ logo, username, url }, index) => (
+              <a key={`social-${index}`} href={url}>
+                <IconWrap src={logo.publicURL} alt={username} />
+              </a>
+            ))}
           </div>
         </div>
         <div className="col">
@@ -80,6 +81,15 @@ const Hero = ({ title, actions }) => (
 );
 
 Hero.propTypes = {
+  social: PropTypes.shape({
+    action: PropTypes.string,
+    accounts: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.any,
+        url: PropTypes.string
+      })
+    )
+  }),
   title: PropTypes.arrayOf(
     PropTypes.shape({
       line: PropTypes.string

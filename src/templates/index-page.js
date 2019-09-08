@@ -16,9 +16,9 @@ import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
 
-export const IndexPageTemplate = ({ hero }) => (
+export const IndexPageTemplate = ({ hero, social }) => (
   <>
-    <Hero title={hero.title} actions={hero.actions} />
+    <Hero title={hero.title} actions={hero.actions} social={social} />
     <Informative />
     <Join
       background={bgFist}
@@ -65,6 +65,15 @@ export const IndexPageTemplate = ({ hero }) => (
 );
 
 IndexPageTemplate.propTypes = {
+  social: PropTypes.shape({
+    action: PropTypes.string,
+    accounts: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.any,
+        url: PropTypes.string
+      })
+    )
+  }),
   hero: PropTypes.shape({
     title: PropTypes.arrayOf(
       PropTypes.shape({
@@ -104,6 +113,17 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
+        social {
+          action
+          accounts {
+            username
+            url
+            logo {
+              absolutePath
+              publicURL
+            }
+          }
+        }
         hero {
           title {
             line

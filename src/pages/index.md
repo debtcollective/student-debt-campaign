@@ -31,4 +31,7 @@ notification:
   title: We are winning
   description: <p><strong>NEW</strong> Lorem ipsum dolor sit amet, consectetur adipiscin elit. Ut consequat sapien a rhoncus convallis.</p>
   date: Mon, Sep 9, 2019 8:35 AM
+cta:
+  title: Help Build Power. Join Today!,
+  action: Sign up
 ---

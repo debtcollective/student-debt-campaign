@@ -76,3 +76,27 @@ collections:
               },
             ]
           }
+          - {
+            label: "Notification",
+            name: "notification",
+            widget: "object",
+            fields: [
+              {
+                label: 'Title',
+                name: 'title',
+                widget: 'string'
+              },
+              {
+                label: 'Description',
+                name: 'description',
+                widget: 'string'
+              },
+              {
+                label: 'Date',
+                name: 'date',
+                widget: 'date',
+                default: '',
+                format: 'llll'
+              },
+            ]
+          }

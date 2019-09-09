@@ -10,15 +10,109 @@ collections:
     label: "Pages"
     files:
       - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
+        label: "Home"
+        name: "home"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Mainpitch, name: mainpitch, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}]}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - {
+              label: "Hero Section",
+              name: "hero",
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "Title",
+                    name: "title",
+                    widget: list,
+                    field: [
+                      { label: "Line", name: 'line', widget: string }
+                    ]
+                  },
+                  {
+                    label: "Actions",
+                    name: "actions",
+                    widget: list,
+                    fields:
+                      [
+                        { label: "Title", name: "title", widget: string },
+                        {
+                          label: "Image",
+                          name: "image",
+                          widget: object,
+                          fields:
+                            [
+                              { label: Source, name: src, widget: image },
+                              { label: Alt, name: alt, widget: string },
+                            ],
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+            label: "Social section",
+            name: "social",
+            widget: "object",
+            fields: [
+              {
+                label: 'Social action',
+                name: 'action',
+                widget: 'string'
+              },
+              {
+                label: 'Social accounts',
+                name: 'accounts',
+                widget: 'list',
+                fields: [
+                  { label: Logo, name: logo, widget: image },
+                  { label: Username, name: username, widget: string },
+                  { label: URL, name: url, widget: string },
+                ],
+              },
+            ]
+          }
+          - {
+            label: "Notification",
+            name: "notification",
+            widget: "object",
+            fields: [
+              {
+                label: 'Title',
+                name: 'title',
+                widget: 'string'
+              },
+              {
+                label: 'Description',
+                name: 'description',
+                widget: 'string'
+              },
+              {
+                label: 'Date',
+                name: 'date',
+                widget: 'date',
+                default: '',
+                format: 'llll'
+              },
+            ]
+          }
+          - {
+            label: 'CTA',
+            name: 'cta',
+            fields: [
+              {
+                label: 'Title',
+                name: 'title',
+                widget: 'string'
+              },
+              {
+                label: 'Button text',
+                name: 'action',
+                widget: 'string'
+              },
+            ]
+          }

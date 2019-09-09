@@ -16,9 +16,9 @@ import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
 
-export const IndexPageTemplate = ({ display1, display2, items }) => (
+export const IndexPageTemplate = ({ hero, social, notification, cta }) => (
   <>
-    <Hero title={[display1, display2]} items={items} />
+    <Hero title={hero.title} actions={hero.actions} social={social} />
     <Informative />
     <Join
       background={bgFist}
@@ -53,25 +53,54 @@ export const IndexPageTemplate = ({ display1, display2, items }) => (
       We do not have student loans, but we are standing in solidarity with all
       those people who are on strike
     </Join>
-    <Notification title="We are winning">
-      <p>
-        <strong>NEW</strong> Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit. Ut consequat sapien a rhoncus convallis.
-      </p>
+    <Notification title={notification.title} date={notification.date}>
+      {notification.description}
     </Notification>
     <FAQ />
-    <CTA />
+    <CTA social={social} title={cta.title} action={cta.action} />
   </>
 );
 
 IndexPageTemplate.propTypes = {
-  hero: PropTypes.shape({
-    display1: PropTypes.string,
-    display2: PropTypes.string,
-    items: PropTypes.arrayOf({
-      title: PropTypes.string,
-      image: PropTypes.string
+  cta: PropTypes.shape({
+    title: PropTypes.string,
+    action: PropTypes.string,
+    social: PropTypes.shape({
+      action: PropTypes.string,
+      accounts: PropTypes.arrayOf(
+        PropTypes.shape({
+          icon: PropTypes.any,
+          url: PropTypes.string
+        })
+      )
     })
+  }),
+  social: PropTypes.shape({
+    action: PropTypes.string,
+    accounts: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.any,
+        url: PropTypes.string
+      })
+    )
+  }),
+  notification: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    date: PropTypes.string
+  }),
+  hero: PropTypes.shape({
+    title: PropTypes.arrayOf(
+      PropTypes.shape({
+        line: PropTypes.string
+      })
+    ),
+    actions: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        image: PropTypes.object
+      })
+    )
   })
 };
 
@@ -99,34 +128,43 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+        cta {
+          title
+          action
         }
-        heading
-        subheading
-        mainpitch {
+        notification {
           title
           description
+          date
         }
-        description
-        intro {
-          blurbs {
+        social {
+          action
+          accounts {
+            username
+            url
+            logo {
+              absolutePath
+              publicURL
+            }
+          }
+        }
+        hero {
+          title {
+            line
+          }
+          actions {
+            title
             image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 150, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
+              alt
             }
-            text
           }
-          heading
-          description
         }
       }
     }

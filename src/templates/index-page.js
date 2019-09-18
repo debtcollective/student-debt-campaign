@@ -16,7 +16,7 @@ import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
 
-export const IndexPageTemplate = ({ hero, social, notification, cta }) => (
+export const IndexPageTemplate = ({ hero, social, notification, cta, faq }) => (
   <>
     <Hero title={hero.title} actions={hero.actions} social={social} />
     <Informative />
@@ -56,12 +56,18 @@ export const IndexPageTemplate = ({ hero, social, notification, cta }) => (
     <Notification title={notification.title} date={notification.date}>
       {notification.description}
     </Notification>
-    <FAQ />
+    <FAQ entries={faq} />
     <CTA social={social} title={cta.title} action={cta.action} />
   </>
 );
 
 IndexPageTemplate.propTypes = {
+  faq: PropTypes.arrayOf(
+    PropTypes.shape({
+      question: PropTypes.string,
+      answer: PropTypes.string
+    })
+  ),
   cta: PropTypes.shape({
     title: PropTypes.string,
     action: PropTypes.string,
@@ -128,6 +134,10 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
+        faq {
+          question
+          answer
+        }
         cta {
           title
           action

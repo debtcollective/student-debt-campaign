@@ -125,3 +125,25 @@ collections:
               { label: Answer, name: answer, widget: string }
             ]
           }
+          - {
+            label: "Demand",
+            name: "demand",
+            widget: object,
+            fields: [
+              {
+                label: Title,
+                name: title,
+                widget: string
+              },
+              {
+                label: Content,
+                name: content,
+                widget: text
+              },
+              {
+                label: Remark,
+                name: remark,
+                widget: string
+              }
+            ]
+          }

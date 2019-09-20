@@ -1,14 +1,19 @@
 import React from "react";
-
-import user1 from "../../templates/img/user_1.png";
-import user2 from "../../templates/img/user_2.png";
-import user3 from "../../templates/img/user_3.png";
-import user4 from "../../templates/img/user_4.png";
+import PropTypes from "prop-types";
 
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 
-const Join = ({ image, background, count, title, colour, children }) => (
+const Join = ({
+  image,
+  background,
+  count,
+  title,
+  colour,
+  children,
+  remark,
+  feed
+}) => (
   <section
     className="join"
     data-color={colour}
@@ -31,7 +36,7 @@ const Join = ({ image, background, count, title, colour, children }) => (
             <div className="join__content">
               {children}
               <p className="mt-4">
-                <strong>Get actions when you add your name.</strong>
+                <strong>{remark}</strong>
               </p>
               <div className="join__cta">
                 <button className="btn btn-primary">Add your name</button>
@@ -40,50 +45,22 @@ const Join = ({ image, background, count, title, colour, children }) => (
             <div className="our-voices">
               <h3 className="our-voices__title">our voices</h3>
               <ul className="our-voices__list">
-                <li className="our-voices__list-item">
-                  <div className="our-voices__img">
-                    <img src={user1} alt="user profile picture" />
-                  </div>
-                  <p className="our-voices__content">
-                    <strong>@username</strong> Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. In egestas, ipsum ac placerat
-                    pretium, nunc quam euismod metus, eget maximus lorem nulla a
-                    arcu. Sed tempus commodo efficitur. Mauris a.
-                  </p>
-                </li>
-                <li className="our-voices__list-item">
-                  <div className="our-voices__img">
-                    <img src={user2} alt="user profile picture" />
-                  </div>
-                  <p className="our-voices__content">
-                    <strong>@username</strong> Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. In egestas, ipsum ac placerat
-                    pretium, nunc quam euismod metus, eget maximus lorem nulla a
-                    arcu. Sed tempus commodo efficitur. Mauris a.
-                  </p>
-                </li>
-                <li className="our-voices__list-item">
-                  <div className="our-voices__img">
-                    <img src={user3} alt="user profile picture" />
-                  </div>
-                  <p className="our-voices__content">
-                    <strong>@username</strong> Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. In egestas, ipsum ac placerat
-                    pretium, nunc quam euismod metus, eget maximus lorem nulla a
-                    arcu. Sed tempus commodo efficitur. Mauris a.
-                  </p>
-                </li>
-                <li className="our-voices__list-item">
-                  <div className="our-voices__img">
-                    <img src={user4} alt="user profile picture" />
-                  </div>
-                  <p className="our-voices__content">
-                    <strong>@username</strong> Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. In egestas, ipsum ac placerat
-                    pretium, nunc quam euismod metus, eget maximus lorem nulla a
-                    arcu. Sed tempus commodo efficitur. Mauris a.
-                  </p>
-                </li>
+                {feed.map(({ picture, username, status }, index) => (
+                  <li
+                    className="our-voices__list-item"
+                    key={`striker-${index}`}
+                  >
+                    <div className="our-voices__img">
+                      <img
+                        src={picture.publicURL}
+                        alt={`user profile picture`}
+                      />
+                    </div>
+                    <p className="our-voices__content">
+                      <strong>{username}</strong> {status}
+                    </p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -92,5 +69,23 @@ const Join = ({ image, background, count, title, colour, children }) => (
     </div>
   </section>
 );
+
+Join.propTypes = {
+  feed: PropTypes.arrayOf(
+    PropTypes.shape({
+      picture: PropTypes.any,
+      status: PropTypes.string,
+      username: PropTypes.string
+    })
+  ),
+  background: PropTypes.any,
+  children: PropTypes.string,
+  colour: PropTypes.string,
+  content: PropTypes.string,
+  count: PropTypes.number,
+  image: PropTypes.any,
+  remark: PropTypes.string,
+  title: PropTypes.string
+};
 
 export default Join;

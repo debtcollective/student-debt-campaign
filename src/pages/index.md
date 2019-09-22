@@ -42,6 +42,7 @@ demand:
   title: >-
     We demand full cancellation of federal & private student loans. Free public
     college for all!
+join_campaign: []
 cta:
   action: Sign up
   title: Help Build Power. Join Today!

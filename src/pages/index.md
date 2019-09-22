@@ -15,7 +15,7 @@ hero:
         src: /img/handshake.png
       title: Support!
   title:
-    - line: End student debt!
+    - End student debt
     - line: Join the strike!
 ---
 

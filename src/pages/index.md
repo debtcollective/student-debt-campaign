@@ -51,6 +51,25 @@ join_campaign:
       IBR in order to halt our payments. The government and the lenders aren't
       getting a cent from us!
     count: 206289
+    feed:
+      - picture: /img/user_1.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@laticcia'
+      - picture: /img/user_2.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@sara'
+      - picture: /img/user_3.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@monica'
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!

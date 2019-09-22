@@ -13,203 +13,124 @@ collections:
         label: "Home"
         name: "home"
         fields:
-          - {
-              label: "Template Key",
-              name: "templateKey",
-              widget: "hidden",
-              default: "index-page",
-            }
-          - {
-              label: "Hero Section",
-              name: "hero",
-              widget: object,
-              fields:
-                [
-                  {
-                    label: "Title",
-                    name: "title",
-                    widget: list,
-                    field: [
-                      { label: "Line", name: 'line', widget: string }
-                    ]
-                  },
-                  {
-                    label: "Actions",
-                    name: "actions",
-                    widget: list,
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "index-page"
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "list"
+                field: { label: "Line", name: "line", widget: "string" }
+              - label: "Actions"
+                name: "actions"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - label: "Image"
+                    name: "image"
+                    widget: "object"
                     fields:
-                      [
-                        { label: "Title", name: "title", widget: string },
-                        {
-                          label: "Image",
-                          name: "image",
-                          widget: object,
-                          fields:
-                            [
-                              { label: Source, name: src, widget: image },
-                              { label: Alt, name: alt, widget: string },
-                            ],
-                        },
-                      ],
-                  },
-                ],
-            }
-          - {
-            label: "Social section",
-            name: "social",
-            widget: "object",
-            fields: [
-              {
-                label: 'Social action',
-                name: 'action',
-                widget: 'string'
-              },
-              {
-                label: 'Social accounts',
-                name: 'accounts',
-                widget: 'list',
-                fields: [
-                  { label: Logo, name: logo, widget: image },
-                  { label: Username, name: username, widget: string },
-                  { label: URL, name: url, widget: string },
-                ],
-              },
-            ]
-          }
-          - {
-            label: "Notification",
-            name: "notification",
-            widget: "object",
-            fields: [
-              {
-                label: 'Title',
-                name: 'title',
-                widget: 'string'
-              },
-              {
-                label: 'Description',
-                name: 'description',
-                widget: 'string'
-              },
-              {
-                label: 'Date',
-                name: 'date',
-                widget: 'date',
-                default: '',
-                format: 'llll'
-              },
-            ]
-          }
-          - {
-            label: 'CTA',
-            name: 'cta',
-            fields: [
-              {
-                label: 'Title',
-                name: 'title',
-                widget: 'string'
-              },
-              {
-                label: 'Button text',
-                name: 'action',
-                widget: 'string'
-              },
-            ]
-          }
-          - {
-            label: "FAQ",
-            name: "faq",
-            widget: list,
-            fields: [
-              { label: Question, name: question, widget: string },
-              { label: Answer, name: answer, widget: string }
-            ]
-          }
-          - {
-            label: "Demand",
-            name: "demand",
-            widget: object,
-            fields: [
-              {
-                label: Title,
-                name: title,
-                widget: string
-              },
-              {
-                label: Content,
-                name: content,
-                widget: text
-              },
-              {
-                label: Remark,
-                name: remark,
-                widget: string
-              }
-            ]
-          }
-          - {
-            label: "Join Campaign",
-            name: join_campaign,
-            widget: list,
-            fields: [
-              {
-                label: Image,
-                name: image,
-                widget: image
-              },
-              {
-                label: Background,
-                name: background,
-                widget: image
-              },
-              {
-                label: Title,
-                name: title,
-                widget: string
-              },
-              {
-                label: Count,
-                name: count,
-                widget: number,
-                valueType: int
-              },
-              {
-                label: Content,
-                name: content,
-                widget: text
-              },
-              {
-                label: Remark,
-                name: remark,
-                widget: string
-              },
-              {
-                label: Colour,
-                name: colour,
-                widget: select,
+                      - { label: Source, name: src, widget: "image" }
+                      - { label: Alt, name: alt, widget: "string" }
+          - label: "Social section"
+            name: "social"
+            widget: "object"
+            fields:
+              - label: "Social action"
+                name: "action"
+                widget: "string"
+              - label: "Social accounts"
+                name: "accounts"
+                widget: "list"
+                fields:
+                  - { label: "Logo", name: "logo", widget: "image" }
+                  - { label: "Username", name: "username", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+          - label: "Notification Banner"
+            name: "notification"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Description"
+                name: "description"
+                widget: "markdown"
+              - label: "Date"
+                name: "date"
+                widget: "date"
+                default: ""
+                format: "llll"
+          - label: "Demand"
+            name: "demand"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
+              - label: "Remark"
+                name: "remark"
+                widget: "string"
+          - label: "Join Campaign"
+            name: "join_campaign"
+            widget: "list"
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "image"
+              - label: "Background"
+                name: "background"
+                widget: "image"
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Count"
+                name: "count"
+                widget: "number"
+                valueType: "int"
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
+              - label: "Remark"
+                name: "remark"
+                widget: "string"
+              - label: "Colour"
+                name: "colour"
+                widget: "select"
                 options: ["green", "purple", "white", "yellow"]
-              },
-              {
-                label: Feed,
-                name: feed,
-                widget: list,
-                fields: [
-                  {
-                    label: Username,
-                    name: username,
-                    widget: string
-                  },
-                  {
-                    label: Picture,
-                    name: picture,
-                    widget: image
-                  },
-                  {
-                    label: Status,
-                    name: status,
-                    widget: text
-                  }
-                ]
-              }
-            ]
-          }
+              - label: "Feed"
+                name: "feed"
+                widget: "list"
+                fields:
+                  - label: "Username"
+                    name: "username"
+                    widget: "string"
+                  - label: "Picture"
+                    name: "picture"
+                    widget: "image"
+                  - label: "Status"
+                    name: "status"
+                    widget: "text"
+          - label: "Frequently Asked Question"
+            name: "faq"
+            widget: "list"
+            fields: 
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Button text"
+                name: "action"
+                widget: "string"

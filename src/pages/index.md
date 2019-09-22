@@ -73,6 +73,18 @@ join_campaign:
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
+faq:
+  - answer: >-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+      hendrerit, erat id feugiat lobortis, enim nulla pretium ex, eu auctor
+      lacus eros in tortor. Sed justo metus, sodales et lobortis id, sodales at
+      nulla. In sed iaculis dui. Mauris rhoncus convallis augue in volutpat.
+      Aliquam sodales tellus nec neque pretium, at auctor felis condimentum.
+      Maecenas placerat vestibulum tortor, nec consectetur nulla laoreet id.
+      Pellentesque vel velit pulvinar, blandit ex nec, tempus diam. Phasellus
+      dui massa, tincidunt et dictum vel, consequat sed nisi. Mauris dapibus
+      nunc sed neque molestie imperdiet. In aliquam rhoncus metus eget ornare.
+    question: Why full debt cancellation?
 cta:
   action: Sign up
   title: Help Build Power. Join Today!

@@ -42,7 +42,18 @@ demand:
   title: >-
     We demand full cancellation of federal & private student loans. Free public
     college for all!
-join_campaign: []
+join_campaign:
+  - background: /img/image_3.png
+    colour: purple
+    content: >-
+      We are not paying our student loans this means we are already in default
+      or that we have enrolled in programs such as forbearance, deferment or $0
+      IBR in order to halt our payments. The government and the lenders aren't
+      getting a cent from us!
+    count: 206289
+    image: /img/fist.png
+    remark: Get actions when you add your name.
+    title: of us are already on strike!
 cta:
   action: Sign up
   title: Help Build Power. Join Today!

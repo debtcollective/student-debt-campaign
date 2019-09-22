@@ -5,7 +5,7 @@ hero:
     - image:
         alt: fist
         src: /img/fist.png
-      title: D
+      title: Declare!
     - image:
         alt: prepare
         src: /img/newspaper.png
@@ -15,7 +15,7 @@ hero:
         src: /img/handshake.png
       title: Support!
   title:
-    - End student debt
+    - End student debt!
     - line: Join the strike!
 ---
 

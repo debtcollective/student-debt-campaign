@@ -17,5 +17,14 @@ hero:
   title:
     - End student debt!
     - line: Join the strike!
+social:
+  accounts:
+    - logo: /img/twitter.svg
+      url: 'http://twitter.com/debtcollective'
+      username: debtcollective
+    - logo: /img/instagram.svg
+      url: 'http://instagram.com/debtcollective'
+      username: debtcollective
+  action: Share this!
 ---
 

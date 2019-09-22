@@ -5,7 +5,7 @@ hero:
     - image:
         alt: fist
         src: /img/fist.png
-      title: Declar
+      title: Declare!
     - image:
         alt: prepare
         src: /img/newspaper.png

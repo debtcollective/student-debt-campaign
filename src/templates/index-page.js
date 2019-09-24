@@ -21,11 +21,9 @@ export const IndexPageTemplate = ({
 }) => (
   <>
     <Hero title={hero.title} actions={hero.actions} social={social} />
-    <Informative
-      title={demand.title}
-      content={demand.content}
-      remark={demand.remark}
-    />
+    <Informative title={demand.title} remark={demand.remark}>
+      {demand.content}
+    </Informative>
     {join_campaign.map(
       (
         { background, image, title, colour, content, count, remark, feed },

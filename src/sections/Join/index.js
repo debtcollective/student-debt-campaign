@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Markdown from "markdown-to-jsx";
 
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -34,7 +35,7 @@ const Join = ({
               </h2>
             </header>
             <div className="join__content">
-              {children}
+              <Markdown>{children}</Markdown>
               <p className="mt-4">
                 <strong>{remark}</strong>
               </p>

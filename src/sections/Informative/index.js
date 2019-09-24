@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Markdown from "markdown-to-jsx";
 
-const Informative = ({ title, content, remark }) => (
+const Informative = ({ title, children, remark }) => (
   <section className="informative">
     <div className="container-fluid distribute-rows justify-content-center extra-pad">
       <div className="row">
@@ -9,7 +10,9 @@ const Informative = ({ title, content, remark }) => (
           <div className="text-center">
             <h1 className="informative__title">{title}</h1>
           </div>
-          <p className="informative__content">{content}</p>
+          <div className="informative__content">
+            <Markdown>{children}</Markdown>
+          </div>
           <p className="informative__content">
             <strong>{remark}</strong>
           </p>
@@ -21,7 +24,7 @@ const Informative = ({ title, content, remark }) => (
 
 Informative.propTypes = {
   title: PropTypes.string,
-  content: PropTypes.string,
+  children: PropTypes.any,
   remark: PropTypes.string
 };
 

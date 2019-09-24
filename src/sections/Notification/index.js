@@ -1,4 +1,5 @@
 import React from "react";
+import Markdown from "markdown-to-jsx";
 import PropTypes from "prop-types";
 
 const Notification = ({ title, children, date }) => (
@@ -8,10 +9,9 @@ const Notification = ({ title, children, date }) => (
       <div className="notification__date">Updated {date}</div>
     </div>
     <div className="notification-col">
-      <div
-        className="notification__content"
-        dangerouslySetInnerHTML={{ __html: children }}
-      />
+      <div className="notification__content">
+        <Markdown>{children}</Markdown>
+      </div>
     </div>
     <button
       type="button"

@@ -73,6 +73,41 @@ join_campaign:
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
+  - background: /img/image_2.png
+    colour: yellow
+    content: >-
+      We are prepared to stop paying our loans in the future if our demands are
+      not met. These loans are unjust and it is only a matter of time before we
+      stop cooperating.
+    count: 891664
+    feed:
+      - picture: /img/user_1.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@laticcia'
+      - picture: /img/user_2.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@sara'
+      - picture: /img/user_3.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@monica'
+      - picture: /img/user_4.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@john'
+    image: /img/newspaper.png
+    remark: Get actions when you add your name.
+    title: of us are threatening to strike!
 faq:
   - answer: >-
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum

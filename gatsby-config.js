@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: "Student Debt Campaign",
     description:
-      "This repo contains Website for our student debt campaign. It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution."
+      "We are a membership organization working to transform our individual financial struggles into a source of collective power."
   },
   plugins: [
     "gatsby-plugin-react-helmet",

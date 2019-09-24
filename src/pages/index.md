@@ -70,6 +70,12 @@ join_campaign:
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
         username: '@monica'
+      - picture: /img/user_4.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@john'
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
@@ -108,6 +114,40 @@ join_campaign:
     image: /img/newspaper.png
     remark: Get actions when you add your name.
     title: of us are threatening to strike!
+  - background: /img/image_1.png
+    colour: green
+    content: >-
+      We do not have student loans, but we are standing in solidarity with all
+      those people who are on strike
+    count: 559739
+    feed:
+      - picture: /img/user_1.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@laticca'
+      - picture: /img/user_2.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@sara'
+      - picture: /img/user_3.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@monica'
+      - picture: /img/user_4.png
+        status: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
+          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
+          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
+        username: '@john'
+    image: /img/handshake.png
+    remark: Get actions when you add your name.
+    title: of us stand in solidarity with strikers.
 faq:
   - answer: >-
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum

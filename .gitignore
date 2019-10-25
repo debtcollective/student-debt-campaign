@@ -9,3 +9,4 @@ static/admin/*.bundle.*
 yarn-error.log
 # Env https://www.gatsbyjs.org/docs/environment-variables/
 .env.production
+.env.development

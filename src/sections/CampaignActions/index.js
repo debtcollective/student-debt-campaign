@@ -1,7 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
-const CampaignActions = ({ user }) => {
+const APOLLO_QUERY = gql`
+  {
+    meme(where: { id: "cjke2xlf9nhd90953khilyzja" }) {
+      photo {
+        url(
+          transformation: {
+            image: { resize: { width: 600, height: 600, fit: crop } }
+          }
+        )
+      }
+    }
+  }
+`;
+
+const CampaignActions = ({ user = {} }) => {
+  const { loading, error, data } = useQuery(APOLLO_QUERY);
+
   return (
     <div id="campaign-actions">
       <div className="box">
@@ -34,6 +52,15 @@ const CampaignActions = ({ user }) => {
             </p>
           </details>
         </div>
+        {loading && <p>Loading Sara...</p>}
+        {error && <p>Error: ${error.message}</p>}
+        {data && data.meme && data.meme.photo && (
+          <img
+            src={data.meme.photo.url}
+            alt="Sara Vieira"
+            style={{ maxWidth: 300 }}
+          />
+        )}
       </div>
     </div>
   );

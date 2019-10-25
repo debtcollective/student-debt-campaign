@@ -1,0 +1,52 @@
+.box {
+  background: $white;
+  border: 2px solid $black;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 40rem;
+
+  // psudo elements are defined separately check https://bit.ly/2U0pJKb
+  summary::marker {
+    display: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .box-action__item {
+    padding: 1rem;
+
+    .content {
+      line-height: 1.2;
+      margin-top: 2rem;
+      padding: 0;
+    }
+  }
+
+  .btn {
+    padding: .5rem 1rem;
+  }
+
+  &-header {
+    align-items: center;
+    background: $blue;
+    background: linear-gradient(0deg, $body-bg 0%, $blue 100%);
+    display: flex;
+    flex-direction: column;
+    font-weight: $font-weight-bold;
+    height: 15rem;
+    justify-content: center;
+  }
+
+  &-title {
+    font-weight: $font-weight-bold;
+    font-family: $font-family-monospace;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 const APOLLO_QUERY = gql`
   {
@@ -21,36 +21,48 @@ const CampaignActions = ({ user = {} }) => {
   const { loading, error, data } = useQuery(APOLLO_QUERY);
 
   return (
-    <div id="campaign-actions">
-      <div className="box">
-        <div className="box-image">
-          <img src="https://via.placeholder.com/300x200.png?text=Image" />
-        </div>
-        <div className="box-session">
-          <p>{user.name}</p>
-        </div>
-        <div className="box-action">
-          <details className="box-action__item">
-            <summary className="summary">Visit our facebook page</summary>
-            <p className="content">
-              Go to our Facebook page by clicking <a href="#">here</a> and
-              support the cause
-            </p>
-          </details>
-          <details className="box-action__item">
-            <summary className="summary">Follow us in twitter</summary>
-            <p className="content">
-              Go to our Twitter account by clicking <a href="#">here</a> and
-              support the cause
-            </p>
-          </details>
-          <details className="box-action__item">
-            <summary className="summary">Follow us in Instagram</summary>
-            <p className="content">
-              Go to our IG account by clicking <a href="#">here</a> and support
-              the cause
-            </p>
-          </details>
+    <div id="campaign-actions" className="campaign-actions">
+      <div className="container-fluid distribute-rows justify-content-center extra-pad">
+        <div className="row">
+          <div className="col">
+            <div className="box">
+              <div className="box-header">
+                <p>Thank you for joining!</p>
+                <h2 className="box-title">Ways to take action</h2>
+              </div>
+              <div className="box-session">
+                <p>{user.name}</p>
+              </div>
+              <div className="box-action">
+                {(() => {
+                  if (loading) {
+                    return <p>Loading...</p>;
+                  }
+
+                  if (error) {
+                    return <p>Error: ${error.message}</p>;
+                  }
+
+                  return data.userCampaignsActions.map(campaignAction => {
+                    const { id, title, description } = campaignAction;
+                    return (
+                      <details className="box-action__item" key={id}>
+                        <summary className="summary">
+                          {title}
+                          <button className="btn btn-primary btn-sm">
+                            DONE
+                          </button>
+                        </summary>
+                        <p className="content">
+                          <Markdown>{description}</Markdown>
+                        </p>
+                      </details>
+                    );
+                  });
+                })()}
+              </div>
+            </div>
+          </div>
         </div>
         {loading && <p>Loading Sara...</p>}
         {error && <p>Error: ${error.message}</p>}

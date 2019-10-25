@@ -9,7 +9,8 @@ import Join from "../sections/Join";
 import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
-import Header from '../components/Header'
+import Header from "../components/Header";
+import CampaignActions from "../sections/CampaignActions";
 
 export const IndexPageTemplate = ({
   hero,
@@ -49,6 +50,7 @@ export const IndexPageTemplate = ({
       {notification.description}
     </Notification>
     <FAQ entries={faq} />
+    <CampaignActions />
     <CTA social={social} title={cta.title} action={cta.action} />
   </>
 );

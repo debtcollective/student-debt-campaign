@@ -1,66 +1,66 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useQuery } from "@apollo/react-hooks";
+import Markdown from "markdown-to-jsx";
 import gql from "graphql-tag";
 
 const APOLLO_QUERY = gql`
   {
-    meme(where: { id: "cjke2xlf9nhd90953khilyzja" }) {
-      photo {
-        url(
-          transformation: {
-            image: { resize: { width: 600, height: 600, fit: crop } }
-          }
-        )
-      }
+    userCampaignsActions(userId: 55, campaignId: 98) {
+      id
+      campaignId
+      title
+      description
     }
   }
 `;
 
-const CampaignActions = ({ user = {} }) => {
-  const { loading, error, data } = useQuery(APOLLO_QUERY);
+const CampaignActions = ({ user = { name: "jane" } }) => {
+  const { loading, error, data } = useQuery(queryCampaignActions);
 
   return (
     <div id="campaign-actions" className="campaign-actions">
       <div className="container-fluid distribute-rows justify-content-center extra-pad">
         <div className="row">
           <div className="col">
-            <div className="box">
-              <div className="box-header">
-                <p>Thank you for joining!</p>
-                <h2 className="box-title">Ways to take action</h2>
-              </div>
-              <div className="box-session">
-                <p>{user.name}</p>
-              </div>
-              <div className="box-action">
-                {(() => {
-                  if (loading) {
-                    return <p>Loading...</p>;
-                  }
+            <div className="text-center">
+              <h1 className="section-title mb-1">Ways to take action</h1>
+              {user && (
+                <p className="section-content text-center mb-5">
+                  {user.name}, Thank you for joining!
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <div className="collapsable-list">
+              {(() => {
+                if (loading) {
+                  return <p>Loading...</p>;
+                }
 
-                  if (error) {
-                    return <p>Error: ${error.message}</p>;
-                  }
+                if (error) {
+                  return <p>Error: ${error.message}</p>;
+                }
 
-                  return data.userCampaignsActions.map(campaignAction => {
-                    const { id, title, description } = campaignAction;
+                return data.userCampaignsActions.map(
+                  (campaignAction, index) => {
+                    const { title, description } = campaignAction;
                     return (
-                      <details className="box-action__item" key={id}>
-                        <summary className="summary">
-                          {title}
-                          <button className="btn btn-primary btn-sm">
-                            DONE
-                          </button>
-                        </summary>
-                        <p className="content">
-                          <Markdown>{description}</Markdown>
-                        </p>
+                      <details
+                        key={`action-item-${index}`}
+                        className="collapsable-list__item"
+                        open={index === 0}
+                      >
+                        <summary className="summary">{title}</summary>
+                        <Markdown className="content">{description}</Markdown>
                       </details>
                     );
-                  });
-                })()}
-              </div>
+                  }
+                );
+              })()}
             </div>
           </div>
         </div>

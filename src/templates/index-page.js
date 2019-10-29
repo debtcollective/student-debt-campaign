@@ -49,8 +49,8 @@ export const IndexPageTemplate = ({
     <Notification title={notification.title} date={notification.date}>
       {notification.description}
     </Notification>
-    <FAQ entries={faq} />
     <CampaignActions />
+    <FAQ entries={faq} />
     <CTA social={social} title={cta.title} action={cta.action} />
   </>
 );

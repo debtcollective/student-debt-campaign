@@ -59,7 +59,6 @@ export const IndexPageTemplate = ({
       {notification.description}
     </Notification>
     <FAQ entries={faq} />
-    <CampaignActions />
     <CTA social={social} title={cta.title} action={cta.action} />
   </>
 );

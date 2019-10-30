@@ -4,19 +4,27 @@ import { useQuery } from "@apollo/react-hooks";
 import Markdown from "markdown-to-jsx";
 import gql from "graphql-tag";
 
-const APOLLO_QUERY = gql`
+// TODO: this data needs to be pulled from our SSO service
+const tempFakeUser = {
+  id: 1,
+  name: "Jane Doe",
+  email: "jane.doe@mail.com"
+};
+
+export const GET_CAMPAIGN_ACTIONS = gql`
   {
-    userCampaignsActions(userId: 55, campaignId: 98) {
+    userCampaignsActions(userId: 1, campaignId: 2) {
       id
       campaignId
       title
       description
+      config
     }
   }
 `;
 
-const CampaignActions = ({ user = { name: "jane" } }) => {
-  const { loading, error, data } = useQuery(queryCampaignActions);
+const CampaignActions = ({ user = tempFakeUser }) => {
+  const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS);
 
   return (
     <div id="campaign-actions" className="campaign-actions">
@@ -47,15 +55,21 @@ const CampaignActions = ({ user = { name: "jane" } }) => {
 
                 return data.userCampaignsActions.map(
                   (campaignAction, index) => {
-                    const { title, description } = campaignAction;
+                    const { title, description, config } = campaignAction;
+                    const { text, delay, ...attributes } = config;
+
                     return (
                       <details
+                        data-testid={`action-item-${index}`}
                         key={`action-item-${index}`}
                         className="collapsable-list__item"
                         open={index === 0}
                       >
                         <summary className="summary">{title}</summary>
                         <Markdown className="content">{description}</Markdown>
+                        <a data-testid="action-cta" {...attributes}>
+                          {text}
+                        </a>
                       </details>
                     );
                   }

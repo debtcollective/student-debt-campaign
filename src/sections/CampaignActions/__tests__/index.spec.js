@@ -1,7 +1,7 @@
 import React from "react";
 import faker from "faker";
 import { MockedProvider } from "@apollo/react-testing";
-import { render, waitForElement, within } from "@testing-library/react";
+import { render, waitForElement, within, fireEvent } from "@testing-library/react";
 import CampaignActions, { GET_CAMPAIGN_ACTIONS } from "../";
 
 const mocks = [
@@ -90,6 +90,22 @@ describe("<CampaignActions />", () => {
           click here to go to foo.com
         </a>
       `);
+    });
+
+    it('updates the completed state of the action after click and given delay', async () => {
+      const wrapper = render(
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <CampaignActions />
+        </MockedProvider>
+      );
+
+      await waitForElement(() => wrapper.getByTestId("action-item-0"));
+      const firstActionItem = within(wrapper.getByTestId("action-item-0"));
+
+      fireEvent.click(firstActionItem.getByTestId('action-cta'));
+
+      // Assert that state of the component changes to completed after given delay
+      expect(false).toBe(true);
     });
   });
 });

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useQuery } from "@apollo/react-hooks";
 import Markdown from "markdown-to-jsx";
 import gql from "graphql-tag";
+import CampaignAction from "../../components/CampaignAction";
 
 // TODO: this data needs to be pulled from our SSO service
 const tempFakeUser = {
@@ -57,7 +58,6 @@ const CampaignActions = ({ user = tempFakeUser }) => {
                 return data.userCampaignsActions.map(
                   (campaignAction, index) => {
                     const { title, description, config } = campaignAction;
-                    const { text, delay, ...attributes } = config;
 
                     return (
                       <details
@@ -68,11 +68,7 @@ const CampaignActions = ({ user = tempFakeUser }) => {
                       >
                         <summary className="summary">{title}</summary>
                         <Markdown className="content">{description}</Markdown>
-                        <div className="cta-container content">
-                          <a data-testid="action-cta" {...attributes}>
-                            {text}
-                          </a>
-                        </div>
+                        <CampaignAction config={config} />
                       </details>
                     );
                   }

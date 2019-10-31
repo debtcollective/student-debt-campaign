@@ -17,3 +17,5 @@ CampaignAction.propTypes = {
   text: PropTypes.string,
   config: PropTypes.any
 };
+
+export default CampaignAction;

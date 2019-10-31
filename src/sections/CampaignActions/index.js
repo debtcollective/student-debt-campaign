@@ -13,12 +13,13 @@ const tempFakeUser = {
 
 export const GET_CAMPAIGN_ACTIONS = gql`
   {
-    userCampaignsActions(userId: 1, campaignId: 2) {
-      id
+    userCampaignsActions(userId: 1, campaignId: 3) {
       campaignId
-      title
-      description
       config
+      description
+      id
+      title
+      type
     }
   }
 `;
@@ -67,9 +68,11 @@ const CampaignActions = ({ user = tempFakeUser }) => {
                       >
                         <summary className="summary">{title}</summary>
                         <Markdown className="content">{description}</Markdown>
-                        <a data-testid="action-cta" {...attributes}>
-                          {text}
-                        </a>
+                        <div className="cta-container content">
+                          <a data-testid="action-cta" {...attributes}>
+                            {text}
+                          </a>
+                        </div>
                       </details>
                     );
                   }

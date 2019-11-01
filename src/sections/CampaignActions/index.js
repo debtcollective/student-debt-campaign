@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useQuery } from "@apollo/react-hooks";
 import Markdown from "markdown-to-jsx";
-import gql from "graphql-tag";
 import CampaignAction from "../../components/CampaignAction";
+import { GET_CAMPAIGN_ACTIONS } from "./api";
 
 // TODO: this data needs to be pulled from our SSO service
 const tempFakeUser = {
@@ -11,19 +11,6 @@ const tempFakeUser = {
   name: "Jane Doe",
   email: "jane.doe@mail.com"
 };
-
-export const GET_CAMPAIGN_ACTIONS = gql`
-  {
-    userCampaignsActions(userId: 1, campaignId: 3) {
-      campaignId
-      config
-      description
-      id
-      title
-      type
-    }
-  }
-`;
 
 const CampaignActions = ({ user = tempFakeUser }) => {
   const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS);

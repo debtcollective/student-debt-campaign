@@ -5,14 +5,7 @@ import Markdown from "markdown-to-jsx";
 import CampaignAction from "../../components/CampaignAction";
 import { GET_CAMPAIGN_ACTIONS } from "./api";
 
-// TODO: this data needs to be pulled from our SSO service
-const tempFakeUser = {
-  id: 1,
-  name: "Jane Doe",
-  email: "jane.doe@mail.com"
-};
-
-const CampaignActions = ({ user = tempFakeUser }) => {
+const CampaignActions = ({ user }) => {
   const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS);
 
   return (

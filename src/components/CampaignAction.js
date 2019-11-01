@@ -1,21 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CampaignAction = ({ config }) => {
+const ACTION_TYPES = {
+  LINK: "LINK"
+};
+
+const CampaignAction = ({ config, type }) => {
   const { text, delay, ...attributes } = config;
 
   return (
     <div className="cta-container content">
-      <a data-testid="action-cta" {...attributes}>
-        {text}
-      </a>
+      {type === ACTION_TYPES.LINK ? (
+        <a data-testid="action-cta" {...attributes}>
+          {text}
+        </a>
+      ) : null}
     </div>
   );
 };
 
 CampaignAction.propTypes = {
   text: PropTypes.string,
-  config: PropTypes.any
+  config: PropTypes.any,
+  type: PropTypes.string
 };
 
 export default CampaignAction;

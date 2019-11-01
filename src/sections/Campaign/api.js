@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const GET_CAMPAIGN_ACTIONS = gql`
-  query getUserActions($userId: ID!, $campaignId: ID!) {
+  query getCampaignActions($userId: ID!, $campaignId: ID!) {
     userCampaignsActions(userId: $userId, campaignId: $campaignId) {
       campaignId
       config

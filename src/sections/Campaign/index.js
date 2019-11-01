@@ -30,7 +30,7 @@ const CampaignActions = ({ user, campaignId }) => {
   }, [mutationResponse]);
 
   return (
-    <div id="campaign-actions" className="campaign-actions">
+    <section id="campaign-actions" className="campaign-actions">
       <div className="container-fluid distribute-rows justify-content-center extra-pad">
         <div className="row">
           <div className="col">
@@ -106,7 +106,7 @@ const CampaignActions = ({ user, campaignId }) => {
           />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

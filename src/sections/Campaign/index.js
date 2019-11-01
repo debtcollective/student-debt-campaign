@@ -5,8 +5,10 @@ import Markdown from "markdown-to-jsx";
 import CampaignAction from "../../components/CampaignAction";
 import { GET_CAMPAIGN_ACTIONS } from "./api";
 
-const CampaignActions = ({ user }) => {
-  const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS);
+const CampaignActions = ({ user, campaignId }) => {
+  const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS, {
+    variables: { campaignId }
+  });
 
   return (
     <div id="campaign-actions" className="campaign-actions">
@@ -72,6 +74,7 @@ const CampaignActions = ({ user }) => {
 };
 
 CampaignActions.propTypes = {
+  campaignId: PropTypes.string,
   user: PropTypes.shape({
     name: PropTypes.string
   })

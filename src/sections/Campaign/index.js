@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import has from "lodash/has";
 import PropTypes from "prop-types";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import Markdown from "markdown-to-jsx";
 import CampaignAction from "../../components/CampaignAction";
-import { GET_USER_ACTIONS } from "./api";
+import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from "./api";
 
 const CampaignActions = ({ user, campaignId }) => {
-  const { loading, error, data } = useQuery(GET_USER_ACTIONS, {
+  const [completedActions, setCompletedActions] = useState({});
+  const [completeAction, { data: mutationResponse }] = useMutation(
+    UPDATE_USER_ACTION
+  );
+  const {
+    loading: queryLoading,
+    error: queryError,
+    data: queryResponse
+  } = useQuery(GET_USER_ACTIONS, {
     variables: { campaignId, userId: user.id }
   });
+
+  useEffect(() => {
+    if (mutationResponse) {
+      setCompletedActions({
+        ...completedActions,
+        [mutationResponse.userActionUpdate.id]:
+          mutationResponse.userActionUpdate.completed
+      });
+    }
+  }, [mutationResponse]);
 
   return (
     <div id="campaign-actions" className="campaign-actions">
@@ -27,20 +46,24 @@ const CampaignActions = ({ user, campaignId }) => {
         </div>
         <div className="row">
           <div className="col">
-            <div className="collapsable-list">
+            <div data-testid="action-items" className="collapsable-list">
               {(() => {
-                if (loading) {
+                if (queryLoading) {
                   return <p>Loading...</p>;
                 }
 
-                if (error) {
-                  return <p>Error: ${error.message}</p>;
+                if (queryError) {
+                  return <p>Error: ${queryError.message}</p>;
                 }
 
-                return data.userActions.map((userAction, index) => {
+                return queryResponse.userActions.map((userAction, index) => {
                   const { action, completed } = userAction;
                   const { title, description, config, type } = action;
-                  const completedClass = completed
+                  // Check if state of the action has changed within completedActions state
+                  const isActionCompleted = has(completedActions, userAction.id)
+                    ? completedActions[userAction.id]
+                    : completed;
+                  const completedClass = isActionCompleted
                     ? "completed"
                     : "no-completed";
 
@@ -54,7 +77,18 @@ const CampaignActions = ({ user, campaignId }) => {
                     >
                       <summary className="summary">{title}</summary>
                       <Markdown className="content">{description}</Markdown>
-                      <CampaignAction config={config} type={type} />
+                      <CampaignAction
+                        config={config}
+                        type={type}
+                        onComplete={() => {
+                          completeAction({
+                            variables: {
+                              userActionId: userAction.id,
+                              completed: true
+                            }
+                          });
+                        }}
+                      />
                     </details>
                   );
                 });

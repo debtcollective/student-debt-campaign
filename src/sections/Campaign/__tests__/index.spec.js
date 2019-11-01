@@ -5,71 +5,11 @@ import {
   render,
   waitForElement,
   within,
-  fireEvent
+  fireEvent,
+  waitForDomChange
 } from "@testing-library/react";
+import { userId, campaignId, fakeActions, mocks } from "../stubs";
 import CampaignActions from "../";
-import { GET_USER_ACTIONS } from "../api";
-
-const userId = "1";
-const campaignId = "1";
-
-const mocks = [
-  {
-    request: {
-      query: GET_USER_ACTIONS,
-      variables: {
-        campaignId,
-        userId
-      }
-    },
-    result: {
-      data: {
-        userActions: [
-          {
-            id: "1",
-            campaignId: "1",
-            actionId: "4",
-            completed: false,
-            action: {
-              id: "4",
-              campaignId: "1",
-              title: "rerum nihil",
-              description:
-                "enim impedit commodi tempora occaecati debitis et in quia laborum",
-              type: "LINK",
-              config: {
-                text: "click here to go to foo.com",
-                href: "foo.com",
-                target: "_blank",
-                delay: 200
-              }
-            }
-          },
-          {
-            id: "2",
-            campaignId: "1",
-            actionId: "3",
-            completed: false,
-            action: {
-              id: "3",
-              campaignId: "1",
-              title: "rerum nihil",
-              description:
-                "enim impedit commodi tempora occaecati debitis et in quia laborum",
-              type: "LINK",
-              config: {
-                text: "click here to go to bar.com",
-                href: "bar.com",
-                target: "_blank",
-                delay: 200
-              }
-            }
-          }
-        ]
-      }
-    }
-  }
-];
 
 const baseProps = {
   user: {
@@ -103,8 +43,7 @@ describe("<CampaignActions />", () => {
 
       await waitForElement(() => wrapper.getByTestId("action-item-0"));
       const firstActionItem = within(wrapper.getByTestId("action-item-0"));
-      const expectedFirstMockedItem =
-        mocks[0].result.data.userCampaignsActions[0];
+      const expectedFirstMockedItem = fakeActions[0];
 
       expect(
         firstActionItem.getByText(expectedFirstMockedItem.title)
@@ -125,6 +64,7 @@ describe("<CampaignActions />", () => {
     });
 
     it("updates the completed state of the action after click and given delay", async () => {
+      const actionItemId = "action-item-0";
       const wrapper = render(
         <MockedProvider mocks={mocks} addTypename={false}>
           <CampaignActions {...baseProps} />
@@ -140,6 +80,8 @@ describe("<CampaignActions />", () => {
         .classList.contains("no-completed");
 
       fireEvent.click(firstActionItem.getByTestId("action-cta"));
+
+      await waitForDomChange();
 
       const firstActionChangeToCompleted = document
         .getElementById(actionItemId)

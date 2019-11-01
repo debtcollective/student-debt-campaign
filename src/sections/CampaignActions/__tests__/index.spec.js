@@ -1,10 +1,39 @@
 import React from "react";
 import faker from "faker";
 import { MockedProvider } from "@apollo/react-testing";
-import { render, waitForElement, within, fireEvent } from "@testing-library/react";
-import CampaignActions, { GET_CAMPAIGN_ACTIONS } from "../";
+import {
+  render,
+  waitForElement,
+  within,
+  fireEvent
+} from "@testing-library/react";
+import CampaignActions, { GET_CAMPAIGN_ACTIONS, GET_USER_ACTIONS } from "../";
 
 const mocks = [
+  {
+    request: {
+      query: GET_USER_ACTIONS,
+      variables: {}
+    },
+    result: {
+      data: {
+        userActions: [
+          {
+            id: "1",
+            campaignId: "2",
+            actionId: "4",
+            completed: false
+          },
+          {
+            id: "2",
+            campaignId: "2",
+            actionId: "3",
+            completed: false
+          }
+        ]
+      }
+    }
+  },
   {
     request: {
       query: GET_CAMPAIGN_ACTIONS,
@@ -92,20 +121,29 @@ describe("<CampaignActions />", () => {
       `);
     });
 
-    it('updates the completed state of the action after click and given delay', async () => {
+    it("updates the completed state of the action after click and given delay", async () => {
       const wrapper = render(
         <MockedProvider mocks={mocks} addTypename={false}>
           <CampaignActions />
         </MockedProvider>
       );
 
-      await waitForElement(() => wrapper.getByTestId("action-item-0"));
-      const firstActionItem = within(wrapper.getByTestId("action-item-0"));
+      await waitForElement(() => wrapper.getByTestId(actionItemId));
+      const firstActionItem = within(wrapper.getByTestId(actionItemId));
+      // We relay on the className to understand the current visible state of the item
+      const firstActionStartsNoCompleted = document
+        .getElementById(actionItemId)
+        .classList.contains("no-completed");
 
-      fireEvent.click(firstActionItem.getByTestId('action-cta'));
+      fireEvent.click(firstActionItem.getByTestId("action-cta"));
+
+      const firstActionChangeToCompleted = document
+        .getElementById(actionItemId)
+        .classList.contains("completed");
 
       // Assert that state of the component changes to completed after given delay
-      expect(false).toBe(true);
+      expect(firstActionStartsNoCompleted).toBeTruthy();
+      expect(firstActionChangeToCompleted).toBeTruthy();
     });
   });
 });

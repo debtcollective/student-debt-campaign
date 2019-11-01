@@ -7,7 +7,7 @@ import { GET_CAMPAIGN_ACTIONS } from "./api";
 
 const CampaignActions = ({ user, campaignId }) => {
   const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS, {
-    variables: { campaignId }
+    variables: { campaignId, userId: user.id }
   });
 
   return (
@@ -39,10 +39,11 @@ const CampaignActions = ({ user, campaignId }) => {
 
                 return data.userCampaignsActions.map(
                   (campaignAction, index) => {
-                    const { title, description, config } = campaignAction;
+                    const { title, description, config, type } = campaignAction;
 
                     return (
                       <details
+                        id={`action-item-${index}`}
                         data-testid={`action-item-${index}`}
                         key={`action-item-${index}`}
                         className="collapsable-list__item"
@@ -50,7 +51,7 @@ const CampaignActions = ({ user, campaignId }) => {
                       >
                         <summary className="summary">{title}</summary>
                         <Markdown className="content">{description}</Markdown>
-                        <CampaignAction config={config} />
+                        <CampaignAction config={config} type={type} />
                       </details>
                     );
                   }
@@ -76,6 +77,7 @@ const CampaignActions = ({ user, campaignId }) => {
 CampaignActions.propTypes = {
   campaignId: PropTypes.string,
   user: PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string
   })
 };

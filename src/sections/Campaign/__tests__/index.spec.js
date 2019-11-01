@@ -10,24 +10,30 @@ import {
 import CampaignActions from "../";
 import { GET_CAMPAIGN_ACTIONS, GET_USER_ACTIONS } from "../api";
 
+const userId = "1";
+const campaignId = "1";
+
 const mocks = [
   {
     request: {
       query: GET_USER_ACTIONS,
-      variables: {}
+      variables: {
+        campaignId,
+        userId
+      }
     },
     result: {
       data: {
         userActions: [
           {
             id: "1",
-            campaignId: "2",
+            campaignId: "1",
             actionId: "4",
             completed: false
           },
           {
             id: "2",
-            campaignId: "2",
+            campaignId: "1",
             actionId: "3",
             completed: false
           }
@@ -38,14 +44,17 @@ const mocks = [
   {
     request: {
       query: GET_CAMPAIGN_ACTIONS,
-      variables: {}
+      variables: {
+        campaignId,
+        userId
+      }
     },
     result: {
       data: {
         userCampaignsActions: [
           {
             id: "4",
-            campaignId: "2",
+            campaignId: "1",
             title: "rerum nihil",
             description:
               "enim impedit commodi tempora occaecati debitis et in quia laborum",
@@ -59,7 +68,7 @@ const mocks = [
           },
           {
             id: "3",
-            campaignId: "2",
+            campaignId: "1",
             title: "rerum nihil",
             description:
               "enim impedit commodi tempora occaecati debitis et in quia laborum",
@@ -77,25 +86,33 @@ const mocks = [
   }
 ];
 
+const baseProps = {
+  user: {
+    id: userId,
+    name: faker.name.findName(),
+    email: faker.internet.email()
+  },
+  campaignId
+};
+
 describe("<CampaignActions />", () => {
   it("reflects the current user logged in", () => {
-    const user = {
-      name: faker.name.findName()
-    };
     const wrapper = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <CampaignActions user={user} />
+        <CampaignActions {...baseProps} />
       </MockedProvider>
     );
 
-    expect(wrapper.queryByText(new RegExp(user.name, "i"))).toBeInTheDocument();
+    expect(
+      wrapper.queryByText(new RegExp(baseProps.user.name, "i"))
+    ).toBeInTheDocument();
   });
 
   describe('when campaign action is type "LINK"', () => {
     it("renders with cta link an config attributes", async () => {
       const wrapper = render(
         <MockedProvider mocks={mocks} addTypename={false}>
-          <CampaignActions />
+          <CampaignActions {...baseProps} />
         </MockedProvider>
       );
 
@@ -125,12 +142,13 @@ describe("<CampaignActions />", () => {
     it("updates the completed state of the action after click and given delay", async () => {
       const wrapper = render(
         <MockedProvider mocks={mocks} addTypename={false}>
-          <CampaignActions />
+          <CampaignActions {...baseProps} />
         </MockedProvider>
       );
 
       await waitForElement(() => wrapper.getByTestId(actionItemId));
       const firstActionItem = within(wrapper.getByTestId(actionItemId));
+
       // We relay on the className to understand the current visible state of the item
       const firstActionStartsNoCompleted = document
         .getElementById(actionItemId)

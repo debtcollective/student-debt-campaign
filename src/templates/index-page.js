@@ -13,7 +13,7 @@ import Campaign from "../sections/Campaign";
 
 // TODO: this data needs to be pulled from our SSO service
 const tempFakeUser = {
-  id: 1,
+  id: "1",
   name: "Jane Doe",
   email: "jane.doe@mail.com"
 };

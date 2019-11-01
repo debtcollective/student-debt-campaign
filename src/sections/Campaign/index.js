@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { useQuery } from "@apollo/react-hooks";
 import Markdown from "markdown-to-jsx";
 import CampaignAction from "../../components/CampaignAction";
-import { GET_CAMPAIGN_ACTIONS } from "./api";
+import { GET_USER_ACTIONS } from "./api";
 
 const CampaignActions = ({ user, campaignId }) => {
-  const { loading, error, data } = useQuery(GET_CAMPAIGN_ACTIONS, {
+  const { loading, error, data } = useQuery(GET_USER_ACTIONS, {
     variables: { campaignId, userId: user.id }
   });
 
@@ -37,25 +37,27 @@ const CampaignActions = ({ user, campaignId }) => {
                   return <p>Error: ${error.message}</p>;
                 }
 
-                return data.userCampaignsActions.map(
-                  (campaignAction, index) => {
-                    const { title, description, config, type } = campaignAction;
+                return data.userActions.map((userAction, index) => {
+                  const { action, completed } = userAction;
+                  const { title, description, config, type } = action;
+                  const completedClass = completed
+                    ? "completed"
+                    : "no-completed";
 
-                    return (
-                      <details
-                        id={`action-item-${index}`}
-                        data-testid={`action-item-${index}`}
-                        key={`action-item-${index}`}
-                        className="collapsable-list__item"
-                        open={index === 0}
-                      >
-                        <summary className="summary">{title}</summary>
-                        <Markdown className="content">{description}</Markdown>
-                        <CampaignAction config={config} type={type} />
-                      </details>
-                    );
-                  }
-                );
+                  return (
+                    <details
+                      id={`action-item-${index}`}
+                      data-testid={`action-item-${index}`}
+                      key={`action-item-${index}`}
+                      className={`collapsable-list__item ${completedClass}`}
+                      open={index === 0}
+                    >
+                      <summary className="summary">{title}</summary>
+                      <Markdown className="content">{description}</Markdown>
+                      <CampaignAction config={config} type={type} />
+                    </details>
+                  );
+                });
               })()}
             </div>
           </div>

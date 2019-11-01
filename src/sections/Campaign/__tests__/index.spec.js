@@ -8,7 +8,7 @@ import {
   fireEvent
 } from "@testing-library/react";
 import CampaignActions from "../";
-import { GET_CAMPAIGN_ACTIONS, GET_USER_ACTIONS } from "../api";
+import { GET_USER_ACTIONS } from "../api";
 
 const userId = "1";
 const campaignId = "1";
@@ -29,55 +29,40 @@ const mocks = [
             id: "1",
             campaignId: "1",
             actionId: "4",
-            completed: false
+            completed: false,
+            action: {
+              id: "4",
+              campaignId: "1",
+              title: "rerum nihil",
+              description:
+                "enim impedit commodi tempora occaecati debitis et in quia laborum",
+              type: "LINK",
+              config: {
+                text: "click here to go to foo.com",
+                href: "foo.com",
+                target: "_blank",
+                delay: 200
+              }
+            }
           },
           {
             id: "2",
             campaignId: "1",
             actionId: "3",
-            completed: false
-          }
-        ]
-      }
-    }
-  },
-  {
-    request: {
-      query: GET_CAMPAIGN_ACTIONS,
-      variables: {
-        campaignId,
-        userId
-      }
-    },
-    result: {
-      data: {
-        userCampaignsActions: [
-          {
-            id: "4",
-            campaignId: "1",
-            title: "rerum nihil",
-            description:
-              "enim impedit commodi tempora occaecati debitis et in quia laborum",
-            type: "LINK",
-            config: {
-              text: "click here to go to foo.com",
-              href: "foo.com",
-              target: "_blank",
-              delay: 200
-            }
-          },
-          {
-            id: "3",
-            campaignId: "1",
-            title: "rerum nihil",
-            description:
-              "enim impedit commodi tempora occaecati debitis et in quia laborum",
-            type: "LINK",
-            config: {
-              text: "click here to go to bar.com",
-              href: "bar.com",
-              target: "_blank",
-              delay: 200
+            completed: false,
+            action: {
+              id: "3",
+              campaignId: "1",
+              title: "rerum nihil",
+              description:
+                "enim impedit commodi tempora occaecati debitis et in quia laborum",
+              type: "LINK",
+              config: {
+                text: "click here to go to bar.com",
+                href: "bar.com",
+                target: "_blank",
+                delay: 200
+              }
             }
           }
         ]

@@ -7,7 +7,8 @@ import {
   within,
   fireEvent
 } from "@testing-library/react";
-import CampaignActions, { GET_CAMPAIGN_ACTIONS, GET_USER_ACTIONS } from "..";
+import CampaignActions from "../";
+import { GET_CAMPAIGN_ACTIONS, GET_USER_ACTIONS } from "../api";
 
 const mocks = [
   {

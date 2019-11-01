@@ -73,6 +73,7 @@ describe("<CampaignActions />", () => {
 
       await waitForElement(() => wrapper.getByTestId(actionItemId));
       const firstActionItem = within(wrapper.getByTestId(actionItemId));
+
       // We relay on the className to understand the current visible state of the item
       const firstActionStartsNoCompleted = document
         .getElementById(actionItemId)

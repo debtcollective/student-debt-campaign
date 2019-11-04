@@ -169,7 +169,7 @@ faq:
 
       One reason more and more of us are having a hard time paying down our debt
       is because the cost of college has gone up, but our pay hasn’t. Instead,
-      the labor market has “credentialized.” This means that, over the last few
+      the labor market has "credentialized". This means that, over the last few
       decades, people needed to take on more debt to get more degrees just to
       get the same jobs earning the same wages as people in previous
       generations. As one analysis shows, a result of this credentialization is
@@ -184,7 +184,7 @@ faq:
     question: >-
       What do you say to the charge that cancelling all student loans would be a
       big giveaway to the upper middle class, in other words that it would be
-      “regressive”? 
+      "regressive"? 
   - answer: >-
       When a policy is intended to help some people and not others, it is harder
       to pass (because the people who don’t benefit are less likely to support

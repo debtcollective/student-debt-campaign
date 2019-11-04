@@ -158,13 +158,15 @@ faq:
     question: What do Debt Collective members want?
   - answer: >-
       Cancelling all student debt would actually benefit low income borrowers
-      the most. Check out this DEMOS report. The truth is there is a deep class
-      bias in how we finance higher education. Even though some middle class and
-      wealthier people have lots of student debt, lower-income borrowers,
-      especially black and brown people, have higher balances and are more
-      likely to leave school because they can't afford to pay. Cancelling all
-      student debt would restore our commitment to education as a right while
-      disproportionately benefitting the people who most need it.
+      the most. Check out this [DEMOS
+      report](https://www.demos.org/publication/debt-divide-racial-and-class-bias-behind-new-normal-student-borrowing).
+      The truth is there is a deep class bias in how we finance higher
+      education. Even though some middle class and wealthier people have lots of
+      student debt, lower-income borrowers, especially black and brown people,
+      have higher balances and are more likely to leave school because they
+      can't afford to pay. Cancelling all student debt would restore our
+      commitment to education as a right while disproportionately benefitting
+      the people who most need it.
 
 
       One reason more and more of us are having a hard time paying down our debt
@@ -172,15 +174,18 @@ faq:
       the labor market has "credentialized". This means that, over the last few
       decades, people needed to take on more debt to get more degrees just to
       get the same jobs earning the same wages as people in previous
-      generations. As one analysis shows, a result of this credentialization is
-      that more and more people have defaulted on their loans and more
-      defaulters are low-income people and racial minorities, the same people
-      who sought college credentials to try to get a pay raise that never
-      materialized. If college led to a higher paying job, then cancelling the
-      debts of college graduates would be regressive. But since most people,
-      especially working class people, take on debt for degrees that DON’T lead
-      to better jobs, cancelling student debt is NOT regressive. Want to learn
-      more? We refer you to economist Marshall Steinbaum on this question.
+      generations. [As one analysis
+      shows](https://www.brookings.edu/wp-content/uploads/2016/07/PDFLooneyTextFallBPEA.pdf),
+      a result of this credentialization is that more and more people have
+      defaulted on their loans and more defaulters are low-income people and
+      racial minorities, the same people who sought college credentials to try
+      to get a pay raise that never materialized. If college led to a higher
+      paying job, then cancelling the debts of college graduates would be
+      regressive. But since most people, especially working class people, take
+      on debt for degrees that DON’T lead to better jobs, cancelling student
+      debt is NOT regressive. Want to learn more? [We refer you to economist
+      Marshall Steinbaum on this
+      question](https://www.currentaffairs.org/2019/06/is-student-debt-cancellation-regressive-no).
     question: >-
       What do you say to the charge that cancelling all student loans would be a
       big giveaway to the upper middle class, in other words that it would be

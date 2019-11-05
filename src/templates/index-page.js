@@ -9,14 +9,6 @@ import Join from "../sections/Join";
 import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
-import Campaign from "../sections/Campaign";
-
-// TODO: this data needs to be pulled from our SSO service
-const tempFakeUser = {
-  id: "3",
-  name: "Jane Doe",
-  email: "jane.doe@mail.com"
-};
 
 export const IndexPageTemplate = ({
   hero,
@@ -55,7 +47,6 @@ export const IndexPageTemplate = ({
     <Notification title={notification.title} date={notification.date}>
       {notification.description}
     </Notification>
-    <Campaign user={tempFakeUser} campaignId="8" />
     <FAQ entries={faq} />
     <CTA social={social} title={cta.title} action={cta.action} />
   </>

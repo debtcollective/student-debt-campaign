@@ -1,24 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import Layout from "../components/Layout";
 import Campaign from "../sections/CampaignActions";
 
-// TODO: this data needs to be pulled from our SSO service
-const tempFakeUser = {
-  id: "3",
-  name: "Jane Doe",
-  email: "jane.doe@mail.com"
-};
-
 const GET_USER = gql`
   query getUser {
     currentUser {
       id
+      username
     }
   }
 `;
+
+// TODO: this campaignId needs to be pull from the server
+const campaignId = "8";
 
 export const ActionsPageTemplate = () => {
   const {
@@ -27,18 +24,13 @@ export const ActionsPageTemplate = () => {
     data: userQueryResponse
   } = useQuery(GET_USER);
 
-  console.log({
-    userQueryLoading,
-    userQueryError,
-    userQueryResponse
-  });
-
   return (
     <>
       {userQueryLoading
         ? "Loading"
-        : (userQueryError && userQueryError.message) ||
-          JSON.stringify(userQueryResponse.currentUser)}
+        : (userQueryError && userQueryError.message) || (
+            <Campaign user={userQueryResponse.currentUser} campaignId={campaignId} />
+          )}
     </>
   );
 };

@@ -15,7 +15,7 @@ const Header = () => {
 
   const headerClasses = classNames("header", "fixed-top", {
     "slider-nav-open": open,
-    active: isScrolled,
+    active: isScrolled
   });
   const menuTriggerClasses = classNames("menu-trigger", { active: open });
 
@@ -61,8 +61,8 @@ const Header = () => {
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
                     <li className="nav-item">
-                      <Link to="/next-steps" className="nav-link">
-                        Next Steps
+                      <Link to="#faq" className="nav-link">
+                        FAQ
                       </Link>
                     </li>
                     <li className="nav-item">
@@ -124,8 +124,8 @@ const Header = () => {
         <div id="slider-nav" className="slider-nav d-xl-none">
           <ul className="nav flex-column" role="navigation">
             <li className="nav-item">
-              <Link to="/next-steps" className="nav-link">
-                Next Steps
+              <Link to="#faq" className="nav-link">
+                FAQ
               </Link>
             </li>
             <li className="nav-item">

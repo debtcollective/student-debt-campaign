@@ -1,0 +1,9 @@
+.collapsable-list__item {
+  &.completed {
+    opacity: 0.4;
+  }
+
+  &.no-completed {
+    opacity: 1;
+  }
+}

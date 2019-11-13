@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
+import Header from "../components/Header";
 import Hero from "../sections/Hero";
 import Informative from "../sections/Informative";
 import Join from "../sections/Join";
 import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
-import Header from '../components/Header'
 
 export const IndexPageTemplate = ({
   hero,

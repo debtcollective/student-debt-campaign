@@ -1,10 +1,25 @@
 var proxy = require("http-proxy-middleware");
 
+const deployContext = process.env.DEPLOY_CONTEXT;
+const isProduction = deployContext === "production";
+let siteUrl =
+  process.env.DEPLOY_URL ||
+  process.env.DEPLOY_PRIME_URL ||
+  "http://localhost:8000";
+
+if (isProduction) {
+  siteUrl = process.env.URL;
+}
+
 module.exports = {
   siteMetadata: {
-    title: "Student Debt Campaign",
-    description:
-      "We are a membership organization working to transform our individual financial struggles into a source of collective power."
+    title: `Student Debt Strike | Join today!`,
+    description: `Join the movement to end Student Debt. #CancelStudentDebt #CollegeForAll`,
+    author: "Debt Collective",
+    twitterUsername: `@0debtzone`,
+    facebookPage: "https://www.facebook.com/DebtCollective",
+    image: `${siteUrl}/img/seo.png`,
+    url: siteUrl
   },
   plugins: [
     "gatsby-plugin-react-helmet",

@@ -3,11 +3,8 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-<<<<<<< HEAD
 import Header from "../components/Header";
-=======
 import SEO from "../components/SEO";
->>>>>>> feat(SEO): add seo tags
 import Hero from "../sections/Hero";
 import Informative from "../sections/Informative";
 import Join from "../sections/Join";

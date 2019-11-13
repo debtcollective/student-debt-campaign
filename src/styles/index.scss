@@ -6,6 +6,7 @@ $red:                         #FF4630;
 $purple:                      #DAC4F5;
 $green:                       #D6FFB8;
 $yellow:                      #FFED9C;
+$gray:                        #2b2b2b;
 
 $body-bg:                     #FAF9F5;
 
@@ -40,6 +41,10 @@ $display4-weight:             $font-weight-bold;
 $btn-padding-y:               1.3125rem;
 $btn-padding-x:               2.8rem;
 
+// Footer
+$footer-bg:                   $gray;
+$footer-title:                #828282;
+
 // bootstrap required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
@@ -67,3 +72,4 @@ $btn-padding-x:               2.8rem;
 @import "../sections/Notification/style";
 @import "../sections/FAQ/style";
 @import "../sections/CTA/style";
+@import "../components/Footer/style";

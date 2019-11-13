@@ -1,0 +1,83 @@
+.footer {
+  background: $footer-bg;
+  color: $white;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 2rem;
+  padding: 3rem 0 2rem 0;
+
+  > .container {
+    max-width: map-get($container-max-widths, xl);
+  }
+
+  .brand-container {
+    @include media-breakpoint-up(md) {
+      margin-top: 5.25rem;
+    }
+  }
+
+  .back-to-top {
+    text-decoration: underline;
+    margin-bottom: 1.6rem;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      margin-top: 0.125rem;
+
+      .brand-text + .brand-text {
+        margin: 0 0 0 3rem;
+      }
+    }
+  }
+
+  .copyright {
+    color: gray("700");
+  }
+
+  .tos {
+    font-weight: 400;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      color: gray("200");
+      text-decoration: underline;
+    }
+  }
+
+  &__list {
+    &-head {
+      margin-bottom: 0.5rem;
+    }
+
+    &-head {
+      color: $footer-title;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__netlify-logo {
+    img {
+      display: inline-block;
+      margin-left: 0.5rem;
+      width: 100px;
+    }
+  }
+}

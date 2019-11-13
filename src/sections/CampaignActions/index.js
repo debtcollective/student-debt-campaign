@@ -71,7 +71,7 @@ const CampaignActions = ({ user, campaignId }) => {
                     <details
                       id={`action-item-${index}`}
                       data-testid={`action-item-${index}`}
-                      key={`action-item-${index}`}
+                      key={userAction.id}
                       className={`collapsable-list__item ${completedClass}`}
                       open={index === 0}
                     >

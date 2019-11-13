@@ -9,6 +9,7 @@ import Join from "../sections/Join";
 import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
+import Header from '../components/Header'
 
 export const IndexPageTemplate = ({
   hero,
@@ -20,6 +21,7 @@ export const IndexPageTemplate = ({
   join_campaign
 }) => (
   <>
+    <Header />
     <Hero title={hero.title} actions={hero.actions} social={social} />
     <Informative title={demand.title} remark={demand.remark}>
       {demand.content}

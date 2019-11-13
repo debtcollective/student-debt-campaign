@@ -6,7 +6,7 @@ if (typeof window !== `undefined`) {
 }
 
 const FAQ = ({ entries }) => (
-  <section className="faq">
+  <section id="faq" className="faq">
     <div className="container-fluid distribute-rows">
       <div className="row">
         <div className="col">

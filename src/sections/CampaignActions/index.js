@@ -96,15 +96,6 @@ const CampaignActions = ({ user, campaignId }) => {
             </div>
           </div>
         </div>
-        {loading && <p>Loading Sara...</p>}
-        {error && <p>Error: ${error.message}</p>}
-        {data && data.meme && data.meme.photo && (
-          <img
-            src={data.meme.photo.url}
-            alt="Sara Vieira"
-            style={{ maxWidth: 300 }}
-          />
-        )}
       </div>
     </section>
   );

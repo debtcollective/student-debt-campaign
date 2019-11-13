@@ -6,18 +6,20 @@ const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 
 const Join = ({
-  image,
   background,
-  count,
-  title,
-  colour,
   children,
+  colour,
+  count,
+  feed,
+  id,
+  image,
   remark,
-  feed
+  title
 }) => (
   <section
     className="join"
     data-color={colour}
+    id={id}
     style={{ background: `url(${background})`, backgroundSize: "cover" }}
   >
     <div className="container-fluid distribute-rows">
@@ -84,6 +86,7 @@ Join.propTypes = {
   colour: PropTypes.string,
   content: PropTypes.string,
   count: PropTypes.number,
+  id: PropTypes.string,
   image: PropTypes.any,
   remark: PropTypes.string,
   title: PropTypes.string

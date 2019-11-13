@@ -1,5 +1,12 @@
 import { noop } from "lodash";
-import amplitude from "amplitude-js";
+
+let amplitude;
+
+if (typeof window !== `undefined`) {
+  amplitude = require("amplitude-js");
+} else {
+  amplitude = { getInstance: () => null };
+}
 
 const amplitudeInstance = amplitude.getInstance();
 

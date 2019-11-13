@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import arrow from "../../img/arrow-down.svg";
 import IconWrap from "../../components/IconWrap";
+import { Link } from "react-scroll";
 
 const getBg = index => {
   switch (index) {
@@ -37,23 +38,27 @@ const Hero = ({ title, actions, social }) => (
       <div className="row">
         <div className="col">
           <div className="action-circle-wrap">
-            {actions.map(({ title, image }, index) => (
-              <div
-                key={`action-${index}`}
-                className={`action-circle bg-${getBg(index)}`}
+            {actions.map(({ join_section_id, title, image }, index) => (
+              <Link
+                duration={500}
+                key={index}
+                smooth={true}
+                to={join_section_id}
               >
-                <div className="action-circle__img">
-                  <img
-                    src={
-                      image.src.childImageSharp
-                        ? image.src.childImageSharp.fluid.src
-                        : image.src
-                    }
-                    alt={image.alt}
-                  />
+                <div className={`action-circle bg-${getBg(index)}`}>
+                  <div className="action-circle__img">
+                    <img
+                      src={
+                        image.src.childImageSharp
+                          ? image.src.childImageSharp.fluid.src
+                          : image.src
+                      }
+                      alt={image.alt}
+                    />
+                  </div>
+                  <p className="action-circle__title">{title}</p>
                 </div>
-                <p className="action-circle__title">{title}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

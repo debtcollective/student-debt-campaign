@@ -8,7 +8,7 @@
 .display-title {
   @extend .display-3;
   @extend .text-monospace;
-  line-height: .85;
+  line-height: 0.85;
 }
 
 .share-this {
@@ -24,19 +24,20 @@
 }
 
 .action-circle {
+  align-items: center;
   border-radius: 100%;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 12rem;
+  justify-content: center;
   width: 12rem;
 
   @include media-breakpoint-up(md) {
     height: 18vw;
     width: 18vw;
   }
-  
+
   &__img {
     display: flex;
     flex-direction: column;
@@ -86,8 +87,8 @@
     @extend .text-monospace;
     font-size: $h5-font-size;
     flex: 1;
-    line-height: .75;
-    
+    line-height: 0.75;
+
     @include media-breakpoint-up(md) {
       font-size: 2.5vw;
     }

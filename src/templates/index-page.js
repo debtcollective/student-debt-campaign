@@ -25,12 +25,20 @@ export const IndexPageTemplate = ({
       {demand.content}
     </Informative>
     {join_campaign.map(
-      (
-        { background, image, title, colour, content, count, remark, feed },
-        index
-      ) => (
+      ({
+        id,
+        background,
+        image,
+        title,
+        colour,
+        content,
+        count,
+        remark,
+        feed
+      }) => (
         <Join
-          key={`join-campaign-${index}`}
+          key={id}
+          id={id}
           background={background.publicURL}
           image={image.publicURL}
           count={count}
@@ -99,8 +107,9 @@ IndexPageTemplate.propTypes = {
     ),
     actions: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string,
-        image: PropTypes.object
+        image: PropTypes.object,
+        join_section_id: PropTypes.string,
+        title: PropTypes.string
       })
     )
   })
@@ -131,6 +140,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         join_campaign {
+          id
           background {
             absolutePath
             publicURL
@@ -187,6 +197,7 @@ export const pageQuery = graphql`
           }
           actions {
             title
+            join_section_id
             image {
               src {
                 childImageSharp {

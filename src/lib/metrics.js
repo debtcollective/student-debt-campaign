@@ -1,5 +1,5 @@
 import { noop } from "lodash";
-import amplitude from 'amplitude-js';
+import amplitude from "amplitude-js";
 
 const amplitudeInstance = amplitude.getInstance();
 
@@ -22,7 +22,7 @@ export const trackOutboundLink = event => {
   const href = event.target.href;
   const target = event.target.target;
   const opts = {
-    href,
+    href
   };
   const callback = () => {
     window.open(href, target);

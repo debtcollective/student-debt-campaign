@@ -3,7 +3,16 @@ import classNames from "classnames";
 import logo from "../../img/logo-light.svg";
 import { Collapse } from "react-bootstrap";
 import { Link } from "gatsby";
-import { trackOutboundLink } from "../../lib/metrics";
+
+let metrics = {
+  trackOutboundLink: () => null
+};
+
+if (typeof window !== `undefined`) {
+  metrics = require("../../lib/metrics");
+}
+
+const { trackOutboundLink } = metrics;
 
 const Header = () => {
   const [scrollY, setScrollY] = useState(false);

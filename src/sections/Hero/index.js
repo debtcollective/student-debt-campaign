@@ -41,7 +41,7 @@ const Hero = ({ title, actions, social }) => (
             {actions.map(({ join_section_id, title, image }, index) => (
               <Link
                 duration={500}
-                key={index}
+                key={join_section_id}
                 smooth={true}
                 to={join_section_id}
               >

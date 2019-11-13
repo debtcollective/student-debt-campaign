@@ -7,8 +7,9 @@ $purple:                      #DAC4F5;
 $green:                       #D6FFB8;
 $yellow:                      #FFED9C;
 $gray:                        #2b2b2b;
+$beige:                       #FAF9F5;
 
-$body-bg:                     #FAF9F5;
+$body-bg:                     $beige;
 
 $primary:                     $red;
 
@@ -45,18 +46,24 @@ $btn-padding-x:               2.8rem;
 $footer-bg:                   $gray;
 $footer-title:                #828282;
 
+// Header
+$header-height-sm: 4rem;
+$header-height-md: 8rem;
+
 // bootstrap required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 
 // bootstrap optional
-@import "node_modules/bootstrap/scss/reboot";
-@import "node_modules/bootstrap/scss/grid";
-@import "node_modules/bootstrap/scss/type";
-@import "node_modules/bootstrap/scss/utilities";
 @import "node_modules/bootstrap/scss/buttons";
 @import "node_modules/bootstrap/scss/close";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/utilities";
 
 // run custom code after bootstrap loaded
 @import "./functions";
@@ -73,3 +80,4 @@ $footer-title:                #828282;
 @import "../sections/FAQ/style";
 @import "../sections/CTA/style";
 @import "../components/Footer/style";
+@import "../components/Header/style";

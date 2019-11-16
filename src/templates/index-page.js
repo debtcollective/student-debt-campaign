@@ -57,10 +57,6 @@ export const IndexPageTemplate = ({
     <Notification title={notification.title} date={notification.date}>
       {notification.description}
     </Notification>
-<<<<<<< HEAD
-=======
-    <Campaign user={tempFakeUser} campaignId="8" />
->>>>>>> refactor(campaign): make it a section tag
     <FAQ entries={faq} />
     <CTA social={social} title={cta.title} action={cta.action} />
   </>

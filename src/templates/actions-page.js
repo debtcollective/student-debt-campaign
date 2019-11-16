@@ -14,8 +14,8 @@ const GET_USER = gql`
   }
 `;
 
-// TODO: this campaignId needs to be pull from the server
-const campaignId = "8";
+// TODO: this campaignId needs to be pull from the server (mean while take from userActions table vs currentUser id)
+const campaignId = "2";
 
 export const ActionsPageTemplate = () => {
   const {
@@ -29,7 +29,10 @@ export const ActionsPageTemplate = () => {
       {userQueryLoading
         ? "Loading"
         : (userQueryError && userQueryError.message) || (
-            <Campaign user={userQueryResponse.currentUser} campaignId={campaignId} />
+            <Campaign
+              user={userQueryResponse.currentUser}
+              campaignId={campaignId}
+            />
           )}
     </>
   );

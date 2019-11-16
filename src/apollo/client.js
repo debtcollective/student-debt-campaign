@@ -4,7 +4,7 @@ import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 const link = createHttpLink({
-  uri: `${process.env.GATSBY_CAMPAING_ACTIONS_API}`,
+  uri: `${process.env.GATSBY_CAMPAIGN_API_URL}`,
   credentials: "include"
 });
 

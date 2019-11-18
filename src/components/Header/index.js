@@ -1,6 +1,5 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 import classNames from "classnames";
-import logo from "../../img/logo-light.svg";
 import { trackOutboundLink } from "../../lib/metrics";
 import { Collapse } from "react-bootstrap";
 import { Link } from "gatsby";
@@ -9,6 +8,7 @@ const Header = () => {
   const [scrollY, setScrollY] = useState(false);
   const [open, setOpen] = useState(false);
   const headerEl = useRef(null);
+  const isLoggedIn = user.id;
 
   const isScrolled =
     headerEl.current && scrollY > headerEl.current.scrollHeight / 2;
@@ -53,7 +53,7 @@ const Header = () => {
                 <Link to="/">
                   <img
                     className="logo"
-                    src={logo}
+                    src="/img/logo-light.svg"
                     alt="debtcollective logo"
                     width="100%"
                   />
@@ -84,7 +84,7 @@ const Header = () => {
               <div className="header-col justify-content-end buttons">
                 {/* >= lg */}
                 <a
-                  href="https://community.debtcollective.org/signup"
+                  href={`${process.env.GATSBY_COMMUNITY_URL}/signup`}
                   target="_blank"
                   rel="noopener noreferrer"
                   role="button"
@@ -95,7 +95,7 @@ const Header = () => {
                 </a>
                 {/* >= md */}
                 <a
-                  href="https://community.debtcollective.org/login"
+                  href={`${process.env.GATSBY_COMMUNITY_URL}/login`}
                   target="_blank"
                   rel="noopener noreferrer"
                   role="button"
@@ -106,7 +106,7 @@ const Header = () => {
                 </a>
                 {/* small */}
                 <a
-                  href="https://community.debtcollective.org/login"
+                  href={`${process.env.GATSBY_COMMUNITY_URL}/login`}
                   target="_blank"
                   rel="noopener noreferrer"
                   role="button"

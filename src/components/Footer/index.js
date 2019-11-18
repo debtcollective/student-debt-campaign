@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../img/logo-dark.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -109,7 +108,7 @@ const Footer = () => {
             <a href="/">
               <img
                 alt="The Debt Collective"
-                src={logo}
+                src="/img/logo-dark.svg"
                 height={60}
                 width={175}
               />

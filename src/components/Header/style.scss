@@ -7,6 +7,18 @@
   font-size: 1rem;
 }
 
+.user-profile {
+  a {
+    text-decoration: none;
+  }
+}
+
+.profile-text {
+  font-size: 1rem;
+  color: $gray;
+  font-weight: $font-weight-bold;
+}
+
 .header {
   $active-proportion: 0.7;
 

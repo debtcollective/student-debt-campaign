@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 
 import Layout from "../components/Layout";
+import Header from "../components/Header";
 import Campaign from "../sections/CampaignActions";
 import { GET_USER } from "../api";
 
@@ -12,11 +13,12 @@ export const ActionsPageTemplate = () => {
   const {
     loading: userQueryLoading,
     error: userQueryError,
-    data: userQueryResponse
+    data: userQueryResponse = {}
   } = useQuery(GET_USER);
 
   return (
     <>
+      <Header user={userQueryResponse.currentUser} />
       {userQueryLoading
         ? "Loading"
         : (userQueryError && userQueryError.message) || (

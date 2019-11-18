@@ -1,18 +1,9 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import Layout from "../components/Layout";
 import Campaign from "../sections/CampaignActions";
-
-const GET_USER = gql`
-  query getUser {
-    currentUser {
-      id
-      username
-    }
-  }
-`;
+import { GET_USER } from "../api";
 
 // TODO: this campaignId needs to be pull from the server (mean while take from userActions table vs currentUser id)
 const campaignId = "2";

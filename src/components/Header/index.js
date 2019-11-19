@@ -37,6 +37,8 @@ Profile.propTypes = {
 };
 
 const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`;
+const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
+const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
 
 const Header = ({ user }) => {
   const [scrollY, setScrollY] = useState(false);
@@ -122,7 +124,7 @@ const Header = ({ user }) => {
                   <>
                     {/* >= lg */}
                     <a
-                      href={`${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`}
+                      href={signupSSOUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       role="button"
@@ -133,7 +135,7 @@ const Header = ({ user }) => {
                     </a>
                     {/* >= md */}
                     <a
-                      href={`${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`}
+                      href={loginSSOUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       role="button"
@@ -144,7 +146,7 @@ const Header = ({ user }) => {
                     </a>
                     {/* small */}
                     <a
-                      href={`${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`}
+                      href={loginSSOUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       role="button"

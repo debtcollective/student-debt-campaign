@@ -37,25 +37,41 @@ const schema = {
       description:
         "Please provide as much information about each account as you can.",
       type: "object",
+      required: ["debtType", "amount"],
       properties: {
         debtType: {
           type: "string",
-          title: "Debt type"
+          title: "Debt type",
+          enum: [
+            "Student debt",
+            "Housing debt",
+            "Medical debt",
+            "Court or bail fees",
+            "Payday loans",
+            "Auto loan",
+            "Credit card debt",
+            "Other"
+          ]
         },
         studentDebtType: {
           type: "string",
-          format: "email",
-          title: "Student debt type"
+          title: "Student debt type",
+          enum: [
+            "Subsidized Stafford",
+            "Unsubsidized Stafford",
+            "Parent PLUS",
+            "Private Student loans"
+          ]
         },
         amount: {
-          type: "string",
-          title: "Amount",
-          minLength: 3
+          type: "number",
+          title: "Amount"
         },
         interestRates: {
-          type: "string",
+          type: "number",
           title: "Interest rates",
-          minLength: 3
+          maxLength: 4,
+          minLength: 1
         },
         creditor: {
           type: "string",
@@ -65,7 +81,12 @@ const schema = {
         accountStatus: {
           type: "string",
           title: "Account status",
-          minLength: 10
+          enum: [
+            "In repayment",
+            "Late on payments",
+            "Stopped payments",
+            "Sent to collections"
+          ]
         },
         beingHarrased: {
           type: "boolean",
@@ -91,11 +112,21 @@ const uiSchema = {
     }
   },
   debts: {
+    debtType: {
+      "ui:placeholder": "Choose an option"
+    },
+    studentDebtType: {
+      "ui:placeholder": "Choose an option"
+    },
+    creditor: {
+      "ui:placeholder": "Sallie Mae"
+    },
     beingHarrased: {
       "ui:widget": "radio"
     },
     harrasmentDescription: {
-      "ui:widget": "textarea"
+      "ui:widget": "textarea",
+      "ui:placeholder": "They knock on my door everyday insulting me"
     }
   }
 };

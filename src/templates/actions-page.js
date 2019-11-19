@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import Layout from "../components/Layout";
 import Header from "../components/Header";
-import Campaign from "../sections/CampaignActions";
+import CampaignActions from "../sections/CampaignActions";
 import { GET_USER } from "../api";
 
 // TODO: this campaignId needs to be pull from the server (mean while take from userActions table vs currentUser id)
@@ -22,7 +22,7 @@ export const ActionsPageTemplate = () => {
       {userQueryLoading
         ? "Loading"
         : (userQueryError && userQueryError.message) || (
-            <Campaign
+            <CampaignActions
               user={userQueryResponse.currentUser}
               campaignId={campaignId}
             />

@@ -1,30 +1,101 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import Form from "react-jsonschema-form";
 
-const dataDuesSchema = {
+const schema = {
   type: "object",
   properties: {
     personalInformation: {
-      fullName: {
-        type: "string",
-        title: "Full name",
-        default: "Bernie Sanders"
-      },
-      email: {
-        type: "string",
-        title: "Email",
-        default: "Del Aguila"
-      },
-      streetAddress: {
-        type: "",
-        title: "Password",
-        minLength: 3
-      },
-      telephone: {
-        type: "string",
-        title: "Telephone",
-        minLength: 10
+      title: "Personal information",
+      type: "object",
+      required: ["fullName", "email"],
+      properties: {
+        fullName: {
+          type: "string",
+          title: "Full name"
+        },
+        email: {
+          type: "string",
+          format: "email",
+          title: "Email"
+        },
+        streetAddress: {
+          type: "string",
+          title: "Street address",
+          minLength: 3
+        },
+        phoneNumber: {
+          type: "string",
+          title: "Phone number",
+          pattern: "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$",
+          minLength: 10
+        }
       }
+    },
+    debts: {
+      title: "Your Debts",
+      description:
+        "Please provide as much information about each account as you can.",
+      type: "object",
+      properties: {
+        debtType: {
+          type: "string",
+          title: "Debt type"
+        },
+        studentDebtType: {
+          type: "string",
+          format: "email",
+          title: "Student debt type"
+        },
+        amount: {
+          type: "string",
+          title: "Amount",
+          minLength: 3
+        },
+        interestRates: {
+          type: "string",
+          title: "Interest rates",
+          minLength: 3
+        },
+        creditor: {
+          type: "string",
+          title: "Creditor",
+          minLength: 10
+        },
+        accountStatus: {
+          type: "string",
+          title: "Account status",
+          minLength: 10
+        },
+        beingHarrased: {
+          type: "boolean",
+          enumNames: ["Yes", "No"],
+          title: "Are you being harrased by creditors or debt collectors?"
+        },
+        harrasmentDescription: {
+          type: "string",
+          title: "Describe the harrasment"
+        }
+      }
+    }
+  }
+};
+
+const uiSchema = {
+  personalInformation: {
+    fullName: {
+      "ui:placeholder": "Bernie Sanders"
+    },
+    email: {
+      "ui:placeholder": "bernie@berniesanders.com"
+    }
+  },
+  debts: {
+    beingHarrased: {
+      "ui:widget": "radio"
+    },
+    harrasmentDescription: {
+      "ui:widget": "textarea"
     }
   }
 };
@@ -54,7 +125,7 @@ const DataDuesAction = () => {
           </p>
         </Col>
       </Row>
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} uiSchema={uiSchema} onSubmit={handleSubmit}>
         <div className="text-right">
           <Button variant="primary" type="submit">
             Save information

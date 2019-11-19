@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery } from "@apollo/react-hooks";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
@@ -11,6 +12,7 @@ import Join from "../sections/Join";
 import Notification from "../sections/Notification";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
+import { GET_USER } from "../api";
 
 export const IndexPageTemplate = ({
   hero,
@@ -20,47 +22,51 @@ export const IndexPageTemplate = ({
   faq,
   demand,
   join_campaign
-}) => (
-  <>
-    <Header />
-    <Hero title={hero.title} actions={hero.actions} social={social} />
-    <Informative title={demand.title} remark={demand.remark}>
-      {demand.content}
-    </Informative>
-    {join_campaign.map(
-      ({
-        id,
-        background,
-        image,
-        title,
-        colour,
-        content,
-        count,
-        remark,
-        feed
-      }) => (
-        <Join
-          key={id}
-          id={id}
-          background={background.publicURL}
-          image={image.publicURL}
-          count={count}
-          title={title}
-          colour={colour}
-          remark={remark}
-          feed={feed}
-        >
-          {content}
-        </Join>
-      )
-    )}
-    <Notification title={notification.title} date={notification.date}>
-      {notification.description}
-    </Notification>
-    <FAQ entries={faq} />
-    <CTA social={social} title={cta.title} action={cta.action} />
-  </>
-);
+}) => {
+  const { data: userQueryResponse = {} } = useQuery(GET_USER);
+
+  return (
+    <>
+      <Header user={userQueryResponse.currentUser} />
+      <Hero title={hero.title} actions={hero.actions} social={social} />
+      <Informative title={demand.title} remark={demand.remark}>
+        {demand.content}
+      </Informative>
+      {join_campaign.map(
+        ({
+          id,
+          background,
+          image,
+          title,
+          colour,
+          content,
+          count,
+          remark,
+          feed
+        }) => (
+          <Join
+            key={id}
+            id={id}
+            background={background.publicURL}
+            image={image.publicURL}
+            count={count}
+            title={title}
+            colour={colour}
+            remark={remark}
+            feed={feed}
+          >
+            {content}
+          </Join>
+        )
+      )}
+      <Notification title={notification.title} date={notification.date}>
+        {notification.description}
+      </Notification>
+      <FAQ entries={faq} />
+      <CTA social={social} title={cta.title} action={cta.action} />
+    </>
+  );
+};
 
 IndexPageTemplate.propTypes = {
   join_campaign: PropTypes.arrayOf(PropTypes.any),

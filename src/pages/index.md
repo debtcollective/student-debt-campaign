@@ -6,28 +6,31 @@ hero:
         alt: fist
         src: /img/fist.png
       title: Declare!
+      join_section_id: "already-on-strike"
     - image:
         alt: prepare
         src: /img/newspaper.png
       title: Prepare!
+      join_section_id: "threatening-on-strike"
     - image:
         alt: support
         src: /img/handshake.png
       title: Support!
+      join_section_id: "solidarity-with-strikes"
   title:
     - line: End student debt!
     - line: Join the strike!
 social:
   accounts:
     - logo: /img/twitter.svg
-      url: 'http://twitter.com/debtcollective'
+      url: "http://twitter.com/debtcollective"
       username: debtcollective
     - logo: /img/instagram.svg
-      url: 'http://instagram.com/debtcollective'
+      url: "http://instagram.com/debtcollective"
       username: debtcollective
   action: Share this!
 notification:
-  date: 'Sun, Sep 22, 2019 12:00 AM'
+  date: "Sun, Sep 22, 2019 12:00 AM"
   description: >-
     **NEW** Lorem ipsum dolor sit amet, consectetur adipiscin elit. Ut consequat
     sapien a rhoncus convallis.
@@ -43,7 +46,8 @@ demand:
     We demand full cancellation of federal & private student loans. Free public
     college for all!
 join_campaign:
-  - background: /img/image_3.png
+  - id: "already-on-strike"
+    background: /img/image_3.png
     colour: purple
     content: >-
       We are not paying our student loans this means we are already in default
@@ -77,7 +81,8 @@ join_campaign:
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
-  - background: /img/image_2.png
+  - id: "threatening-on-strike"
+    background: /img/image_2.png
     colour: yellow
     content: >-
       We are prepared to stop paying our loans in the future if our demands are
@@ -90,29 +95,30 @@ join_campaign:
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@laticcia'
+        username: "@laticcia"
       - picture: /img/user_2.png
         status: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@sara'
+        username: "@sara"
       - picture: /img/user_3.png
         status: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@monica'
+        username: "@monica"
       - picture: /img/user_4.png
         status: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@john'
+        username: "@john"
     image: /img/newspaper.png
     remark: Get actions when you add your name.
     title: of us are threatening to strike!
-  - background: /img/image_1.png
+  - id: "solidarity-with-strikes"
+    background: /img/image_1.png
     colour: green
     content: >-
       We do not have student loans, but we are standing in solidarity with all
@@ -124,25 +130,25 @@ join_campaign:
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@laticca'
+        username: "@laticca"
       - picture: /img/user_2.png
         status: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@sara'
+        username: "@sara"
       - picture: /img/user_3.png
         status: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@monica'
+        username: "@monica"
       - picture: /img/user_4.png
         status: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
           ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
           nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@john'
+        username: "@john"
     image: /img/handshake.png
     remark: Get actions when you add your name.
     title: of us stand in solidarity with strikers.
@@ -268,7 +274,7 @@ faq:
       The study also shows that full cancellation would have only a moderate
       effect on the federal budget deficit. [Read the full report
       here](http://www.levyinstitute.org/publications/the-macroeconomic-effects-of-student-debt-cancellation).
-    question: 'What impact will cancelling student debt have on the economy? '
+    question: "What impact will cancelling student debt have on the economy? "
   - answer: >-
       The good news is that it doesn’t cost very much to get rid of all student
       debt. [A study by
@@ -285,7 +291,7 @@ faq:
       authorize spending when it regards that expenditure as important for the
       public. It’s time that they used that power for millions of people
       drowning in student debt.
-    question: 'OK, but how do we pay for it?'
+    question: "OK, but how do we pay for it?"
   - answer: >
       No. As Astra Taylor
       [described](https://www.theguardian.com/commentisfree/2019/apr/24/elizabeth-warren-student-debt-cancel-grassroots)
@@ -337,4 +343,3 @@ cta:
   action: Sign up
   title: Help Build Power. Join Today!
 ---
-

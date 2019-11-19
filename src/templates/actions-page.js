@@ -1,20 +1,35 @@
 import React from "react";
+import { useQuery } from "@apollo/react-hooks";
 
 import Layout from "../components/Layout";
-import Campaign from "../sections/CampaignActions";
+import Header from "../components/Header";
+import CampaignActions from "../sections/CampaignActions";
+import { GET_USER } from "../api";
 
-// TODO: this data needs to be pulled from our SSO service
-const tempFakeUser = {
-  id: "3",
-  name: "Jane Doe",
-  email: "jane.doe@mail.com"
+// TODO: this campaignId needs to be pull from the server (mean while take from userActions table vs currentUser id)
+const campaignId = "2";
+
+export const ActionsPageTemplate = () => {
+  const {
+    loading: userQueryLoading,
+    error: userQueryError,
+    data: userQueryResponse = {}
+  } = useQuery(GET_USER);
+
+  return (
+    <>
+      <Header user={userQueryResponse.currentUser} />
+      {userQueryLoading
+        ? "Loading"
+        : (userQueryError && userQueryError.message) || (
+            <CampaignActions
+              user={userQueryResponse.currentUser}
+              campaignId={campaignId}
+            />
+          )}
+    </>
+  );
 };
-
-export const ActionsPageTemplate = () => (
-  <>
-    <Campaign user={tempFakeUser} campaignId="8" />
-  </>
-);
 
 const ActionsPage = () => {
   return (

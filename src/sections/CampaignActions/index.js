@@ -38,7 +38,7 @@ const CampaignActions = ({ user, campaignId }) => {
               <h1 className="section-title mb-1">Ways to take action</h1>
               {user && (
                 <p className="section-content text-center mb-5">
-                  {user.name}, Thank you for joining!
+                  {user.username}, Thank you for joining!
                 </p>
               )}
             </div>
@@ -105,7 +105,7 @@ CampaignActions.propTypes = {
   campaignId: PropTypes.string,
   user: PropTypes.shape({
     id: PropTypes.string,
-    name: PropTypes.string
+    username: PropTypes.string
   })
 };
 

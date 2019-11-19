@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import arrow from "../../img/arrow-down.svg";
 import IconWrap from "../../components/IconWrap";
 import { Link } from "react-scroll";
 
@@ -76,7 +75,7 @@ const Hero = ({ title, actions, social }) => (
         </div>
         <div className="col">
           <div className="d-flex justify-content-center">
-            <IconWrap role="button" src={arrow} />
+            <IconWrap role="button" src="/img/arrow-down.svg" />
           </div>
         </div>
         <div className="col" />

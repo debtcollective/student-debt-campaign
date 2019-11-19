@@ -1,14 +1,50 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 import classNames from "classnames";
-import logo from "../../img/logo-light.svg";
+import PropTypes from "prop-types";
+
 import { trackOutboundLink } from "../../lib/metrics";
 import { Collapse } from "react-bootstrap";
 import { Link } from "gatsby";
 
-const Header = () => {
+const Profile = ({ user, ...rest }) => {
+  return user.id ? (
+    <div id="user-profile" className="user-profile" data-testid="profile">
+      <a
+        href={`${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...rest}
+      >
+        <img
+          className="rounded-circle"
+          src={user.avatar_url}
+          alt={user.username}
+        />
+        <span className="profile-text ml-2 d-none d-sm-inline-block">
+          {user.username}
+        </span>
+      </a>
+    </div>
+  ) : null;
+};
+
+Profile.propTypes = {
+  user: PropTypes.shape({
+    avatar_url: PropTypes.string,
+    username: PropTypes.string,
+    id: PropTypes.string
+  })
+};
+
+const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`;
+const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
+const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
+
+const Header = ({ user }) => {
   const [scrollY, setScrollY] = useState(false);
   const [open, setOpen] = useState(false);
   const headerEl = useRef(null);
+  const isLoggedIn = user.id;
 
   const isScrolled =
     headerEl.current && scrollY > headerEl.current.scrollHeight / 2;
@@ -53,7 +89,7 @@ const Header = () => {
                 <Link to="/">
                   <img
                     className="logo"
-                    src={logo}
+                    src="/img/logo-light.svg"
                     alt="debtcollective logo"
                     width="100%"
                   />
@@ -82,39 +118,45 @@ const Header = () => {
             </div>
             <div className="col-3 col-lg-3">
               <div className="header-col justify-content-end buttons">
-                {/* >= lg */}
-                <a
-                  href="https://community.debtcollective.org/signup"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  role="button"
-                  onClick={trackOutboundLink}
-                  className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
-                >
-                  Sign up
-                </a>
-                {/* >= md */}
-                <a
-                  href="https://community.debtcollective.org/login"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  role="button"
-                  onClick={trackOutboundLink}
-                  className="btn btn-primary btn-lg d-none d-md-block btn-session "
-                >
-                  Login
-                </a>
-                {/* small */}
-                <a
-                  href="https://community.debtcollective.org/login"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  role="button"
-                  onClick={trackOutboundLink}
-                  className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
-                >
-                  Login
-                </a>
+                {isLoggedIn ? (
+                  <Profile user={user} />
+                ) : (
+                  <>
+                    {/* >= lg */}
+                    <a
+                      href={signupSSOUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      role="button"
+                      onClick={trackOutboundLink}
+                      className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
+                    >
+                      Sign up
+                    </a>
+                    {/* >= md */}
+                    <a
+                      href={loginSSOUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      role="button"
+                      onClick={trackOutboundLink}
+                      className="btn btn-primary btn-lg d-none d-md-block btn-session"
+                    >
+                      Login
+                    </a>
+                    {/* small */}
+                    <a
+                      href={loginSSOUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      role="button"
+                      onClick={trackOutboundLink}
+                      className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
+                    >
+                      Login
+                    </a>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -144,6 +186,18 @@ const Header = () => {
       </Collapse>
     </>
   );
+};
+
+Header.propTypes = {
+  user: PropTypes.shape({
+    avatar_url: PropTypes.string,
+    username: PropTypes.string,
+    id: PropTypes.string
+  })
+};
+
+Header.defaultProps = {
+  user: {}
 };
 
 export default Header;

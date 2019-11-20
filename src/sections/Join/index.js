@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Markdown from "markdown-to-jsx";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Markdown from 'markdown-to-jsx'
 
 const formatNumber = number =>
-  number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
 const Join = ({
   background,
@@ -20,7 +20,7 @@ const Join = ({
     className="join"
     data-color={colour}
     id={id}
-    style={{ background: `url(${background})`, backgroundSize: "cover" }}
+    style={{ background: `url(${background})`, backgroundSize: 'cover' }}
   >
     <div className="container-fluid distribute-rows">
       <div className="row">
@@ -56,7 +56,7 @@ const Join = ({
                     <div className="our-voices__img">
                       <img
                         src={picture.publicURL}
-                        alt={`user profile picture`}
+                        alt={'user profile picture'}
                       />
                     </div>
                     <p className="our-voices__content">
@@ -71,7 +71,7 @@ const Join = ({
       </div>
     </div>
   </section>
-);
+)
 
 Join.propTypes = {
   feed: PropTypes.arrayOf(
@@ -90,6 +90,6 @@ Join.propTypes = {
   image: PropTypes.any,
   remark: PropTypes.string,
   title: PropTypes.string
-};
+}
 
-export default Join;
+export default Join

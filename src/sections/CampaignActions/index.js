@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import has from "lodash/has";
-import PropTypes from "prop-types";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import Markdown from "markdown-to-jsx";
-import CampaignAction from "../../components/CampaignAction";
-import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from "./api";
+import React, { useState, useEffect } from 'react'
+import has from 'lodash/has'
+import PropTypes from 'prop-types'
+import { useQuery, useMutation } from '@apollo/react-hooks'
+import Markdown from 'markdown-to-jsx'
+import CampaignAction from '../../components/CampaignAction'
+import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from './api'
 
 const CampaignActions = ({ user, campaignId }) => {
-  const [completedActions, setCompletedActions] = useState({});
+  const [completedActions, setCompletedActions] = useState({})
   const [completeAction, { data: mutationResponse }] = useMutation(
     UPDATE_USER_ACTION
-  );
+  )
   const {
     loading: queryLoading,
     error: queryError,
     data: queryResponse
   } = useQuery(GET_USER_ACTIONS, {
     variables: { campaignId, userId: user.id }
-  });
+  })
 
   useEffect(() => {
     if (mutationResponse) {
@@ -25,9 +25,9 @@ const CampaignActions = ({ user, campaignId }) => {
         ...completedActions,
         [mutationResponse.userActionUpdate.id]:
           mutationResponse.userActionUpdate.completed
-      });
+      })
     }
-  }, [mutationResponse]);
+  }, [completedActions, mutationResponse])
 
   return (
     <section id="campaign-actions" className="campaign-actions">
@@ -49,23 +49,23 @@ const CampaignActions = ({ user, campaignId }) => {
             <div data-testid="action-items" className="collapsable-list">
               {(() => {
                 if (queryLoading) {
-                  return <p>Loading...</p>;
+                  return <p>Loading...</p>
                 }
 
                 if (queryError) {
-                  return <p>Error: ${queryError.message}</p>;
+                  return <p>Error: ${queryError.message}</p>
                 }
 
                 return queryResponse.userActions.map((userAction, index) => {
-                  const { action, completed } = userAction;
-                  const { title, description, config, type } = action;
+                  const { action, completed } = userAction
+                  const { title, description, config, type } = action
                   // Check if state of the action has changed within completedActions state
                   const isActionCompleted = has(completedActions, userAction.id)
                     ? completedActions[userAction.id]
-                    : completed;
+                    : completed
                   const completedClass = isActionCompleted
-                    ? "completed"
-                    : "no-completed";
+                    ? 'completed'
+                    : 'no-completed'
 
                   return (
                     <details
@@ -86,20 +86,20 @@ const CampaignActions = ({ user, campaignId }) => {
                               userActionId: userAction.id,
                               completed: true
                             }
-                          });
+                          })
                         }}
                       />
                     </details>
-                  );
-                });
+                  )
+                })
               })()}
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 CampaignActions.propTypes = {
   campaignId: PropTypes.string,
@@ -107,6 +107,6 @@ CampaignActions.propTypes = {
     id: PropTypes.string,
     username: PropTypes.string
   })
-};
+}
 
-export default CampaignActions;
+export default CampaignActions

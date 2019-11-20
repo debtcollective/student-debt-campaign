@@ -64,6 +64,7 @@ $header-height-md: 8rem;
 @import "node_modules/bootstrap/scss/reboot";
 @import "node_modules/bootstrap/scss/type";
 @import "node_modules/bootstrap/scss/utilities";
+@import "node_modules/bootstrap/scss/dropdown";
 
 // run custom code after bootstrap loaded
 @import "./functions";

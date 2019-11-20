@@ -1,9 +1,16 @@
 /*
-  After bring the code from other project that have a base font lower we need
-  to adjust the font here manually
+  Profile related styles
+  including dropdown
 */
-.nav-link,
-.btn-session {
+.header-col {
+  .dropdown-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.dropdown-menu {
   font-size: 1rem;
 }
 
@@ -17,6 +24,15 @@
   font-size: 1rem;
   color: $gray;
   font-weight: $font-weight-bold;
+}
+
+/*
+  After bring the code from other project that have a base font lower we need
+  to adjust the font here manually
+*/
+.nav-link,
+.btn-session {
+  font-size: 1rem;
 }
 
 .header {

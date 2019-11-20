@@ -14,7 +14,7 @@ import CampaignActions from '../'
 const baseProps = {
   user: {
     id: userId,
-    name: faker.name.findName(),
+    username: faker.name.findName(),
     email: faker.internet.email()
   },
   campaignId
@@ -28,8 +28,9 @@ describe('<CampaignActions />', () => {
       </MockedProvider>
     )
 
+    // TODO: this expectation shouldn't need 'queryAllByText' but 'queryByText' instead
     expect(
-      wrapper.queryByText(new RegExp(baseProps.user.name, 'i'))
+      wrapper.queryAllByText(new RegExp(baseProps.username, 'i'))[0]
     ).toBeInTheDocument()
   })
 

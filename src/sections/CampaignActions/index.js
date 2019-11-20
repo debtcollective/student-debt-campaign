@@ -7,6 +7,8 @@ import CampaignAction from '../../components/CampaignAction'
 import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from './api'
 
 const CampaignActions = ({ user, campaignId }) => {
+  // FIXME: flag approach needs to be removed throught #46
+  const [temporalFlagForMutationUpdate, setTemporalFlagForMutationUpdate] = useState(true)
   const [completedActions, setCompletedActions] = useState({})
   const [completeAction, { data: mutationResponse }] = useMutation(
     UPDATE_USER_ACTION
@@ -20,14 +22,15 @@ const CampaignActions = ({ user, campaignId }) => {
   })
 
   useEffect(() => {
-    if (mutationResponse) {
+    if (mutationResponse && temporalFlagForMutationUpdate) {
+      setTemporalFlagForMutationUpdate(false)
       setCompletedActions({
         ...completedActions,
         [mutationResponse.userActionUpdate.id]:
           mutationResponse.userActionUpdate.completed
       })
     }
-  }, [completedActions, mutationResponse])
+  }, [completedActions, temporalFlagForMutationUpdate, mutationResponse])
 
   return (
     <section id="campaign-actions" className="campaign-actions">

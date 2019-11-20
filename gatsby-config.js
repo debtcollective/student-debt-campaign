@@ -1,58 +1,58 @@
-var proxy = require("http-proxy-middleware");
+var proxy = require('http-proxy-middleware')
 
-const deployContext = process.env.DEPLOY_CONTEXT;
-const isProduction = deployContext === "production";
+const deployContext = process.env.DEPLOY_CONTEXT
+const isProduction = deployContext === 'production'
 let siteUrl =
   process.env.DEPLOY_URL ||
   process.env.DEPLOY_PRIME_URL ||
-  "http://localhost:8000";
+  'http://localhost:8000'
 
 if (isProduction) {
-  siteUrl = process.env.URL;
+  siteUrl = process.env.URL
 }
 
 module.exports = {
   siteMetadata: {
-    title: `Student Debt Strike | Join today!`,
-    description: `Join the movement to end Student Debt. #CancelStudentDebt #CollegeForAll`,
-    author: "Debt Collective",
-    twitterUsername: `@0debtzone`,
-    facebookPage: "https://www.facebook.com/DebtCollective",
+    title: 'Student Debt Strike | Join today!',
+    description: 'Join the movement to end Student Debt. #CancelStudentDebt #CollegeForAll',
+    author: 'Debt Collective',
+    twitterUsername: '@0debtzone',
+    facebookPage: 'https://www.facebook.com/DebtCollective',
     image: `${siteUrl}/img/seo.png`,
     url: siteUrl
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sass",
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/img`,
-        name: "uploads"
+        name: 'uploads'
       }
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages`,
-        name: "pages"
+        name: 'pages'
       }
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-relative-images",
+            resolve: 'gatsby-remark-relative-images',
             options: {
-              name: "uploads"
+              name: 'uploads'
             }
           },
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
@@ -61,40 +61,40 @@ module.exports = {
             }
           },
           {
-            resolve: "gatsby-remark-copy-linked-files",
+            resolve: 'gatsby-remark-copy-linked-files',
             options: {
-              destinationDir: "static"
+              destinationDir: 'static'
             }
           }
         ]
       }
     },
     {
-      resolve: "gatsby-plugin-netlify-cms",
+      resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`
       }
     },
     {
-      resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
+      resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"] // applies purging only on the bulma css file
+        purgeOnly: ['/all.sass'] // applies purging only on the bulma css file
       }
     }, // must be after other CSS plugins
-    "gatsby-plugin-netlify" // make sure to keep it last in the array
+    'gatsby-plugin-netlify' // make sure to keep it last in the array
   ],
   // for avoiding CORS while developing Netlify Functions locally
   // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
   developMiddleware: app => {
     app.use(
-      "/.netlify/functions/",
+      '/.netlify/functions/',
       proxy({
-        target: "http://localhost:9000",
+        target: 'http://localhost:9000',
         pathRewrite: {
-          "/.netlify/functions/": ""
+          '/.netlify/functions/': ''
         }
       })
-    );
+    )
   }
-};
+}

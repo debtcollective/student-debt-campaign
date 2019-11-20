@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-if (typeof window !== `undefined`) {
-  require("details-polyfill");
+if (typeof window !== 'undefined') {
+  require('details-polyfill')
 }
 
 const FAQ = ({ entries }) => (
@@ -32,7 +32,7 @@ const FAQ = ({ entries }) => (
       </div>
     </div>
   </section>
-);
+)
 
 FAQ.propTypes = {
   entries: PropTypes.arrayOf(
@@ -41,6 +41,6 @@ FAQ.propTypes = {
       answer: PropTypes.string
     })
   )
-};
+}
 
-export default FAQ;
+export default FAQ

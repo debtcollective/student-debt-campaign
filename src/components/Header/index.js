@@ -1,10 +1,10 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
+import React, { useState, useLayoutEffect, useRef } from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
-import { trackOutboundLink } from "../../lib/metrics";
-import { Collapse } from "react-bootstrap";
-import { Link } from "gatsby";
+import { trackOutboundLink } from '../../lib/metrics'
+import { Collapse } from 'react-bootstrap'
+import { Link } from 'gatsby'
 
 const Profile = ({ user, ...rest }) => {
   return user.id ? (
@@ -25,8 +25,8 @@ const Profile = ({ user, ...rest }) => {
         </span>
       </a>
     </div>
-  ) : null;
-};
+  ) : null
+}
 
 Profile.propTypes = {
   user: PropTypes.shape({
@@ -34,34 +34,34 @@ Profile.propTypes = {
     username: PropTypes.string,
     id: PropTypes.string
   })
-};
+}
 
-const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`;
-const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`;
-const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`;
+const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`
+const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`
+const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`
 
 const Header = ({ user }) => {
-  const [scrollY, setScrollY] = useState(false);
-  const [open, setOpen] = useState(false);
-  const headerEl = useRef(null);
-  const isLoggedIn = user.id;
+  const [scrollY, setScrollY] = useState(false)
+  const [open, setOpen] = useState(false)
+  const headerEl = useRef(null)
+  const isLoggedIn = user.id
 
   const isScrolled =
-    headerEl.current && scrollY > headerEl.current.scrollHeight / 2;
+    headerEl.current && scrollY > headerEl.current.scrollHeight / 2
 
-  const headerClasses = classNames("header", "fixed-top", {
-    "slider-nav-open": open,
+  const headerClasses = classNames('header', 'fixed-top', {
+    'slider-nav-open': open,
     active: isScrolled
-  });
-  const menuTriggerClasses = classNames("menu-trigger", { active: open });
+  })
+  const menuTriggerClasses = classNames('menu-trigger', { active: open })
 
   useLayoutEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => setScrollY(window.scrollY)
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
 
   return (
     <>
@@ -185,8 +185,8 @@ const Header = ({ user }) => {
         </div>
       </Collapse>
     </>
-  );
-};
+  )
+}
 
 Header.propTypes = {
   user: PropTypes.shape({
@@ -194,10 +194,10 @@ Header.propTypes = {
     username: PropTypes.string,
     id: PropTypes.string
   })
-};
+}
 
 Header.defaultProps = {
   user: {}
-};
+}
 
-export default Header;
+export default Header

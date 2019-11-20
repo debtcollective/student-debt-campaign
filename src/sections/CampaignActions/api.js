@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag'
 
 export const UPDATE_USER_ACTION = gql`
   mutation userActionUpdate($userActionId: ID!, $completed: Boolean!) {
@@ -7,7 +7,7 @@ export const UPDATE_USER_ACTION = gql`
       completed
     }
   }
-`;
+`
 
 export const GET_USER_ACTIONS = gql`
   query getUserActions($userId: ID!, $campaignId: ID!) {
@@ -23,4 +23,4 @@ export const GET_USER_ACTIONS = gql`
       }
     }
   }
-`;
+`

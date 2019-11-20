@@ -1,6 +1,6 @@
-import React from "react";
-import Markdown from "markdown-to-jsx";
-import PropTypes from "prop-types";
+import React from 'react'
+import Markdown from 'markdown-to-jsx'
+import PropTypes from 'prop-types'
 
 const Notification = ({ title, children, date }) => (
   <div className="notification alert" role="alert">
@@ -22,12 +22,12 @@ const Notification = ({ title, children, date }) => (
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-);
+)
 
 Notification.propTypes = {
   title: PropTypes.string,
   children: PropTypes.any,
   date: PropTypes.string
-};
+}
 
-export default Notification;
+export default Notification

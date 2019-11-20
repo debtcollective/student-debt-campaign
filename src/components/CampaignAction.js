@@ -1,13 +1,13 @@
-import React from "react";
-import delay from "lodash/delay";
-import PropTypes from "prop-types";
+import React from 'react'
+import delay from 'lodash/delay'
+import PropTypes from 'prop-types'
 
 const ACTION_TYPES = {
-  LINK: "LINK"
-};
+  LINK: 'LINK'
+}
 
 const CampaignAction = ({ config, type, onComplete }) => {
-  const { text, delay: delayTime, ...attributes } = config;
+  const { text, delay: delayTime, ...attributes } = config
 
   return (
     <div className="cta-container content">
@@ -21,14 +21,14 @@ const CampaignAction = ({ config, type, onComplete }) => {
         </a>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
 CampaignAction.propTypes = {
   text: PropTypes.string,
   config: PropTypes.any,
   type: PropTypes.string,
   onComplete: PropTypes.func
-};
+}
 
-export default CampaignAction;
+export default CampaignAction

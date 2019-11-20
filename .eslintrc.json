@@ -1,26 +1,33 @@
 {
+    "parser": "babel-eslint",
     "env": {
-        "node": true,
-        "browser": true,
+        "commonjs": true,
         "es6": true,
+        "node": true,
         "jest": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
-    "parser": "babel-eslint",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
+    "extends": [
+        "eslint:recommended",
+        "standard",
+        "plugin:jest/recommended",
+        "plugin:react/recommended",
+        "plugin:flowtype/recommended"
+    ],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+        "ecmaVersion": 2018
     },
     "plugins": [
-        "react"
+        "react-hooks",
+        "flowtype"
     ],
     "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error"
+    },
+    "settings": {
+        "react": {
+            "version": "detect",
+            "flowVersion": "detect"
+        }
     }
 }

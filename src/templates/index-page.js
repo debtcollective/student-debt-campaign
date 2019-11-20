@@ -1,18 +1,18 @@
-import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import React from 'react'
+import { useQuery } from '@apollo/react-hooks'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 
-import Layout from "../components/Layout";
-import Header from "../components/Header";
-import SEO from "../components/SEO";
-import Hero from "../sections/Hero";
-import Informative from "../sections/Informative";
-import Join from "../sections/Join";
-import Notification from "../sections/Notification";
-import FAQ from "../sections/FAQ";
-import CTA from "../sections/CTA";
-import { GET_USER } from "../api";
+import Layout from '../components/Layout'
+import Header from '../components/Header'
+import SEO from '../components/SEO'
+import Hero from '../sections/Hero'
+import Informative from '../sections/Informative'
+import Join from '../sections/Join'
+import Notification from '../sections/Notification'
+import FAQ from '../sections/FAQ'
+import CTA from '../sections/CTA'
+import { GET_USER } from '../api'
 
 export const IndexPageTemplate = ({
   hero,
@@ -21,9 +21,9 @@ export const IndexPageTemplate = ({
   cta,
   faq,
   demand,
-  join_campaign
+  join_campaign: joinCampaign
 }) => {
-  const { data: userQueryResponse = {} } = useQuery(GET_USER);
+  const { data: userQueryResponse = {} } = useQuery(GET_USER)
 
   return (
     <>
@@ -32,7 +32,7 @@ export const IndexPageTemplate = ({
       <Informative title={demand.title} remark={demand.remark}>
         {demand.content}
       </Informative>
-      {join_campaign.map(
+      {joinCampaign.map(
         ({
           id,
           background,
@@ -65,8 +65,8 @@ export const IndexPageTemplate = ({
       <FAQ entries={faq} />
       <CTA social={social} title={cta.title} action={cta.action} />
     </>
-  );
-};
+  )
+}
 
 IndexPageTemplate.propTypes = {
   join_campaign: PropTypes.arrayOf(PropTypes.any),
@@ -122,18 +122,18 @@ IndexPageTemplate.propTypes = {
       })
     )
   })
-};
+}
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+  const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
       <SEO />
       <IndexPageTemplate {...frontmatter} />
     </Layout>
-  );
-};
+  )
+}
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -141,9 +141,9 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.object
     })
   })
-};
+}
 
-export default IndexPage;
+export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
@@ -223,4 +223,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

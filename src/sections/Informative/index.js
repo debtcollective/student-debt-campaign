@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Markdown from "markdown-to-jsx";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Markdown from 'markdown-to-jsx'
 
 const Informative = ({ title, children, remark }) => (
   <section className="informative">
@@ -20,12 +20,12 @@ const Informative = ({ title, children, remark }) => (
       </div>
     </div>
   </section>
-);
+)
 
 Informative.propTypes = {
   title: PropTypes.string,
   children: PropTypes.any,
   remark: PropTypes.string
-};
+}
 
-export default Informative;
+export default Informative

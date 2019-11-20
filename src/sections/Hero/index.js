@@ -1,19 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import IconWrap from "../../components/IconWrap";
-import { Link } from "react-scroll";
+import IconWrap from '../../components/IconWrap'
+import { Link } from 'react-scroll'
 
 const getBg = index => {
   switch (index) {
     case 1:
-      return "yellow";
+      return 'yellow'
     case 2:
-      return "green";
+      return 'green'
     default:
-      return "purple";
+      return 'purple'
   }
-};
+}
 
 const Hero = ({ title, actions, social }) => (
   <section className="hero">
@@ -25,7 +25,7 @@ const Hero = ({ title, actions, social }) => (
               {title.map(({ line }, index) => (
                 <span
                   key={`line-${index}`}
-                  className={`d-block ${index % 2 === 0 && "text-primary"}`}
+                  className={`d-block ${index % 2 === 0 && 'text-primary'}`}
                 >
                   {line}
                 </span>
@@ -37,12 +37,12 @@ const Hero = ({ title, actions, social }) => (
       <div className="row">
         <div className="col">
           <div className="action-circle-wrap">
-            {actions.map(({ join_section_id, title, image }, index) => (
+            {actions.map(({ join_section_id: joinSectionId, title, image }, index) => (
               <Link
                 duration={500}
-                key={join_section_id}
+                key={joinSectionId}
                 smooth={true}
-                to={join_section_id}
+                to={joinSectionId}
               >
                 <div className={`action-circle bg-${getBg(index)}`}>
                   <div className="action-circle__img">
@@ -82,7 +82,7 @@ const Hero = ({ title, actions, social }) => (
       </div>
     </div>
   </section>
-);
+)
 
 Hero.propTypes = {
   social: PropTypes.shape({
@@ -105,6 +105,6 @@ Hero.propTypes = {
       image: PropTypes.any
     })
   )
-};
+}
 
-export default Hero;
+export default Hero

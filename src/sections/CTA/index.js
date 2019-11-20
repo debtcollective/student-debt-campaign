@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import IconWrap from "../../components/IconWrap";
+import IconWrap from '../../components/IconWrap'
 
 const CTA = ({ social, title, action }) => (
   <section className="cta">
@@ -31,7 +31,7 @@ const CTA = ({ social, title, action }) => (
       </div>
     </div>
   </section>
-);
+)
 
 CTA.propTypes = {
   title: PropTypes.string,
@@ -45,6 +45,6 @@ CTA.propTypes = {
       })
     )
   })
-};
+}
 
-export default CTA;
+export default CTA

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { trackOutboundLink } from '../../lib/metrics'
 import { Collapse, Dropdown } from 'react-bootstrap'
 import { Link } from 'gatsby'
+import { logout } from './api'
 
 const Profile = ({ user, ...rest }) => {
   const communityProfileURL = `${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`
@@ -28,7 +29,7 @@ const Profile = ({ user, ...rest }) => {
           rel="noopener noreferrer">
           Hi, {user.username}
         </Dropdown.Item>
-        <Dropdown.Item>
+        <Dropdown.Item onClick={() => logout(user)}>
           Logout
         </Dropdown.Item>
       </Dropdown.Menu>
@@ -133,9 +134,6 @@ const Header = ({ user }) => {
                     {/* >= lg */}
                     <a
                       href={signupSSOUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      role="button"
                       onClick={trackOutboundLink}
                       className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
                     >
@@ -144,9 +142,6 @@ const Header = ({ user }) => {
                     {/* >= md */}
                     <a
                       href={loginSSOUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      role="button"
                       onClick={trackOutboundLink}
                       className="btn btn-primary btn-lg d-none d-md-block btn-session"
                     >
@@ -155,9 +150,6 @@ const Header = ({ user }) => {
                     {/* small */}
                     <a
                       href={loginSSOUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      role="button"
                       onClick={trackOutboundLink}
                       className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
                     >

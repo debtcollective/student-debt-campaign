@@ -5,7 +5,7 @@ import faker from 'faker'
 import Header from '..'
 
 const fakeUser = {
-  id: faker.random.number(),
+  id: faker.random.uuid(),
   username: faker.internet.email(),
   avatar_url: faker.internet.url()
 }

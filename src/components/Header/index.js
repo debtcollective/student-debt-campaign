@@ -3,28 +3,37 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 import { trackOutboundLink } from '../../lib/metrics'
-import { Collapse } from 'react-bootstrap'
+import { Collapse, Dropdown } from 'react-bootstrap'
 import { Link } from 'gatsby'
+import { logout } from './api'
 
 const Profile = ({ user, ...rest }) => {
+  const communityProfileURL = `${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`
+
   return user.id ? (
-    <div id="user-profile" className="user-profile" data-testid="profile">
-      <a
-        href={`${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...rest}
-      >
-        <img
-          className="rounded-circle"
-          src={user.avatar_url}
-          alt={user.username}
-        />
-        <span className="profile-text ml-2 d-none d-sm-inline-block">
-          {user.username}
-        </span>
-      </a>
-    </div>
+    <Dropdown>
+      <Dropdown.Toggle variant="transparent" size="sm" id="dropdown-basic">
+        <div id="user-profile" className="user-profile" data-testid="profile">
+          <img
+            className="rounded-circle"
+            src={user.avatar_url}
+            alt={user.username}
+          />
+        </div>
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item
+          href={communityProfileURL}
+          target="_blank"
+          rel="noopener noreferrer">
+          Hi, {user.username}
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => logout(user)}>
+          Logout
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   ) : null
 }
 
@@ -125,35 +134,26 @@ const Header = ({ user }) => {
                     {/* >= lg */}
                     <a
                       href={signupSSOUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      role="button"
                       onClick={trackOutboundLink}
                       className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
                     >
-                      Sign up
+                        Sign up
                     </a>
                     {/* >= md */}
                     <a
                       href={loginSSOUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      role="button"
                       onClick={trackOutboundLink}
                       className="btn btn-primary btn-lg d-none d-md-block btn-session"
                     >
-                      Login
+                        Login
                     </a>
                     {/* small */}
                     <a
                       href={loginSSOUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      role="button"
                       onClick={trackOutboundLink}
                       className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
                     >
-                      Login
+                        Login
                     </a>
                   </>
                 )}

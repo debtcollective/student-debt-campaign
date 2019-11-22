@@ -763,6 +763,14 @@
     js-levenshtein "^1.1.3"
     semver "^5.5.0"
 
+"@babel/preset-flow@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.0.0.tgz#afd764835d9535ec63d8c7d4caf1c06457263da2"
+  integrity sha512-bJOHrYOPqJZCkPVbG1Lot2r5OSsB+iUOaxiHdlOeB1yPWS6evswVHwvkDLZ54WTaTRIk89ds0iHmGZSnxlPejQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-transform-flow-strip-types" "^7.0.0"
+
 "@babel/preset-react@^7.7.0":
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.7.0.tgz#8ab0c4787d98cf1f5f22dabf115552bf9e4e406c"
@@ -6719,6 +6727,21 @@ gatsby-page-utils@^0.0.30:
     lodash "^4.17.15"
     micromatch "^3.1.10"
     slash "^3.0.0"
+
+gatsby-plugin-create-client-paths@^2.1.17:
+  version "2.1.17"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-create-client-paths/-/gatsby-plugin-create-client-paths-2.1.17.tgz#c3c78b0f403e99e402871f6b42c8938e8815307b"
+  integrity sha512-qzsHnuq33xJgLksPKvcc8HqAsC7Yj4Ta8Vsg2bw2QtVl1US6y7ZbHlRrKWFcmWYl4ZxYf77HTJXZBPlQbW2MpQ==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+
+gatsby-plugin-flow@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-flow/-/gatsby-plugin-flow-1.1.14.tgz#5b1ea976e5a89790d02789b5bb212111dcd73900"
+  integrity sha512-wwuaylD6NIejS23Im+mt7jHGElzjX3srv7mGeCzmBq84+Qxh/KkAaDTvCU4v5jfwvDmPluN+DDL1OXzHsxjuGQ==
+  dependencies:
+    "@babel/preset-flow" "^7.0.0"
+    "@babel/runtime" "^7.7.2"
 
 gatsby-plugin-netlify-cms@^4.1.6:
   version "4.1.28"

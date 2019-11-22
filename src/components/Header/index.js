@@ -3,46 +3,9 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 import { trackOutboundLink } from '../../lib/metrics'
-import { Collapse, Dropdown } from 'react-bootstrap'
+import { Collapse } from 'react-bootstrap'
 import { Link } from 'gatsby'
-import { logout } from '../../api/auth'
-
-const Profile = ({ user, ...rest }) => {
-  const communityProfileURL = `${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`
-
-  return user.id ? (
-    <Dropdown>
-      <Dropdown.Toggle variant="transparent" size="sm" id="dropdown-basic">
-        <div id="user-profile" className="user-profile" data-testid="profile">
-          <img
-            className="rounded-circle"
-            src={user.avatar_url}
-            alt={user.username}
-          />
-        </div>
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item
-          href={communityProfileURL}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hi, {user.username}
-        </Dropdown.Item>
-        <Dropdown.Item onClick={() => logout(user)}>Logout</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  ) : null
-}
-
-Profile.propTypes = {
-  user: PropTypes.shape({
-    avatar_url: PropTypes.string,
-    username: PropTypes.string,
-    id: PropTypes.string
-  })
-}
+import Profile from '../Profile'
 
 const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`
 const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`

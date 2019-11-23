@@ -7,18 +7,13 @@ import Footer from '../components/Footer'
 import '../styles/index.scss'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
-import Header from '../components/Header'
 
 if (typeof window !== 'undefined') {
   require('jquery')
   require('bootstrap/js/dist/alert')
 }
 
-type Props = {
-  user: User
-}
-
-const TemplateWrapper = ({ children, user }: Props) => {
+const TemplateWrapper = ({ children }: Props) => {
   const { title, description } = useSiteMetadata()
   return (
     <>
@@ -52,7 +47,6 @@ const TemplateWrapper = ({ children, user }: Props) => {
         />
         <meta name="theme-color" content="#fff" />
       </Helmet>
-      <Header user={user} />
       {children}
       <Footer />
     </>

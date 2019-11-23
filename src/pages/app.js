@@ -3,7 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { Router } from '@reach/router'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import PrivateRoute from '../components/PrivateRoute'
 import { GET_USER } from '../api'
 import Header from '../components/Header'

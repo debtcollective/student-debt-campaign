@@ -22,6 +22,7 @@ const App = () => {
             path="/app/actions"
             component={ActionsPage}
             isLoggedIn={isLoggedIn}
+            user={data.currentUser}
           />
         </Router>
       )}

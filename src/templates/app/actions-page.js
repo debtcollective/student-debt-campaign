@@ -11,8 +11,8 @@ type Props = {
   user: User
 }
 
-const ActionsPage = ({ user }: Props) => {
-  return <CampaignActions campaignId={campaignId} />
-}
+const ActionsPage = ({ user }: Props) => (
+  <CampaignActions campaignId={campaignId} user={user} />
+)
 
 export default ActionsPage

@@ -2,12 +2,16 @@
 
 import React from 'react'
 
-import CampaignActions from '../sections/CampaignActions'
+import CampaignActions from '../../sections/CampaignActions'
 
 // TODO: this campaignId needs to be pull from the server (mean while take from userActions table vs currentUser id)
 const campaignId = '2'
 
-const ActionsPage = () => {
+type Props = {
+  user: User
+}
+
+const ActionsPage = ({ user }: Props) => {
   return <CampaignActions campaignId={campaignId} />
 }
 

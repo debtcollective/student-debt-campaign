@@ -1,11 +1,11 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 import { navigate } from 'gatsby'
 
 type Props = {
-  component: React.Component,
-  location: { pathname: string },
+  component: React.ComponentType<any>,
+  location?: { pathname: string },
   isLoggedIn: Boolean
 }
 
@@ -15,7 +15,7 @@ const PrivateRoute = ({
   isLoggedIn,
   ...rest
 }: Props) => {
-  if (!isLoggedIn && location.pathname !== '/') {
+  if (!isLoggedIn && location && location.pathname !== '/') {
     alert('Sorry! you need to be logged in')
     navigate('/')
     return null

@@ -1,16 +1,19 @@
 // @flow
 
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
-import '../styles/index.scss'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+import '../styles/index.scss'
 
 if (typeof window !== 'undefined') {
   require('jquery')
   require('bootstrap/js/dist/alert')
+}
+
+type Props = {
+  children: React.Node
 }
 
 const TemplateWrapper = ({ children }: Props) => {
@@ -51,10 +54,6 @@ const TemplateWrapper = ({ children }: Props) => {
       <Footer />
     </>
   )
-}
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.node
 }
 
 export default TemplateWrapper

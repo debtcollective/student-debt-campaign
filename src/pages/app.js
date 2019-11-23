@@ -6,8 +6,8 @@ import { Router } from '@reach/router'
 import Layout from '../components/layout'
 import PrivateRoute from '../components/PrivateRoute'
 import { GET_USER } from '../api'
-import ActionsPage from '../templates/actions-page'
 import Header from '../components/Header'
+import { ActionsPage } from '../templates/app'
 
 const App = () => {
   const { loading, data = {} } = useQuery(GET_USER)

@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useQuery } from '@apollo/react-hooks'
 import { Router } from '@reach/router'
 import Layout from '../components/layout'
 import PrivateRoute from '../components/PrivateRoute'
-import * as authService from '../api/auth'
+import { GET_USER } from '../api'
 import ActionsPage from '../templates/actions-page'
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(null)
-  useEffect(() => {
-    authService.isLoggedIn().then(result => {
-      setIsLoggedIn(result)
-    })
-    // TODO: "react-hooks/exhaustive-deps" is not working
-  }, [])
+  const { loading, data = {} } = useQuery(GET_USER)
 
-  if (isLoggedIn === null) {
+  const isLoggedIn = data.currentUser && data.currentUser.id
+
+  if (loading) {
     return 'Waiting'
   }
 
   return (
-    <Layout>
+    <Layout user={data.currentUser}>
       <Router>
         <PrivateRoute
           path="/app/actions"

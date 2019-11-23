@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
@@ -5,13 +7,18 @@ import Footer from '../components/Footer'
 import '../styles/index.scss'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+import Header from '../components/Header'
 
 if (typeof window !== 'undefined') {
   require('jquery')
   require('bootstrap/js/dist/alert')
 }
 
-const TemplateWrapper = ({ children }) => {
+type Props = {
+  user: User
+}
+
+const TemplateWrapper = ({ children, user }: Props) => {
   const { title, description } = useSiteMetadata()
   return (
     <>
@@ -45,6 +52,7 @@ const TemplateWrapper = ({ children }) => {
         />
         <meta name="theme-color" content="#fff" />
       </Helmet>
+      <Header user={user} />
       {children}
       <Footer />
     </>

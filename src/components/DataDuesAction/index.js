@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
+import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 
 const debtTypes = [
@@ -25,6 +26,7 @@ const accountStatus = [
   'Stopped payments',
   'Sent to collections'
 ]
+const unknown = 'Unknown'
 
 const DataDuesHeader = () => (
   <>
@@ -50,7 +52,6 @@ const DataDuesHeader = () => (
 )
 
 const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
-  const unknown = 'Unknown'
   const selectedDebtType = watch(`debts[${debtId}].debtType`)
   const isStudentDebt = selectedDebtType === 'Student debt'
 
@@ -128,11 +129,13 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
 
       <Form.Group controlId={`amount${debtId}`}>
         <Form.Label>Amount</Form.Label>
-        <Form.Control
+        <CurrencyField
           type="text"
-          placeholder="$38,000"
           name={`debts[${debtId}].amount`}
-          ref={register({ required: true })}
+          register={register}
+          unregister={unregister}
+          setValue={setValue}
+          required
         />
         <Form.Text className="text-muted">
           You don’t have to know the exact amount. A good guess is fine!
@@ -141,12 +144,13 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
 
       <Form.Group controlId={`interestRate${debtId}`}>
         <Form.Label>Interest rate</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="%5.5"
-          disabled={interestRateDisabled}
+        <PercentageField
           name={`debts[${debtId}].interestRate`}
-          ref={register}
+          register={register}
+          unregister={unregister}
+          setValue={setValue}
+          disabled={interestRateDisabled}
+          required
         />
         <Form.Check
           inline
@@ -291,7 +295,7 @@ const DataDuesForm = ({ onSubmit = data => console.log(data) }) => {
         <Form.Group controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            type="text"
+            type="email"
             placeholder="betsy.devos@ed.gov"
             name="email"
             ref={register({ required: true })}
@@ -310,11 +314,11 @@ const DataDuesForm = ({ onSubmit = data => console.log(data) }) => {
 
         <Form.Group controlId="phoneNumber">
           <Form.Label>Phone number</Form.Label>
-          <Form.Control
-            type="tel"
-            placeholder="(202) 401-3000"
+          <PhoneNumberField
             name="phoneNumber"
-            ref={register({ required: true })}
+            register={register}
+            unregister={unregister}
+            setValue={setValue}
           />
         </Form.Group>
       </div>

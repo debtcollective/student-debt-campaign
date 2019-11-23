@@ -13551,6 +13551,13 @@ react-modal@^3.8.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+react-number-format@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.3.1.tgz#eccfc851d88d74c894ba463620ccb467defbdefb"
+  integrity sha512-ze6Lp7SGM71Jr0uZhUaN6grthv08NKTfJezS26zAWZq63ubmJ++FOX7ueGSK27EvpT7/e3ce9L3jlqr1YMFS7Q==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-onclickoutside@^6.5.0:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.9.0.tgz#a54bc317ae8cf6131a5d78acea55a11067f37a1f"

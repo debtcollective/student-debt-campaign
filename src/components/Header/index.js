@@ -68,6 +68,13 @@ const Header = ({ user }) => {
                 </Link>
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
+                    {isLoggedIn && (
+                      <li className="nav-item">
+                        <Link to="/app/actions" className="nav-link">
+                          Actions
+                        </Link>
+                      </li>
+                    )}
                     <li className="nav-item">
                       <Link to="#faq" className="nav-link">
                         FAQ
@@ -93,7 +100,7 @@ const Header = ({ user }) => {
                 {isLoggedIn ? (
                   <Profile user={user} />
                 ) : (
-                  <div data-testid="session-links">
+                  <div data-testid="session-links" className="d-flex">
                     {/* >= lg */}
                     <a
                       href={signupSSOUrl}

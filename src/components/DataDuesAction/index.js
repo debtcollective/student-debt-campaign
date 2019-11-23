@@ -1,32 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
-import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
+import _ from 'lodash'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
-
-const debtTypes = [
-  'Student debt',
-  'Housing debt',
-  'Medical debt',
-  'Court or bail fees',
-  'Payday loans',
-  'Auto loan',
-  'Credit card debt',
-  'Other'
-]
-const studentDebtType = [
-  'Subsidized Stafford',
-  'Unsubsidized Stafford',
-  'Parent PLUS',
-  'Private Student loans'
-]
-const accountStatus = [
-  'In repayment',
-  'Late on payments',
-  'Stopped payments',
-  'Sent to collections'
-]
-const unknown = 'Unknown'
+import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
+import {
+  debtTypes,
+  studentDebtTypes,
+  accountStatuses,
+  unknown,
+  validationSchema
+} from './schema'
 
 const DataDuesHeader = () => (
   <>
@@ -51,19 +35,26 @@ const DataDuesHeader = () => (
   </>
 )
 
-const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
+const DebtForm = ({
+  debtId,
+  errors,
+  register,
+  setValue,
+  unregister,
+  watch
+}) => {
   const selectedDebtType = watch(`debts[${debtId}].debtType`)
   const isStudentDebt = selectedDebtType === 'Student debt'
 
   const beingHarrasedOption = watch(`debts[${debtId}].beingHarrased`)
-  const isBeingHarrased = beingHarrasedOption === 'Yes'
+  const isBeingHarrased = beingHarrasedOption === 'true'
 
   // onChange handler for "I don't know" checkboxes
   const onChange = (name, setDisabled, event) => {
     const isChecked = event.target.checked
     const value = isChecked ? unknown : ''
 
-    setValue(name, value)
+    setValue(name, value, true)
     setDisabled(isChecked)
   }
 
@@ -85,7 +76,8 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
           name={`debts[${debtId}].debtType`}
           disabled={debtTypeDisabled}
           defaultValue=""
-          ref={register({ required: true })}
+          ref={register}
+          isInvalid={!!errors[`debts[${debtId}].debtType`]}
         >
           <option value="" disabled hidden>
             Select debt type
@@ -97,6 +89,10 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
             <option key={item}>{item}</option>
           ))}
         </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          {errors[`debts[${debtId}].debtType`] &&
+            errors[`debts[${debtId}].debtType`].message}
+        </Form.Control.Feedback>
         <Form.Check
           inline
           onChange={event =>
@@ -115,15 +111,20 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
             as="select"
             name={`debts[${debtId}].studentDebtType`}
             defaultValue=""
-            ref={register({ required: true })}
+            ref={register}
+            isInvalid={!!errors[`debts[${debtId}].studentDebtType`]}
           >
             <option value="" disabled hidden>
               Select a student debt type
             </option>
-            {studentDebtType.map(item => (
+            {studentDebtTypes.map(item => (
               <option key={item}>{item}</option>
             ))}
           </Form.Control>
+          <Form.Control.Feedback type="invalid">
+            {errors[`debts[${debtId}].studentDebtType`] &&
+              errors[`debts[${debtId}].studentDebtType`].message}
+          </Form.Control.Feedback>
         </Form.Group>
       )}
 
@@ -135,11 +136,15 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
           register={register}
           unregister={unregister}
           setValue={setValue}
-          required
+          isInvalid={!!errors[`debts[${debtId}].amount`]}
         />
         <Form.Text className="text-muted">
           You don’t have to know the exact amount. A good guess is fine!
         </Form.Text>
+        <Form.Control.Feedback type="invalid">
+          {errors[`debts[${debtId}].amount`] &&
+            errors[`debts[${debtId}].amount`].message}
+        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId={`interestRate${debtId}`}>
@@ -150,8 +155,12 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
           unregister={unregister}
           setValue={setValue}
           disabled={interestRateDisabled}
-          required
+          isInvalid={!!errors[`debts[${debtId}].interestRate`]}
         />
+        <Form.Control.Feedback type="invalid">
+          {errors[`debts[${debtId}].interestRate`] &&
+            errors[`debts[${debtId}].interestRate`].message}
+        </Form.Control.Feedback>
         <Form.Check
           inline
           type="checkbox"
@@ -175,7 +184,12 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
           disabled={creditorDisabled}
           name={`debts[${debtId}].creditor`}
           ref={register}
+          isInvalid={!!errors[`debts[${debtId}].creditor`]}
         />
+        <Form.Control.Feedback type="invalid">
+          {errors[`debts[${debtId}].creditor`] &&
+            errors[`debts[${debtId}].creditor`].message}
+        </Form.Control.Feedback>
         <Form.Check
           inline
           type="checkbox"
@@ -195,6 +209,7 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
           disabled={accountStatusDisabled}
           defaultValue=""
           ref={register}
+          isInvalid={!!errors[`debts[${debtId}].accountStatus`]}
         >
           <option value="" disabled hidden>
             Select your account status
@@ -202,10 +217,14 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
           <option value={unknown} disabled hidden>
             {unknown}
           </option>
-          {accountStatus.map(item => (
+          {accountStatuses.map(item => (
             <option key={item}>{item}</option>
           ))}
         </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          {errors[`debts[${debtId}].accountStatus`] &&
+            errors[`debts[${debtId}].accountStatus`].message}
+        </Form.Control.Feedback>
         <Form.Check
           inline
           type="checkbox"
@@ -227,20 +246,30 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
         </Form.Label>
         <Form.Check
           type="radio"
-          id={`beingHarrasedYes${debtId}`}
-          label="Yes"
-          value="Yes"
-          name={`debts[${debtId}].beingHarrased`}
-          ref={register}
-        />
-        <Form.Check
-          type="radio"
           id={`beingHarrasedNo${debtId}`}
           name={`debts[${debtId}].beingHarrased`}
-          value="No"
+          value={true}
           ref={register}
-          label="No"
+          label="Yes"
+          isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
         />
+        <Form.Check
+          id={`beingHarrasedYes${debtId}`}
+          isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
+        >
+          <Form.Check.Input
+            name={`debts[${debtId}].beingHarrased`}
+            isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
+            type="radio"
+            ref={register}
+            value={false}
+          />
+          <Form.Check.Label>No</Form.Check.Label>
+          <Form.Control.Feedback type="invalid">
+            {errors[`debts[${debtId}].beingHarrased`] &&
+              errors[`debts[${debtId}].beingHarrased`].message}
+          </Form.Control.Feedback>
+        </Form.Check>
       </Form.Group>
 
       {isBeingHarrased && (
@@ -261,21 +290,45 @@ const DebtForm = ({ debtId, register, unregister, setValue, watch }) => {
 
 DebtForm.propTypes = {
   debtId: PropTypes.number,
+  errors: PropTypes.object,
   register: PropTypes.func,
-  unregister: PropTypes.func,
   setValue: PropTypes.func,
+  unregister: PropTypes.func,
   watch: PropTypes.func
 }
 
-const DataDuesForm = ({ onSubmit = data => console.log(data) }) => {
-  const { register, handleSubmit, watch, setValue, unregister } = useForm()
-  const [debts, setDebts] = useState([Date.now()])
+DebtForm.defaultProps = {
+  errors: {}
+}
+
+const DataDuesForm = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    unregister,
+    errors,
+    getValues
+  } = useForm({
+    validationSchema: validationSchema
+  })
+
+  console.log(getValues())
+  console.log(errors)
+
+  const onSubmit = data => {
+    console.log('Data', data)
+    console.log('Errors', errors)
+  }
+  const [debtCount, setDebtCount] = useState(1)
 
   const addDebt = () => {
-    // This will give us pseudo unique values
-    // Better than using an index
-    const debtId = Date.now()
-    setDebts([...debts, debtId])
+    setDebtCount(debtCount + 1)
+  }
+
+  const removeDebt = () => {
+    setDebtCount(debtCount - 1)
   }
 
   return (
@@ -288,18 +341,26 @@ const DataDuesForm = ({ onSubmit = data => console.log(data) }) => {
             type="text"
             name="fullName"
             placeholder="Betsy DeVos"
-            ref={register({ required: true })}
+            ref={register}
+            isInvalid={!!errors.fullName}
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.fullName && errors.fullName.message}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             placeholder="betsy.devos@ed.gov"
             name="email"
-            ref={register({ required: true })}
+            ref={register}
+            isInvalid={!!errors.email}
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.email && errors.email.message}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="streetAddress">
@@ -308,7 +369,7 @@ const DataDuesForm = ({ onSubmit = data => console.log(data) }) => {
             type="text"
             placeholder="400 Maryland Avenue, SW. Washington, DC 20202"
             name="streetAddress"
-            ref={register({ required: true })}
+            ref={register()}
           />
         </Form.Group>
 
@@ -319,37 +380,56 @@ const DataDuesForm = ({ onSubmit = data => console.log(data) }) => {
             register={register}
             unregister={unregister}
             setValue={setValue}
+            isInvalid={!!errors.phoneNumber}
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.phoneNumber && errors.phoneNumber.message}
+          </Form.Control.Feedback>
         </Form.Group>
       </div>
 
       <div className="mt-4">
         <h3>Your debts</h3>
-        {debts.map((debtId, index) => (
+        {_.range(debtCount).map(debtIndex => (
           <>
-            {index > 0 && <hr />}
+            {debtIndex > 0 && <hr />}
             <DebtForm
-              debtId={debtId}
-              key={debtId}
+              debtId={debtIndex}
+              key={debtIndex}
               register={register}
               watch={watch}
               unregister={unregister}
               setValue={setValue}
+              errors={errors}
             />
           </>
         ))}
         <div>
-          <Button variant="secondary" onClick={addDebt}>
-            + Add another debt
-          </Button>
+          <Row>
+            <Col>
+              <Button variant="secondary" onClick={addDebt}>
+                + Add another debt
+              </Button>
+            </Col>
+            {debtCount > 1 && (
+              <Col className="text-left">
+                <Button variant="secondary" onClick={removeDebt}>
+                  - Remove debt
+                </Button>
+              </Col>
+            )}
+          </Row>
         </div>
       </div>
-
-      <div className="text-right">
-        <Button variant="primary" type="submit">
-          Save information
-        </Button>
-      </div>
+      <Row className="mt-2">
+        <Col>
+          <div className="text-right">
+            <Button variant="primary" type="submit">
+              Save information
+            </Button>
+          </div>
+        </Col>
+      </Row>
     </Form>
   )
 }

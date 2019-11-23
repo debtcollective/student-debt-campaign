@@ -1,128 +1,61 @@
-const schema = {
-  definitions: {
-    debt: {
-      type: 'object',
-      properties: {
-        debtType: {
-          type: 'string',
-          title: 'Debt type',
-          enum: [
-            'Student debt',
-            'Housing debt',
-            'Medical debt',
-            'Court or bail fees',
-            'Payday loans',
-            'Auto loan',
-            'Credit card debt',
-            'Other'
-          ]
-        },
-        amount: {
-          type: 'number',
-          title: 'Amount'
-        },
-        interestRate: {
-          type: 'number',
-          title: 'Interest rate',
-          maxLength: 4,
-          minLength: 1
-        },
-        creditor: {
-          type: 'string',
-          title: 'Creditor',
-          minLength: 10
-        },
-        accountStatus: {
-          type: 'string',
-          title: 'Account status',
-          enum: [
-            'In repayment',
-            'Late on payments',
-            'Stopped payments',
-            'Sent to collections'
-          ]
-        },
-        beingHarrased: {
-          type: 'boolean',
-          enumNames: ['Yes', 'No'],
-          title: 'Are you being harrased by creditors or debt collectors?'
-        },
-        harrasmentDescription: {
-          type: 'string',
-          title: 'Describe the harrasment'
-        }
-      },
-      required: ['debtType', 'amount', 'beingHarrased'],
-      dependencies: {
-        debtType: {
-          oneOf: [
-            {
-              properties: {
-                debtType: {
-                  enum: ['Student debt']
-                },
-                studentDebtType: {
-                  type: 'string',
-                  title: 'Student debt type',
-                  enum: [
-                    'Subsidized Stafford',
-                    'Unsubsidized Stafford',
-                    'Parent PLUS',
-                    'Private Student loans'
-                  ]
-                }
-              },
-              required: ['studentDebtType']
-            }
-          ]
-        }
-      }
-    }
-  },
-  type: 'object',
-  properties: {
-    personalInformation: {
-      title: 'Personal information',
-      type: 'object',
-      required: ['fullName', 'email'],
-      properties: {
-        fullName: {
-          type: 'string',
-          title: 'Full name'
-        },
-        email: {
-          type: 'string',
-          format: 'email',
-          title: 'Email'
-        },
-        streetAddress: {
-          type: 'string',
-          title: 'Street address',
-          minLength: 3
-        },
-        phoneNumber: {
-          type: 'string',
-          title: 'Phone number',
-          pattern: '^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$',
-          minLength: 10
-        }
-      }
-    },
-    debts: {
-      title: 'Your Debts',
-      description:
-        'Please provide as much information about each account as you can.',
-      type: 'array',
-      items: [
-        {
-          $ref: '#/definitions/debt'
-        }
-      ],
-      additionalItems: {
-        $ref: '#/definitions/debt'
-      }
-    }
-  }
-}
+import * as yup from 'yup'
 
-export default schema
+export const debtTypes = [
+  'Student debt',
+  'Housing debt',
+  'Medical debt',
+  'Court or bail fees',
+  'Payday loans',
+  'Auto loan',
+  'Credit card debt',
+  'Other'
+]
+export const studentDebtTypes = [
+  'Subsidized Stafford',
+  'Unsubsidized Stafford',
+  'Parent PLUS',
+  'Private Student loans'
+]
+export const accountStatuses = [
+  'In repayment',
+  'Late on payments',
+  'Stopped payments',
+  'Sent to collections'
+]
+
+export const unknown = 'Unknown'
+
+const phoneRegExp = /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/
+
+export const validationSchema = yup.object().shape({
+  fullName: yup
+    .string()
+    .min(5, 'Full name must be at least ${min} characters') // eslint-disable-line no-template-curly-in-string
+    .required('Full name is a required field'),
+  email: yup
+    .string()
+    .email('Must be a valid email')
+    .required('Email is a required field'),
+  streetAddress: yup.string(),
+  phoneNumber: yup.string().matches(phoneRegExp, {
+    message: 'Phone number must be valid',
+    excludeEmptyString: true
+  }),
+  debts: yup.array().of(
+    yup.object().shape({
+      debtType: yup
+        .mixed()
+        .oneOf([...debtTypes, unknown], 'Debt type is required'),
+      studentDebtType: yup
+        .mixed()
+        .oneOf([...studentDebtTypes, unknown], 'Student debt type is required'),
+      amount: yup.number().required('Amount is required'),
+      interestRate: yup.string().required('Interest rate is required'),
+      creditor: yup.string().required('Creditor is required'),
+      accountStatus: yup
+        .mixed()
+        .oneOf([...accountStatuses, unknown], 'Account status is required'),
+      beingHarrased: yup.string().required('You need to answer this question')
+    })
+  )
+})

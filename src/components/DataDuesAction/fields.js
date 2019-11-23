@@ -20,7 +20,9 @@ export const PhoneNumberField = ({
       type="tel"
       placeholder="(202) 401-3000"
       customInput={Form.Control}
-      onValueChange={({ value }) => setValue(name, value, true)}
+      onValueChange={({ formattedValue, value }) => {
+        setValue(name, formattedValue || value, true)
+      }}
       format="(###) ###-####"
       mask="_"
       {...props}

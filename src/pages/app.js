@@ -8,7 +8,6 @@ import ActionsPage from '../templates/actions-page'
 
 const App = () => {
   const { loading, data = {} } = useQuery(GET_USER)
-
   const isLoggedIn = data.currentUser && data.currentUser.id
 
   if (loading) {

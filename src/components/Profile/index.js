@@ -1,17 +1,15 @@
-// @flow
+/* eslint react/prop-types: 0 */
 
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { logout } from '../../api/auth'
 
-type Props = {
-  user: User
-}
-
-const Profile = ({ user, ...rest }: Props) => {
+const Profile = ({ user, ...rest }) => {
   const communityProfileURL = `${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`
 
-  return user.id ? (
+  if (!user.id) return null
+
+  return (
     <Dropdown>
       <Dropdown.Toggle variant="transparent" size="sm" id="dropdown-basic">
         <div id="user-profile" className="user-profile" data-testid="profile">
@@ -34,7 +32,7 @@ const Profile = ({ user, ...rest }: Props) => {
         <Dropdown.Item onClick={() => logout(user)}>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  ) : null
+  )
 }
 
 export default Profile

@@ -1,13 +1,14 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import has from 'lodash/has'
 
 import { trackOutboundLink } from '../../lib/metrics'
 import { Collapse } from 'react-bootstrap'
 import { Link } from 'gatsby'
 import Profile from '../Profile'
 
-const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`
+const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}`
 const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`
 const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`
 
@@ -15,7 +16,7 @@ const Header = ({ user }) => {
   const [scrollY, setScrollY] = useState(false)
   const [open, setOpen] = useState(false)
   const headerEl = useRef(null)
-  const isLoggedIn = user.id
+  const isLoggedIn = has(user, 'id')
 
   const isScrolled =
     headerEl.current && scrollY > headerEl.current.scrollHeight / 2
@@ -92,7 +93,7 @@ const Header = ({ user }) => {
                 {isLoggedIn ? (
                   <Profile user={user} />
                 ) : (
-                  <>
+                  <div data-testid="session-links">
                     {/* >= lg */}
                     <a
                       href={signupSSOUrl}
@@ -117,7 +118,7 @@ const Header = ({ user }) => {
                     >
                       Login
                     </a>
-                  </>
+                  </div>
                 )}
               </div>
             </div>

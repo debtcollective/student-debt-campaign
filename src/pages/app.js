@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { Router } from '@reach/router'
+import { Router, Redirect } from '@reach/router'
 import Layout from '../components/Layout'
 import PrivateRoute from '../components/PrivateRoute'
 import { GET_USER } from '../api'
@@ -18,6 +18,7 @@ const App = () => {
       <Header user={data.currentUser} />
       {!loading && (
         <Router>
+          <Redirect from="/app" to="/app/actions" />
           <PrivateRoute
             path="/app/actions"
             component={ActionsPage}

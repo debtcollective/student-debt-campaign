@@ -1,0 +1,18 @@
+[ignore]
+.*/coverage/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.file_ext=.js
+module.file_ext=.scss
+module.name_mapper='^~/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+esproposal.optional_chaining=enable
+
+[untyped]
+
+[strict]

@@ -1,3 +1,5 @@
+// @flow
+
 import React, { useState, useEffect } from 'react'
 import has from 'lodash/has'
 import PropTypes from 'prop-types'
@@ -6,9 +8,17 @@ import Markdown from 'markdown-to-jsx'
 import CampaignAction from '../../components/CampaignAction'
 import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from './api'
 
-const CampaignActions = ({ user, campaignId }) => {
+type Props = {
+  user: User,
+  campaignId: string
+}
+
+const CampaignActions = ({ user, campaignId }: Props) => {
   // FIXME: flag approach needs to be removed throught #46
-  const [temporalFlagForMutationUpdate, setTemporalFlagForMutationUpdate] = useState(true)
+  const [
+    temporalFlagForMutationUpdate,
+    setTemporalFlagForMutationUpdate
+  ] = useState(true)
   const [completedActions, setCompletedActions] = useState({})
   const [completeAction, { data: mutationResponse }] = useMutation(
     UPDATE_USER_ACTION

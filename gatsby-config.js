@@ -14,7 +14,8 @@ if (isProduction) {
 module.exports = {
   siteMetadata: {
     title: 'Student Debt Strike | Join today!',
-    description: 'Join the movement to end Student Debt. #CancelStudentDebt #CollegeForAll',
+    description:
+      'Join the movement to end Student Debt. #CancelStudentDebt #CollegeForAll',
     author: 'Debt Collective',
     twitterUsername: '@0debtzone',
     facebookPage: 'https://www.facebook.com/DebtCollective',
@@ -22,8 +23,14 @@ module.exports = {
     url: siteUrl
   },
   plugins: [
+    'gatsby-plugin-flow',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    {
+      // all paths prefixed by /app/ will render the route described in src/pages/app.js
+      resolve: 'gatsby-plugin-create-client-paths',
+      options: { prefixes: ['/app/*'] }
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',

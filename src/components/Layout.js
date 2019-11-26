@@ -1,17 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+
+import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
-import '../styles/index.scss'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+import '../styles/index.scss'
 
 if (typeof window !== 'undefined') {
   require('jquery')
   require('bootstrap/js/dist/alert')
 }
 
-const TemplateWrapper = ({ children }) => {
+type Props = {
+  children: React.Node
+}
+
+const TemplateWrapper = ({ children }: Props) => {
   const { title, description } = useSiteMetadata()
   return (
     <>
@@ -49,10 +54,6 @@ const TemplateWrapper = ({ children }) => {
       <Footer />
     </>
   )
-}
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.node
 }
 
 export default TemplateWrapper

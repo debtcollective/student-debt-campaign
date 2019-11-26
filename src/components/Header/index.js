@@ -1,51 +1,14 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import has from 'lodash/has'
 
 import { trackOutboundLink } from '../../lib/metrics'
-import { Collapse, Dropdown } from 'react-bootstrap'
+import { Collapse } from 'react-bootstrap'
 import { Link } from 'gatsby'
-import { logout } from './api'
+import Profile from '../Profile'
 
-const Profile = ({ user, ...rest }) => {
-  const communityProfileURL = `${process.env.GATSBY_COMMUNITY_URL}/u/${user.username}/`
-
-  return user.id ? (
-    <Dropdown>
-      <Dropdown.Toggle variant="transparent" size="sm" id="dropdown-basic">
-        <div id="user-profile" className="user-profile" data-testid="profile">
-          <img
-            className="rounded-circle"
-            src={user.avatar_url}
-            alt={user.username}
-          />
-        </div>
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item
-          href={communityProfileURL}
-          target="_blank"
-          rel="noopener noreferrer">
-          Hi, {user.username}
-        </Dropdown.Item>
-        <Dropdown.Item onClick={() => logout(user)}>
-          Logout
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  ) : null
-}
-
-Profile.propTypes = {
-  user: PropTypes.shape({
-    avatar_url: PropTypes.string,
-    username: PropTypes.string,
-    id: PropTypes.string
-  })
-}
-
-const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}/actions`
+const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}`
 const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`
 const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`
 
@@ -53,7 +16,7 @@ const Header = ({ user }) => {
   const [scrollY, setScrollY] = useState(false)
   const [open, setOpen] = useState(false)
   const headerEl = useRef(null)
-  const isLoggedIn = user.id
+  const isLoggedIn = has(user, 'id')
 
   const isScrolled =
     headerEl.current && scrollY > headerEl.current.scrollHeight / 2
@@ -105,6 +68,13 @@ const Header = ({ user }) => {
                 </Link>
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
+                    {isLoggedIn && (
+                      <li className="nav-item">
+                        <Link to="/app/actions" className="nav-link">
+                          Actions
+                        </Link>
+                      </li>
+                    )}
                     <li className="nav-item">
                       <Link to="#faq" className="nav-link">
                         FAQ
@@ -130,14 +100,14 @@ const Header = ({ user }) => {
                 {isLoggedIn ? (
                   <Profile user={user} />
                 ) : (
-                  <>
+                  <div data-testid="session-links" className="d-flex">
                     {/* >= lg */}
                     <a
                       href={signupSSOUrl}
                       onClick={trackOutboundLink}
                       className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
                     >
-                        Sign up
+                      Sign up
                     </a>
                     {/* >= md */}
                     <a
@@ -145,7 +115,7 @@ const Header = ({ user }) => {
                       onClick={trackOutboundLink}
                       className="btn btn-primary btn-lg d-none d-md-block btn-session"
                     >
-                        Login
+                      Login
                     </a>
                     {/* small */}
                     <a
@@ -153,9 +123,9 @@ const Header = ({ user }) => {
                       onClick={trackOutboundLink}
                       className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
                     >
-                        Login
+                      Login
                     </a>
-                  </>
+                  </div>
                 )}
               </div>
             </div>

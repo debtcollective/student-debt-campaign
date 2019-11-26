@@ -14,6 +14,7 @@ describe('when logged user', () => {
   it('renders user profile', () => {
     const wrapper = render(<Header user={fakeUser} />)
 
+    expect(wrapper.queryByTestId('session-links')).not.toBeInTheDocument()
     expect(wrapper.queryByTestId('profile')).toBeInTheDocument()
   })
 })

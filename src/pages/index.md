@@ -16,7 +16,7 @@ hero:
         alt: support
         src: /img/handshake.png
       title: Support!
-      join_section_id: "solidarity-with-strikes"
+      join_section_id: "solidarity-with-strikers"
   title:
     - line: End student debt!
     - line: Join the strike!
@@ -117,7 +117,7 @@ join_campaign:
     image: /img/newspaper.png
     remark: Get actions when you add your name.
     title: of us are threatening to strike!
-  - id: "solidarity-with-strikes"
+  - id: "solidarity-with-strikers"
     background: /img/image_1.png
     colour: green
     content: >-

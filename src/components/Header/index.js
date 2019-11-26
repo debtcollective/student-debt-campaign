@@ -76,7 +76,7 @@ const Header = ({ user }) => {
                       </li>
                     )}
                     <li className="nav-item">
-                      <Link to="#faq" className="nav-link">
+                      <Link to="/#faq" className="nav-link">
                         FAQ
                       </Link>
                     </li>
@@ -136,7 +136,7 @@ const Header = ({ user }) => {
         <div id="slider-nav" className="slider-nav d-xl-none">
           <ul className="nav flex-column" role="navigation">
             <li className="nav-item">
-              <Link to="#faq" className="nav-link">
+              <Link to="/#faq" className="nav-link">
                 FAQ
               </Link>
             </li>

@@ -70,7 +70,6 @@ export const mocks = [
     request: {
       query: GET_USER_ACTIONS,
       variables: {
-        campaignId,
         userId
       }
     },

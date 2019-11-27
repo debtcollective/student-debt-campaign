@@ -10,8 +10,8 @@ export const UPDATE_USER_ACTION = gql`
 `
 
 export const GET_USER_ACTIONS = gql`
-  query getUserActions($userId: ID!, $campaignId: ID!) {
-    userActions(userId: $userId, campaignId: $campaignId) {
+  query getUserActions($userId: ID!) {
+    userActions(userId: $userId) {
       actionId
       completed
       id

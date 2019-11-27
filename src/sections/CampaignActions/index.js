@@ -9,11 +9,10 @@ import CampaignAction from '../../components/CampaignAction'
 import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from './api'
 
 type Props = {
-  user: User,
-  campaignId: string
+  user: User
 }
 
-const CampaignActions = ({ user, campaignId }: Props) => {
+const CampaignActions = ({ user }: Props) => {
   // FIXME: flag approach needs to be removed throught #46
   const [
     temporalFlagForMutationUpdate,
@@ -28,7 +27,7 @@ const CampaignActions = ({ user, campaignId }: Props) => {
     error: queryError,
     data: queryResponse
   } = useQuery(GET_USER_ACTIONS, {
-    variables: { campaignId, userId: user.id }
+    variables: { userId: user.id }
   })
 
   useEffect(() => {

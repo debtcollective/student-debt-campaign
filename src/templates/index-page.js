@@ -28,11 +28,12 @@ const IndexPage = ({ data }) => {
   } = frontmatter
 
   const { data: userQueryResponse = {} } = useQuery(GET_USER)
+  const user = userQueryResponse.currentUser || {}
 
   return (
     <Layout>
       <SEO />
-      <Header user={userQueryResponse.currentUser} />
+      <Header user={user} />
       <Hero title={hero.title} actions={hero.actions} social={social} />
       <Informative title={demand.title} remark={demand.remark}>
         {demand.content}
@@ -59,6 +60,7 @@ const IndexPage = ({ data }) => {
             colour={colour}
             remark={remark}
             feed={feed}
+            user={user}
           >
             {content}
           </Join>

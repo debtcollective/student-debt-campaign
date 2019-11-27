@@ -308,18 +308,13 @@ const DataDuesForm = () => {
     watch,
     setValue,
     unregister,
-    errors,
-    getValues
+    errors
   } = useForm({
     validationSchema: validationSchema
   })
 
-  console.log(getValues())
-  console.log(errors)
-
   const onSubmit = data => {
-    console.log('Data', data)
-    console.log('Errors', errors)
+    console.log(data)
   }
   const [debtCount, setDebtCount] = useState(1)
 
@@ -391,18 +386,17 @@ const DataDuesForm = () => {
       <div className="mt-4">
         <h3>Your debts</h3>
         {_.range(debtCount).map(debtIndex => (
-          <>
+          <div key={debtIndex}>
             {debtIndex > 0 && <hr />}
             <DebtForm
               debtId={debtIndex}
-              key={debtIndex}
               register={register}
               watch={watch}
               unregister={unregister}
               setValue={setValue}
               errors={errors}
             />
-          </>
+          </div>
         ))}
         <div>
           <Row>

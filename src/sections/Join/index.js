@@ -1,13 +1,40 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+
+import * as React from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import Markdown from 'markdown-to-jsx'
 import { ADD_USER_TO_CAMPAIGN } from './api'
+import { GET_USER } from '../../api/graphql'
 
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
+const GATSBY_HOST_URL = process.env.GATSBY_HOST_URL || ''
+const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL || ''
+const redirectParam = `return_url=${GATSBY_HOST_URL}`
+const loginSSOUrl = `${GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`
+
+type FeedEntry = {
+  picture: { publicURL: string },
+  username: string,
+  status: string
+}
+
+type Props = {
+  user: User,
+  background: string,
+  children: React.Node,
+  colour: string,
+  count: number,
+  feed: Array<FeedEntry>,
+  id: string,
+  image: string,
+  remark: string,
+  title: string
+}
+
 const Join = ({
+  user,
   background,
   children,
   colour,
@@ -17,7 +44,7 @@ const Join = ({
   image,
   remark,
   title
-}) => {
+}: Props) => {
   const [joinToCampaign] = useMutation(ADD_USER_TO_CAMPAIGN)
 
   return (
@@ -47,18 +74,43 @@ const Join = ({
                   <strong>{remark}</strong>
                 </p>
                 <div className="join__cta">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() =>
-                      joinToCampaign({
-                        variables: {
-                          motive: id
-                        }
-                      })
+                  {(() => {
+                    if (!user.id) {
+                      return (
+                        <a className="btn btn-primary" href={loginSSOUrl}>
+                          Join us to add your name
+                        </a>
+                      )
                     }
-                  >
-                    Add your name
-                  </button>
+
+                    if (user.campaigns.length) {
+                      return (
+                        <div className="btn btn-primary disabled">
+                          Thanks for add your name!
+                        </div>
+                      )
+                    }
+
+                    return (
+                      <button
+                        className="btn btn-primary"
+                        onClick={() =>
+                          joinToCampaign({
+                            variables: {
+                              motive: id
+                            },
+                            refetchQueries: [
+                              {
+                                query: GET_USER
+                              }
+                            ]
+                          })
+                        }
+                      >
+                        Add your name
+                      </button>
+                    )
+                  })()}
                 </div>
               </div>
               <div className="our-voices">
@@ -88,25 +140,6 @@ const Join = ({
       </div>
     </section>
   )
-}
-
-Join.propTypes = {
-  feed: PropTypes.arrayOf(
-    PropTypes.shape({
-      picture: PropTypes.any,
-      status: PropTypes.string,
-      username: PropTypes.string
-    })
-  ),
-  background: PropTypes.any,
-  children: PropTypes.string,
-  colour: PropTypes.string,
-  content: PropTypes.string,
-  count: PropTypes.number,
-  id: PropTypes.string,
-  image: PropTypes.any,
-  remark: PropTypes.string,
-  title: PropTypes.string
 }
 
 export default Join

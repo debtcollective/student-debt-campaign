@@ -336,7 +336,7 @@ const DataDuesForm = () => {
   )
 
   const onSubmit = data => {
-    createDataDuesAction(data)
+    createDataDuesAction({ variables: { data } })
   }
 
   const [debtCount, setDebtCount] = useState(1)
@@ -349,10 +349,11 @@ const DataDuesForm = () => {
     setDebtCount(debtCount - 1)
   }
 
-  const { userAction } = data
-
-  if (userAction && userAction.completed) {
-    return DataDuesThankYou
+  // early return
+  // render a thank you message instead of the form
+  const { createDataDuesAction: payload } = data
+  if (payload && payload.userAction && payload.userAction.completed) {
+    return <DataDuesThankYou />
   }
 
   return (

@@ -51,15 +51,15 @@ export const CurrencyField = ({
 
   return (
     <NumberFormat
-      type="number"
-      placeholder="$38,000"
-      isNumericString={true}
-      onValueChange={({ value }) => setValue(name, value, true)}
-      customInput={Form.Control}
-      thousandSeparator={true}
       allowNegative={false}
+      customInput={Form.Control}
       decimalScale={2}
+      isNumericString={true}
+      onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
+      placeholder="$38,000"
       prefix={'$'}
+      thousandSeparator={true}
+      type="number"
       {...props}
     />
   )
@@ -86,16 +86,17 @@ export const PercentageField = ({
 
   return (
     <NumberFormat
-      placeholder="4.53%"
+      allowNegative={false}
       customInput={Form.Control}
-      onValueChange={({ value }) => setValue(name, value, true)}
-      thousandSeparator={false}
       decimalScale={2}
+      isNumericString={true}
+      onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
+      placeholder="4.53%"
       suffix="%"
-      isAllowed={values => {
-        const { formattedValue, floatValue } = values
-        return formattedValue === '' || floatValue <= 100
-      }}
+      thousandSeparator={false}
+      isAllowed={({ formattedValue, floatValue }) =>
+        formattedValue === '' || floatValue <= 100
+      }
       {...props}
     />
   )

@@ -248,7 +248,7 @@ const DebtForm = ({
           type="radio"
           id={`beingHarrasedNo${debtId}`}
           name={`debts[${debtId}].beingHarrased`}
-          value={true}
+          value="true"
           ref={register}
           label="Yes"
           isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
@@ -262,7 +262,7 @@ const DebtForm = ({
             isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
             type="radio"
             ref={register}
-            value={false}
+            value="false"
           />
           <Form.Check.Label>No</Form.Check.Label>
           <Form.Control.Feedback type="invalid">

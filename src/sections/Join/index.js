@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react'
+import { Link, navigate } from 'gatsby'
 import { useMutation } from '@apollo/react-hooks'
 import Markdown from 'markdown-to-jsx'
 import { ADD_USER_TO_CAMPAIGN } from './api'
@@ -45,7 +46,11 @@ const Join = ({
   remark,
   title
 }: Props) => {
-  const [joinToCampaign] = useMutation(ADD_USER_TO_CAMPAIGN)
+  const [joinToCampaign] = useMutation(ADD_USER_TO_CAMPAIGN, {
+    onCompleted: data => {
+      navigate('/data-dues')
+    }
+  })
 
   return (
     <section
@@ -85,9 +90,9 @@ const Join = ({
 
                     if (user.campaigns.length) {
                       return (
-                        <div className="btn btn-primary disabled">
-                          Thanks for add your name!
-                        </div>
+                        <Link className="btn btn-primary" to="/data-dues">
+                          Go To Actions
+                        </Link>
                       )
                     }
 

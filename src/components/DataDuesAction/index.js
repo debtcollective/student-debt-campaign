@@ -25,9 +25,10 @@ const DataDuesHeader = () => (
     <Row className="mt-4 mb-5">
       <Col>
         <p>
-          Thank you for offering your data to the Debt Collective. The more info
-          we have about the debts many of us have in common, the better we can
-          fight back together.
+          Thank you for joining the Campaign! To help us with our research we
+          are asking strikers information about the debts many of us have in
+          common. The more information we have, the better we can fight back
+          together.
         </p>
         <p className="mt-2">
           All information provided will be securely stored in our servers. We

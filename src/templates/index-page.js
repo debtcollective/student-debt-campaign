@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { graphql } from 'gatsby'
-
+import { useQuery } from '@apollo/react-hooks'
 import Layout from '../components/Layout'
 import Hero from '../sections/Hero'
 import Informative from '../sections/Informative'
@@ -10,6 +10,7 @@ import Join from '../sections/Join'
 import Notification from '../sections/Notification'
 import FAQ from '../sections/FAQ'
 import CTA from '../sections/CTA'
+import { GET_USER } from '../api'
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
@@ -22,6 +23,9 @@ const IndexPage = ({ data }) => {
     demand,
     join_campaign: joinCampaign
   } = frontmatter
+
+  const { data: userQueryResponse = {} } = useQuery(GET_USER)
+  const user = userQueryResponse.currentUser || {}
 
   return (
     <Layout>
@@ -51,6 +55,7 @@ const IndexPage = ({ data }) => {
             colour={colour}
             remark={remark}
             feed={feed}
+            user={user}
           >
             {content}
           </Join>

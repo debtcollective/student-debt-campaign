@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   section > & {
     padding-bottom: ($spacer * 3);
     padding-top: ($spacer * 3);
@@ -19,4 +19,8 @@
     padding-bottom: ($spacer * 6);
     padding-top: ($spacer * 6);
   }
+}
+
+.main {
+  padding-top: 8rem;
 }

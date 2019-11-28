@@ -17,3 +17,12 @@ export const GET_USER = gql`
     }
   }
 `
+
+export const CREATE_DATA_DUES_ACTION = gql`
+  mutation createDataDuesAction($data: JSONObject!) {
+    createDataDuesAction(data: $data) {
+      errors
+      userAction
+    }
+  }
+`

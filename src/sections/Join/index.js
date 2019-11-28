@@ -34,7 +34,7 @@ type Props = {
 }
 
 const Join = ({
-  user,
+  user = {},
   background,
   children,
   colour,

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
+import { useMutation } from '@apollo/react-hooks'
 import _ from 'lodash'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
+import { CREATE_DATA_DUES_ACTION } from '../../api'
 import {
   debtTypes,
   studentDebtTypes,
@@ -11,6 +13,7 @@ import {
   unknown,
   validationSchema
 } from './schema'
+import './styles.scss'
 
 const DataDuesHeader = () => (
   <>
@@ -19,17 +22,33 @@ const DataDuesHeader = () => (
         <h1 className="text-center">Data Dues</h1>
       </Col>
     </Row>
-    <Row className="mt-4">
+    <Row className="mt-4 mb-5">
       <Col>
         <p>
-          Thank you for offering your data to the Debt Collective. The more info
-          we have about the debts many of us have in common, the better we can
-          fight back together.
+          Thank you for joining the Campaign! To help us with our research we
+          are asking strikers information about the debts many of us have in
+          common. The more information we have, the better we can fight back
+          together.
         </p>
         <p className="mt-2">
           All information provided will be securely stored in our servers. We
           won&apos;t share this information with corporations.
         </p>
+      </Col>
+    </Row>
+  </>
+)
+
+const DataDuesThankYou = () => (
+  <>
+    <Row>
+      <Col>
+        <h2 className="text-center">Thank you! 🎉</h2>
+      </Col>
+    </Row>
+    <Row className="mt-4 mb-5">
+      <Col>
+        <p>We will keep your data safe and only use it for research.</p>
       </Col>
     </Row>
   </>
@@ -248,7 +267,7 @@ const DebtForm = ({
           type="radio"
           id={`beingHarrasedNo${debtId}`}
           name={`debts[${debtId}].beingHarrased`}
-          value={true}
+          value="true"
           ref={register}
           label="Yes"
           isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
@@ -262,7 +281,7 @@ const DebtForm = ({
             isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
             type="radio"
             ref={register}
-            value={false}
+            value="false"
           />
           <Form.Check.Label>No</Form.Check.Label>
           <Form.Control.Feedback type="invalid">
@@ -308,19 +327,19 @@ const DataDuesForm = () => {
     watch,
     setValue,
     unregister,
-    errors,
-    getValues
+    errors
   } = useForm({
     validationSchema: validationSchema
   })
 
-  console.log(getValues())
-  console.log(errors)
+  const [createDataDuesAction, { data = {}, loading }] = useMutation(
+    CREATE_DATA_DUES_ACTION
+  )
 
   const onSubmit = data => {
-    console.log('Data', data)
-    console.log('Errors', errors)
+    createDataDuesAction({ variables: { data } })
   }
+
   const [debtCount, setDebtCount] = useState(1)
 
   const addDebt = () => {
@@ -331,10 +350,17 @@ const DataDuesForm = () => {
     setDebtCount(debtCount - 1)
   }
 
+  // early return
+  // render a thank you message instead of the form
+  const { createDataDuesAction: payload } = data
+  if (payload && payload.userAction && payload.userAction.completed) {
+    return <DataDuesThankYou />
+  }
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} className="data-dues-form">
       <div className="mt-4">
-        <h3>Personal information</h3>
+        <h3 className="mb-2">Personal information</h3>
         <Form.Group controlId="fullName">
           <Form.Label>Full name</Form.Label>
           <Form.Control
@@ -389,42 +415,39 @@ const DataDuesForm = () => {
       </div>
 
       <div className="mt-4">
-        <h3>Your debts</h3>
+        <h3 className="mb-2">Your debts</h3>
         {_.range(debtCount).map(debtIndex => (
-          <>
+          <div key={debtIndex}>
             {debtIndex > 0 && <hr />}
             <DebtForm
               debtId={debtIndex}
-              key={debtIndex}
               register={register}
               watch={watch}
               unregister={unregister}
               setValue={setValue}
               errors={errors}
             />
-          </>
+          </div>
         ))}
         <div>
           <Row>
             <Col>
-              <Button variant="secondary" onClick={addDebt}>
-                + Add another debt
+              <Button variant="secondary" className="mr-5" onClick={addDebt}>
+                Add debt
               </Button>
-            </Col>
-            {debtCount > 1 && (
-              <Col className="text-left">
+              {debtCount > 1 && (
                 <Button variant="secondary" onClick={removeDebt}>
-                  - Remove debt
+                  Remove debt
                 </Button>
-              </Col>
-            )}
+              )}
+            </Col>
           </Row>
         </div>
       </div>
       <Row className="mt-2">
         <Col>
           <div className="text-right">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" disabled={loading}>
               Save information
             </Button>
           </div>

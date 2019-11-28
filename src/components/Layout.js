@@ -2,9 +2,13 @@
 
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
+import { useQuery } from '@apollo/react-hooks'
+import Footer from './Footer'
+import Header from './Header'
+import SEO from './SEO'
+import useSiteMetadata from './SiteMetadata'
+import { GET_USER } from '../api'
 import '../styles/index.scss'
 
 if (typeof window !== 'undefined') {
@@ -18,8 +22,13 @@ type Props = {
 
 const TemplateWrapper = ({ children }: Props) => {
   const { title, description } = useSiteMetadata()
+  const { data: userQueryResponse = {} } = useQuery(GET_USER)
+  const user = userQueryResponse.currentUser || {}
+
   return (
     <>
+      <SEO />
+      <Header user={user} />
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -50,7 +59,9 @@ const TemplateWrapper = ({ children }: Props) => {
         />
         <meta name="theme-color" content="#fff" />
       </Helmet>
-      {children}
+      <main id="main" className="main">
+        {children}
+      </main>
       <Footer />
     </>
   )

@@ -1,12 +1,9 @@
 /* eslint react/prop-types: 0 */
 
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
 import { graphql } from 'gatsby'
-
+import { useQuery } from '@apollo/react-hooks'
 import Layout from '../components/Layout'
-import Header from '../components/Header'
-import SEO from '../components/SEO'
 import Hero from '../sections/Hero'
 import Informative from '../sections/Informative'
 import Join from '../sections/Join'
@@ -32,8 +29,6 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO />
-      <Header user={user} />
       <Hero title={hero.title} actions={hero.actions} social={social} />
       <Informative title={demand.title} remark={demand.remark}>
         {demand.content}

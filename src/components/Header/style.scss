@@ -43,8 +43,7 @@
   flex-direction: column;
   height: $header-height-sm;
   justify-content: center;
-  transition: height 0.216s ease, background-color 0.216s ease,
-    border-color 0.216s ease;
+  transition: height 0.216s ease;
   transition-delay: 0.216s;
 
   &-col {
@@ -61,11 +60,11 @@
   &.active,
   &.slider-nav-open {
     background: $beige;
-    border-color: gray("500");
+    border-color: gray('500');
     height: $header-height-sm * $active-proportion;
 
     .logo {
-      transform: unquote("scale(#{$active-proportion})");
+      transform: unquote('scale(#{$active-proportion})');
     }
   }
 
@@ -184,7 +183,7 @@ $stripe-width-md: 4.6875rem;
   &,
   &::before,
   &::after {
-    background: gray("900");
+    background: gray('900');
     height: $stripe-height-sm;
     width: 100%;
     transform: rotate(0deg);
@@ -193,7 +192,7 @@ $stripe-width-md: 4.6875rem;
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
   }
 
@@ -220,7 +219,7 @@ $stripe-width-md: 4.6875rem;
 
 // bootstrap doesn't provide a way to modify the colors for nav-link
 .nav-link {
-  color: gray("900");
+  color: gray('900');
   font-weight: 600;
 }
 
@@ -236,17 +235,17 @@ $stripe-width-md: 4.6875rem;
   transition-delay: 0s;
 
   &.show {
-    transform: unquote("translate3d(0, #{$header-height-sm * 0.69}, 0)");
+    transform: unquote('translate3d(0, #{$header-height-sm * 0.69}, 0)');
     transition-delay: 0.216s;
 
     @include media-breakpoint-up(md) {
-      transform: unquote("translate3d(0, #{$header-height-md * 0.69}, 0)");
+      transform: unquote('translate3d(0, #{$header-height-md * 0.69}, 0)');
       transition-delay: 0.216s;
     }
   }
 
   .nav-item {
-    border-bottom: 0.0625rem solid gray("800");
+    border-bottom: 0.0625rem solid gray('800');
   }
 
   .nav-link {

@@ -25,7 +25,9 @@ const FAQ = ({ entries }) => (
                 className="collapsable-list__item"
               >
                 <summary className="summary">{question}</summary>
-                <Markdown className="content">{answer}</Markdown>
+                <Markdown className="content" options={{ forceBlock: true }}>
+                  {answer}
+                </Markdown>
               </details>
             ))}
           </div>

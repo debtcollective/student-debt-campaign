@@ -37,42 +37,35 @@ const Hero = ({ title, actions, social }) => (
       <div className="row">
         <div className="col">
           <div className="action-circle-wrap">
-            {actions.map(({ join_section_id: joinSectionId, title, image }, index) => (
-              <Link
-                duration={500}
-                key={joinSectionId}
-                smooth={true}
-                to={joinSectionId}
-              >
-                <div className={`action-circle bg-${getBg(index)}`}>
-                  <div className="action-circle__img">
-                    <img
-                      src={
-                        image.src.childImageSharp
-                          ? image.src.childImageSharp.fluid.src
-                          : image.src
-                      }
-                      alt={image.alt}
-                    />
+            {actions.map(
+              ({ join_section_id: joinSectionId, title, image }, index) => (
+                <Link
+                  duration={500}
+                  key={joinSectionId}
+                  smooth={true}
+                  to={joinSectionId}
+                >
+                  <div className={`action-circle bg-${getBg(index)}`}>
+                    <div className="action-circle__img">
+                      <img
+                        src={
+                          image.src.childImageSharp
+                            ? image.src.childImageSharp.fluid.src
+                            : image.src
+                        }
+                        alt={image.alt}
+                      />
+                    </div>
+                    <p className="action-circle__title">{title}</p>
                   </div>
-                  <p className="action-circle__title">{title}</p>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            )}
           </div>
         </div>
       </div>
       <div className="row d-none d-xl-flex">
-        <div className="col">
-          <div className="social-icons">
-            <p className="share-this">{social.action}</p>
-            {social.accounts.map(({ logo, username, url }, index) => (
-              <a key={`social-${index}`} href={url}>
-                <IconWrap src={logo.publicURL} alt={username} />
-              </a>
-            ))}
-          </div>
-        </div>
+        <div className="col">{/* allow to push arrow to center */}</div>
         <div className="col">
           <div className="d-flex justify-content-center">
             <IconWrap role="button" src="/img/arrow-down.svg" />

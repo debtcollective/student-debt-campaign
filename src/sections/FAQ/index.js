@@ -1,4 +1,5 @@
 import React from 'react'
+import Markdown from 'markdown-to-jsx'
 import PropTypes from 'prop-types'
 
 if (typeof window !== 'undefined') {
@@ -24,7 +25,7 @@ const FAQ = ({ entries }) => (
                 className="collapsable-list__item"
               >
                 <summary className="summary">{question}</summary>
-                <p className="content">{answer}</p>
+                <Markdown className="content">{answer}</Markdown>
               </details>
             ))}
           </div>

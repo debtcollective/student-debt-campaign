@@ -6,14 +6,17 @@ hero:
         alt: fist
         src: /img/fist.png
       title: Declare!
+      join_section_id: "already-on-strike"
     - image:
         alt: prepare
         src: /img/newspaper.png
       title: Prepare!
+      join_section_id: "threatening-on-strike"
     - image:
         alt: support
         src: /img/handshake.png
       title: Support!
+      join_section_id: "solidarity-with-strikers"
   title:
     - line: End student debt!
     - line: Join the strike!
@@ -43,7 +46,8 @@ demand:
     We demand full cancellation of federal & private student loans. Free public
     college for all!
 join_campaign:
-  - background: /img/image_3.png
+  - id: "already-on-strike"
+    background: /img/image_3.png
     colour: purple
     content: >-
       We are not paying our student loans this means we are already in default
@@ -77,7 +81,8 @@ join_campaign:
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
-  - background: /img/image_2.png
+  - id: "threatening-on-strike"
+    background: /img/image_2.png
     colour: yellow
     content: >-
       We are prepared to stop paying our loans in the future if our demands are
@@ -112,7 +117,8 @@ join_campaign:
     image: /img/newspaper.png
     remark: Get actions when you add your name.
     title: of us are threatening to strike!
-  - background: /img/image_1.png
+  - id: "solidarity-with-strikers"
+    background: /img/image_1.png
     colour: green
     content: >-
       We do not have student loans, but we are standing in solidarity with all

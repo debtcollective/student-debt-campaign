@@ -1,11 +1,22 @@
+// @flow
+
 import React from 'react'
-import PropTypes from 'prop-types'
+import Markdown from 'markdown-to-jsx'
 
 if (typeof window !== 'undefined') {
   require('details-polyfill')
 }
 
-const FAQ = ({ entries }) => (
+type FAQEntry = {
+  question: string,
+  answer: string
+}
+
+type Props = {
+  entries: Array<FAQEntry>
+}
+
+const FAQ = ({ entries }: Props) => (
   <section id="faq" className="faq">
     <div className="container-fluid distribute-rows">
       <div className="row">
@@ -24,7 +35,9 @@ const FAQ = ({ entries }) => (
                 className="collapsable-list__item"
               >
                 <summary className="summary">{question}</summary>
-                <p className="content">{answer}</p>
+                <Markdown className="content" options={{ forceBlock: true }}>
+                  {answer}
+                </Markdown>
               </details>
             ))}
           </div>
@@ -33,14 +46,5 @@ const FAQ = ({ entries }) => (
     </div>
   </section>
 )
-
-FAQ.propTypes = {
-  entries: PropTypes.arrayOf(
-    PropTypes.shape({
-      question: PropTypes.string,
-      answer: PropTypes.string
-    })
-  )
-}
 
 export default FAQ

@@ -29,8 +29,9 @@ social:
 notification:
   date: 'Sun, Sep 22, 2019 12:00 AM'
   description: >-
-    **NEW** Lorem ipsum dolor sit amet, consectetur adipiscin elit. Ut consequat
-    sapien a rhoncus convallis.
+    **NEW** Presidential candidate Sen. Bernie Sanders has proposed  a plan to
+    eliminate the $1.6 trillion in student-loan debt held in the US and make all
+    public higher education tuition-free!
   title: We are winning
 demand:
   content: >-

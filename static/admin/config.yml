@@ -30,6 +30,7 @@ collections:
                 widget: "list"
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
+                  - { label: "id", name: "id", widget: "string" }
                   - label: "Image"
                     name: "image"
                     widget: "object"
@@ -82,6 +83,9 @@ collections:
             name: "join_campaign"
             widget: "list"
             fields:
+              - label: "id"
+                name: "id"
+                widget: "string"
               - label: "Image"
                 name: "image"
                 widget: "image"

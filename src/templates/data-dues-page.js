@@ -3,7 +3,11 @@ import Layout from '../components/Layout'
 import DataDuesAction from '../components/DataDuesAction'
 
 export const DataDuesPageTemplate = () => {
-  return <DataDuesAction />
+  return (
+    <div id="data-dues-page" className="data-dues-page">
+      <DataDuesAction />
+    </div>
+  )
 }
 
 const DataDuesPage = () => {

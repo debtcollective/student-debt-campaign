@@ -15,7 +15,7 @@ import {
 } from './schema'
 
 const DataDuesHeader = () => (
-  <div id="data-dues-page" className="data-dues-page">
+  <>
     <Row>
       <Col>
         <h1 className="text-center">Data Dues</h1>
@@ -35,7 +35,7 @@ const DataDuesHeader = () => (
         </p>
       </Col>
     </Row>
-  </div>
+  </>
 )
 
 const DataDuesThankYou = () => (

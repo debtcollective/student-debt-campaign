@@ -20,3 +20,10 @@
     padding-top: ($spacer * 6);
   }
 }
+
+.main {
+  &:not(.no-pad) {
+    // leave extra space for the header to be placed
+    padding-top: $header-height-md;
+  }
+}

@@ -9,6 +9,7 @@ import Header from './Header'
 import SEO from './SEO'
 import useSiteMetadata from './SiteMetadata'
 import { GET_USER } from '../api'
+import classNames from 'classnames'
 import '../styles/index.scss'
 
 if (typeof window !== 'undefined') {
@@ -17,13 +18,15 @@ if (typeof window !== 'undefined') {
 }
 
 type Props = {
-  children: React.Node
+  children: React.Node,
+  className?: string
 }
 
-const TemplateWrapper = ({ children }: Props) => {
+const Layout = ({ children, className }: Props) => {
   const { title, description } = useSiteMetadata()
   const { data: userQueryResponse = {} } = useQuery(GET_USER)
   const user = userQueryResponse.currentUser || {}
+  const mainClassName = classNames('main', className)
 
   return (
     <>
@@ -59,7 +62,7 @@ const TemplateWrapper = ({ children }: Props) => {
         />
         <meta name="theme-color" content="#fff" />
       </Helmet>
-      <main id="main" className="main">
+      <main id="main" className={mainClassName}>
         {children}
       </main>
       <Footer />
@@ -67,4 +70,4 @@ const TemplateWrapper = ({ children }: Props) => {
   )
 }
 
-export default TemplateWrapper
+export default Layout

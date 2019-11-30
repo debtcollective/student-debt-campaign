@@ -1,12 +1,10 @@
 // @flow
 
-import React, { useState, useEffect } from 'react'
-import has from 'lodash/has'
-import PropTypes from 'prop-types'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import React from 'react'
+import { useQuery } from '@apollo/react-hooks'
 import Markdown from 'markdown-to-jsx'
 import CampaignAction from '../../components/CampaignAction'
-import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from './api'
+import { GET_USER_ACTIONS } from './api'
 
 type Props = {
   user: User
@@ -14,14 +12,6 @@ type Props = {
 
 const CampaignActions = ({ user }: Props) => {
   // FIXME: flag approach needs to be removed throught #46
-  const [
-    temporalFlagForMutationUpdate,
-    setTemporalFlagForMutationUpdate
-  ] = useState(true)
-  const [completedActions, setCompletedActions] = useState({})
-  const [completeAction, { data: mutationResponse }] = useMutation(
-    UPDATE_USER_ACTION
-  )
   const {
     loading: queryLoading,
     error: queryError,
@@ -29,17 +19,6 @@ const CampaignActions = ({ user }: Props) => {
   } = useQuery(GET_USER_ACTIONS, {
     variables: { userId: user.id }
   })
-
-  useEffect(() => {
-    if (mutationResponse && temporalFlagForMutationUpdate) {
-      setTemporalFlagForMutationUpdate(false)
-      setCompletedActions({
-        ...completedActions,
-        [mutationResponse.userActionUpdate.id]:
-          mutationResponse.userActionUpdate.completed
-      })
-    }
-  }, [completedActions, temporalFlagForMutationUpdate, mutationResponse])
 
   return (
     <section id="campaign-actions" className="campaign-actions">
@@ -68,22 +47,18 @@ const CampaignActions = ({ user }: Props) => {
                   return <p>Error: ${queryError.message}</p>
                 }
 
-                return queryResponse.userActions.map((userAction, index) => {
-                  const { action, completed } = userAction
-                  const { title, description, config, type } = action
-                  // Check if state of the action has changed within completedActions state
-                  const isActionCompleted = has(completedActions, userAction.id)
-                    ? completedActions[userAction.id]
-                    : completed
-                  const completedClass = isActionCompleted
+                return queryResponse.getUserActions.map((action, index) => {
+                  const { title, description, config, type, completed } = action
+
+                  const completedClass = completed
                     ? 'completed'
                     : 'no-completed'
 
                   return (
                     <details
-                      id={`action-item-${index}`}
+                      id={action.actionId}
                       data-testid={`action-item-${index}`}
-                      key={userAction.id}
+                      key={action.actionId}
                       className={`collapsable-list__item ${completedClass}`}
                       open={index === 0}
                     >
@@ -92,13 +67,8 @@ const CampaignActions = ({ user }: Props) => {
                       <CampaignAction
                         config={config}
                         type={type}
-                        onComplete={() => {
-                          completeAction({
-                            variables: {
-                              userActionId: userAction.id,
-                              completed: true
-                            }
-                          })
+                        onComplete={params => {
+                          console.log('action has been completed', params)
                         }}
                       />
                     </details>
@@ -111,14 +81,6 @@ const CampaignActions = ({ user }: Props) => {
       </div>
     </section>
   )
-}
-
-CampaignActions.propTypes = {
-  campaignId: PropTypes.string,
-  user: PropTypes.shape({
-    id: PropTypes.string,
-    username: PropTypes.string
-  })
 }
 
 export default CampaignActions

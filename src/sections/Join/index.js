@@ -48,7 +48,7 @@ const Join = ({
 }: Props) => {
   const [joinToCampaign] = useMutation(ADD_USER_TO_CAMPAIGN, {
     onCompleted: data => {
-      navigate('/data-dues')
+      navigate('/app/actions')
     }
   })
 

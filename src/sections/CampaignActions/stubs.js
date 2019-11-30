@@ -75,20 +75,20 @@ export const mocks = [
     },
     result: {
       data: {
-        userActions: [
+        getUserActions: [
           {
-            id: '1',
             campaignId,
+            userActionId: null,
             actionId: '4',
             completed: false,
-            action: fakeActions[0]
+            ...fakeActions[0]
           },
           {
-            id: '2',
             campaignId,
+            userActionId: null,
             actionId: '3',
             completed: false,
-            action: fakeActions[1]
+            ...fakeActions[1]
           }
         ]
       }

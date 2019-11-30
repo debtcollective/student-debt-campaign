@@ -13,7 +13,6 @@ import {
   unknown,
   validationSchema
 } from './schema'
-import './styles.scss'
 
 const DataDuesHeader = () => (
   <>

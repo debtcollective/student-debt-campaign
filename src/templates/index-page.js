@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => {
   const user = userQueryResponse.currentUser || {}
 
   return (
-    <Layout>
+    <Layout className="no-pad">
       <Hero title={hero.title} actions={hero.actions} social={social} />
       <Informative title={demand.title} remark={demand.remark}>
         {demand.content}

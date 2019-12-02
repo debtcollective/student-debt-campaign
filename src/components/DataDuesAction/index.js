@@ -1,3 +1,5 @@
+// @flow
+
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
@@ -460,7 +462,13 @@ DataDuesForm.propTypes = {
   onSubmit: PropTypes.func
 }
 
-const DataDuesAction = () => {
+type DataDuesActionProps = {
+  user: User,
+  slug: string
+}
+
+const DataDuesAction = ({ user, slug }: DataDuesActionProps) => {
+  // TODO: do something with user and slug
   const handleSubmit = event => {
     event.preventDefault()
   }

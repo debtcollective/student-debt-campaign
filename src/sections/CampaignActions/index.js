@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import Markdown from 'markdown-to-jsx'
 import CampaignAction from '../../components/CampaignAction'
 import { GET_USER_ACTIONS } from './api'
 
@@ -22,7 +21,7 @@ const CampaignActions = ({ user }: Props) => {
 
   return (
     <section id="campaign-actions" className="campaign-actions">
-      <div className="container-fluid distribute-rows justify-content-center extra-pad">
+      <div className="container-fluid extra-pad">
         <div className="row">
           <div className="col">
             <div className="text-center">
@@ -37,7 +36,7 @@ const CampaignActions = ({ user }: Props) => {
         </div>
         <div className="row">
           <div className="col">
-            <div data-testid="action-items" className="collapsable-list">
+            <div data-testid="action-items" className="campaign-actions-list">
               {(() => {
                 if (queryLoading) {
                   return <p>Loading...</p>
@@ -47,33 +46,9 @@ const CampaignActions = ({ user }: Props) => {
                   return <p>Error: ${queryError.message}</p>
                 }
 
-                return queryResponse.getUserActions.map((action, index) => {
-                  const { title, description, config, type, completed } = action
-
-                  const completedClass = completed
-                    ? 'completed'
-                    : 'no-completed'
-
-                  return (
-                    <details
-                      id={action.actionId}
-                      data-testid={`action-item-${index}`}
-                      key={action.actionId}
-                      className={`collapsable-list__item ${completedClass}`}
-                      open={index === 0}
-                    >
-                      <summary className="summary">{title}</summary>
-                      <Markdown className="content">{description}</Markdown>
-                      <CampaignAction
-                        config={config}
-                        type={type}
-                        onComplete={params => {
-                          console.log('action has been completed', params)
-                        }}
-                      />
-                    </details>
-                  )
-                })
+                return queryResponse.getUserActions.map(action => (
+                  <CampaignAction action={action} key={action.actionId} />
+                ))
               })()}
             </div>
           </div>

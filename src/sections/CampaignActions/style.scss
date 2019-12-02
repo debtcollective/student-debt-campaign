@@ -1,9 +1,35 @@
-.collapsable-list__item {
-  &.completed {
-    opacity: 0.4;
+.campaign-actions-list {
+  margin: 0 auto;
+  max-width: 50rem;
+  width: 100%;
+}
+
+.campaign-action {
+  border-top: 0.125rem solid $black;
+
+  &-title {
+    color: gray('800');
+    display: flex;
+    font-weight: $font-weight-bold;
+    outline: none;
+    padding: 2rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn {
+      font-size: 1.25rem;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
-  &.no-completed {
-    opacity: 1;
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.completed {
+    opacity: 0.4;
   }
 }

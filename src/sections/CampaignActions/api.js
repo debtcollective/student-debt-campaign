@@ -20,6 +20,7 @@ export const GET_USER_ACTIONS = gql`
       type
       config
       completed
+      slug
     }
   }
 `

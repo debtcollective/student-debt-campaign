@@ -469,14 +469,10 @@ type DataDuesActionProps = {
 
 const DataDuesAction = ({ user, slug }: DataDuesActionProps) => {
   // TODO: do something with user and slug
-  const handleSubmit = event => {
-    event.preventDefault()
-  }
-
   return (
     <Container>
       <DataDuesHeader />
-      <DataDuesForm handleSubmit={handleSubmit} />
+      <DataDuesForm />
     </Container>
   )
 }

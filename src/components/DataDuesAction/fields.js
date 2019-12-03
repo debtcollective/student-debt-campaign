@@ -8,6 +8,7 @@ export const PhoneNumberField = ({
   register,
   unregister,
   setValue,
+  defaultValue,
   ...props
 }) => {
   useEffect(() => {
@@ -20,6 +21,7 @@ export const PhoneNumberField = ({
       type="tel"
       placeholder="(202) 401-3000"
       customInput={Form.Control}
+      defaultValue={defaultValue}
       onValueChange={({ formattedValue, value }) => {
         setValue(name, formattedValue || value, true)
       }}
@@ -34,7 +36,8 @@ PhoneNumberField.propTypes = {
   name: PropTypes.string,
   register: PropTypes.func,
   unregister: PropTypes.func,
-  setValue: PropTypes.func
+  setValue: PropTypes.func,
+  defaultValue: PropTypes.string
 }
 
 export const CurrencyField = ({
@@ -42,6 +45,7 @@ export const CurrencyField = ({
   register,
   unregister,
   setValue,
+  defaultValue,
   ...props
 }) => {
   useEffect(() => {
@@ -54,6 +58,7 @@ export const CurrencyField = ({
       allowNegative={false}
       customInput={Form.Control}
       decimalScale={2}
+      defaultValue={defaultValue}
       isNumericString={true}
       onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
       placeholder="$38,000"
@@ -69,7 +74,8 @@ CurrencyField.propTypes = {
   name: PropTypes.string,
   register: PropTypes.func,
   unregister: PropTypes.func,
-  setValue: PropTypes.func
+  setValue: PropTypes.func,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
 export const PercentageField = ({
@@ -77,6 +83,7 @@ export const PercentageField = ({
   register,
   unregister,
   setValue,
+  defaultValue,
   ...props
 }) => {
   useEffect(() => {
@@ -89,6 +96,7 @@ export const PercentageField = ({
       allowNegative={false}
       customInput={Form.Control}
       decimalScale={2}
+      defaultValue={defaultValue}
       isNumericString={true}
       onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
       placeholder="4.53%"
@@ -106,5 +114,6 @@ PercentageField.propTypes = {
   name: PropTypes.string,
   register: PropTypes.func,
   unregister: PropTypes.func,
-  setValue: PropTypes.func
+  setValue: PropTypes.func,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }

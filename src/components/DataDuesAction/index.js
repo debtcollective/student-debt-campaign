@@ -64,11 +64,20 @@ const DebtForm = ({
   unregister,
   watch
 }) => {
-  const selectedDebtType = watch(`debts[${debtId}].debtType`)
-  const isStudentDebt = selectedDebtType === 'Student debt'
+  /**
+   * Initial Values
+   * used for controlled components to have a defaultValue
+   * and for conditional rendering of components
+   */
+  const debtType = watch(`debts[${debtId}].debtType`)
+  const amount = watch(`debts[${debtId}].amount`)
+  const interestRate = watch(`debts[${debtId}].interestRate`)
+  const creditor = watch(`debts[${debtId}].creditor`)
+  const accountStatus = watch(`debts[${debtId}].accountStatus`)
+  const beingHarrased = watch(`debts[${debtId}].beingHarrased`)
 
-  const beingHarrasedOption = watch(`debts[${debtId}].beingHarrased`)
-  const isBeingHarrased = beingHarrasedOption === 'true'
+  const isStudentDebt = debtType === 'Student debt'
+  const isBeingHarrased = beingHarrased === 'true'
 
   // onChange handler for "I don't know" checkboxes
   const onChange = (name, setDisabled, event) => {
@@ -82,11 +91,17 @@ const DebtForm = ({
   /**
    * We are using the following states to programatically disable fields.
    * These is used by fields that have a "I don't know" checkbox
+   * If the value is unknown, then the input should be disabled
+   *
    */
-  const [debtTypeDisabled, setDebtTypeDisabled] = useState(false)
-  const [interestRateDisabled, setInterestRateDisabled] = useState(false)
-  const [creditorDisabled, setCreditorDisabled] = useState(false)
-  const [accountStatusDisabled, setAccountStatusDisabled] = useState(false)
+  const [debtTypeDisabled, setDebtTypeDisabled] = useState(debtType === unknown)
+  const [interestRateDisabled, setInterestRateDisabled] = useState(
+    interestRate === unknown
+  )
+  const [creditorDisabled, setCreditorDisabled] = useState(creditor === unknown)
+  const [accountStatusDisabled, setAccountStatusDisabled] = useState(
+    accountStatus === unknown
+  )
 
   return (
     <>
@@ -119,6 +134,7 @@ const DebtForm = ({
           onChange={event =>
             onChange(`debts[${debtId}].debtType`, setDebtTypeDisabled, event)
           }
+          defaultChecked={debtTypeDisabled}
           type="checkbox"
           id={`debtTypeUnknown${debtId}`}
           label="I don't know my debt type"
@@ -157,6 +173,7 @@ const DebtForm = ({
           register={register}
           unregister={unregister}
           setValue={setValue}
+          defaultValue={amount}
           isInvalid={!!errors[`debts[${debtId}].amount`]}
         />
         <Form.Text className="text-muted">
@@ -176,6 +193,7 @@ const DebtForm = ({
           unregister={unregister}
           setValue={setValue}
           disabled={interestRateDisabled}
+          defaultValue={interestRate}
           isInvalid={!!errors[`debts[${debtId}].interestRate`]}
         />
         <Form.Control.Feedback type="invalid">
@@ -186,6 +204,7 @@ const DebtForm = ({
           inline
           type="checkbox"
           id={`interestRateUnknown${debtId}`}
+          defaultChecked={interestRateDisabled}
           onChange={event =>
             onChange(
               `debts[${debtId}].interestRate`,
@@ -215,6 +234,7 @@ const DebtForm = ({
           inline
           type="checkbox"
           id={`creditorUnknown${debtId}`}
+          defaultChecked={creditorDisabled}
           onChange={event =>
             onChange(`debts[${debtId}].creditor`, setCreditorDisabled, event)
           }
@@ -250,6 +270,7 @@ const DebtForm = ({
           inline
           type="checkbox"
           id={`accountStatusUnknown${debtId}`}
+          defaultChecked={accountStatusDisabled}
           onChange={event =>
             onChange(
               `debts[${debtId}].accountStatus`,
@@ -335,6 +356,13 @@ const DataDuesForm = ({ userAction }) => {
     validationSchema: validationSchema,
     defaultValues: formData
   })
+
+  /**
+   * Initial Values
+   * used for controlled components to have a defaultValue
+   * and for conditional rendering of components
+   */
+  const phoneNumber = watch('phoneNumber')
 
   const [createDataDuesAction, { data = {}, loading }] = useMutation(
     CREATE_DATA_DUES_ACTION,
@@ -426,6 +454,7 @@ const DataDuesForm = ({ userAction }) => {
             register={register}
             unregister={unregister}
             setValue={setValue}
+            defaultValue={phoneNumber}
             isInvalid={!!errors.phoneNumber}
           />
           <Form.Control.Feedback type="invalid">

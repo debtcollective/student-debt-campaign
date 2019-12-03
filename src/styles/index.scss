@@ -16,6 +16,7 @@
 @import 'node_modules/bootstrap/scss/buttons';
 @import 'node_modules/bootstrap/scss/close';
 @import 'node_modules/bootstrap/scss/grid';
+@import 'node_modules/bootstrap/scss/alert';
 @import 'node_modules/bootstrap/scss/nav';
 @import 'node_modules/bootstrap/scss/navbar';
 @import 'node_modules/bootstrap/scss/reboot';
@@ -42,3 +43,4 @@
 @import '../components/Header/style';
 @import '../sections/CampaignActions/style';
 @import '../components/DataDuesAction/styles';
+@import '../components/Alert/styles';

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
 import { useMutation } from '@apollo/react-hooks'
 import _ from 'lodash'
+import { navigate } from 'gatsby'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
 import { CREATE_DATA_DUES_ACTION } from '../../api'
@@ -334,7 +335,23 @@ const DataDuesForm = () => {
   })
 
   const [createDataDuesAction, { data = {}, loading }] = useMutation(
-    CREATE_DATA_DUES_ACTION
+    CREATE_DATA_DUES_ACTION,
+    {
+      onCompleted: ({ userAction }) => {
+        navigate('/app/actions', {
+          state: {
+            alert: {
+              message:
+                'Thank you for completing an Action. Keep going until you complete all!',
+              variant: 'success'
+            }
+          }
+        })
+      },
+      onError: ({ errors: formErrors }) => {
+        // set errors to the form
+      }
+    }
   )
 
   const onSubmit = data => {

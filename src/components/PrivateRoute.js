@@ -5,7 +5,7 @@ import { navigate } from 'gatsby'
 
 type Props = {
   component: React.ComponentType<any>,
-  location?: { pathname: string },
+  location?: { pathname: string, state: any },
   isLoggedIn: Boolean
 }
 
@@ -21,7 +21,7 @@ const PrivateRoute = ({
     return null
   }
 
-  return <Component {...rest} />
+  return <Component {...rest} location={location} />
 }
 
 export default PrivateRoute

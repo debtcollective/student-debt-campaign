@@ -3,12 +3,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
-import { useMutation } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
 import _ from 'lodash'
+import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
-import { CREATE_DATA_DUES_ACTION } from '../../api'
+import { UPSERT_DATA_DUES_ACTION, GET_USER_ACTION } from '../../api'
 import {
   debtTypes,
   studentDebtTypes,
@@ -364,8 +365,8 @@ const DataDuesForm = ({ userAction }) => {
    */
   const phoneNumber = watch('phoneNumber')
 
-  const [createDataDuesAction, { data = {}, loading }] = useMutation(
-    CREATE_DATA_DUES_ACTION,
+  const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
+    UPSERT_DATA_DUES_ACTION,
     {
       onCompleted: ({ userAction }) => {
         navigate('/app/actions', {
@@ -380,12 +381,33 @@ const DataDuesForm = ({ userAction }) => {
       },
       onError: ({ errors: formErrors }) => {
         // set errors to the form
+      },
+      // Update Apollo Cache after upsert
+      update (cache, { data: { upsertDataDuesAction } }) {
+        const { userAction } = upsertDataDuesAction
+
+        if (userAction) {
+          const { id, data } = userAction
+          cache.writeFragment({
+            id,
+            fragment: gql`
+              fragment dataDues on UserAction {
+                data
+              }
+            `,
+            query: GET_USER_ACTION,
+            data: {
+              data,
+              __typename: userAction.__typename
+            }
+          })
+        }
       }
     }
   )
 
   const onSubmit = data => {
-    createDataDuesAction({ variables: { data } })
+    upsertDataDuesAction({ variables: { data } })
   }
 
   const [debtCount, setDebtCount] = useState(1)
@@ -400,7 +422,7 @@ const DataDuesForm = ({ userAction }) => {
 
   // early return
   // render a thank you message instead of the form
-  const { createDataDuesAction: payload } = data
+  const { upsertDataDuesAction: payload } = data
   if (payload && payload.userAction && payload.userAction.completed) {
     return <DataDuesThankYou />
   }

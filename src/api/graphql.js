@@ -29,3 +29,13 @@ export const CREATE_DATA_DUES_ACTION = gql`
     }
   }
 `
+
+export const GET_USER_ACTION = gql`
+  query getUserAction($slug: String!) {
+    userAction(slug: $slug) {
+      id
+      completed
+      data
+    }
+  }
+`

@@ -322,7 +322,8 @@ DebtForm.defaultProps = {
   errors: {}
 }
 
-const DataDuesForm = () => {
+const DataDuesForm = ({ userAction }) => {
+  const { data: formData = {} } = userAction
   const {
     register,
     handleSubmit,
@@ -331,7 +332,8 @@ const DataDuesForm = () => {
     unregister,
     errors
   } = useForm({
-    validationSchema: validationSchema
+    validationSchema: validationSchema,
+    defaultValues: formData
   })
 
   const [createDataDuesAction, { data = {}, loading }] = useMutation(
@@ -342,7 +344,7 @@ const DataDuesForm = () => {
           state: {
             alert: {
               message:
-                'Thank you for completing an Action. Keep going until you complete all!',
+                'Thank you for completing the Debt Data Action. Keep going until you complete all!',
               variant: 'success'
             }
           }
@@ -476,20 +478,25 @@ const DataDuesForm = () => {
 }
 
 DataDuesForm.propTypes = {
-  onSubmit: PropTypes.func
+  userAction: PropTypes.object
+}
+
+DataDuesForm.defaultValues = {
+  userAction: {}
 }
 
 type DataDuesActionProps = {
   user: User,
-  slug: string
+  slug: string,
+  userAction: any
 }
 
-const DataDuesAction = ({ user, slug }: DataDuesActionProps) => {
+const DataDuesAction = ({ user, slug, userAction }: DataDuesActionProps) => {
   // TODO: do something with user and slug
   return (
     <Container>
       <DataDuesHeader />
-      <DataDuesForm />
+      <DataDuesForm userAction={userAction} />
     </Container>
   )
 }

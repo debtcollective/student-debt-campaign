@@ -465,7 +465,7 @@ const DataDuesForm = ({ userAction }) => {
             type="text"
             placeholder="400 Maryland Avenue, SW. Washington, DC 20202"
             name="streetAddress"
-            ref={register()}
+            ref={register}
           />
         </Form.Group>
 

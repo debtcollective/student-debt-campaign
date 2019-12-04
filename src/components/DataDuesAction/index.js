@@ -22,16 +22,15 @@ const DataDuesHeader = () => (
   <>
     <Row>
       <Col>
-        <h1 className="text-center">Data Dues</h1>
+        <h1 className="text-center">Add your debt data</h1>
       </Col>
     </Row>
     <Row className="mt-4 mb-5">
       <Col>
         <p>
-          Thank you for joining the Campaign! To help us with our research we
-          are asking strikers information about the debts many of us have in
-          common. The more information we have, the better we can fight back
-          together.
+          To help us with our research we are asking strikers information about
+          the debts many of us have in common. The more information we have, the
+          better we can fight back together.
         </p>
         <p className="mt-2">
           All information provided will be securely stored in our servers. We

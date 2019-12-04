@@ -13,7 +13,8 @@ import {
   ContactYourRepPage,
   CampusGroupPage,
   DirectActionTeamPage,
-  SocialMediaTeamPage
+  SocialMediaTeamPage,
+  ContributeIdeasPage
 } from '../templates/app'
 
 const App = () => {
@@ -70,7 +71,7 @@ const App = () => {
           />
           <PrivateRoute
             path="/app/actions/contribute-your-ideas"
-            component={DataDuesPage}
+            component={ContributeIdeasPage}
             isLoggedIn={isLoggedIn}
             user={data.currentUser}
             slug="contribute-your-ideas"

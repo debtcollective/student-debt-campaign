@@ -344,7 +344,12 @@ DebtForm.defaultProps = {
 }
 
 const DataDuesForm = ({ userAction }) => {
-  const { data: formData = {} } = userAction
+  // Get data in db to be rendered in the form
+  let formData = {}
+  if (userAction) {
+    formData = userAction.data
+  }
+
   const {
     register,
     handleSubmit,
@@ -367,7 +372,7 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted: ({ userAction }) => {
+      onCompleted ({ userAction }) {
         navigate('/app/actions', {
           state: {
             alert: {
@@ -378,7 +383,7 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError: ({ errors: formErrors }) => {
+      onError ({ errors: formErrors }) {
         // set errors to the form
       },
       // Update Apollo Cache after upsert

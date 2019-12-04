@@ -427,7 +427,7 @@ const DataDuesForm = ({ userAction }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} className="data-dues-form">
+    <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
       <div className="mt-4">
         <h3 className="mb-2">Personal information</h3>
         <Form.Group controlId="fullName">

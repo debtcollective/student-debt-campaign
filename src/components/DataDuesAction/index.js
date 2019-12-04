@@ -373,7 +373,7 @@ const DataDuesForm = ({ userAction }) => {
           state: {
             alert: {
               message:
-                'Thank you for completing the Debt Data Action. Keep going until you complete all!',
+                "You completed an action! Let's keep going until you complete all!",
               variant: 'success'
             }
           }
@@ -515,7 +515,19 @@ const DataDuesForm = ({ userAction }) => {
           </Row>
         </div>
       </div>
-      <Row className="mt-2">
+      <Row className="mt-4">
+        <Col>
+          <div className="text-left">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                navigate('/app/actions')
+              }}
+            >
+              Go back to actions list
+            </Button>
+          </div>
+        </Col>
         <Col>
           <div className="text-right">
             <Button variant="primary" type="submit" disabled={loading}>

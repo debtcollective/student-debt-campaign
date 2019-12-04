@@ -1,8 +1,11 @@
 // @flow
 
 import React, { useEffect } from 'react'
+import _ from 'lodash'
+import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import { UPSERT_USER_ACTION } from '../../api'
 
 const ContactYourRepHeader = () => (
   <>
@@ -40,19 +43,48 @@ const ContactYourRepFooter = () => (
   </Row>
 )
 
-const ContactYourRepForm = () => {
+type Props = {
+  slug: String
+}
+
+const ContactYourRepForm = ({ slug }: Props) => {
+  // Complete action mutation
+  const [upsertUserAction] = useMutation(UPSERT_USER_ACTION, {
+    onCompleted: () => {
+      navigate('/app/actions', {
+        state: {
+          alert: {
+            message:
+              "You completed an action! Let's keep going until you complete all!",
+            variant: 'success'
+          }
+        }
+      })
+    }
+  })
+
+  // Load contact form
   useEffect(() => {
     const script = document.createElement('script')
 
     script.src = '//engage.newmode.net/embed/6866/11617.js'
     script.async = true
 
+    // this is here just for testing
+    // TODO: add proper completition trigger
+    script.onload = () => {
+      _.delay(
+        () => upsertUserAction({ variables: { slug, completed: true } }),
+        5000
+      )
+    }
+
     document.body.appendChild(script)
 
     return () => {
       document.body.removeChild(script)
     }
-  }, [])
+  }, [slug, upsertUserAction])
 
   return (
     <Row>
@@ -63,11 +95,11 @@ const ContactYourRepForm = () => {
   )
 }
 
-const ContactYourRepAction = () => {
+const ContactYourRepAction = ({ slug }: Props) => {
   return (
     <Container className="action-detail">
       <ContactYourRepHeader />
-      <ContactYourRepForm />
+      <ContactYourRepForm slug={slug} />
       <ContactYourRepFooter />
     </Container>
   )

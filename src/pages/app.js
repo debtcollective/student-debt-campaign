@@ -7,7 +7,12 @@ import Layout from '../components/Layout'
 import PrivateRoute from '../components/PrivateRoute'
 import { GET_USER } from '../api'
 import Header from '../components/Header'
-import { ActionsPage, DataDuesPage, ContactYourRepPage } from '../templates/app'
+import {
+  ActionsPage,
+  DataDuesPage,
+  ContactYourRepPage,
+  CampusGroupPage
+} from '../templates/app'
 
 const App = () => {
   const { loading, data = {} } = useQuery(GET_USER)
@@ -42,7 +47,7 @@ const App = () => {
           />
           <PrivateRoute
             path="/app/actions/start-a-campus-group"
-            component={DataDuesPage}
+            component={CampusGroupPage}
             isLoggedIn={isLoggedIn}
             user={data.currentUser}
             slug="start-a-campus-group"

@@ -6,10 +6,11 @@ export const fakeActions = [
   {
     id: '4',
     campaignId,
-    title: 'rerum nihil',
+    title: 'action 4',
     description:
       'enim impedit commodi tempora occaecati debitis et in quia laborum',
     type: 'LINK',
+    slug: 'action4',
     config: {
       text: 'click here to go to foo.com',
       href: 'foo.com',
@@ -20,10 +21,11 @@ export const fakeActions = [
   {
     id: '3',
     campaignId,
-    title: 'rerum nihil',
+    title: 'action 3',
     description:
       'enim impedit commodi tempora occaecati debitis et in quia laborum',
     type: 'LINK',
+    slug: 'action3',
     config: {
       text: 'click here to go to bar.com',
       href: 'bar.com',

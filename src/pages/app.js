@@ -11,7 +11,8 @@ import {
   ActionsPage,
   DataDuesPage,
   ContactYourRepPage,
-  CampusGroupPage
+  CampusGroupPage,
+  DirectActionTeamPage
 } from '../templates/app'
 
 const App = () => {
@@ -54,7 +55,7 @@ const App = () => {
           />
           <PrivateRoute
             path="/app/actions/join-a-direct-action-team"
-            component={DataDuesPage}
+            component={DirectActionTeamPage}
             isLoggedIn={isLoggedIn}
             user={data.currentUser}
             slug="join-a-direct-action-team"

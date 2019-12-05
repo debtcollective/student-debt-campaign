@@ -21,7 +21,12 @@ const Join = ({ isLoggedIn, motive }: Props) => {
   const [joinCampaign] = useMutation(ADD_USER_TO_CAMPAIGN, {
     onCompleted: data => {
       navigate('/app/welcome')
-    }
+    },
+    refetchQueries: [
+      {
+        query: GET_USER
+      }
+    ]
   })
 
   useEffect(() => {
@@ -42,14 +47,7 @@ const Join = ({ isLoggedIn, motive }: Props) => {
     }
 
     joinCampaign({
-      variables: {
-        motive
-      },
-      refetchQueries: [
-        {
-          query: GET_USER
-        }
-      ]
+      variables: { motive }
     })
   }, [isLoggedIn, joinCampaign, motive])
 

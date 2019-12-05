@@ -15,9 +15,7 @@ const CampaignActions = ({ user }: Props) => {
     loading: queryLoading,
     error: queryError,
     data: queryResponse
-  } = useQuery(GET_USER_ACTIONS, {
-    variables: { userId: user.id }
-  })
+  } = useQuery(GET_USER_ACTIONS)
 
   return (
     <section id="campaign-actions" className="campaign-actions">

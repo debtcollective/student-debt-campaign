@@ -73,8 +73,8 @@ export const UPDATE_USER_ACTION = gql`
 `
 
 export const GET_USER_ACTIONS = gql`
-  query getUserActions($userId: ID!) {
-    getUserActions(userId: $userId) {
+  query getUserActions {
+    getUserActions {
       actionId
       userActionId
       campaignId

@@ -3,7 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import CampaignAction from '../../components/CampaignAction'
-import { GET_USER_ACTIONS } from './api'
+import { GET_USER_ACTIONS } from '../../api'
 
 type Props = {
   user: User

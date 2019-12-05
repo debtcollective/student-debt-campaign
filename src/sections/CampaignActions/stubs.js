@@ -1,4 +1,4 @@
-import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from './api'
+import { GET_USER_ACTIONS, UPDATE_USER_ACTION } from '../../api'
 
 export const userId = '1'
 export const campaignId = '1'

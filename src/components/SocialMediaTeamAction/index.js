@@ -4,7 +4,7 @@ import React from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import { UPSERT_USER_ACTION } from '../../api'
+import { UPSERT_USER_ACTION, GET_USER_ACTIONS } from '../../api'
 
 const SocialMediaTeamActionHeader = () => (
   <>
@@ -58,7 +58,12 @@ const SocialMediaTeamActionForm = ({ slug }: Props) => {
           }
         }
       })
-    }
+    },
+    refetchQueries: [
+      {
+        query: GET_USER_ACTIONS
+      }
+    ]
   })
 
   return (

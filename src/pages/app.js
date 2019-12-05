@@ -7,6 +7,8 @@ import Layout from '../components/Layout'
 import PrivateRoute from '../components/PrivateRoute'
 import { GET_USER } from '../api'
 import Header from '../components/Header'
+import CampaignWelcome from '../components/CampaignWelcome'
+import Join from '../components/Join'
 import {
   ActionsPage,
   DataDuesPage,
@@ -27,6 +29,16 @@ const App = () => {
       {!loading && (
         <Router>
           <Redirect from="/app" to="/app/actions" />
+          <CampaignWelcome
+            path="/app/welcome"
+            isLoggedIn={isLoggedIn}
+            user={data.currentUser}
+          />
+          <Join
+            path="/app/join/:motive"
+            isLoggedIn={isLoggedIn}
+            user={data.currentUser}
+          />
           <PrivateRoute
             path="/app/actions"
             component={ActionsPage}

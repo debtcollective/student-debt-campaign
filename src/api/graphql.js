@@ -54,3 +54,11 @@ export const GET_USER_ACTION = gql`
     }
   }
 `
+
+export const ADD_USER_TO_CAMPAIGN = gql`
+  mutation addUserToCampaign($motive: String!) {
+    addUserToCampaign(motive: $motive) {
+      ok
+    }
+  }
+`

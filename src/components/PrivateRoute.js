@@ -16,7 +16,7 @@ const PrivateRoute = ({
   ...rest
 }: Props) => {
   if (!isLoggedIn && location && location.pathname !== '/') {
-    alert('Sorry! you need to be logged in')
+    alert('Sorry! you need to join the campaign before seeing actions')
     navigate('/')
     return null
   }

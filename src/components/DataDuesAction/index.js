@@ -24,7 +24,7 @@ const DataDuesHeader = () => (
         <h1 className="text-center">Add your debt data</h1>
       </Col>
     </Row>
-    <Row className="mt-4 mb-5">
+    <Row className="my-4">
       <Col>
         <p>
           For too long, creditors have known everything about us while we know

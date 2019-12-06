@@ -3,6 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import CampaignAction from '../../components/CampaignAction'
+import CampaignActionLink from '../../components/CampaignActionLink'
 import { GET_USER_ACTIONS } from '../../api'
 
 type Props = {
@@ -39,9 +40,22 @@ const CampaignActions = ({ user }: Props) => {
                   return <p>Error: ${queryError.message}</p>
                 }
 
-                return queryResponse.getUserActions.map(action => (
-                  <CampaignAction action={action} key={action.actionId} />
-                ))
+                return queryResponse.getUserActions.map(action => {
+                  let component = (
+                    <CampaignAction action={action} key={action.actionId} />
+                  )
+
+                  if (action.type === 'link') {
+                    component = (
+                      <CampaignActionLink
+                        action={action}
+                        key={action.actionId}
+                      />
+                    )
+                  }
+
+                  return component
+                })
               })()}
             </div>
           </div>

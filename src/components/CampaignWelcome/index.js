@@ -14,11 +14,12 @@ const CampaignWelcomeHeader = () => (
     <Row className="my-4">
       <Col>
         <p>
-          We are trilled to have you. If you want to be an active supporter,
-          there&apos;s a list of actions you can do to spread the word about the
-          strike.
+          Thousands of Debt Collective members are working together to win a
+          debt jubilee and free college.
         </p>
-        <p className="mt-3">Click the button below to know more</p>
+        <p className="mt-3">
+          For additional actions that you can take, click below.
+        </p>
       </Col>
     </Row>
   </>

@@ -10,7 +10,7 @@ const CampusGroupActionHeader = () => (
   <>
     <Row>
       <Col>
-        <h1 className="text-center">Start a Campus Group</h1>
+        <h1 className="text-center">Strike on Campus</h1>
       </Col>
     </Row>
     <Row className="mt-4 mb-5">

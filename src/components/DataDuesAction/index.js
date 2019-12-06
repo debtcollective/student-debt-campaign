@@ -24,16 +24,14 @@ const DataDuesHeader = () => (
         <h1 className="text-center">Add your debt data</h1>
       </Col>
     </Row>
-    <Row className="mt-4 mb-5">
+    <Row className="my-4">
       <Col>
         <p>
-          To help us with our research we are asking strikers information about
-          the debts many of us have in common. The more information we have, the
-          better we can fight back together.
-        </p>
-        <p className="mt-2">
-          All information provided will be securely stored in our servers. We
-          won&apos;t share this information with corporations.
+          For too long, creditors have known everything about us while we know
+          very little about them. It is time for that to change so we can fight
+          back together. We will never sell your information. And we won’t share
+          your data with anyone outside our organizing team without your
+          permission. All our data is stored on secure servers.
         </p>
       </Col>
     </Row>

@@ -3,6 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import CampaignAction from '../../components/CampaignAction'
+import CampaignActionLink from '../../components/CampaignActionLink'
 import { GET_USER_ACTIONS } from '../../api'
 
 type Props = {
@@ -23,11 +24,7 @@ const CampaignActions = ({ user }: Props) => {
         <div className="row">
           <div className="col">
             <div className="text-center">
-              <h1 className="section-title mb-1">Ways to take action</h1>
-              <p className="text-center mb-5">
-                Here&apos;s a list of actions you can do in order to be more
-                involved with the campaign.
-              </p>
+              <h1 className="section-title mb-5">Ways to take action</h1>
             </div>
           </div>
         </div>
@@ -43,9 +40,22 @@ const CampaignActions = ({ user }: Props) => {
                   return <p>Error: ${queryError.message}</p>
                 }
 
-                return queryResponse.getUserActions.map(action => (
-                  <CampaignAction action={action} key={action.actionId} />
-                ))
+                return queryResponse.getUserActions.map(action => {
+                  let component = (
+                    <CampaignAction action={action} key={action.actionId} />
+                  )
+
+                  if (action.type === 'link') {
+                    component = (
+                      <CampaignActionLink
+                        action={action}
+                        key={action.actionId}
+                      />
+                    )
+                  }
+
+                  return component
+                })
               })()}
             </div>
           </div>

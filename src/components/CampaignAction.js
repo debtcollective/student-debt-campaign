@@ -1,34 +1,34 @@
 import React from 'react'
-import delay from 'lodash/delay'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { Link } from 'gatsby'
 
-const ACTION_TYPES = {
-  LINK: 'LINK'
-}
-
-const CampaignAction = ({ config, type, onComplete }) => {
-  const { text, delay: delayTime, ...attributes } = config
+const CampaignAction = ({ action: { completed, slug, title } }) => {
+  const className = classNames('campaign-action', { completed })
+  const buttonText = completed ? 'Completed' : 'Take action'
+  const buttonClassName = classNames('btn btn-primary btn-lg', {
+    disabled: completed
+  })
 
   return (
-    <div className="cta-container content">
-      {type === ACTION_TYPES.LINK ? (
-        <a
-          data-testid="action-cta"
-          {...attributes}
-          onClick={() => delay(onComplete, delayTime)}
-        >
-          {text}
-        </a>
-      ) : null}
+    <div className={className}>
+      <Link to={`/app/actions/${slug}`} className="campaign-action-title">
+        {title}
+        <span className={buttonClassName}>{buttonText}</span>
+      </Link>
     </div>
   )
 }
 
 CampaignAction.propTypes = {
-  text: PropTypes.string,
-  config: PropTypes.any,
-  type: PropTypes.string,
-  onComplete: PropTypes.func
+  action: PropTypes.shape({
+    completed: PropTypes.bool,
+    config: PropTypes.object,
+    id: PropTypes.string,
+    type: PropTypes.string,
+    slug: PropTypes.string,
+    title: PropTypes.string
+  })
 }
 
 export default CampaignAction

@@ -1,54 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,600');
 @import url('https://s3.amazonaws.com/tds-static/fonts/moregothic/1.0.0/More+Gothic+Bold.css');
 
-$blue: #d8f6ff;
-$red: #ff4630;
-$purple: #dac4f5;
-$green: #d6ffb8;
-$yellow: #ffed9c;
-$gray: #2b2b2b;
-$beige: #faf9f5;
-
-$body-bg: $beige;
-
-$primary: $red;
-
-$font-family-sans-serif: 'Libre Franklin', sans-serif;
-$font-family-monospace: 'More Gothic Bold', Impact, sans-serif;
-$font-weight-bold: 600;
-$font-size-base: 1.5rem;
-
-$headings-margin-bottom: 0;
-$paragraph-margin-bottom: 0;
-
-// Avoid the need of removing margins
-$headings-margin-bottom: 0;
-
-// Grid needs to be set in px
-$grid-gutter-width: 40px;
-
-// this will allow us to create better responsive font sizes
-$display1-size: 6em;
-$display2-size: 8vw;
-$display3-size: 12.5vw;
-$display4-size: 5.5vw;
-
-$display1-weight: $font-weight-bold;
-$display2-weight: $font-weight-bold;
-$display3-weight: $font-weight-bold;
-$display4-weight: $font-weight-bold;
-
-// Buttons
-$btn-padding-y: 1.3125rem;
-$btn-padding-x: 2.8rem;
-
-// Footer
-$footer-bg: $gray;
-$footer-title: #828282;
-
-// Header
-$header-height-sm: 4rem;
-$header-height-md: 8rem;
+// variables
+@import './variables.scss';
 
 // bootstrap required
 @import 'node_modules/bootstrap/scss/functions';
@@ -62,6 +16,7 @@ $header-height-md: 8rem;
 @import 'node_modules/bootstrap/scss/buttons';
 @import 'node_modules/bootstrap/scss/close';
 @import 'node_modules/bootstrap/scss/grid';
+@import 'node_modules/bootstrap/scss/alert';
 @import 'node_modules/bootstrap/scss/nav';
 @import 'node_modules/bootstrap/scss/navbar';
 @import 'node_modules/bootstrap/scss/reboot';
@@ -88,3 +43,4 @@ $header-height-md: 8rem;
 @import '../components/Header/style';
 @import '../sections/CampaignActions/style';
 @import '../components/DataDuesAction/styles';
+@import '../components/Alert/styles';

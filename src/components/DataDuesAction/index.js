@@ -1,11 +1,15 @@
+// @flow
+
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
-import { useMutation } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
 import _ from 'lodash'
+import { useMutation } from '@apollo/react-hooks'
+import { navigate } from 'gatsby'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
-import { CREATE_DATA_DUES_ACTION } from '../../api'
+import { UPSERT_DATA_DUES_ACTION, GET_USER_ACTION } from '../../api'
 import {
   debtTypes,
   studentDebtTypes,
@@ -18,16 +22,15 @@ const DataDuesHeader = () => (
   <>
     <Row>
       <Col>
-        <h1 className="text-center">Data Dues</h1>
+        <h1 className="text-center">Add your debt data</h1>
       </Col>
     </Row>
     <Row className="mt-4 mb-5">
       <Col>
         <p>
-          Thank you for joining the Campaign! To help us with our research we
-          are asking strikers information about the debts many of us have in
-          common. The more information we have, the better we can fight back
-          together.
+          To help us with our research we are asking strikers information about
+          the debts many of us have in common. The more information we have, the
+          better we can fight back together.
         </p>
         <p className="mt-2">
           All information provided will be securely stored in our servers. We
@@ -61,11 +64,20 @@ const DebtForm = ({
   unregister,
   watch
 }) => {
-  const selectedDebtType = watch(`debts[${debtId}].debtType`)
-  const isStudentDebt = selectedDebtType === 'Student debt'
+  /**
+   * Initial Values
+   * used for controlled components to have a defaultValue
+   * and for conditional rendering of components
+   */
+  const debtType = watch(`debts[${debtId}].debtType`)
+  const amount = watch(`debts[${debtId}].amount`)
+  const interestRate = watch(`debts[${debtId}].interestRate`)
+  const creditor = watch(`debts[${debtId}].creditor`)
+  const accountStatus = watch(`debts[${debtId}].accountStatus`)
+  const beingHarrased = watch(`debts[${debtId}].beingHarrased`)
 
-  const beingHarrasedOption = watch(`debts[${debtId}].beingHarrased`)
-  const isBeingHarrased = beingHarrasedOption === 'true'
+  const isStudentDebt = debtType === 'Student debt'
+  const isBeingHarrased = beingHarrased === 'true'
 
   // onChange handler for "I don't know" checkboxes
   const onChange = (name, setDisabled, event) => {
@@ -79,11 +91,17 @@ const DebtForm = ({
   /**
    * We are using the following states to programatically disable fields.
    * These is used by fields that have a "I don't know" checkbox
+   * If the value is unknown, then the input should be disabled
+   *
    */
-  const [debtTypeDisabled, setDebtTypeDisabled] = useState(false)
-  const [interestRateDisabled, setInterestRateDisabled] = useState(false)
-  const [creditorDisabled, setCreditorDisabled] = useState(false)
-  const [accountStatusDisabled, setAccountStatusDisabled] = useState(false)
+  const [debtTypeDisabled, setDebtTypeDisabled] = useState(debtType === unknown)
+  const [interestRateDisabled, setInterestRateDisabled] = useState(
+    interestRate === unknown
+  )
+  const [creditorDisabled, setCreditorDisabled] = useState(creditor === unknown)
+  const [accountStatusDisabled, setAccountStatusDisabled] = useState(
+    accountStatus === unknown
+  )
 
   return (
     <>
@@ -116,6 +134,7 @@ const DebtForm = ({
           onChange={event =>
             onChange(`debts[${debtId}].debtType`, setDebtTypeDisabled, event)
           }
+          defaultChecked={debtTypeDisabled}
           type="checkbox"
           id={`debtTypeUnknown${debtId}`}
           label="I don't know my debt type"
@@ -154,6 +173,7 @@ const DebtForm = ({
           register={register}
           unregister={unregister}
           setValue={setValue}
+          defaultValue={amount}
           isInvalid={!!errors[`debts[${debtId}].amount`]}
         />
         <Form.Text className="text-muted">
@@ -173,6 +193,7 @@ const DebtForm = ({
           unregister={unregister}
           setValue={setValue}
           disabled={interestRateDisabled}
+          defaultValue={interestRate}
           isInvalid={!!errors[`debts[${debtId}].interestRate`]}
         />
         <Form.Control.Feedback type="invalid">
@@ -183,6 +204,7 @@ const DebtForm = ({
           inline
           type="checkbox"
           id={`interestRateUnknown${debtId}`}
+          defaultChecked={interestRateDisabled}
           onChange={event =>
             onChange(
               `debts[${debtId}].interestRate`,
@@ -212,6 +234,7 @@ const DebtForm = ({
           inline
           type="checkbox"
           id={`creditorUnknown${debtId}`}
+          defaultChecked={creditorDisabled}
           onChange={event =>
             onChange(`debts[${debtId}].creditor`, setCreditorDisabled, event)
           }
@@ -247,6 +270,7 @@ const DebtForm = ({
           inline
           type="checkbox"
           id={`accountStatusUnknown${debtId}`}
+          defaultChecked={accountStatusDisabled}
           onChange={event =>
             onChange(
               `debts[${debtId}].accountStatus`,
@@ -319,7 +343,13 @@ DebtForm.defaultProps = {
   errors: {}
 }
 
-const DataDuesForm = () => {
+const DataDuesForm = ({ userAction }) => {
+  // Get data in db to be rendered in the form
+  let formData = {}
+  if (userAction) {
+    formData = userAction.data
+  }
+
   const {
     register,
     handleSubmit,
@@ -328,15 +358,60 @@ const DataDuesForm = () => {
     unregister,
     errors
   } = useForm({
-    validationSchema: validationSchema
+    validationSchema: validationSchema,
+    defaultValues: formData
   })
 
-  const [createDataDuesAction, { data = {}, loading }] = useMutation(
-    CREATE_DATA_DUES_ACTION
+  /**
+   * Initial Values
+   * used for controlled components to have a defaultValue
+   * and for conditional rendering of components
+   */
+  const phoneNumber = watch('phoneNumber')
+
+  const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
+    UPSERT_DATA_DUES_ACTION,
+    {
+      onCompleted ({ userAction }) {
+        navigate('/app/actions', {
+          state: {
+            alert: {
+              message:
+                "You completed an action! Let's keep going until you complete all!",
+              variant: 'success'
+            }
+          }
+        })
+      },
+      onError ({ errors: formErrors }) {
+        // set errors to the form
+      },
+      // Update Apollo Cache after upsert
+      update (cache, { data: { upsertDataDuesAction } }) {
+        const { userAction } = upsertDataDuesAction
+
+        if (userAction) {
+          const { id, data } = userAction
+          cache.writeFragment({
+            id,
+            fragment: gql`
+              fragment dataDues on UserAction {
+                data
+              }
+            `,
+            query: GET_USER_ACTION,
+            data: {
+              data,
+              __typename: userAction.__typename
+            }
+          })
+        }
+      }
+    }
   )
 
   const onSubmit = data => {
-    createDataDuesAction({ variables: { data } })
+    upsertDataDuesAction({ variables: { data } })
   }
 
   const [debtCount, setDebtCount] = useState(1)
@@ -351,13 +426,13 @@ const DataDuesForm = () => {
 
   // early return
   // render a thank you message instead of the form
-  const { createDataDuesAction: payload } = data
+  const { upsertDataDuesAction: payload } = data
   if (payload && payload.userAction && payload.userAction.completed) {
     return <DataDuesThankYou />
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} className="data-dues-form">
+    <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
       <div className="mt-4">
         <h3 className="mb-2">Personal information</h3>
         <Form.Group controlId="fullName">
@@ -394,7 +469,7 @@ const DataDuesForm = () => {
             type="text"
             placeholder="400 Maryland Avenue, SW. Washington, DC 20202"
             name="streetAddress"
-            ref={register()}
+            ref={register}
           />
         </Form.Group>
 
@@ -405,6 +480,7 @@ const DataDuesForm = () => {
             register={register}
             unregister={unregister}
             setValue={setValue}
+            defaultValue={phoneNumber}
             isInvalid={!!errors.phoneNumber}
           />
           <Form.Control.Feedback type="invalid">
@@ -443,7 +519,19 @@ const DataDuesForm = () => {
           </Row>
         </div>
       </div>
-      <Row className="mt-2">
+      <Row className="mt-4">
+        <Col>
+          <div className="text-left">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                navigate('/app/actions')
+              }}
+            >
+              Go back to actions list
+            </Button>
+          </div>
+        </Col>
         <Col>
           <div className="text-right">
             <Button variant="primary" type="submit" disabled={loading}>
@@ -457,18 +545,25 @@ const DataDuesForm = () => {
 }
 
 DataDuesForm.propTypes = {
-  onSubmit: PropTypes.func
+  userAction: PropTypes.object
 }
 
-const DataDuesAction = () => {
-  const handleSubmit = event => {
-    event.preventDefault()
-  }
+DataDuesForm.defaultValues = {
+  userAction: {}
+}
 
+type DataDuesActionProps = {
+  user: User,
+  slug: string,
+  userAction: any
+}
+
+const DataDuesAction = ({ user, slug, userAction }: DataDuesActionProps) => {
+  // TODO: do something with user and slug
   return (
     <Container>
       <DataDuesHeader />
-      <DataDuesForm handleSubmit={handleSubmit} />
+      <DataDuesForm userAction={userAction} />
     </Container>
   )
 }

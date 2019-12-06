@@ -6,7 +6,7 @@ import useForm from 'react-hook-form'
 import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
-import { Container, Row, Col, Button, Form } from 'react-bootstrap'
+import { Container, Row, Col, Button, ButtonGroup, Form } from 'react-bootstrap'
 import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
 import { UPSERT_DATA_DUES_ACTION, GET_USER_ACTIONS } from '../../api'
 import {
@@ -373,8 +373,7 @@ const DataDuesForm = ({ userAction }) => {
         navigate('/app/actions', {
           state: {
             alert: {
-              message:
-                "You completed an action! Let's keep going until you complete all!",
+              message: 'Thank you for completing an action. Why stop now?',
               variant: 'success'
             }
           }
@@ -484,14 +483,16 @@ const DataDuesForm = ({ userAction }) => {
         <div>
           <Row>
             <Col>
-              <Button variant="secondary" className="mr-5" onClick={addDebt}>
-                Add debt
-              </Button>
-              {debtCount > 1 && (
-                <Button variant="secondary" onClick={removeDebt}>
-                  Remove debt
+              <ButtonGroup size="lg" aria-label="Add/remove debt type">
+                <Button variant="info" onClick={addDebt}>
+                  Add another debt type
                 </Button>
-              )}
+                {debtCount > 1 && (
+                  <Button variant="dark" onClick={removeDebt}>
+                    Remove debt type
+                  </Button>
+                )}
+              </ButtonGroup>
             </Col>
           </Row>
         </div>
@@ -505,7 +506,7 @@ const DataDuesForm = ({ userAction }) => {
                 navigate('/app/actions')
               }}
             >
-              Go back to actions list
+              Go back
             </Button>
           </div>
         </Col>

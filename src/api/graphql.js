@@ -54,3 +54,36 @@ export const GET_USER_ACTION = gql`
     }
   }
 `
+
+export const ADD_USER_TO_CAMPAIGN = gql`
+  mutation addUserToCampaign($motive: String!) {
+    addUserToCampaign(motive: $motive) {
+      ok
+    }
+  }
+`
+
+export const UPDATE_USER_ACTION = gql`
+  mutation userActionUpdate($userActionId: ID!, $completed: Boolean!) {
+    userActionUpdate(userActionId: $userActionId, completed: $completed) {
+      id
+      completed
+    }
+  }
+`
+
+export const GET_USER_ACTIONS = gql`
+  query getUserActions {
+    getUserActions {
+      actionId
+      userActionId
+      campaignId
+      title
+      description
+      type
+      config
+      completed
+      slug
+    }
+  }
+`

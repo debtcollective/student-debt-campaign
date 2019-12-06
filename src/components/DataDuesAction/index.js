@@ -3,13 +3,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import useForm from 'react-hook-form'
-import gql from 'graphql-tag'
 import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
-import { UPSERT_DATA_DUES_ACTION, GET_USER_ACTION } from '../../api'
+import { UPSERT_DATA_DUES_ACTION, GET_USER_ACTIONS } from '../../api'
 import {
   debtTypes,
   studentDebtTypes,
@@ -386,27 +385,7 @@ const DataDuesForm = ({ userAction }) => {
       onError ({ errors: formErrors }) {
         // set errors to the form
       },
-      // Update Apollo Cache after upsert
-      update (cache, { data: { upsertDataDuesAction } }) {
-        const { userAction } = upsertDataDuesAction
-
-        if (userAction) {
-          const { id, data } = userAction
-          cache.writeFragment({
-            id,
-            fragment: gql`
-              fragment dataDues on UserAction {
-                data
-              }
-            `,
-            query: GET_USER_ACTION,
-            data: {
-              data,
-              __typename: userAction.__typename
-            }
-          })
-        }
-      }
+      refetchQueries: [{ query: GET_USER_ACTIONS }]
     }
   )
 

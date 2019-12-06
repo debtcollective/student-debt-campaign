@@ -1,19 +1,11 @@
 // @flow
 
 import * as React from 'react'
-import { Link, navigate } from 'gatsby'
-import { useMutation } from '@apollo/react-hooks'
+import { Link } from 'gatsby'
 import Markdown from 'markdown-to-jsx'
-import { ADD_USER_TO_CAMPAIGN } from './api'
-import { GET_USER } from '../../api/graphql'
 
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-
-const GATSBY_HOST_URL = process.env.GATSBY_HOST_URL || ''
-const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL || ''
-const redirectParam = `return_url=${GATSBY_HOST_URL}`
-const loginSSOUrl = `${GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`
 
 type FeedEntry = {
   picture: { publicURL: string },
@@ -46,12 +38,6 @@ const Join = ({
   remark,
   title
 }: Props) => {
-  const [joinToCampaign] = useMutation(ADD_USER_TO_CAMPAIGN, {
-    onCompleted: data => {
-      navigate('/app/actions')
-    }
-  })
-
   return (
     <section
       className="join"
@@ -80,40 +66,19 @@ const Join = ({
                 </p>
                 <div className="join__cta">
                   {(() => {
-                    if (!user.id) {
+                    // we have a user and is part of the campaign
+                    if (user && user.campaigns && user.campaigns.length) {
                       return (
-                        <a className="btn btn-primary" href={loginSSOUrl}>
-                          Join us to add your name
-                        </a>
-                      )
-                    }
-
-                    if (user.campaigns.length) {
-                      return (
-                        <Link className="btn btn-primary" to="/data-dues">
+                        <Link className="btn btn-primary" to="/app/actions">
                           Go To Actions
                         </Link>
                       )
                     }
 
                     return (
-                      <button
-                        className="btn btn-primary"
-                        onClick={() =>
-                          joinToCampaign({
-                            variables: {
-                              motive: id
-                            },
-                            refetchQueries: [
-                              {
-                                query: GET_USER
-                              }
-                            ]
-                          })
-                        }
-                      >
+                      <Link className="btn btn-primary" to={`/app/join/${id}`}>
                         Add your name
-                      </button>
+                      </Link>
                     )
                   })()}
                 </div>

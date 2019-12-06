@@ -3,7 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import CampaignAction from '../../components/CampaignAction'
-import { GET_USER_ACTIONS } from './api'
+import { GET_USER_ACTIONS } from '../../api'
 
 type Props = {
   user: User
@@ -15,9 +15,7 @@ const CampaignActions = ({ user }: Props) => {
     loading: queryLoading,
     error: queryError,
     data: queryResponse
-  } = useQuery(GET_USER_ACTIONS, {
-    variables: { userId: user.id }
-  })
+  } = useQuery(GET_USER_ACTIONS)
 
   return (
     <section id="campaign-actions" className="campaign-actions">

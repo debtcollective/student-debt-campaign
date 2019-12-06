@@ -373,8 +373,7 @@ const DataDuesForm = ({ userAction }) => {
         navigate('/app/actions', {
           state: {
             alert: {
-              message:
-                "You completed an action! Let's keep going until you complete all!",
+              message: 'Thank you for completing an action. Why stop now?',
               variant: 'success'
             }
           }

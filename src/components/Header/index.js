@@ -58,14 +58,14 @@ const Header = ({ user }) => {
             </div>
             <div className="col-6 col-lg-6 col-xl-9">
               <div className="header-col justify-content-xl-start">
-                <Link to="/">
+                <a href="//debtcollective.org">
                   <img
                     className="logo"
                     src="/img/logo-light.svg"
                     alt="debtcollective logo"
                     width="100%"
                   />
-                </Link>
+                </a>
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
                     {isLoggedIn && (
@@ -83,7 +83,7 @@ const Header = ({ user }) => {
                     <li className="nav-item">
                       <a
                         className="nav-link"
-                        href="https://debtcollective.org/donate"
+                        href="https://membership.debtcollective.org"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={trackOutboundLink}
@@ -143,7 +143,7 @@ const Header = ({ user }) => {
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="https://debtcollective.org/donate"
+                href="https://membership.debtcollective.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={trackOutboundLink}

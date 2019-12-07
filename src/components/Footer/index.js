@@ -74,16 +74,7 @@ const Footer = () => {
             <h6 className="footer__list-head">More</h6>
             <div className="footer__list-item">
               <a
-                href="https://tools.debtcollective.org/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Contact
-              </a>
-            </div>
-            <div className="footer__list-item">
-              <a
-                href="https://debtcollective.org/donate"
+                href="https://membership.debtcollective.org"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -105,7 +96,7 @@ const Footer = () => {
       <div className="brand-container container ml-0">
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-4 d-none d-md-flex">
-            <a href="/">
+            <a href="//debtcollective.org">
               <img
                 alt="The Debt Collective"
                 src="/img/logo-dark.svg"

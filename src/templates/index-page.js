@@ -32,9 +32,6 @@ const IndexPage = ({ data }) => {
   const user = userQuery.currentUser || {}
   const counters = userCampaignCountQuery.getUserCampaignsCountByMotive || []
 
-  console.log('counters', counters)
-  console.log('joinCampaign', joinCampaign)
-
   return (
     <Layout className="no-pad">
       <Hero title={hero.title} actions={hero.actions} social={social} />
@@ -42,22 +39,28 @@ const IndexPage = ({ data }) => {
         {demand.content}
       </Informative>
       {joinCampaign.map(
-        ({ id, background, image, title, colour, content, remark, feed }) => (
-          <Join
-            key={id}
-            id={id}
-            background={background.publicURL}
-            image={image.publicURL}
-            count={_.defaultTo(_.find(counters, { motive: id }), 0)}
-            title={title}
-            colour={colour}
-            remark={remark}
-            feed={feed}
-            user={user}
-          >
-            {content}
-          </Join>
-        )
+        ({ id, background, image, title, colour, content, remark, feed }) => {
+          const countData = _.defaultTo(_.find(counters, { motive: id }), {
+            count: 0
+          })
+
+          return (
+            <Join
+              key={id}
+              id={id}
+              background={background.publicURL}
+              image={image.publicURL}
+              count={Number(countData.count)}
+              title={title}
+              colour={colour}
+              remark={remark}
+              feed={feed}
+              user={user}
+            >
+              {content}
+            </Join>
+          )
+        }
       )}
       <Notification title={notification.title} date={notification.date}>
         {notification.description}
@@ -82,7 +85,6 @@ export const indexPageQuery = graphql`
           }
           colour
           content
-          count
           feed {
             username
             status

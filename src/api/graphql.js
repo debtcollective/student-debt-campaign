@@ -18,9 +18,22 @@ export const GET_USER = gql`
   }
 `
 
-export const UPSERT_DATA_DUES_ACTION = gql`
-  mutation upsertDataDuesAction($data: JSONObject!) {
-    upsertDataDuesAction(data: $data) {
+/**
+ * Retrieve the count of users for each campaign motive
+ */
+
+export const GET_USER_CAMPAIGN_COUNT = gql`
+  query getUserCampaignsCountByMotive {
+    getUserCampaignsCountByMotive {
+      motive
+      count
+    }
+  }
+`
+
+export const CREATE_DATA_DUES_ACTION = gql`
+  mutation createDataDuesAction($data: JSONObject!) {
+    createDataDuesAction(data: $data) {
       errors
       userAction {
         id

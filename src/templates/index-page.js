@@ -3,6 +3,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useQuery } from '@apollo/react-hooks'
+import _ from 'lodash'
 import Layout from '../components/Layout'
 import Hero from '../sections/Hero'
 import Informative from '../sections/Informative'
@@ -10,7 +11,7 @@ import Join from '../sections/Join'
 import Notification from '../sections/Notification'
 import FAQ from '../sections/FAQ'
 import CTA from '../sections/CTA'
-import { GET_USER } from '../api'
+import { GET_USER, GET_USER_CAMPAIGN_COUNT } from '../api'
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
@@ -24,8 +25,15 @@ const IndexPage = ({ data }) => {
     join_campaign: joinCampaign
   } = frontmatter
 
-  const { data: userQueryResponse = {} } = useQuery(GET_USER)
-  const user = userQueryResponse.currentUser || {}
+  const { data: userQuery = {} } = useQuery(GET_USER)
+  const { data: userCampaignCountQuery = {} } = useQuery(
+    GET_USER_CAMPAIGN_COUNT
+  )
+  const user = userQuery.currentUser || {}
+  const counters = userCampaignCountQuery.getUserCampaignsCountByMotive || []
+
+  console.log('counters', counters)
+  console.log('joinCampaign', joinCampaign)
 
   return (
     <Layout className="no-pad">
@@ -34,23 +42,13 @@ const IndexPage = ({ data }) => {
         {demand.content}
       </Informative>
       {joinCampaign.map(
-        ({
-          id,
-          background,
-          image,
-          title,
-          colour,
-          content,
-          count,
-          remark,
-          feed
-        }) => (
+        ({ id, background, image, title, colour, content, remark, feed }) => (
           <Join
             key={id}
             id={id}
             background={background.publicURL}
             image={image.publicURL}
-            count={count}
+            count={_.defaultTo(_.find(counters, { motive: id }), 0)}
             title={title}
             colour={colour}
             remark={remark}

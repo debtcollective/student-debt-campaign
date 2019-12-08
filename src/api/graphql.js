@@ -31,9 +31,9 @@ export const GET_USER_CAMPAIGN_COUNT = gql`
   }
 `
 
-export const CREATE_DATA_DUES_ACTION = gql`
-  mutation createDataDuesAction($data: JSONObject!) {
-    createDataDuesAction(data: $data) {
+export const UPSERT_DATA_DUES_ACTION = gql`
+  mutation upsertDataDuesAction($data: JSONObject!) {
+    upsertDataDuesAction(data: $data) {
       errors
       userAction {
         id

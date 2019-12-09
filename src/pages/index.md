@@ -93,10 +93,10 @@ join_campaign:
     feed:
       - picture: /img/d.-adono-striker-pic.jpg
         status: >-
-          I strike because the way the school I attended has not been held
-          accountable for its fraudulent practice. I strike so my son can
-          understand when wrong is done to you, you have to do what's right and
-          speak up. Even if it's hard and uncomfortable. Cancel student debt!
+          I strike because the school I attended has not been held accountable
+          for its fraudulent practice. I strike so my son can understand when
+          wrong is done to you, you have to do what's right and speak up. Even
+          if it's hard and uncomfortable. Cancel student debt!
         username: Danielle Adorno
       - picture: /img/jairo-martinez.jpg
         status: >-

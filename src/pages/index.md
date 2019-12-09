@@ -2,21 +2,21 @@
 templateKey: index-page
 hero:
   actions:
-    - image:
+    - id: already-on-strike
+      image:
         alt: fist
         src: /img/fist.png
       title: Declare!
-      join_section_id: "already-on-strike"
-    - image:
+    - id: threatening-on-strike
+      image:
         alt: prepare
         src: /img/newspaper.png
       title: Prepare!
-      join_section_id: "threatening-on-strike"
-    - image:
+    - id: solidarity-with-strikers
+      image:
         alt: support
         src: /img/handshake.png
       title: Support!
-      join_section_id: "solidarity-with-strikers"
   title:
     - line: End student debt!
     - line: Join the strike!
@@ -47,14 +47,14 @@ demand:
     We demand full cancellation of federal & private student loans. Free public
     college for all!
 join_campaign:
-  - id: "already-on-strike"
-    background: /img/image_3.png
+  - background: /img/image_3.png
     colour: purple
     content: >-
       We are not paying our student loans this means we are already in default
       or that we have enrolled in programs such as forbearance, deferment or $0
       IBR in order to halt our payments. The government and the lenders aren't
       getting a cent from us!
+    count: 0
     feed:
       - picture: /img/ami-schneider.jpg
         status: >-
@@ -78,75 +78,77 @@ join_campaign:
           funded and free. The government should not be stealing people's money
           to pay for their mistakes.
         username: The Tribble Family.
+    id: already-on-strike
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
-  - id: "threatening-on-strike"
-    background: /img/image_2.png
+  - background: /img/image_2.png
     colour: yellow
     content: >-
       We are prepared to stop paying our loans in the future if our demands are
       not met. These loans are unjust and it is only a matter of time before we
       stop cooperating.
+    count: 0
     feed:
-      - picture: /img/user_1.png
+      - picture: /img/d.-adono-striker-pic.jpg
         status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@laticcia'
-      - picture: /img/user_2.png
+          I strike because the way the school is not accountable for its
+          fraudulent practices, nor should the students be held accountable to
+          line the for profits industries pockets with money I earned through my
+          own hard work. Not through a "degree" or certificate not recognised. I
+          strike so my son can understand when wrong is done to you, you have to
+          do what's right and speak up. Even if it's hard and uncomfortable.
+        username: Dawn Kceul
+      - picture: /img/jairo-martinez.jpg
         status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@sara'
-      - picture: /img/user_3.png
+          I attended ITT Tech in Springfield, VA. My debts should be cancelled
+          due to predatory loans that should not have been approved and a school
+          that is now out of business.
+        username: Jairo Martinez
+      - picture: /img/sandy-nurse.jpg
         status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@monica'
-      - picture: /img/user_4.png
-        status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@john'
+          I have been on a Debt Strike since 2013 because student debt is
+          shackling me, my friends, and my family. While billionaires like Jeff
+          Bezos won’t pay a dime in taxes off excessive profits, young people
+          across the country are forced to borrow outrageous amounts of money
+          for college tuitions. At a young age we are straddled with crippling
+          debt that takes half our lives to get from under. It’s a gross example
+          of deep inequality. And I refuse to pay into this system of
+          imprisonment
+        username: Sandy Nurse
+    id: threatening-on-strike
     image: /img/newspaper.png
     remark: Get actions when you add your name.
     title: of us are threatening to strike!
-  - id: "solidarity-with-strikers"
-    background: /img/image_1.png
+  - background: /img/image_1.png
     colour: green
     content: >-
       We do not have student loans, but we are standing in solidarity with all
       those people who are on strike
+    count: 0
     feed:
-      - picture: /img/user_1.png
+      - picture: /img/joseph-white.jpg
         status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@laticca'
-      - picture: /img/user_2.png
+          Joseph White. I served in the Missouri Army National Guard for eleven
+          years. I am over 190,000 dollars in student loan debt from ITT Tech. I
+          am refusing to pay one penny until my loans are eliminated.
+        username: Joseph White
+      - picture: /img/stephanie-hutchison-.jpeg
         status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@sara'
-      - picture: /img/user_3.png
+          I attended Everest Institute.Financially, I am unable to plan my life.
+          These loans have ruined my credit. In a system that forces you to go
+          to school, it’s truly upsetting to have this experience, and in the
+          end it makes you not want to invest in said system that we’ve been
+          told works for everybody.
+        username: Stephanie Hutchison
+      - picture: /img/sandersbiopic.png
         status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@monica'
-      - picture: /img/user_4.png
-        status: >-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas,
-          ipsum ac placerat pretium, nunc quam euismod metus, eget maximus lorem
-          nulla a arcu. Sed tempus commodo efficitur. Mauris a.
-        username: '@john'
+          I attended a for-profit school that grossly misrepresented its
+          programs and then left me with a worthless degree and a mountain of
+          debt. This debt is all the product of a failed system. Nobody should
+          have to pay a debt that should have never existed to begin with.
+        username: Sanders Fabares
+    id: solidarity-with-strikers
     image: /img/handshake.png
     remark: Get actions when you add your name.
     title: of us stand in solidarity with strikers.

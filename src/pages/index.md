@@ -54,7 +54,6 @@ join_campaign:
       or that we have enrolled in programs such as forbearance, deferment or $0
       IBR in order to halt our payments. The government and the lenders aren't
       getting a cent from us!
-    count: 0
     feed:
       - picture: /img/ami-schneider.jpg
         status: >-
@@ -88,7 +87,6 @@ join_campaign:
       We are prepared to stop paying our loans in the future if our demands are
       not met. These loans are unjust and it is only a matter of time before we
       stop cooperating.
-    count: 0
     feed:
       - picture: /img/d.-adono-striker-pic.jpg
         status: >-
@@ -125,7 +123,6 @@ join_campaign:
     content: >-
       We do not have student loans, but we are standing in solidarity with all
       those people who are on strike
-    count: 0
     feed:
       - picture: /img/joseph-white.jpg
         status: >-

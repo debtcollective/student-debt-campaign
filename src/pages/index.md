@@ -3,22 +3,22 @@ templateKey: index-page
 hero:
   actions:
     - id: already-on-strike
-      join_section_id: already-on-strike
       image:
         alt: fist
         src: /img/fist.png
+      join_section_id: already-on-strike
       title: Declare!
     - id: threatening-on-strike
-      join_section_id: threatening-on-strike
       image:
         alt: prepare
         src: /img/newspaper.png
+      join_section_id: threatening-on-strike
       title: Prepare!
     - id: solidarity-with-strikers
-      join_section_id: solidarity-with-strikers
       image:
         alt: support
         src: /img/handshake.png
+      join_section_id: solidarity-with-strikers
       title: Support!
   title:
     - line: End student debt!
@@ -93,13 +93,11 @@ join_campaign:
     feed:
       - picture: /img/d.-adono-striker-pic.jpg
         status: >-
-          I strike because the way the school is not accountable for its
-          fraudulent practices, nor should the students be held accountable to
-          line the for profits industries pockets with money I earned through my
-          own hard work. Not through a "degree" or certificate not recognised. I
-          strike so my son can understand when wrong is done to you, you have to
-          do what's right and speak up. Even if it's hard and uncomfortable.
-        username: Dawn Kceul
+          I strike because the way the school I attended has not been held
+          accountable for its fraudulent practice. I strike so my son can
+          understand when wrong is done to you, you have to do what's right and
+          speak up. Even if it's hard and uncomfortable. Cancel student debt!
+        username: Danielle Adorno
       - picture: /img/jairo-martinez.jpg
         status: >-
           I attended ITT Tech in Springfield, VA. My debts should be cancelled

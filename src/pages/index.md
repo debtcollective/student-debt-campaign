@@ -3,16 +3,19 @@ templateKey: index-page
 hero:
   actions:
     - id: already-on-strike
+      join_section_id: already-on-strike
       image:
         alt: fist
         src: /img/fist.png
       title: Declare!
     - id: threatening-on-strike
+      join_section_id: threatening-on-strike
       image:
         alt: prepare
         src: /img/newspaper.png
       title: Prepare!
     - id: solidarity-with-strikers
+      join_section_id: solidarity-with-strikers
       image:
         alt: support
         src: /img/handshake.png

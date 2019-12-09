@@ -31,6 +31,7 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "id", name: "id", widget: "string" }
+                  - { label: "join_section_id", name: "join_section_id", widget: "string" }
                   - label: "Image"
                     name: "image"
                     widget: "object"
@@ -95,10 +96,6 @@ collections:
               - label: "Title"
                 name: "title"
                 widget: "string"
-              - label: "Count"
-                name: "count"
-                widget: "number"
-                valueType: "int"
               - label: "Content"
                 name: "content"
                 widget: "markdown"

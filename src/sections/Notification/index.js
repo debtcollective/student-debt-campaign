@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Markdown from 'markdown-to-jsx'
+import dayjs from 'dayjs'
 
 type Props = {
   title: string,
@@ -13,7 +14,9 @@ const Notification = ({ title, children, date }: Props) => (
   <div className="notification alert" role="alert">
     <div className="notification-col">
       <div className="notification__title">{title}</div>
-      <div className="notification__date">Updated {date}</div>
+      <div className="notification__date">
+        Updated {dayjs(date).format('MMM D, YYYY')}
+      </div>
     </div>
     <div className="notification-col">
       <div className="notification__content">

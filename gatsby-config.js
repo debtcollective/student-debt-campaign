@@ -27,6 +27,14 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_TRACKING_ID,
+        head: false,
+        anonymize: true
+      }
+    },
+    {
       // all paths prefixed by /app/ will render the route described in src/pages/app.js
       resolve: 'gatsby-plugin-create-client-paths',
       options: { prefixes: ['/app/*'] }

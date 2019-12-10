@@ -1,8 +1,15 @@
-import React from 'react'
-import Markdown from 'markdown-to-jsx'
-import PropTypes from 'prop-types'
+// @flow
 
-const Notification = ({ title, children, date }) => (
+import * as React from 'react'
+import Markdown from 'markdown-to-jsx'
+
+type Props = {
+  title: string,
+  children: React.Node,
+  date: string
+}
+
+const Notification = ({ title, children, date }: Props) => (
   <div className="notification alert" role="alert">
     <div className="notification-col">
       <div className="notification__title">{title}</div>
@@ -23,11 +30,5 @@ const Notification = ({ title, children, date }) => (
     </button>
   </div>
 )
-
-Notification.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.any,
-  date: PropTypes.string
-}
 
 export default Notification

@@ -7,12 +7,6 @@ import Markdown from 'markdown-to-jsx'
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
-type FeedEntry = {
-  picture: { publicURL: string },
-  username: string,
-  status: string
-}
-
 type Props = {
   user: User,
   background: string,

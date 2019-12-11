@@ -7,11 +7,6 @@ if (typeof window !== 'undefined') {
   require('details-polyfill')
 }
 
-type FAQEntry = {
-  question: string,
-  answer: string
-}
-
 type Props = {
   entries: Array<FAQEntry>
 }

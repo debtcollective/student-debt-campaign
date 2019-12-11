@@ -1,3 +1,13 @@
+declare type ChildImageSharp = {
+  src: mixed,
+  alt: string
+}
+
+declare type CMSImage = {
+  absolutePath: string,
+  publicURL: string
+}
+
 declare type CMSContent = {
   cta: string,
   demand: string,
@@ -9,10 +19,7 @@ declare type CMSContent = {
     actions: {
       title: string,
       join_section_id: string,
-      image: {
-        src: mixed,
-        alt: string
-      }
+      image: ChildImageSharp
     }
   },
   join_campaign: Array<{
@@ -24,10 +31,7 @@ declare type CMSContent = {
     colour: string,
     content: string,
     feed: Array<FeedEntry>,
-    image: {
-      absolutePath: string,
-      publicURL: string
-    },
+    image: CMSImage,
     remark: string,
     title: string
   }>,

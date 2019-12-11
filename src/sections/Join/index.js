@@ -3,19 +3,20 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import Markdown from 'markdown-to-jsx'
+import _ from 'lodash'
 
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
 type Props = {
   user: User,
-  background: string,
+  background: CMSImage,
   children: React.Node,
   colour: string,
   count: number,
   feed: Array<FeedEntry>,
   id: string,
-  image: string,
+  image: CMSImage,
   remark: string,
   title: string
 }
@@ -32,12 +33,15 @@ const Join = ({
   remark,
   title
 }: Props) => {
+  const backgroundUrl = _.defaultTo(background.publicURL || background, '')
+  const titleImageUrl = _.defaultTo(image.publicURL || image, '')
+
   return (
     <section
       className="join"
       data-color={colour}
       id={id}
-      style={{ background: `url(${background})`, backgroundSize: 'cover' }}
+      style={{ background: `url(${backgroundUrl})`, backgroundSize: 'cover' }}
     >
       <div className="container-fluid distribute-rows">
         <div className="row">
@@ -46,7 +50,7 @@ const Join = ({
               <header className="join__header">
                 <img
                   className="join__img"
-                  src={image}
+                  src={titleImageUrl}
                   alt={title.toLowerCase()}
                 />
                 <h2 className="join__title">
@@ -87,7 +91,7 @@ const Join = ({
                     >
                       <div className="our-voices__img">
                         <img
-                          src={picture.publicURL}
+                          src={_.defaultTo(picture.publicURL || picture, '')}
                           alt={'user profile picture'}
                         />
                       </div>

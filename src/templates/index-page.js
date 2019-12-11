@@ -80,8 +80,8 @@ export const IndexPageTemplate = ({
           <Join
             key={id}
             id={id}
-            background={background.publicURL}
-            image={image.publicURL}
+            background={background}
+            image={image}
             count={Number(countData.count)}
             title={title}
             colour={colour}

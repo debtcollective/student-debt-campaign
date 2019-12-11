@@ -19,14 +19,16 @@ const CTA = ({ social, title, action }) => (
       </div>
       <div className="row">
         <div className="col">
-          <div className="social-icons d-xl-none mt-5">
-            <p className="share-this">{social.action}</p>
-            {social.accounts.map(({ logo, username, url }, index) => (
-              <a key={`social-${index}`} href={url}>
-                <IconWrap src={logo.publicURL} alt={username} />
-              </a>
-            ))}
-          </div>
+          {social && (
+            <div className="social-icons d-xl-none mt-5">
+              <p className="share-this">{social.action}</p>
+              {social.accounts.map(({ logo, username, url }, index) => (
+                <a key={`social-${index}`} href={url}>
+                  <IconWrap src={logo.publicURL} alt={username} />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

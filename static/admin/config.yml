@@ -6,6 +6,25 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "actions"
+    label: "Actions"
+    files:
+      - file: "src/collections/actions.md"
+        label: "Action"
+        name: "action"
+        fields:
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "action-collection"
+          - label: "Content by slug"
+            name: "content"
+            widget: "list"
+            fields:
+              - { label: "Identifier", name: "slug", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }
+
   - name: "pages"
     label: "Pages"
     files:

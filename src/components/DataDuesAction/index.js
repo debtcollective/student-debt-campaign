@@ -213,7 +213,7 @@ const DebtForm = ({
         />
       </Form.Group>
 
-      <Form.Group controlId={`interestRate${debtId}`}>
+      <Form.Group controlId={`creditor${debtId}`}>
         <Form.Label>Creditor</Form.Label>
         <Form.Control
           type="text"

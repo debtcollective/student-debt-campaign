@@ -11,15 +11,14 @@ export const debtTypes = [
   'Other'
 ]
 export const studentDebtTypes = [
-  'Subsidized Stafford',
-  'Unsubsidized Stafford',
-  'Parent PLUS',
-  'Private Student loans'
+  'Federal loan',
+  'Parent Plus loan',
+  'Private loan'
 ]
 export const accountStatuses = [
   'In repayment',
   'Late on payments',
-  'Stopped payments',
+  'Forbearance/Deferment',
   'Sent to collections'
 ]
 

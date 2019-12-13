@@ -17,22 +17,22 @@ import {
   validationSchema
 } from './schema'
 
-const DataDuesHeader = () => (
+export const DataDuesHeader = ({
+  title,
+  description
+}: {
+  title: string,
+  description: string
+}) => (
   <>
     <Row>
       <Col>
-        <h1 className="text-center">Add your debt data</h1>
+        <h1 className="text-center">{title}</h1>
       </Col>
     </Row>
     <Row className="my-4">
       <Col>
-        <p>
-          For too long, creditors have known everything about us while we know
-          very little about them. It is time for that to change so we can fight
-          back together. We will never sell your information. And we won’t share
-          your data with anyone outside our organizing team without your
-          permission. All our data is stored on secure servers.
-        </p>
+        <p>{description}</p>
       </Col>
     </Row>
   </>

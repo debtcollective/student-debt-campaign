@@ -50,7 +50,7 @@ export const validationSchema = yup.object().shape({
         .oneOf([...studentDebtTypes, unknown], 'Student debt type is required'),
       amount: yup.number().required('Amount is required'),
       interestRate: yup.string().required('Interest rate is required'),
-      creditor: yup.string().required('Creditor is required'),
+      creditor: yup.string().required('This field is required'),
       accountStatus: yup
         .mixed()
         .oneOf([...accountStatuses, unknown], 'Account status is required'),

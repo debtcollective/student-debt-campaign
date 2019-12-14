@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useEffect } from 'react'
-import * as ReachRouter from '@reach/router'
+import { RouteComponentProps } from '@reach/router'
 import _ from 'lodash'
 import { navigate } from 'gatsby'
 import { useMutation } from '@apollo/react-hooks'
@@ -15,7 +15,7 @@ const VALID_MOTIVES = [
 
 type Props = {
   isLoggedIn: boolean
-} & ReachRouter.RouteComponentProps<{ motive: string }>
+} & RouteComponentProps<{ motive: string }>
 
 const Join = ({ isLoggedIn, motive }: Props) => {
   const [joinCampaign] = useMutation(ADD_USER_TO_CAMPAIGN, {

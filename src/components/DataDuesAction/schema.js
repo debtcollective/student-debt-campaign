@@ -11,15 +11,14 @@ export const debtTypes = [
   'Other'
 ]
 export const studentDebtTypes = [
-  'Subsidized Stafford',
-  'Unsubsidized Stafford',
-  'Parent PLUS',
-  'Private Student loans'
+  'Federal loan',
+  'Parent Plus loan',
+  'Private loan'
 ]
 export const accountStatuses = [
   'In repayment',
   'Late on payments',
-  'Stopped payments',
+  'Forbearance/Deferment',
   'Sent to collections'
 ]
 
@@ -51,7 +50,7 @@ export const validationSchema = yup.object().shape({
         .oneOf([...studentDebtTypes, unknown], 'Student debt type is required'),
       amount: yup.number().required('Amount is required'),
       interestRate: yup.string().required('Interest rate is required'),
-      creditor: yup.string().required('Creditor is required'),
+      creditor: yup.string().required('This field is required'),
       accountStatus: yup
         .mixed()
         .oneOf([...accountStatuses, unknown], 'Account status is required'),

@@ -213,11 +213,11 @@ const DebtForm = ({
         />
       </Form.Group>
 
-      <Form.Group controlId={`interestRate${debtId}`}>
-        <Form.Label>Creditor</Form.Label>
+      <Form.Group controlId={`creditor${debtId}`}>
+        <Form.Label>{isStudentDebt ? 'Servicer' : 'Creditor'}</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Sallie Mae"
+          placeholder={isStudentDebt ? 'Navient' : 'Sallie Mae'}
           disabled={creditorDisabled}
           name={`debts[${debtId}].creditor`}
           ref={register}
@@ -235,7 +235,7 @@ const DebtForm = ({
           onChange={event =>
             onChange(`debts[${debtId}].creditor`, setCreditorDisabled, event)
           }
-          label="I don't know my creditor"
+          label={`I don't know my ${isStudentDebt ? 'servicer' : 'creditor'}`}
         />
       </Form.Group>
 

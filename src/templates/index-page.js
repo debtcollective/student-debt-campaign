@@ -1,4 +1,4 @@
-/* eslint react/prop-types: 0 */
+// @flow
 
 import React from 'react'
 import { graphql } from 'gatsby'
@@ -13,16 +13,23 @@ import FAQ from '../sections/FAQ'
 import CTA from '../sections/CTA'
 import { GET_USER, GET_USER_CAMPAIGN_COUNT } from '../api'
 
-const IndexPage = ({ data }) => {
+type Props = {
+  data: {
+    markdownRemark: {
+      frontmatter: CMSContent
+    }
+  }
+}
+
+const IndexPage = ({ data }: Props) => {
   const { frontmatter } = data.markdownRemark
   const {
-    hero,
-    social,
-    notification,
     cta,
-    faq,
     demand,
-    join_campaign: joinCampaign
+    faq,
+    hero,
+    join_campaign: joinCampaign,
+    notification
   } = frontmatter
 
   const { data: userQuery = {} } = useQuery(GET_USER)
@@ -34,42 +41,66 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout className="no-pad">
-      <Hero title={hero.title} actions={hero.actions} social={social} />
-      <Informative title={demand.title} remark={demand.remark}>
-        {demand.content}
-      </Informative>
-      {joinCampaign.map(
-        ({ id, background, image, title, colour, content, remark, feed }) => {
-          const countData = _.defaultTo(_.find(counters, { motive: id }), {
-            count: 0
-          })
-
-          return (
-            <Join
-              key={id}
-              id={id}
-              background={background.publicURL}
-              image={image.publicURL}
-              count={Number(countData.count)}
-              title={title}
-              colour={colour}
-              remark={remark}
-              feed={feed}
-              user={user}
-            >
-              {content}
-            </Join>
-          )
-        }
-      )}
-      <Notification title={notification.title} date={notification.date}>
-        {notification.description}
-      </Notification>
-      <FAQ entries={faq} />
-      <CTA social={social} title={cta.title} action={cta.action} />
+      <IndexPageTemplate
+        cta={cta}
+        demand={demand}
+        faq={faq}
+        hero={hero}
+        join_campaign={joinCampaign}
+        notification={notification}
+        user={user}
+        counters={counters}
+      />
     </Layout>
   )
 }
+
+export const IndexPageTemplate = ({
+  hero,
+  demand,
+  join_campaign: joinCampaign,
+  counters,
+  user,
+  notification,
+  faq,
+  cta
+}: CMSContent & { counters: Array<CounterEntry> } & { user: User }) => (
+  <>
+    <Hero title={hero.title} actions={hero.actions} />
+    <Informative title={demand.title} remark={demand.remark}>
+      {demand.content}
+    </Informative>
+    {joinCampaign.map(
+      ({ id, background, image, title, colour, content, remark, feed }) => {
+        const countData = _.defaultTo(_.find(counters, { motive: id }), {
+          count: 0
+        })
+
+        return (
+          <Join
+            key={id}
+            id={id}
+            background={background}
+            image={image}
+            count={Number(countData.count)}
+            title={title}
+            colour={colour}
+            remark={remark}
+            feed={feed}
+            user={user}
+          >
+            {content}
+          </Join>
+        )
+      }
+    )}
+    <Notification title={notification.title} date={notification.date}>
+      {notification.description}
+    </Notification>
+    <FAQ entries={faq} />
+    <CTA title={cta.title} action={cta.action} />
+  </>
+)
 
 export default IndexPage
 

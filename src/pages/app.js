@@ -27,6 +27,7 @@ const App = () => {
             user={data.currentUser}
           />
           <Join
+            // FIXME: #89
             path="/app/join/:motive"
             isLoggedIn={isLoggedIn}
             user={data.currentUser}

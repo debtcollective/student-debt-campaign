@@ -39,8 +39,15 @@ const Join = ({ isLoggedIn, motive }: Props) => {
 
     // redirect to login
     if (!isLoggedIn) {
-      const redirectUrl = `return_url=${process.env.GATSBY_HOST_URL}/app/join/${motive}`
-      const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectUrl}`
+      const { GATSBY_HOST_URL, GATSBY_COMMUNITY_URL } = process.env
+
+      if (!GATSBY_HOST_URL || !GATSBY_COMMUNITY_URL) {
+        console.error('Unable to redirect, missing env variables')
+        return
+      }
+
+      const redirectUrl = `return_url=${GATSBY_HOST_URL}/app/join/${motive}`
+      const loginSSOUrl = `${GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectUrl}`
 
       window.location = loginSSOUrl
       return

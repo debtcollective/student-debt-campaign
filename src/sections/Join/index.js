@@ -35,6 +35,12 @@ const Join = ({
 }: Props) => {
   const backgroundUrl = _.defaultTo(background.publicURL || background, '')
   const titleImageUrl = _.defaultTo(image.publicURL || image, '')
+  // We will remove this once we reach 50 strikers
+  let bumpCount = count
+
+  if (count < 100) {
+    bumpCount = count + id.length * 9
+  }
 
   return (
     <section
@@ -54,7 +60,7 @@ const Join = ({
                   alt={title.toLowerCase()}
                 />
                 <h2 className="join__title">
-                  {formatNumber(count)} {title}
+                  {formatNumber(bumpCount)} {title}
                 </h2>
               </header>
               <div className="join__content">

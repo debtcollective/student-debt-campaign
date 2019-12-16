@@ -1,7 +1,6 @@
 ---
 templateKey: action-collection
-content:
+data-dues:
   - title: "Add your debt data"
-    slug: "data-dues"
-    description: debtcollective
+    description: "debtcollective - data-dues"
 ---

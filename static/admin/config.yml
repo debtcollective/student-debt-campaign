@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   # TODO: ideally, we will take the current branch so new collections will render properly
-  branch: master
+  branch: _72/cms-extras
 
 media_folder: static/img
 public_folder: /img
@@ -10,21 +10,56 @@ collections:
   - name: "actions"
     label: "Actions"
     files:
-      - file: "src/collections/actions.md"
-        label: "Action"
-        name: "action"
+      - file: "src/collections/contribute-your-ideas.md"
+        label: "Contribute your ideas"
+        name: "contribute-your-ideas-name"
         fields:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
-            default: "action-collection"
-          - label: "Content by slug"
-            name: "content"
-            widget: "list"
-            fields:
-              - { label: "Identifier", name: "slug", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "markdown" }
+            default: "contribute-your-ideas"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+      - file: "src/collections/data-dues.md"
+        label: "Data dues"
+        name: "data-dues-name"
+        fields:
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "data-dues"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+      - file: "src/collections/join-a-direct-action-team.md"
+        label: "Join a direct action teams"
+        name: "join-a-direct-action-team-name"
+        fields:
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "join-a-direct-action-team"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+      - file: "src/collections/join-our-social-media-team.md"
+        label: "Join our social media team"
+        name: "join-our-social-media-team-name"
+        fields:
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "join-our-social-media-team"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+      - file: "src/collections/strike-on-campus.md"
+        label: "Strike on campus"
+        name: "strike-on-campus-name"
+        fields:
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "strike-on-campus"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
 
   - name: "pages"
     label: "Pages"

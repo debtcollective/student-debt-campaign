@@ -9,7 +9,14 @@ CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
 
 CMS.registerPreviewTemplate('home', IndexPagePreview)
-CMS.registerPreviewTemplate('action', CollectionsPagePreview)
+CMS.registerPreviewTemplate('data-dues', CollectionsPagePreview)
+CMS.registerPreviewTemplate('strike-on-campus', CollectionsPagePreview)
+CMS.registerPreviewTemplate('join-a-direct-action-team', CollectionsPagePreview)
+CMS.registerPreviewTemplate(
+  'join-our-social-media-team',
+  CollectionsPagePreview
+)
+CMS.registerPreviewTemplate('contribute-your-ideas', CollectionsPagePreview)
 
 // NOTE: allow to load custom fonts within the preview page (import styles doesn't work as expected)
 const loadFonts = () => {

@@ -337,6 +337,14 @@ faq:
       the interest of lenders or employers. We know that college can be free and
       freeing. And we are ready to fight for it.
     question: What is education for?
+  - answer: >
+      Thank you for asking! First of all, we do not recommend that anyone stop
+      paying their student debt without protecting yourself from the
+      consequences. Fortunately, there are ways to keep creditors and collectors
+      at bay while you take this important stand against student debt. For more
+      info on those options, please visit our forums on this topic:
+      https://community.debtcollective.org/t/protecting-yourself-from-creditors-and-collectors-while-on-strike/3520
+    question: How can I protect myself while on a debt strike?
 cta:
   action: Sign up
   title: Help Build Power. Join Today!

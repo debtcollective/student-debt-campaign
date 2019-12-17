@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
+import Markdown from 'markdown-to-jsx'
 import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
@@ -32,7 +33,9 @@ export const DataDuesHeader = ({
     </Row>
     <Row className="my-4">
       <Col>
-        <p>{description}</p>
+        <Markdown className="markdown-content" options={{ forceBlock: true }}>
+          {description}
+        </Markdown>
       </Col>
     </Row>
   </>
@@ -369,7 +372,7 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted ({ userAction }) {
+      onCompleted({ userAction }) {
         navigate('/app/actions', {
           state: {
             alert: {
@@ -379,7 +382,7 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError ({ errors: formErrors }) {
+      onError({ errors: formErrors }) {
         // set errors to the form
       },
       refetchQueries: [{ query: GET_USER_ACTIONS }]

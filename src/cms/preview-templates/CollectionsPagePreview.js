@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { Container } from 'react-bootstrap'
 import { DataDuesHeader } from '../../components/DataDuesAction'
 
 type Props = {
@@ -10,11 +11,8 @@ type Props = {
     ) => {
       toJS: () => {
         templateKey: string,
-        content: Array<{
-          slug: string,
-          title: string,
-          description: string
-        }>
+        title: string,
+        description: string
       }
     }
   },
@@ -22,15 +20,14 @@ type Props = {
 }
 
 const CollectionsPagePreview = ({ entry, widgetFor }: Props) => {
-  // NOTE: in this case data represents the content of `src/collections/actions.md`
   const data = entry.getIn(['data']).toJS()
+  const { title, description } = data
 
-  // $FlowFixMe: TODO: We need to address the error
-  return data.content.map(({ slug, ...rest }, i) => (
-    <div key={i} style={{ padding: '1rem' }}>
-      <DataDuesHeader {...rest} />
-    </div>
-  ))
+  return (
+    <Container>
+      <DataDuesHeader title={title} description={description} />
+    </Container>
+  )
 }
 
 export default CollectionsPagePreview

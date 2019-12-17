@@ -12,47 +12,52 @@ collections:
     files:
       - file: "src/pages/app/actions/contribute-your-ideas.md"
         label: "Contribute your ideas"
-        name: "contribute-your-ideas-name"
+        name: "contribute-your-ideas"
         fields:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
+            default: "contribute-your-ideas"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/pages/app/actions/data-dues.md"
         label: "Data dues"
-        name: "data-dues-name"
+        name: "data-dues"
         fields:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
+            default: "data-dues"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/pages/app/actions/join-a-direct-action-team.md"
         label: "Join a direct action teams"
-        name: "join-a-direct-action-team-name"
+        name: "join-a-direct-action-team"
         fields:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
+            default: "join-a-direct-action-team"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/pages/app/actions/join-our-social-media-team.md"
         label: "Join our social media team"
-        name: "join-our-social-media-team-name"
+        name: "join-our-social-media-team"
         fields:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
+            default: "join-our-social-media-team"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/pages/app/actions/strike-on-campus.md"
         label: "Strike on campus"
-        name: "strike-on-campus-name"
+        name: "strike-on-campus"
         fields:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
+            default: "strike-on-campus"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
 

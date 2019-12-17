@@ -1,6 +1,5 @@
 ---
 templateKey: contribute-your-ideas-collection
-contribute-your-ideas:
-  - title: "Add your debt data"
-    description: "debtcollective - contribute-your-ideas"
+title: "Add your debt data"
+description: "debtcollective - contribute-your-ideas"
 ---

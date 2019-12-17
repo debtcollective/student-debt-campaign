@@ -7,8 +7,5 @@ description: >-
   together. We will never sell your information. And we won’t share your data
   with anyone outside our organizing team without your permission. All our data
   is stored on secure servers.
-
-
-  **And this can be bold**
 ---
 

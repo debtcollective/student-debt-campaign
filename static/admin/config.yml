@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   # TODO: ideally, we will take the current branch so new collections will render properly
-  branch: _72/cms-extras
+  branch: master
 
 media_folder: static/img
 public_folder: /img

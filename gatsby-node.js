@@ -35,16 +35,16 @@ exports.createPages = ({ actions, graphql }) => {
       const templateKey = edge.node.frontmatter.templateKey
       const slug = edge.node.fields.slug
 
-      if (!_.includes(pageTemplateComponentSlugs, slug)) return
-
-      // Create page template component only for desired 'pageTemplateComponentSlugs'
-      actions.createPage({
-        path: edge.node.fields.slug,
-        component: path.resolve(`src/templates/${String(templateKey)}.js`),
-        context: {
-          id
-        }
-      })
+      if (_.includes(pageTemplateComponentSlugs, slug)) {
+        // Create page template component only for desired 'pageTemplateComponentSlugs'
+        actions.createPage({
+          path: edge.node.fields.slug,
+          component: path.resolve(`src/templates/${String(templateKey)}.js`),
+          context: {
+            id
+          }
+        })
+      }
     })
   })
 }

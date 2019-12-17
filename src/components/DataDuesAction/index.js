@@ -533,14 +533,22 @@ DataDuesForm.defaultValues = {
 type DataDuesActionProps = {
   user: User,
   slug: string,
-  userAction: any
+  userAction: any,
+  title: string,
+  description: string
 }
 
-const DataDuesAction = ({ user, slug, userAction }: DataDuesActionProps) => {
+const DataDuesAction = ({
+  user,
+  slug,
+  userAction,
+  title,
+  description
+}: DataDuesActionProps) => {
   // TODO: do something with user and slug
   return (
     <Container>
-      <DataDuesHeader />
+      <DataDuesHeader title={title} description={description} />
       <DataDuesForm userAction={userAction} />
     </Container>
   )

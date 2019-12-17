@@ -4,8 +4,6 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
-
   return graphql(`
     {
       allMarkdownRemark(limit: 1000) {
@@ -28,43 +26,23 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const posts = result.data.allMarkdownRemark.edges
+    const pages = result.data.allMarkdownRemark.edges
+    // https://www.gatsbyjs.org/docs/building-with-components/#page-template-components
+    const pageTemplateComponentSlugs = ['/']
 
-    posts.forEach(edge => {
+    pages.forEach(edge => {
       const id = edge.node.id
-      createPage({
+      const templateKey = edge.node.frontmatter.templateKey
+      const slug = edge.node.fields.slug
+
+      if (!_.includes(pageTemplateComponentSlugs, slug)) return
+
+      // Create page template component only for desired 'pageTemplateComponentSlugs'
+      actions.createPage({
         path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
-        // additional data can be passed via context
+        component: path.resolve(`src/templates/${String(templateKey)}.js`),
         context: {
           id
-        }
-      })
-    })
-
-    // Tag pages:
-    let tags = []
-    // Iterate through each post, putting all found tags into `tags`
-    posts.forEach(edge => {
-      if (_.get(edge, 'node.frontmatter.tags')) {
-        tags = tags.concat(edge.node.frontmatter.tags)
-      }
-    })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
-
-    // Make tag pages
-    tags.forEach(tag => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
-
-      createPage({
-        path: tagPath,
-        component: path.resolve('src/templates/tags.js'),
-        context: {
-          tag
         }
       })
     })

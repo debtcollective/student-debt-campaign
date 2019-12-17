@@ -17,7 +17,7 @@ collections:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
-            default: "contribute-your-ideas"
+            default: "contribute-your-ideas-collection"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/collections/data-dues.md"
@@ -27,7 +27,7 @@ collections:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
-            default: "data-dues"
+            default: "data-dues-collection"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/collections/join-a-direct-action-team.md"
@@ -37,7 +37,7 @@ collections:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
-            default: "join-a-direct-action-team"
+            default: "join-a-direct-action-team-collection"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/collections/join-our-social-media-team.md"
@@ -47,7 +47,7 @@ collections:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
-            default: "join-our-social-media-team"
+            default: "join-our-social-media-team-collection"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
       - file: "src/collections/strike-on-campus.md"
@@ -57,7 +57,7 @@ collections:
           - label: "Template Key"
             name: "templateKey"
             widget: "hidden"
-            default: "strike-on-campus"
+            default: "strike-on-campus-collection"
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "markdown" }
 

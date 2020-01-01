@@ -41,7 +41,7 @@ notification:
   title: We are winning
 demand:
   content: >-
-    Tens of million of us are carrying more than $1.5 trillion in student debt.
+    Tens of millions of us are carrying more than $1.5 trillion in student debt.
     Our debt is someone's profit which also makes it a form of leverage over the
     government agencies and the private companies that are extracting from us.
     One million people default every year.
@@ -53,10 +53,10 @@ join_campaign:
   - background: /img/image_3.png
     colour: purple
     content: >-
-      We are not paying our student loans this means we are already in default
+      We are not paying our student loans. This means we are already in default
       or that we have enrolled in programs such as forbearance, deferment or $0
-      IBR in order to halt our payments. The government and the lenders aren't
-      getting a cent from us!
+      Income Based Repayment in order to halt our payments. The government and
+      the lenders aren't getting a cent from us!
     feed:
       - picture: /img/ami-schneider.jpg
         status: >-

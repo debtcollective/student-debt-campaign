@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import useForm from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'

@@ -12,7 +12,7 @@ export const PhoneNumberField = ({
   ...props
 }) => {
   useEffect(() => {
-    register({ name })
+    register(name)
     return () => unregister(name)
   }, [name, register, unregister])
 
@@ -49,7 +49,7 @@ export const CurrencyField = ({
   ...props
 }) => {
   useEffect(() => {
-    register({ name, required: true })
+    register(name, { required: true })
     return () => unregister(name)
   }, [name, register, unregister])
 
@@ -87,7 +87,7 @@ export const PercentageField = ({
   ...props
 }) => {
   useEffect(() => {
-    register({ name })
+    register(name)
     return () => unregister(name)
   }, [name, register, unregister])
 

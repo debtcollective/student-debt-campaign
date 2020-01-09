@@ -20,9 +20,7 @@ hero:
         src: /img/handshake.png
       join_section_id: solidarity-with-strikers
       title: Support!
-  title:
-    - line: End student debt!
-    - line: Join the strike!
+  title: ["End student debt!", "Join the strike!"]
 social:
   accounts:
     - logo: /img/twitter.svg

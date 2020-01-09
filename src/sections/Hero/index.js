@@ -22,7 +22,7 @@ const Hero = ({ title, actions, social }) => (
         <div className="col">
           <div className="text-center">
             <h1 className="display-title mb-sm-5 mb-xl-0">
-              {title.map(({ line }, index) => (
+              {title.map((line, index) => (
                 <span
                   key={`line-${index}`}
                   className={`d-block ${index % 2 === 0 && 'text-primary'}`}

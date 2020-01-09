@@ -3,15 +3,16 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { Router, Redirect } from '@reach/router'
-import Layout from '../components/Layout'
-import PrivateRoute from '../components/PrivateRoute'
-import { GET_USER } from '../api'
-import Header from '../components/Header'
-import CampaignWelcome from '../components/CampaignWelcome'
-import Join from '../components/Join'
-import { ActionsPage, DataDuesPage } from '../templates/app'
+import Layout from '../../components/Layout'
+import PrivateRoute from '../../components/PrivateRoute'
+import { GET_USER } from '../../api'
+import Header from '../../components/Header'
+import CampaignWelcome from '../../components/CampaignWelcome'
+import Join from '../../components/Join'
+import { ActionsPage } from '../../templates/app'
+import ActionPageTemplate from '../../templates/app/action-page'
 
-const App = () => {
+const AppPage = () => {
   const { loading, data = {} } = useQuery(GET_USER)
   const isLoggedIn = data.currentUser && data.currentUser.id
 
@@ -40,7 +41,7 @@ const App = () => {
           {/* Actions specific routes */}
           <PrivateRoute
             path="/app/actions/data-dues"
-            component={DataDuesPage}
+            component={ActionPageTemplate}
             isLoggedIn={isLoggedIn}
             user={data.currentUser}
             slug="data-dues"
@@ -51,4 +52,4 @@ const App = () => {
   )
 }
 
-export default App
+export default AppPage

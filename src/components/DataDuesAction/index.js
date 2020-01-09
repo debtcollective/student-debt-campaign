@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
+import Markdown from 'markdown-to-jsx'
 import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
@@ -17,22 +18,24 @@ import {
   validationSchema
 } from './schema'
 
-const DataDuesHeader = () => (
+export const DataDuesHeader = ({
+  title,
+  description
+}: {
+  title: string,
+  description: string
+}) => (
   <>
     <Row>
       <Col>
-        <h1 className="text-center">Add your debt data</h1>
+        <h1 className="text-center">{title}</h1>
       </Col>
     </Row>
     <Row className="my-4">
       <Col>
-        <p>
-          For too long, creditors have known everything about us while we know
-          very little about them. It is time for that to change so we can fight
-          back together. We will never sell your information. And we won’t share
-          your data with anyone outside our organizing team without your
-          permission. All our data is stored on secure servers.
-        </p>
+        <Markdown className="markdown-content" options={{ forceBlock: true }}>
+          {description}
+        </Markdown>
       </Col>
     </Row>
   </>
@@ -369,7 +372,7 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted ({ userAction }) {
+      onCompleted({ userAction }) {
         navigate('/app/actions', {
           state: {
             alert: {
@@ -379,7 +382,7 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError ({ errors: formErrors }) {
+      onError({ errors: formErrors }) {
         // set errors to the form
       },
       refetchQueries: [{ query: GET_USER_ACTIONS }]
@@ -533,14 +536,22 @@ DataDuesForm.defaultValues = {
 type DataDuesActionProps = {
   user: User,
   slug: string,
-  userAction: any
+  userAction: any,
+  title: string,
+  description: string
 }
 
-const DataDuesAction = ({ user, slug, userAction }: DataDuesActionProps) => {
+const DataDuesAction = ({
+  user,
+  slug,
+  userAction,
+  title,
+  description
+}: DataDuesActionProps) => {
   // TODO: do something with user and slug
   return (
     <Container>
-      <DataDuesHeader />
+      <DataDuesHeader title={title} description={description} />
       <DataDuesForm userAction={userAction} />
     </Container>
   )

@@ -34,3 +34,5 @@ const loadFonts = () => {
 }
 
 loadFonts()
+
+window.___loader = { enqueue: () => {}, hovering: () => {} }

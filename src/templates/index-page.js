@@ -160,9 +160,7 @@ export const indexPageQuery = graphql`
           }
         }
         hero {
-          title {
-            line
-          }
+          title
           actions {
             title
             join_section_id

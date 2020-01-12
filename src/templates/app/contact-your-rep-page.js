@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import ContactYourRepAction from '../../components/ContactYourRepAction'
+// import ContactYourRepAction from '../../components/ContactYourRepAction'
 import { GET_USER_ACTION } from '../../api'
 
 type PageProps = {
@@ -16,7 +16,7 @@ type TemplateProps = {
 }
 
 export const ContactYourRepPageTemplate = ({ user, slug }: TemplateProps) => {
-  return <ContactYourRepAction user={user} slug={slug} />
+  return null // <ContactYourRepAction user={user} slug={slug} />
 }
 
 const ContactYourRepPage = ({ user, slug }: PageProps) => {

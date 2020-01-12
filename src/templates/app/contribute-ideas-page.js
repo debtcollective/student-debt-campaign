@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import ContributeIdeasAction from '../../components/ContributeIdeasAction'
+// import ContributeIdeasAction from '../../components/ContributeIdeasAction'
 import { GET_USER_ACTION } from '../../api'
 
 type PageProps = {
@@ -16,7 +16,7 @@ type TemplateProps = {
 }
 
 export const ContributeIdeasTemplate = ({ user, slug }: TemplateProps) => {
-  return <ContributeIdeasAction user={user} slug={slug} />
+  return null // <ContributeIdeasAction user={user} slug={slug} />
 }
 
 const ContributeIdeasPage = ({ user, slug }: PageProps) => {

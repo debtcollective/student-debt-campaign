@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import SocialMediaTeamAction from '../../components/SocialMediaTeamAction'
+// import SocialMediaTeamAction from '../../components/SocialMediaTeamAction'
 import { GET_USER_ACTION } from '../../api'
 
 type PageProps = {
@@ -16,7 +16,7 @@ type TemplateProps = {
 }
 
 export const SocialMediaTeamTemplate = ({ user, slug }: TemplateProps) => {
-  return <SocialMediaTeamAction user={user} slug={slug} />
+  return null // <SocialMediaTeamAction user={user} slug={slug} />
 }
 
 const SocialMediaTeamPage = ({ user, slug }: PageProps) => {

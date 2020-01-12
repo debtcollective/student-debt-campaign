@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import CampusGroupAction from '../../components/CampusGroupAction'
+// import CampusGroupAction from '../../components/CampusGroupAction'
 import { GET_USER_ACTION } from '../../api'
 
 type PageProps = {
@@ -16,7 +16,7 @@ type TemplateProps = {
 }
 
 export const CampusGroupTemplate = ({ user, slug }: TemplateProps) => {
-  return <CampusGroupAction user={user} slug={slug} />
+  return null // <CampusGroupAction user={user} slug={slug} />
 }
 
 const CampusGroupPage = ({ user, slug }: PageProps) => {

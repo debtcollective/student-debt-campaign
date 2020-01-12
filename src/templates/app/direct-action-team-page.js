@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import DirectActionTeamAction from '../../components/DirectActionTeamAction'
+// import DirectActionTeamAction from '../../components/DirectActionTeamAction'
 import { GET_USER_ACTION } from '../../api'
 
 type PageProps = {
@@ -16,7 +16,7 @@ type TemplateProps = {
 }
 
 export const DirectActionTeamTemplate = ({ user, slug }: TemplateProps) => {
-  return <DirectActionTeamAction user={user} slug={slug} />
+  return null // <DirectActionTeamAction user={user} slug={slug} />
 }
 
 const DirectActionTeamPage = ({ user, slug }: PageProps) => {

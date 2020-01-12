@@ -11,10 +11,13 @@ import Join from '../sections/Join'
 import Notification from '../sections/Notification'
 import FAQ from '../sections/FAQ'
 import CTA from '../sections/CTA'
-import { GET_USER, GET_USER_CAMPAIGN_COUNT } from '../api'
+import { GET_USER } from '../api'
 
 type Props = {
   data: {
+    campaign: {
+      getUserCampaignsCountByMotive: Array<CounterEntry>
+    },
     markdownRemark: {
       frontmatter: CMSContent
     }
@@ -22,6 +25,7 @@ type Props = {
 }
 
 const IndexPage = ({ data }: Props) => {
+  const { getUserCampaignsCountByMotive } = data.campaign
   const { frontmatter } = data.markdownRemark
   const {
     cta,
@@ -33,11 +37,8 @@ const IndexPage = ({ data }: Props) => {
   } = frontmatter
 
   const { data: userQuery = {} } = useQuery(GET_USER)
-  const { data: userCampaignCountQuery = {} } = useQuery(
-    GET_USER_CAMPAIGN_COUNT
-  )
   const user = userQuery.currentUser || {}
-  const counters = userCampaignCountQuery.getUserCampaignsCountByMotive || []
+  const counters = getUserCampaignsCountByMotive
 
   return (
     <Layout className="no-pad">
@@ -106,6 +107,12 @@ export default IndexPage
 
 export const indexPageQuery = graphql`
   query IndexPage {
+    campaign {
+      getUserCampaignsCountByMotive {
+        count
+        motive
+      }
+    }
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         join_campaign {

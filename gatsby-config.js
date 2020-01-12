@@ -27,6 +27,15 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'CAMPAIGN',
+        fieldName: 'campaign',
+        url: process.env.GATSBY_CAMPAIGN_API_URL,
+        refetchInterval: 60
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GOOGLE_TRACKING_ID,

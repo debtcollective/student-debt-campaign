@@ -1,5 +1,6 @@
+// @flow
+
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import IconWrap from '../../components/IconWrap'
 import { Link } from 'react-scroll'
@@ -15,21 +16,31 @@ const getBg = index => {
   }
 }
 
-const Hero = ({ title, actions, social }) => (
+type Props = {
+  title: Array<string>,
+  actions: Array<{
+    image: ChildImageSharp,
+    join_section_id: string,
+    title: string
+  }>
+}
+
+const Hero = ({ title, actions }: Props) => (
   <section className="hero">
     <div className="container-fluid distribute-rows">
       <div className="row">
         <div className="col">
           <div className="text-center">
             <h1 className="display-title mb-sm-5 mb-xl-0">
-              {title.map((line, index) => (
-                <span
-                  key={`line-${index}`}
-                  className={`d-block ${index % 2 === 0 && 'text-primary'}`}
-                >
-                  {line}
-                </span>
-              ))}
+              {title.map((line, index) => {
+                const classes = (index % 2 === 0 && 'text-primary') || ''
+
+                return (
+                  <span key={`line-${index}`} className={`d-block ${classes}`}>
+                    {line}
+                  </span>
+                )
+              })}
             </h1>
           </div>
         </div>
@@ -76,28 +87,5 @@ const Hero = ({ title, actions, social }) => (
     </div>
   </section>
 )
-
-Hero.propTypes = {
-  social: PropTypes.shape({
-    action: PropTypes.string,
-    accounts: PropTypes.arrayOf(
-      PropTypes.shape({
-        icon: PropTypes.any,
-        url: PropTypes.string
-      })
-    )
-  }),
-  title: PropTypes.arrayOf(
-    PropTypes.shape({
-      line: PropTypes.string
-    })
-  ),
-  actions: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      image: PropTypes.any
-    })
-  )
-}
 
 export default Hero

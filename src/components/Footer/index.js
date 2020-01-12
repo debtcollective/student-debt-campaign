@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <div className="footer">
+    <div className="footer sticky-footer">
       <div className="container ml-0">
         <div className="row d-none d-md-flex">
           <div className="footer__list col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">

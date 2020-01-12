@@ -1,4 +1,30 @@
 /*
+  Sticky footer code
+  https://css-tricks.com/couple-takes-sticky-footer/
+*/
+html, 
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.website-content {
+  flex: 1 0 auto;
+}
+
+.sticky-footer {
+  flex-shrink: 0;
+}
+
+/*
   This class is intended to work alongside with the layout. Be careful with the styles to not break
   the layout expectations often related with paddings, margins and sizes.
 */

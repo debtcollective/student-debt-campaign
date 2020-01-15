@@ -26,7 +26,7 @@ const Layout = ({ children, className }: Props) => {
   const { title, description } = useSiteMetadata()
   const { data: userQueryResponse = {} } = useQuery(GET_USER)
   const user = userQueryResponse.currentUser || {}
-  const mainClassName = classNames('main', className)
+  const mainClassName = classNames('main', 'website-content', className)
 
   return (
     <>

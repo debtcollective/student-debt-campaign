@@ -2,7 +2,7 @@
 @import url('https://s3.amazonaws.com/tds-static/fonts/moregothic/1.0.0/More+Gothic+Bold.css');
 
 // variables
-@import './variables.scss';
+@import 'variables';
 
 // bootstrap required
 @import 'node_modules/bootstrap/scss/functions';
@@ -25,10 +25,10 @@
 @import 'node_modules/bootstrap/scss/forms';
 
 // run custom code after bootstrap loaded
-@import './functions';
-@import './layout';
-@import './type';
-@import './buttons';
+@import 'functions';
+@import 'layout';
+@import 'type';
+@import 'buttons';
 
 // TODO: ideally, we shouldn't need to import those styles from here
 // styles from components and sections to allow usage of variables

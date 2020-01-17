@@ -8,7 +8,12 @@ import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
 import { navigate } from 'gatsby'
 import { Container, Row, Col, Button, ButtonGroup, Form } from 'react-bootstrap'
-import { CurrencyField, PhoneNumberField, PercentageField } from './fields'
+import {
+  AlgoliaPlacesField,
+  CurrencyField,
+  PhoneNumberField,
+  PercentageField
+} from './fields'
 import { UPSERT_DATA_DUES_ACTION, GET_USER_ACTIONS } from '../../api'
 import {
   debtTypes,
@@ -372,7 +377,7 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted({ userAction }) {
+      onCompleted ({ userAction }) {
         navigate('/app/actions', {
           state: {
             alert: {
@@ -382,7 +387,7 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError({ errors: formErrors }) {
+      onError ({ errors: formErrors }) {
         // set errors to the form
       },
       refetchQueries: [{ query: GET_USER_ACTIONS }]
@@ -444,12 +449,7 @@ const DataDuesForm = ({ userAction }) => {
 
         <Form.Group controlId="streetAddress">
           <Form.Label>Street address</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="400 Maryland Avenue, SW. Washington, DC 20202"
-            name="streetAddress"
-            ref={register}
-          />
+          <AlgoliaPlacesField />
         </Form.Group>
 
         <Form.Group controlId="phoneNumber">

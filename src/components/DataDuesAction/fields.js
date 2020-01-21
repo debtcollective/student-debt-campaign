@@ -7,7 +7,8 @@ import { Form } from 'react-bootstrap'
 export const AlgoliaPlacesField = props => {
   return (
     <AlgoliaPlaces
-      placeholder="Write an address here"
+      className="form-control"
+      placeholder="Start typing your address"
       options={{
         countries: ['us']
       }}

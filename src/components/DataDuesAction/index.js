@@ -46,21 +46,6 @@ export const DataDuesHeader = ({
   </>
 )
 
-const DataDuesThankYou = () => (
-  <>
-    <Row>
-      <Col>
-        <h2 className="text-center">Thank you! 🎉</h2>
-      </Col>
-    </Row>
-    <Row className="mt-4 mb-5">
-      <Col>
-        <p>We will keep your data safe and only use it for research.</p>
-      </Col>
-    </Row>
-  </>
-)
-
 const DebtForm = ({
   debtId,
   errors,
@@ -373,8 +358,9 @@ const DataDuesForm = ({ userAction }) => {
    * and for conditional rendering of components
    */
   const phoneNumber = watch('phoneNumber')
+  const { value: address } = watch('address')
 
-  const [upsertDataDuesAction, { data = {}, loading }] = useMutation(
+  const [upsertDataDuesAction, { loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
       onCompleted ({ userAction }) {
@@ -406,13 +392,6 @@ const DataDuesForm = ({ userAction }) => {
 
   const removeDebt = () => {
     setDebtCount(debtCount - 1)
-  }
-
-  // early return
-  // render a thank you message instead of the form
-  const { upsertDataDuesAction: payload } = data
-  if (payload && payload.userAction && payload.userAction.completed) {
-    return <DataDuesThankYou />
   }
 
   return (
@@ -448,8 +427,19 @@ const DataDuesForm = ({ userAction }) => {
         </Form.Group>
 
         <Form.Group controlId="streetAddress">
-          <Form.Label>Street address</Form.Label>
-          <AlgoliaPlacesField />
+          <Form.Label>Street Address</Form.Label>
+          <AlgoliaPlacesField
+            name="address"
+            register={register}
+            unregister={unregister}
+            setValue={setValue}
+            isInvalid={!!errors.address}
+            defaultValue={address}
+          />
+          {!!errors.address && <div className="is-invalid" />}
+          <Form.Control.Feedback type="invalid">
+            {!!errors.address && 'Select a valid street address'}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="phoneNumber">

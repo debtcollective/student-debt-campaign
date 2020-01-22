@@ -2,41 +2,88 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
 import AlgoliaPlaces from 'algolia-places-react'
+import classNames from 'classnames'
 import { Form } from 'react-bootstrap'
 
-export const AlgoliaPlacesField = props => {
+export const AlgoliaPlacesField = ({
+  name,
+  register,
+  unregister,
+  setValue,
+  defaultValue,
+  isInvalid,
+  ...props
+}) => {
+  useEffect(() => {
+    register(name)
+    return () => unregister(name)
+  }, [name, register, unregister])
+
+  const fieldName = name
+  const cssClasses = classNames('form-control', { 'is-invalid': isInvalid })
+
+  console.log('classes', cssClasses)
+
   return (
     <AlgoliaPlaces
-      className="form-control"
-      placeholder="Start typing your address"
+      className={cssClasses}
+      placeholder="Start typing..."
       options={{
-        countries: ['us']
+        countries: ['us'],
+        type: 'address'
       }}
-      onChange={({ query, rawAnswer, suggestion, suggestionIndex }) =>
-        console.log(
-          'Fired when suggestion selected in the dropdown or hint was validated.'
-        )
-      }
-      onSuggestions={({ rawAnswer, query, suggestions }) =>
-        console.log(
-          'Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.'
-        )
-      }
-      onCursorChanged={({ rawAnswer, query, suggestion, suggestonIndex }) =>
-        console.log('Fired when arrows keys are used to navigate suggestions.')
-      }
-      onClear={() => console.log('Fired when the input is cleared.')}
-      onLimit={({ message }) =>
-        console.log('Fired when you reached your current rate limit.')
-      }
-      onError={({ message }) =>
-        console.log(
-          'Fired when we could not make the request to Algolia Places servers for any reason but reaching your rate limit.'
-        )
-      }
+      defaultValue={defaultValue}
+      onChange={({ suggestion }) => {
+        const {
+          administrative,
+          city,
+          country,
+          countryCode,
+          county,
+          latlng,
+          name,
+          postcode,
+          postcodes,
+          suburb,
+          type,
+          value
+        } = suggestion
+
+        const addressObject = {
+          administrative,
+          city,
+          country,
+          countryCode,
+          county,
+          latlng,
+          name,
+          postcode,
+          postcodes,
+          suburb,
+          type,
+          value
+        }
+
+        setValue(fieldName, addressObject, true)
+      }}
+      onClear={() => setValue(name, {}, true)}
+      // Sentry is being inject by gatsby-plugin-sentry
+      /* eslint-disable no-undef */
+      onLimit={message => Sentry.captureMessage(message)}
+      onError={message => Sentry.captureMessage(message)}
+      /* eslint-enable no-undef */
       {...props}
     />
   )
+}
+
+AlgoliaPlacesField.propTypes = {
+  isInvalid: PropTypes.bool,
+  defaultValue: PropTypes.string,
+  name: PropTypes.string,
+  register: PropTypes.func,
+  setValue: PropTypes.func,
+  unregister: PropTypes.func
 }
 
 export const PhoneNumberField = ({

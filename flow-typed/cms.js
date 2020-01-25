@@ -1,5 +1,5 @@
 declare type ChildImageSharp = {
-  src: mixed,
+  src: { childImageSharp: { fluid: { src: mixed } } },
   alt: string
 }
 
@@ -13,14 +13,12 @@ declare type CMSContent = {
   demand: string,
   faq: string,
   hero: {
-    title: {
-      line: string
-    },
-    actions: {
+    title: Array<string>,
+    actions: Array<{
       title: string,
       join_section_id: string,
       image: ChildImageSharp
-    }
+    }>
   },
   join_campaign: Array<{
     id: string,

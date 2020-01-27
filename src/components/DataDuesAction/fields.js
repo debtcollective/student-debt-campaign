@@ -1,7 +1,87 @@
+/* global Sentry */
+
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
+import AlgoliaPlaces from 'algolia-places-react'
+import classNames from 'classnames'
 import { Form } from 'react-bootstrap'
+
+export const AlgoliaPlacesField = ({
+  name,
+  register,
+  unregister,
+  setValue,
+  defaultValue,
+  isInvalid,
+  ...props
+}) => {
+  useEffect(() => {
+    register(name)
+    return () => unregister(name)
+  }, [name, register, unregister])
+
+  const fieldName = name
+  const cssClasses = classNames('form-control', { 'is-invalid': isInvalid })
+
+  return (
+    <AlgoliaPlaces
+      className={cssClasses}
+      placeholder="Start typing..."
+      options={{
+        countries: ['us'],
+        type: 'address'
+      }}
+      defaultValue={defaultValue}
+      onChange={({ suggestion }) => {
+        const {
+          administrative,
+          city,
+          country,
+          countryCode,
+          county,
+          latlng,
+          name,
+          postcode,
+          postcodes,
+          suburb,
+          type,
+          value
+        } = suggestion
+
+        const addressObject = {
+          administrative,
+          city,
+          country,
+          countryCode,
+          county,
+          latlng,
+          name,
+          postcode,
+          postcodes,
+          suburb,
+          type,
+          value
+        }
+
+        setValue(fieldName, addressObject, true)
+      }}
+      onClear={() => setValue(name, {}, true)}
+      onLimit={message => Sentry.captureMessage(message)}
+      onError={message => Sentry.captureMessage(message)}
+      {...props}
+    />
+  )
+}
+
+AlgoliaPlacesField.propTypes = {
+  isInvalid: PropTypes.bool,
+  defaultValue: PropTypes.string,
+  name: PropTypes.string,
+  register: PropTypes.func,
+  setValue: PropTypes.func,
+  unregister: PropTypes.func
+}
 
 export const PhoneNumberField = ({
   name,

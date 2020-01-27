@@ -358,7 +358,8 @@ const DataDuesForm = ({ userAction }) => {
    * and for conditional rendering of components
    */
   const phoneNumber = watch('phoneNumber')
-  const { value: address } = watch('address')
+  const addressValue = watch('address')
+  const address = addressValue && addressValue.value
 
   const [upsertDataDuesAction, { loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,

@@ -1,3 +1,5 @@
+/* global Sentry */
+
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
@@ -21,8 +23,6 @@ export const AlgoliaPlacesField = ({
 
   const fieldName = name
   const cssClasses = classNames('form-control', { 'is-invalid': isInvalid })
-
-  console.log('classes', cssClasses)
 
   return (
     <AlgoliaPlaces
@@ -67,11 +67,8 @@ export const AlgoliaPlacesField = ({
         setValue(fieldName, addressObject, true)
       }}
       onClear={() => setValue(name, {}, true)}
-      // Sentry is being inject by gatsby-plugin-sentry
-      /* eslint-disable no-undef */
       onLimit={message => Sentry.captureMessage(message)}
       onError={message => Sentry.captureMessage(message)}
-      /* eslint-enable no-undef */
       {...props}
     />
   )

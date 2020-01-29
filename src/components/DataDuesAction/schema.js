@@ -35,22 +35,24 @@ export const validationSchema = yup.object().shape({
     .string()
     .email('Must be a valid email')
     .required('Email is a required field'),
+  // for backwards compatibility
+  streetAddress: yup.string(),
   address: yup.object().shape({
-    name: yup.string().required(),
-    administrative: yup.string().required(),
+    name: yup.string(),
+    administrative: yup.string(),
     county: yup.string(),
-    city: yup.string().required(),
+    city: yup.string(),
     suburb: yup.string(),
-    country: yup.string().required(),
-    countryCode: yup.string().required(),
-    type: yup.string().required(),
+    country: yup.string(),
+    countryCode: yup.string(),
+    type: yup.string(),
     latlng: yup.object().shape({
-      lat: yup.number().required(),
-      lng: yup.number().required()
+      lat: yup.number(),
+      lng: yup.number()
     }),
-    postcode: yup.string().required(),
+    postcode: yup.string(),
     postcodes: yup.array().of(yup.string()),
-    value: yup.string().required()
+    value: yup.string()
   }),
   phoneNumber: yup.string().matches(phoneRegExp, {
     message: 'Phone number must be valid',

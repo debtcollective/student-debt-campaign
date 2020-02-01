@@ -20,7 +20,9 @@ hero:
         src: /img/handshake.png
       join_section_id: solidarity-with-strikers
       title: Support!
-  title: ["End student debt!", "Join the strike!"]
+  title:
+    - End student debt!
+    - Join the strike!
 social:
   accounts:
     - logo: /img/twitter.svg
@@ -280,7 +282,7 @@ faq:
       year. In total the deficit-to-GDP ratio would likely increase by
       significantly less than 1%. We find it curious, though, that the “how will
       you pay for it” question is never asked when politicians want to do things
-      like send American troops into other countries or raise taxes on the rich.
+      like send American troops into other countries or cut taxes on the rich.
       In 2018, for example, Congress passed a huge tax cut for millionaires and
       billionaires, one of the largest in history. Did anyone bother to explain
       how it would be paid for? The truth is that Congress has the ability to
@@ -343,7 +345,7 @@ faq:
       visit our forums:
 
       https://community.debtcollective.org/t/protecting-yourself-from-creditors-and-collectors-while-on-strike/3520
-    question: How canI protect myself while on a debt strike?
+    question: How can I protect myself while on a debt strike?
 cta:
   action: Sign up
   title: Help Build Power. Join Today!

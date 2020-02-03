@@ -7,7 +7,7 @@ hero:
         alt: fist
         src: /img/fist.png
       join_section_id: already-on-strike
-      title: Declare!
+      title: Strike!
     - id: threatening-on-strike
       image:
         alt: prepare
@@ -22,7 +22,7 @@ hero:
       title: Support!
   title:
     - End student debt!
-    - Join the strike!
+    - Join the Fight!
 social:
   accounts:
     - logo: /img/twitter.svg

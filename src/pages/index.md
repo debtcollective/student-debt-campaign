@@ -123,7 +123,10 @@ join_campaign:
     colour: green
     content: >-
       We do not have student loans, but we are standing in solidarity with all
-      those people who are on strike
+      those who are on strike. We are teenagers who don’t want to be forced into
+      debt to get a degree. We are educators who want our students to learn
+      without fear. We are people from all walks of life who believe education
+      should be free.
     feed:
       - picture: /img/joseph-white.jpg
         status: >-

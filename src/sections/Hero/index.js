@@ -30,8 +30,8 @@ const Hero = ({ title, actions, counters }: Props) => {
   // Follow same principle than https://github.com/debtcollective/student-debt-campaign/commit/796b58f97171b9ebac28f8fac1146d48634510f8
   const totalCount = counters
     .map(countByCampaign => {
-      return Number(countByCampaign.count) < 100
-        ? Number(countByCampaign.count) + 40
+      return Number(countByCampaign.count) < 250
+        ? Number(countByCampaign.count) + 90
         : Number(countByCampaign.count)
     })
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0)

@@ -8,6 +8,12 @@ import _ from 'lodash'
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
+const bumpTable = {
+  'already-on-strike': 60,
+  'threatening-on-strike': 20,
+  'solidarity-with-strikers': 10
+}
+
 type Props = {
   user: User,
   background: CMSImage,
@@ -38,9 +44,7 @@ const Join = ({
   // We will remove this once we reach 50 strikers
   let bumpCount = count
 
-  if (count < 100) {
-    bumpCount = count + id.length * 9
-  }
+  bumpCount = count + (bumpTable[id] || 0)
 
   return (
     <section

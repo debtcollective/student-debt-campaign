@@ -50,7 +50,7 @@ demand:
     We demand full cancellation of federal & private student loans. Free public
     college for all!
 join_campaign:
-  - background: /img/image_3.png
+  - background: /img/image_3.jpg
     colour: purple
     content: >-
       We are not paying our student loans. This means we are already in default
@@ -84,7 +84,7 @@ join_campaign:
     image: /img/fist.png
     remark: Get actions when you add your name.
     title: of us are already on strike!
-  - background: /img/image_2.png
+  - background: /img/image_2.jpg
     colour: yellow
     content: >-
       We are prepared to stop paying our loans in the future if our demands are
@@ -119,7 +119,7 @@ join_campaign:
     image: /img/newspaper.png
     remark: Get actions when you add your name.
     title: of us are threatening to strike!
-  - background: /img/image_1.png
+  - background: /img/image_1.jpg
     colour: green
     content: >-
       We do not have student loans, but we are standing in solidarity with all
@@ -142,7 +142,7 @@ join_campaign:
           end it makes you not want to invest in said system that we’ve been
           told works for everybody.
         username: Stephanie Hutchison
-      - picture: /img/sandersbiopic.png
+      - picture: /img/sandersbiopic.jpg
         status: >-
           I attended a for-profit school that grossly misrepresented its
           programs and then left me with a worthless degree and a mountain of
@@ -353,4 +353,3 @@ cta:
   action: Sign up
   title: Help Build Power. Join Today!
 ---
-

@@ -13,7 +13,9 @@ const CTA = ({ social, title, action }) => (
         <div className="col">
           <div className="text-center">
             <h2 className="display-title mb-5">{title}</h2>
-            <button className="btn btn-primary mt-lg-5">{action}</button>
+            <a className="btn btn-primary" href="/app/join/already-on-strike">
+              {action}
+            </a>
           </div>
         </div>
       </div>

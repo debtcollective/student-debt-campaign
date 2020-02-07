@@ -1,6 +1,19 @@
 import gql from 'graphql-tag'
 
 /**
+ * Retrieve the count of users for each campaign motive
+ */
+
+export const GET_USER_CAMPAIGN_COUNT = gql`
+  query getUserCampaignsCountByMotive {
+    getUserCampaignsCountByMotive {
+      motive
+      count
+    }
+  }
+`
+
+/**
  * Retrive the current user data
  */
 export const GET_USER = gql`

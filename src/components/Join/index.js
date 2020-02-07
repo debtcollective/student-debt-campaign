@@ -58,7 +58,7 @@ const Join = ({ isLoggedIn, motive }: Props) => {
     })
   }, [isLoggedIn, joinCampaign, motive])
 
-  return <p>Joining campaign...</p>
+  return <p>Redirecting to Login...</p>
 }
 
 export default Join

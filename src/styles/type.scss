@@ -16,6 +16,10 @@
   @extend %section-title;
 }
 
+.text-body-color {
+  color: $body-color;
+}
+
 %section-content {
   font-size: 1rem;
   margin: 0 auto ($spacer * 1.5);

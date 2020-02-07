@@ -67,7 +67,7 @@ export const IndexPageTemplate = ({
   cta
 }: CMSContent & { counters: Array<CounterEntry> } & { user: User }) => (
   <>
-    <Hero title={hero.title} actions={hero.actions} />
+    <Hero title={hero.title} actions={hero.actions} counters={counters} />
     <Informative title={demand.title} remark={demand.remark}>
       {demand.content}
     </Informative>

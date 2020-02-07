@@ -11,7 +11,7 @@ import Join from '../sections/Join'
 import Notification from '../sections/Notification'
 import FAQ from '../sections/FAQ'
 import CTA from '../sections/CTA'
-import { GET_USER } from '../api'
+import { GET_USER, GET_USER_CAMPAIGN_COUNT } from '../api'
 
 type Props = {
   data: {
@@ -65,43 +65,60 @@ export const IndexPageTemplate = ({
   notification,
   faq,
   cta
-}: CMSContent & { counters: Array<CounterEntry> } & { user: User }) => (
-  <>
-    <Hero title={hero.title} actions={hero.actions} counters={counters} />
-    <Informative title={demand.title} remark={demand.remark}>
-      {demand.content}
-    </Informative>
-    {joinCampaign.map(
-      ({ id, background, image, title, colour, content, remark, feed }) => {
-        const countData = _.defaultTo(_.find(counters, { motive: id }), {
-          count: 0
-        })
+}: CMSContent & { counters: Array<CounterEntry> } & { user: User }) => {
+  // fetch count one more time in the front-end
+  const { data: userCampaignCountQuery = {} } = useQuery(
+    GET_USER_CAMPAIGN_COUNT
+  )
 
-        return (
-          <Join
-            key={id}
-            id={id}
-            background={background}
-            image={image}
-            count={Number(countData.count)}
-            title={title}
-            colour={colour}
-            remark={remark}
-            feed={feed}
-            user={user}
-          >
-            {content}
-          </Join>
-        )
-      }
-    )}
-    <Notification title={notification.title} date={notification.date}>
-      {notification.description}
-    </Notification>
-    <FAQ entries={faq} />
-    <CTA title={cta.title} action={cta.action} />
-  </>
-)
+  const updatedCounters =
+    userCampaignCountQuery.getUserCampaignsCountByMotive || counters
+
+  return (
+    <>
+      <Hero
+        title={hero.title}
+        actions={hero.actions}
+        counters={updatedCounters}
+      />
+      <Informative title={demand.title} remark={demand.remark}>
+        {demand.content}
+      </Informative>
+      {joinCampaign.map(
+        ({ id, background, image, title, colour, content, remark, feed }) => {
+          const countData = _.defaultTo(
+            _.find(updatedCounters, { motive: id }),
+            {
+              count: 0
+            }
+          )
+
+          return (
+            <Join
+              key={id}
+              id={id}
+              background={background}
+              image={image}
+              count={Number(countData.count)}
+              title={title}
+              colour={colour}
+              remark={remark}
+              feed={feed}
+              user={user}
+            >
+              {content}
+            </Join>
+          )
+        }
+      )}
+      <Notification title={notification.title} date={notification.date}>
+        {notification.description}
+      </Notification>
+      <FAQ entries={faq} />
+      <CTA title={cta.title} action={cta.action} />
+    </>
+  )
+}
 
 export default IndexPage
 

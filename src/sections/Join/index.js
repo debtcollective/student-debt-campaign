@@ -8,6 +8,7 @@ import _ from 'lodash'
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
+// Let's remove this when the campaign has a good number
 const bumpTable = {
   'already-on-strike': 60,
   'threatening-on-strike': 20,

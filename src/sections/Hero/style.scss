@@ -45,8 +45,8 @@
   width: 12rem;
 
   @include media-breakpoint-up(md) {
-    height: 18vw;
-    width: 18vw;
+    height: 16vw;
+    width: 16vw;
   }
 
   &__img {
@@ -76,7 +76,7 @@
     justify-content: center;
     margin-top: $spacer * 3;
 
-    .action-circle + .action-circle {
+    .action-circle-link + .action-circle-link {
       margin-top: $grid-gutter-width;
     }
 
@@ -88,7 +88,7 @@
       margin-right: auto;
       max-width: 60vw;
 
-      .action-circle + .action-circle {
+      .action-circle-link + .action-circle-link {
         margin-top: 0;
       }
     }

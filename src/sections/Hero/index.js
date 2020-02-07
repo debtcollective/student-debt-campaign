@@ -70,6 +70,7 @@ const Hero = ({ title, actions, counters }: Props) => {
               {actions.map(
                 ({ join_section_id: joinSectionId, title, image }, index) => (
                   <Link
+                    className="action-circle-link"
                     duration={500}
                     key={joinSectionId}
                     smooth={true}

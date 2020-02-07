@@ -39,7 +39,7 @@ const Join = ({
   let bumpCount = count
 
   if (count < 100) {
-    bumpCount = count + id.length * 9
+    bumpCount = count + 40
   }
 
   return (

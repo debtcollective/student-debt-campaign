@@ -8,13 +8,6 @@ import _ from 'lodash'
 const formatNumber = number =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
-// Let's remove this when the campaign has a good number
-const bumpTable = {
-  'already-on-strike': 60,
-  'threatening-on-strike': 20,
-  'solidarity-with-strikers': 10
-}
-
 type Props = {
   user: User,
   background: CMSImage,
@@ -43,9 +36,6 @@ const Join = ({
   const backgroundUrl = _.defaultTo(background.publicURL || background, '')
   const titleImageUrl = _.defaultTo(image.publicURL || image, '')
   // We will remove this once we reach 50 strikers
-  let bumpCount = count
-
-  bumpCount = count + (bumpTable[id] || 0)
 
   return (
     <section
@@ -65,7 +55,7 @@ const Join = ({
                   alt={title.toLowerCase()}
                 />
                 <h2 className="join__title">
-                  {formatNumber(bumpCount)} {title}
+                  {formatNumber(count)} {title}
                 </h2>
               </header>
               <div className="join__content">

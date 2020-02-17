@@ -31,9 +31,6 @@ const Hero = ({ title, actions, counters }: Props) => {
     .map(countByCampaign => Number(countByCampaign.count) || 0)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
 
-  // Let's remove this when the campaign has a good number
-  const totalCountBump = totalCount + 90
-
   return (
     <section className="hero">
       <div className="container-fluid distribute-rows">
@@ -56,8 +53,8 @@ const Hero = ({ title, actions, counters }: Props) => {
               </h1>
               <p className="headline mt-xs-3 mb-sm-5 mb-xl-0 mt-xl-0">
                 There are currently{' '}
-                <span className="text-body-color">{totalCountBump}</span> people
-                in the fight!
+                <span className="text-body-color">{totalCount}</span> people in
+                the fight!
               </p>
             </div>
           </div>

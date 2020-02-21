@@ -49,6 +49,12 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-fullstory',
+      options: {
+        fs_org: process.env.FULLSTORY_ORG
+      }
+    },
+    {
       // all paths prefixed by /app/ will render the route described in src/pages/app.js
       resolve: 'gatsby-plugin-create-client-paths',
       options: { prefixes: ['/app/*'] }

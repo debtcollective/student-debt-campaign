@@ -38,7 +38,7 @@ export const validationSchema = yup.object().shape({
   // for backwards compatibility
   streetAddress: yup.string(),
   address: yup.object().shape({
-    name: yup.string(),
+    name: yup.string().required('Address is required'),
     administrative: yup.string(),
     county: yup.string(),
     city: yup.string(),

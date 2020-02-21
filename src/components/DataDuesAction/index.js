@@ -439,7 +439,7 @@ const DataDuesForm = ({ userAction }) => {
           />
           {!!errors.address && <div className="is-invalid" />}
           <Form.Control.Feedback type="invalid">
-            {!!errors.address && 'Select a valid street address'}
+            {!!errors.address && 'Select a valid address'}
           </Form.Control.Feedback>
         </Form.Group>
 

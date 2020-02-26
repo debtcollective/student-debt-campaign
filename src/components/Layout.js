@@ -10,6 +10,7 @@ import SEO from './SEO'
 import useSiteMetadata from './SiteMetadata'
 import { GET_USER } from '../api'
 import classNames from 'classnames'
+import _ from 'lodash'
 import '../styles/index.scss'
 
 if (typeof window !== 'undefined') {
@@ -27,6 +28,14 @@ const Layout = ({ children, className }: Props) => {
   const { data: userQueryResponse = {} } = useQuery(GET_USER)
   const user = userQueryResponse.currentUser || {}
   const mainClassName = classNames('main', 'website-content', className)
+
+  // Identify with FullStory
+  if (!_.isEmpty(user) && window.FS) {
+    window.FS.identify(user.external_id, {
+      displayName: user.username,
+      email: user.email
+    })
+  }
 
   return (
     <>

@@ -6,6 +6,7 @@ import NumberFormat from 'react-number-format'
 import AlgoliaPlaces from 'algolia-places-react'
 import classNames from 'classnames'
 import { Form } from 'react-bootstrap'
+import { unknown } from './schema'
 
 export const AlgoliaPlacesField = ({
   name,
@@ -171,15 +172,23 @@ export const PercentageField = ({
     return () => unregister(name)
   }, [name, register, unregister])
 
+  let isNumericString = true
+  let placeholder = '4.53%'
+
+  if (defaultValue === unknown) {
+    isNumericString = false
+    placeholder = unknown
+  }
+
   return (
     <NumberFormat
       allowNegative={false}
       customInput={Form.Control}
       decimalScale={2}
       defaultValue={defaultValue}
-      isNumericString={true}
+      isNumericString={isNumericString}
       onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
-      placeholder="4.53%"
+      placeholder={placeholder}
       suffix="%"
       thousandSeparator={false}
       isAllowed={({ formattedValue, floatValue }) =>

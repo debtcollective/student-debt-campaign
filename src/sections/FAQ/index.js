@@ -8,7 +8,19 @@ if (typeof window !== 'undefined') {
 }
 
 type Props = {
-  entries: Array<FAQEntry>
+  entries: Array<FAQEntry>,
+}
+
+const markdownOptions = {
+  forceBlock: true,
+  overrides: {
+    a: {
+      props: {
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }
+    }
+  }
 }
 
 const FAQ = ({ entries }: Props) => (
@@ -30,7 +42,7 @@ const FAQ = ({ entries }: Props) => (
                 className="collapsable-list__item"
               >
                 <summary className="summary">{question}</summary>
-                <Markdown className="content" options={{ forceBlock: true }}>
+                <Markdown className="content" options={markdownOptions}>
                   {answer}
                 </Markdown>
               </details>

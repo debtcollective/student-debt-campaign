@@ -463,7 +463,7 @@ const DataDuesForm = ({ userAction }) => {
         <h3 className="mb-2 text-monospace">Your debts</h3>
         {_.range(debtCount).map((debtIndex) => (
           <div key={debtIndex}>
-            {debtIndex > 0 && <hr />}
+            {debtIndex > 0 && <hr className="mt-4 mb-4" />}
             <DebtForm
               debtId={debtIndex}
               register={register}

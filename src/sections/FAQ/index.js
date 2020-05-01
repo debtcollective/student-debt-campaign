@@ -8,7 +8,7 @@ if (typeof window !== 'undefined') {
 }
 
 type Props = {
-  entries: Array<FAQEntry>,
+  entries: Array<FAQEntry>
 }
 
 const markdownOptions = {

@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import Markdown from 'markdown-to-jsx'
 import _ from 'lodash'
 
-const formatNumber = number =>
+const formatNumber = (number) =>
   number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
 type Props = {

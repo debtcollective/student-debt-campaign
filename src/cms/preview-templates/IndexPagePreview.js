@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { client } from '../../apollo/client'
 
 type Props = {
   entry: {
@@ -21,16 +23,18 @@ const IndexPagePreview = ({ entry }: Props) => {
 
   if (data) {
     return (
-      <IndexPageTemplate
-        cta={data.cta}
-        demand={data.demand}
-        faq={data.faq}
-        hero={data.hero}
-        join_campaign={data.join_campaign}
-        notification={data.notification}
-        user={data.user}
-        counters={data.counters}
-      />
+      <ApolloProvider client={client}>
+        <IndexPageTemplate
+          cta={data.cta}
+          demand={data.demand}
+          faq={data.faq}
+          hero={data.hero}
+          join_campaign={data.join_campaign}
+          notification={data.notification}
+          user={data.user}
+          counters={data.counters}
+        />
+      </ApolloProvider>
     )
   } else {
     return <div>Loading...</div>

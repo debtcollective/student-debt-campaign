@@ -33,7 +33,7 @@ export const DataDuesHeader = ({
   <>
     <Row>
       <Col>
-        <h1 className="text-center">{title}</h1>
+        <h1 className="text-center text-monospace">{title}</h1>
       </Col>
     </Row>
     <Row className="my-4">
@@ -398,7 +398,7 @@ const DataDuesForm = ({ userAction }) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
       <div className="form-section">
-        <h3 className="mb-2">Personal information</h3>
+        <h3 className="mb-2 text-monospace">Personal information</h3>
         <Form.Group controlId="fullName">
           <Form.Label>Full name</Form.Label>
           <Form.Control
@@ -460,7 +460,7 @@ const DataDuesForm = ({ userAction }) => {
       </div>
 
       <div className="form-section">
-        <h3 className="mb-2">Your debts</h3>
+        <h3 className="mb-2 text-monospace">Your debts</h3>
         {_.range(debtCount).map((debtIndex) => (
           <div key={debtIndex}>
             {debtIndex > 0 && <hr />}

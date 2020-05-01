@@ -24,7 +24,9 @@ const CampaignActions = ({ user }: Props) => {
         <div className="row">
           <div className="col">
             <div className="text-center">
-              <h1 className="section-title mb-5">Ways to take action</h1>
+              <h1 className="section-title mb-5 text-monospace">
+                Ways to take action
+              </h1>
             </div>
           </div>
         </div>
@@ -40,7 +42,7 @@ const CampaignActions = ({ user }: Props) => {
                   return <p>Error: ${queryError.message}</p>
                 }
 
-                return queryResponse.getUserActions.map(action => {
+                return queryResponse.getUserActions.map((action) => {
                   let component = (
                     <CampaignAction action={action} key={action.actionId} />
                   )

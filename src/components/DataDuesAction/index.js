@@ -111,7 +111,7 @@ const DebtForm = ({
           <option value={unknown} disabled hidden>
             {unknown}
           </option>
-          {debtTypes.map(item => (
+          {debtTypes.map((item) => (
             <option key={item}>{item}</option>
           ))}
         </Form.Control>
@@ -121,7 +121,7 @@ const DebtForm = ({
         </Form.Control.Feedback>
         <Form.Check
           inline
-          onChange={event =>
+          onChange={(event) =>
             onChange(`debts[${debtId}].debtType`, setDebtTypeDisabled, event)
           }
           defaultChecked={debtTypeDisabled}
@@ -144,7 +144,7 @@ const DebtForm = ({
             <option value="" disabled hidden>
               Select a student debt type
             </option>
-            {studentDebtTypes.map(item => (
+            {studentDebtTypes.map((item) => (
               <option key={item}>{item}</option>
             ))}
           </Form.Control>
@@ -195,7 +195,7 @@ const DebtForm = ({
           type="checkbox"
           id={`interestRateUnknown${debtId}`}
           defaultChecked={interestRateDisabled}
-          onChange={event =>
+          onChange={(event) =>
             onChange(
               `debts[${debtId}].interestRate`,
               setInterestRateDisabled,
@@ -225,7 +225,7 @@ const DebtForm = ({
           type="checkbox"
           id={`creditorUnknown${debtId}`}
           defaultChecked={creditorDisabled}
-          onChange={event =>
+          onChange={(event) =>
             onChange(`debts[${debtId}].creditor`, setCreditorDisabled, event)
           }
           label={`I don't know my ${isStudentDebt ? 'servicer' : 'creditor'}`}
@@ -248,7 +248,7 @@ const DebtForm = ({
           <option value={unknown} disabled hidden>
             {unknown}
           </option>
-          {accountStatuses.map(item => (
+          {accountStatuses.map((item) => (
             <option key={item}>{item}</option>
           ))}
         </Form.Control>
@@ -261,7 +261,7 @@ const DebtForm = ({
           type="checkbox"
           id={`accountStatusUnknown${debtId}`}
           defaultChecked={accountStatusDisabled}
-          onChange={event =>
+          onChange={(event) =>
             onChange(
               `debts[${debtId}].accountStatus`,
               setAccountStatusDisabled,
@@ -364,7 +364,7 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted ({ userAction }) {
+      onCompleted({ userAction }) {
         navigate('/app/actions', {
           state: {
             alert: {
@@ -374,14 +374,14 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError ({ errors: formErrors }) {
+      onError({ errors: formErrors }) {
         // set errors to the form
       },
       refetchQueries: [{ query: GET_USER_ACTIONS }]
     }
   )
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     upsertDataDuesAction({ variables: { data } })
   }
 
@@ -397,7 +397,7 @@ const DataDuesForm = ({ userAction }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
-      <div className="mt-4">
+      <div className="form-section">
         <h3 className="mb-2">Personal information</h3>
         <Form.Group controlId="fullName">
           <Form.Label>Full name</Form.Label>
@@ -459,9 +459,9 @@ const DataDuesForm = ({ userAction }) => {
         </Form.Group>
       </div>
 
-      <div className="mt-4">
+      <div className="form-section">
         <h3 className="mb-2">Your debts</h3>
-        {_.range(debtCount).map(debtIndex => (
+        {_.range(debtCount).map((debtIndex) => (
           <div key={debtIndex}>
             {debtIndex > 0 && <hr />}
             <DebtForm
@@ -491,7 +491,7 @@ const DataDuesForm = ({ userAction }) => {
           </Row>
         </div>
       </div>
-      <Row className="mt-4">
+      <Row className="confirmation-row">
         <Col>
           <div className="text-left">
             <Button
@@ -541,7 +541,7 @@ const DataDuesAction = ({
 }: DataDuesActionProps) => {
   // TODO: do something with user and slug
   return (
-    <Container>
+    <Container className="container-standard-font">
       <DataDuesHeader title={title} description={description} />
       <DataDuesForm userAction={userAction} />
     </Container>

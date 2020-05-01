@@ -4,7 +4,12 @@
   font-weight: 600;
   font-size: 1rem;
   margin-top: 2rem;
-  padding: 3rem 0 2rem 0;
+  padding: 3rem 0;
+  padding-bottom: 6rem;
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: 2rem;
+  }
 
   > .container {
     max-width: map-get($container-max-widths, xl);

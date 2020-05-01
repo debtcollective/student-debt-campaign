@@ -4,7 +4,19 @@ Website for our student debt campaign. The application has been bootstraped with
 
 ## DEVELOPMENT
 
-Make sure to `cp .env.example .env.development` so you have all the environment variables available for the project to run properly
+Make sure to `cp .env.example .env.development` so you have all the environment variables available for the project to run properly.
+
+To install dependencies
+
+```bash
+yarn
+```
+
+Now you need to run the [camapign-api](https://github.com/debtcollective/campaign-api), once the the campaign api is running, run the following command to start to contribute
+
+```bash
+yarn develop
+```
 
 ## CONTRIBUTING
 

@@ -504,14 +504,16 @@ const DataDuesForm = ({ userAction }) => {
                 navigate('/app/actions')
               }}
             >
-              Go back
+              <span className="d-none d-sm-block">Go Back</span>
+              <span className="d-block d-sm-none">Back</span>
             </Button>
           </div>
         </Col>
         <Col>
           <div className="text-right">
             <Button variant="primary" type="submit" disabled={loading}>
-              Save information
+              <span className="d-none d-sm-block">Save Information</span>
+              <span className="d-block d-sm-none">Save</span>
             </Button>
           </div>
         </Col>

@@ -477,7 +477,11 @@ const DataDuesForm = ({ userAction }) => {
         <div>
           <Row>
             <Col>
-              <ButtonGroup size="lg" aria-label="Add/remove debt type">
+              <ButtonGroup
+                size="lg"
+                className="btn-block"
+                aria-label="Add/remove debt type"
+              >
                 <Button variant="info" onClick={addDebt}>
                   Add another debt type
                 </Button>

@@ -50,7 +50,11 @@ body,
 .main {
   &:not(.no-pad) {
     // leave extra space for the header to be placed
-    padding-top: $header-height-md;
+    padding-top: $header-height-sm + 1rem;
+    
+    @include media-breakpoint-up(md) {
+      padding-top: $header-height-md;
+    }
   }
 }
 

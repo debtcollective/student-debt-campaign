@@ -8,3 +8,22 @@
     padding: 1rem 1.5rem;
   }
 }
+
+.container-standard-font {
+  &,
+  .form-control {
+    font-size: 1rem;
+  }
+}
+
+.form-section {
+  margin-top: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 4rem;
+  }
+}
+
+.confirmation-row {
+  margin-top: 6rem;
+}

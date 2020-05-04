@@ -33,7 +33,7 @@ export const DataDuesHeader = ({
   <>
     <Row>
       <Col>
-        <h1 className="text-center">{title}</h1>
+        <h1 className="text-center text-monospace">{title}</h1>
       </Col>
     </Row>
     <Row className="my-4">
@@ -111,7 +111,7 @@ const DebtForm = ({
           <option value={unknown} disabled hidden>
             {unknown}
           </option>
-          {debtTypes.map(item => (
+          {debtTypes.map((item) => (
             <option key={item}>{item}</option>
           ))}
         </Form.Control>
@@ -121,7 +121,7 @@ const DebtForm = ({
         </Form.Control.Feedback>
         <Form.Check
           inline
-          onChange={event =>
+          onChange={(event) =>
             onChange(`debts[${debtId}].debtType`, setDebtTypeDisabled, event)
           }
           defaultChecked={debtTypeDisabled}
@@ -144,7 +144,7 @@ const DebtForm = ({
             <option value="" disabled hidden>
               Select a student debt type
             </option>
-            {studentDebtTypes.map(item => (
+            {studentDebtTypes.map((item) => (
               <option key={item}>{item}</option>
             ))}
           </Form.Control>
@@ -195,7 +195,7 @@ const DebtForm = ({
           type="checkbox"
           id={`interestRateUnknown${debtId}`}
           defaultChecked={interestRateDisabled}
-          onChange={event =>
+          onChange={(event) =>
             onChange(
               `debts[${debtId}].interestRate`,
               setInterestRateDisabled,
@@ -225,7 +225,7 @@ const DebtForm = ({
           type="checkbox"
           id={`creditorUnknown${debtId}`}
           defaultChecked={creditorDisabled}
-          onChange={event =>
+          onChange={(event) =>
             onChange(`debts[${debtId}].creditor`, setCreditorDisabled, event)
           }
           label={`I don't know my ${isStudentDebt ? 'servicer' : 'creditor'}`}
@@ -248,7 +248,7 @@ const DebtForm = ({
           <option value={unknown} disabled hidden>
             {unknown}
           </option>
-          {accountStatuses.map(item => (
+          {accountStatuses.map((item) => (
             <option key={item}>{item}</option>
           ))}
         </Form.Control>
@@ -261,7 +261,7 @@ const DebtForm = ({
           type="checkbox"
           id={`accountStatusUnknown${debtId}`}
           defaultChecked={accountStatusDisabled}
-          onChange={event =>
+          onChange={(event) =>
             onChange(
               `debts[${debtId}].accountStatus`,
               setAccountStatusDisabled,
@@ -364,7 +364,7 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted ({ userAction }) {
+      onCompleted({ userAction }) {
         navigate('/app/actions', {
           state: {
             alert: {
@@ -374,14 +374,14 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError ({ errors: formErrors }) {
+      onError({ errors: formErrors }) {
         // set errors to the form
       },
       refetchQueries: [{ query: GET_USER_ACTIONS }]
     }
   )
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     upsertDataDuesAction({ variables: { data } })
   }
 
@@ -397,8 +397,8 @@ const DataDuesForm = ({ userAction }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
-      <div className="mt-4">
-        <h3 className="mb-2">Personal information</h3>
+      <div className="form-section">
+        <h3 className="mb-2 text-monospace">Personal information</h3>
         <Form.Group controlId="fullName">
           <Form.Label>Full name</Form.Label>
           <Form.Control
@@ -459,11 +459,11 @@ const DataDuesForm = ({ userAction }) => {
         </Form.Group>
       </div>
 
-      <div className="mt-4">
-        <h3 className="mb-2">Your debts</h3>
-        {_.range(debtCount).map(debtIndex => (
+      <div className="form-section">
+        <h3 className="mb-2 text-monospace">Your debts</h3>
+        {_.range(debtCount).map((debtIndex) => (
           <div key={debtIndex}>
-            {debtIndex > 0 && <hr />}
+            {debtIndex > 0 && <hr className="mt-4 mb-4" />}
             <DebtForm
               debtId={debtIndex}
               register={register}
@@ -477,7 +477,11 @@ const DataDuesForm = ({ userAction }) => {
         <div>
           <Row>
             <Col>
-              <ButtonGroup size="lg" aria-label="Add/remove debt type">
+              <ButtonGroup
+                size="lg"
+                className="btn-block"
+                aria-label="Add/remove debt type"
+              >
                 <Button variant="info" onClick={addDebt}>
                   Add another debt type
                 </Button>
@@ -491,7 +495,7 @@ const DataDuesForm = ({ userAction }) => {
           </Row>
         </div>
       </div>
-      <Row className="mt-4">
+      <Row className="confirmation-row">
         <Col>
           <div className="text-left">
             <Button
@@ -500,14 +504,16 @@ const DataDuesForm = ({ userAction }) => {
                 navigate('/app/actions')
               }}
             >
-              Go back
+              <span className="d-none d-sm-block">Go Back</span>
+              <span className="d-block d-sm-none">Back</span>
             </Button>
           </div>
         </Col>
         <Col>
           <div className="text-right">
             <Button variant="primary" type="submit" disabled={loading}>
-              Save information
+              <span className="d-none d-sm-block">Save Information</span>
+              <span className="d-block d-sm-none">Save</span>
             </Button>
           </div>
         </Col>
@@ -541,7 +547,7 @@ const DataDuesAction = ({
 }: DataDuesActionProps) => {
   // TODO: do something with user and slug
   return (
-    <Container>
+    <Container className="container-standard-font">
       <DataDuesHeader title={title} description={description} />
       <DataDuesForm userAction={userAction} />
     </Container>

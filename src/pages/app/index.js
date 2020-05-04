@@ -6,7 +6,6 @@ import { Router, Redirect } from '@reach/router'
 import Layout from '../../components/Layout'
 import PrivateRoute from '../../components/PrivateRoute'
 import { GET_USER } from '../../api'
-import Header from '../../components/Header'
 import CampaignWelcome from '../../components/CampaignWelcome'
 import Join from '../../components/Join'
 import { ActionsPage } from '../../templates/app'
@@ -18,7 +17,6 @@ const AppPage = () => {
 
   return (
     <Layout>
-      <Header user={data.currentUser} />
       {!loading && (
         <Router>
           <Redirect from="/app" to="/app/actions" />

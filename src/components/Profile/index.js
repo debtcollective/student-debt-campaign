@@ -11,11 +11,16 @@ const Profile = ({ user, ...rest }) => {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle variant="transparent" size="sm" id="dropdown-basic">
+      <Dropdown.Toggle
+        className="user-profile-dropdown"
+        variant="transparent"
+        size="sm"
+        id="dropdown-basic"
+      >
         <div id="user-profile" className="user-profile" data-testid="profile">
           <img
-            width={50}
-            height={50}
+            width={'100%'}
+            height={'100%'}
             className="rounded-circle"
             src={user.avatar_url}
             alt={user.username}

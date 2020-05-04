@@ -3,7 +3,7 @@
   background: $white;
   border-radius: 0.250rem;
   border: 0.125rem solid $black;
-  bottom: $grid-gutter-width / 2;
+  bottom: 4rem;
   box-shadow: 0 0.875rem 1.75rem rgba(0,0,0,0.25), 0 0.625rem 0.625rem rgba(0,0,0,0.22);
   display: flex;
   flex-direction: row;
@@ -19,6 +19,10 @@
     flex-direction: column;
     height: auto;
     width: calc(100% - #{$grid-gutter-width});
+  }
+
+  @include media-breakpoint-up(lg) {
+    bottom: $grid-gutter-width / 2;
   }
 
   .close {

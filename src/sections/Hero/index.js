@@ -5,7 +5,7 @@ import React from 'react'
 import IconWrap from '../../components/IconWrap'
 import { Link } from 'react-scroll'
 
-const getBg = index => {
+const getBg = (index) => {
   switch (index) {
     case 1:
       return 'yellow'
@@ -27,9 +27,11 @@ type Props = {
 }
 
 const Hero = ({ title, actions, counters }: Props) => {
-  const totalCount = counters
-    .map(countByCampaign => Number(countByCampaign.count) || 0)
-    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  const totalCount =
+    counters &&
+    counters
+      .map((countByCampaign) => Number(countByCampaign.count) || 0)
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
 
   return (
     <section className="hero">

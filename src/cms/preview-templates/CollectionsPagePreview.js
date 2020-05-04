@@ -3,6 +3,8 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { DataDuesHeader } from '../../components/DataDuesAction'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { client } from '../../apollo/client'
 
 type Props = {
   entry: {
@@ -16,7 +18,7 @@ type Props = {
       }
     }
   },
-  widgetFor: string => mixed
+  widgetFor: (string) => mixed
 }
 
 const CollectionsPagePreview = ({ entry, widgetFor }: Props) => {
@@ -24,9 +26,11 @@ const CollectionsPagePreview = ({ entry, widgetFor }: Props) => {
   const { title, description } = data
 
   return (
-    <Container>
-      <DataDuesHeader title={title} description={description} />
-    </Container>
+    <ApolloProvider client={client}>
+      <Container>
+        <DataDuesHeader title={title} description={description} />
+      </Container>
+    </ApolloProvider>
   )
 }
 

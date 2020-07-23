@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@amplitude/ua-parser-js@0.7.20":
-  version "0.7.20"
-  resolved "https://registry.yarnpkg.com/@amplitude/ua-parser-js/-/ua-parser-js-0.7.20.tgz#15652f8cc4fee72d962a5f2101cfde6f3c8e87b8"
-  integrity sha512-bmW++BLt1Hg+4HCExLXP+0Jhgy2eTsEevqkVc5o4yYbgwdP/gV3gEQXzyVrMVlWWNLgph/tFIkf5PVlSpCELEg==
+"@amplitude/ua-parser-js@0.7.24":
+  version "0.7.24"
+  resolved "https://registry.yarnpkg.com/@amplitude/ua-parser-js/-/ua-parser-js-0.7.24.tgz#2ce605af7d2c38d4a01313fb2385df55fbbd69aa"
+  integrity sha512-VbQuJymJ20WEw0HtI2np7EdC3NJGUWi8+Xdbc7uk8WfMIF308T0howpzkQ3JFMN7ejnrcSM/OyNGveeE3TP3TA==
 
 "@apollo/react-common@^3.1.3":
   version "3.1.3"
@@ -2407,12 +2407,12 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-amplitude-js@^5.6.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/amplitude-js/-/amplitude-js-5.9.0.tgz#387af728c6ad2f097d6e2daab9b75fca1bfaf823"
-  integrity sha512-lWYSmCwhPWlvRL0ZE/GRHLN0fi8ToAtxXo+Utr1l4dEzOjQhLHvvhfHT7eJxmQFoxzU15jmLHKegE4QPONXMow==
+amplitude-js@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/amplitude-js/-/amplitude-js-7.0.0.tgz#ac64b2e66711ba7161773a9666537fbb09f0b396"
+  integrity sha512-o4bGo0/8WVl23RpKojBjURey0qsQV3hdjLK1Djy8AmZQMvSybKOWiopoqhQb/X1NPooIySDatMCp5Yk3p/2sOQ==
   dependencies:
-    "@amplitude/ua-parser-js" "0.7.20"
+    "@amplitude/ua-parser-js" "0.7.24"
     blueimp-md5 "^2.10.0"
     query-string "5"
 

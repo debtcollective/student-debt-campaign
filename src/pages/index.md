@@ -26,55 +26,49 @@ hero:
 social:
   accounts:
     - logo: /img/twitter.svg
-      url: 'http://twitter.com/debtcollective'
+      url: http://twitter.com/debtcollective
       username: debtcollective
     - logo: /img/instagram.svg
-      url: 'http://instagram.com/debtcollective'
+      url: http://instagram.com/debtcollective
       username: debtcollective
   action: Share this!
 notification:
-  date: 'Sun, Sep 22, 2019 12:00 AM'
-  description: >-
-    **NEW** Presidential candidate Sen. Bernie Sanders has proposed  a plan to
-    eliminate the $1.6 trillion in student-loan debt held in the US and make all
-    public higher education tuition-free!
+  date: Mon, Jul 27, 2020 12:00 AM
+  description: "**NEW** Legislation to cancel all student debt and fully fund
+    public higher education has been introduced in Congress! For the first time
+    ever, mass debt cancellation is being seriously considered in response to
+    **COVID-19**"
   title: We are winning
 demand:
-  content: >-
-    Tens of millions of us are carrying more than $1.5 trillion in student debt.
-    Our debt is someone's profit which also makes it a form of leverage over the
-    government agencies and the private companies that are extracting from us.
-    One million people default every year.
+  content: Tens of millions of us are carrying more than $1.5 trillion in student
+    debt. Our debt is someone's profit which also makes it a form of leverage
+    over the government agencies and the private companies that are extracting
+    from us. One million people default every year.
   remark: We must politicize this.
-  title: >-
-    We demand full cancellation of federal & private student loans. Free public
-    college for all!
+  title: We demand full cancellation of federal & private student loans. Free
+    public college for all!
 join_campaign:
   - background: /img/image_3.jpg
     colour: purple
-    content: >-
-      We are not paying our student loans. This means we are already in default
-      or that we have enrolled in programs such as forbearance, deferment or $0
-      Income Based Repayment in order to halt our payments. The government and
-      the lenders aren't getting a cent from us!
+    content: We are not paying our student loans. This means we are already in
+      default or that we have enrolled in programs such as forbearance,
+      deferment or $0 Income Based Repayment in order to halt our payments. The
+      government and the lenders aren't getting a cent from us!
     feed:
       - picture: /img/ami-schneider.jpg
-        status: >-
-          I believe that education is a right. I've been fighting for debt
-          relief for years after attending Art Institute. Now I'm prepared to
-          fight for debt relief for all.
+        status: I believe that education is a right. I've been fighting for debt relief
+          for years after attending Art Institute. Now I'm prepared to fight for
+          debt relief for all.
         username: Ami Schneider.
       - picture: /img/pam-hunt.jpg
-        status: >-
-          I am on strike because I went to school for a better job but GOT
+        status: I am on strike because I went to school for a better job but GOT
           SCAMMED. Education should be free. Let's do this.
         username: Pam Hunt.
       - picture: /img/alyse_pic.jpg
         status: I know we can win this fight if we stand together.
         username: Alyse Zachary.
       - picture: /img/tribble-fam.jpg
-        status: >-
-          When our son was 3-months old, our tax refund check was stolen from us
+        status: When our son was 3-months old, our tax refund check was stolen from us
           by the government for student loans. We were going to get a crib for
           our son with that tax refund check. Education should be publicly
           funded and free. The government should not be stealing people's money
@@ -86,27 +80,23 @@ join_campaign:
     title: of us are already on strike!
   - background: /img/image_2.jpg
     colour: yellow
-    content: >-
-      We are prepared to stop paying our loans in the future if our demands are
-      not met. These loans are unjust and it is only a matter of time before we
-      stop cooperating.
+    content: We are prepared to stop paying our loans in the future if our demands
+      are not met. These loans are unjust and it is only a matter of time before
+      we stop cooperating.
     feed:
       - picture: /img/d.-adono-striker-pic.jpg
-        status: >-
-          I strike because the school I attended has not been held accountable
-          for its fraudulent practice. I strike so my son can understand when
-          wrong is done to you, you have to do what's right and speak up. Even
-          if it's hard and uncomfortable. Cancel student debt!
+        status: I strike because the school I attended has not been held accountable for
+          its fraudulent practice. I strike so my son can understand when wrong
+          is done to you, you have to do what's right and speak up. Even if it's
+          hard and uncomfortable. Cancel student debt!
         username: Danielle Adorno
       - picture: /img/jairo-martinez.jpg
-        status: >-
-          I attended ITT Tech in Springfield, VA. My debts should be cancelled
-          due to predatory loans that should not have been approved and a school
+        status: I attended ITT Tech in Springfield, VA. My debts should be cancelled due
+          to predatory loans that should not have been approved and a school
           that is now out of business.
         username: Jairo Martinez
       - picture: /img/sandy-nurse.jpg
-        status: >-
-          I have been on a Debt Strike since 2013 because student debt is
+        status: I have been on a Debt Strike since 2013 because student debt is
           shackling me, my friends, and my family. While billionaires like Jeff
           Bezos won’t pay a dime in taxes off excessive profits, young people
           across the country are forced to borrow outrageous amounts of money
@@ -121,41 +111,36 @@ join_campaign:
     title: of us are threatening to strike!
   - background: /img/image_1.jpg
     colour: green
-    content: >-
-      We do not have student loans, but we are standing in solidarity with all
-      those who are on strike. We are teenagers who don’t want to be forced into
-      debt to get a degree. We are educators who want our students to learn
+    content: We do not have student loans, but we are standing in solidarity with
+      all those who are on strike. We are teenagers who don’t want to be forced
+      into debt to get a degree. We are educators who want our students to learn
       without fear. We are people from all walks of life who believe education
       should be free.
     feed:
       - picture: /img/joseph-white.jpg
-        status: >-
-          Joseph White. I served in the Missouri Army National Guard for eleven
+        status: Joseph White. I served in the Missouri Army National Guard for eleven
           years. I am over 190,000 dollars in student loan debt from ITT Tech. I
           am refusing to pay one penny until my loans are eliminated.
         username: Joseph White
       - picture: /img/stephanie-hutchison-.jpeg
-        status: >-
-          I attended Everest Institute.Financially, I am unable to plan my life.
+        status: I attended Everest Institute.Financially, I am unable to plan my life.
           These loans have ruined my credit. In a system that forces you to go
           to school, it’s truly upsetting to have this experience, and in the
           end it makes you not want to invest in said system that we’ve been
           told works for everybody.
         username: Stephanie Hutchison
       - picture: /img/sandersbiopic.jpg
-        status: >-
-          I attended a for-profit school that grossly misrepresented its
-          programs and then left me with a worthless degree and a mountain of
-          debt. This debt is all the product of a failed system. Nobody should
-          have to pay a debt that should have never existed to begin with.
+        status: I attended a for-profit school that grossly misrepresented its programs
+          and then left me with a worthless degree and a mountain of debt. This
+          debt is all the product of a failed system. Nobody should have to pay
+          a debt that should have never existed to begin with.
         username: Sanders Fabares
     id: solidarity-with-strikers
     image: /img/handshake.png
     remark: Get actions when you add your name.
     title: of us stand in solidarity with strikers.
 faq:
-  - answer: >-
-      We are debtors and supporters who are fighting for FULL student debt
+  - answer: We are debtors and supporters who are fighting for FULL student debt
       cancellation as well as free public college. In summer 2019, two bills
       were introduced in Congress that would do just that. For more information
       about those bills, [go
@@ -174,61 +159,38 @@ faq:
       the people who most need it.
 
 
-      One reason more and more of us are having a hard time paying down our debt
-      is because the cost of college has gone up, but our pay hasn’t. Instead,
-      the labor market has "credentialized". This means that, over the last few
-      decades, people needed to take on more debt to get more degrees just to
-      get the same jobs earning the same wages as people in previous
-      generations. [As one analysis
-      shows](https://www.brookings.edu/wp-content/uploads/2016/07/PDFLooneyTextFallBPEA.pdf),
-      a result of this credentialization is that more and more people have
-      defaulted on their loans and more defaulters are low-income people and
-      racial minorities, the same people who sought college credentials to try
-      to get a pay raise that never materialized. If college led to a higher
-      paying job, then cancelling the debts of college graduates would be
-      regressive. But since most people, especially working class people, take
-      on debt for degrees that DON’T lead to better jobs, cancelling student
-      debt is NOT regressive. Want to learn more? [We refer you to economist
-      Marshall Steinbaum on this
-      question](https://www.currentaffairs.org/2019/06/is-student-debt-cancellation-regressive-no).
-    question: >-
-      What do you say to the charge that cancelling all student loans would be a
-      big giveaway to the upper middle class, in other words that it would be
-      "regressive"?
-  - answer: >-
-      When a policy is intended to help some people and not others, it is harder
-      to pass (because the people who don’t benefit are less likely to support
-      it). In addition, targeted (or what some call “means-tested”) relief would
-      not treat education as a right. As we explained above, if education is a
-      right then everyone should have access to it. For decades, college was
-      free or low cost. Making people take out loans shifted the burden of
-      paying for college onto the backs of students and families. If the
-      policies that led us to this crisis were bad, then we should correct them
-      once and for all. It’s true that full student debt cancellation will
+      One reason more and more of us are having a hard time paying down our debt is because the cost of college has gone up, but our pay hasn’t. Instead, the labor market has "credentialized". This means that, over the last few decades, people needed to take on more debt to get more degrees just to get the same jobs earning the same wages as people in previous generations. [As one analysis shows](https://www.brookings.edu/wp-content/uploads/2016/07/PDFLooneyTextFallBPEA.pdf), a result of this credentialization is that more and more people have defaulted on their loans and more defaulters are low-income people and racial minorities, the same people who sought college credentials to try to get a pay raise that never materialized. If college led to a higher paying job, then cancelling the debts of college graduates would be regressive. But since most people, especially working class people, take on debt for degrees that DON’T lead to better jobs, cancelling student debt is NOT regressive. Want to learn more? [We refer you to economist Marshall Steinbaum on this question](https://www.currentaffairs.org/2019/06/is-student-debt-cancellation-regressive-no).
+    question: What do you say to the charge that cancelling all student loans would
+      be a big giveaway to the upper middle class, in other words that it would
+      be "regressive"?
+  - answer: When a policy is intended to help some people and not others, it is
+      harder to pass (because the people who don’t benefit are less likely to
+      support it). In addition, targeted (or what some call “means-tested”)
+      relief would not treat education as a right. As we explained above, if
+      education is a right then everyone should have access to it. For decades,
+      college was free or low cost. Making people take out loans shifted the
+      burden of paying for college onto the backs of students and families. If
+      the policies that led us to this crisis were bad, then we should correct
+      them once and for all. It’s true that full student debt cancellation will
       benefit some relatively well-off borrowers. That’s fine by us because most
       of the people who benefit will be regular working-class people who are
       struggling to get by and, again, education is a right.
     question: Why not just target relief to those carrying the biggest burden?
-  - answer: >-
-      A student debt jubilee must go hand in hand with making public college
+  - answer: A student debt jubilee must go hand in hand with making public college
       tuition free. Future generations should not be burdened with student debt.
       It is time to end it.
-    question: >-
-      What about the cost of college going forward? If we cancel all debt now,
-      what about future borrowers who would be left out?
-  - answer: >-
-      The rise in college debt has nothing to do with borrowers being
+    question: What about the cost of college going forward? If we cancel all debt
+      now, what about future borrowers who would be left out?
+  - answer: The rise in college debt has nothing to do with borrowers being
       “irresponsible.” This is not a matter of individual behavior but of public
       policy. No one should have ever had to go into debt for education. It is
       awful and historically tragic that people were forced to take out loans to
       study and for the right to prepare for a career. Our government should
       stop harming people for simply wanting to go to college. We must return
       education to the status of a public good.
-    question: >-
-      Students who took out loans knew what they were getting into. Why should
-      they be let out of their responsibilities?
-  - answer: >-
-      It is unfair for anyone to have been forced into debt for a basic right
+    question: Students who took out loans knew what they were getting into. Why
+      should they be let out of their responsibilities?
+  - answer: It is unfair for anyone to have been forced into debt for a basic right
       like education. This is not a good reason to keep inflicting injustice on
       future generations. There was a time when the US did not provide free
       public high school, and at the time that free high school came into
@@ -238,17 +200,13 @@ faq:
       irrational to continue with a bad policy simply because people have
       already suffered under it. It is time to make college free, cancel student
       debt, and liberate people to pursue their dreams.
-    question: >-
-      What do we do about the people who have already paid back all of their
+    question: What do we do about the people who have already paid back all of their
       student loans? Won’t mass debt relief be unfair to them?
-  - answer: >-
-      We are sorry you feel that way. You too should have your debts wiped out.
-      Education is a human right and should be free.
-    question: >-
-      What do you say to people who say things like, "Well, I am fortunate to
-      pay back my student loans. But I do it and so should everyone else."
-  - answer: >-
-      This is a common talking point coming from some elected officials and
+  - answer: We are sorry you feel that way. You too should have your debts wiped
+      out. Education is a human right and should be free.
+    question: What do you say to people who say things like, "Well, I am fortunate
+      to pay back my student loans. But I do it and so should everyone else."
+  - answer: "This is a common talking point coming from some elected officials and
       politicians who want to continue with our current debt-financed education
       system. Education Secretary Betsy DeVos, for example, says she opposes
       College for All for this reason. The truth is that cancelling student debt
@@ -263,22 +221,19 @@ faq:
       answer to this question is: Stop fleecing working people while denying us
       our public goods. In fact, maybe the reason billionaire Betsy DeVos and
       company actually oppose College for All is because they don’t want their
-      taxes to go up.
-    question: >-
-      Wouldn’t cancelling student debt require people who didn’t go to college
-      to pay the tuition bills of people who did?
-  - answer: >-
-      Academic research shows that eliminating student debt for everyone would
+      taxes to go up."
+    question: Wouldn’t cancelling student debt require people who didn’t go to
+      college to pay the tuition bills of people who did?
+  - answer: Academic research shows that eliminating student debt for everyone would
       provide a significant boost to the economy. Specifically, a debt jubilee
       would  boost the economy by approximately $100 billion a year for at least
       10 years, yielding lower unemployment rates, increased spending, and more.
       The study also shows that full cancellation would have only a moderate
       effect on the federal budget deficit. [Read the full report
       here](http://www.levyinstitute.org/publications/the-macroeconomic-effects-of-student-debt-cancellation).
-    question: 'What impact will cancelling student debt have on the economy? '
-  - answer: >-
-      The good news is that it doesn’t cost very much to get rid of all student
-      debt. [A study by
+    question: "What impact will cancelling student debt have on the economy? "
+  - answer: The good news is that it doesn’t cost very much to get rid of all
+      student debt. [A study by
       economists](http://www.levyinstitute.org/pubs/rpr_2_6.pdf) estimated that
       eliminating all $1.5 trillion in student debt would grow the economy by
       $86 billion to $108 billion every year and create over a million jobs a
@@ -292,7 +247,7 @@ faq:
       authorize spending when it regards that expenditure as important for the
       public. It’s time that they used that power for millions of people
       drowning in student debt.
-    question: 'OK, but how do we pay for it?'
+    question: OK, but how do we pay for it?
   - answer: >
       No. As Astra Taylor
       [described](https://www.theguardian.com/commentisfree/2019/apr/24/elizabeth-warren-student-debt-cancel-grassroots)
@@ -304,28 +259,19 @@ faq:
       low-dollar deals with banks that break the law, for example, the Secretary
       of Education
 
-      can settle with debtors for a fraction of what they owe or suspend the
-      collection of
+      can settle with debtors for a fraction of what they owe or suspend the collection of
 
-      student debt altogether. When it was first given the power to issue and
-      collect student loans in 1958, the US Department of Education also
-      received the power to “compromise, waive, or release any right” to collect
-      on them. And when the Higher Education Act of 1965 made student
+      student debt altogether. When it was first given the power to issue and collect student loans in 1958, the US Department of Education also received the power to “compromise, waive, or release any right” to collect on them. And when the Higher Education Act of 1965 made student
 
-      loan authorities permanent, it solidified their power to compromise. We
-      believe it is time
+      loan authorities permanent, it solidified their power to compromise. We believe it is time
 
-      that the Department use its authority to stop collections on student
-      loans. Nothing in the
+      that the Department use its authority to stop collections on student loans. Nothing in the
 
-      law prevents the Secretary from doing so. Congressional authority is not
-      needed. A President who wanted to see student debt cancelled could simply
-      direct his or her Department of Education to cancel the debt.
+      law prevents the Secretary from doing so. Congressional authority is not needed. A President who wanted to see student debt cancelled could simply direct his or her Department of Education to cancel the debt.
     question: Does Congress Have to Approve Debt Relief?
-  - answer: >-
-      Education should be free but it should also give us more liberty. Most of
-      the time, we are told that education is key to finding employment and the
-      only path out of poverty. In reality, our country’s economic problems
+  - answer: Education should be free but it should also give us more liberty. Most
+      of the time, we are told that education is key to finding employment and
+      the only path out of poverty. In reality, our country’s economic problems
       can’t be solved by education alone—producing more college graduates won’t
       make more meaningful well-paying jobs magically appear! Nevertheless, that
       is the message that we hear all the time. The implication is that

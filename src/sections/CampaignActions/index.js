@@ -3,6 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import CampaignAction from '../../components/CampaignAction'
+import Spinner from '../../components/Spinner'
 import CampaignActionLink from '../../components/CampaignActionLink'
 import { GET_USER_ACTIONS } from '../../api'
 
@@ -35,7 +36,7 @@ const CampaignActions = ({ user }: Props) => {
             <div data-testid="action-items" className="campaign-actions-list">
               {(() => {
                 if (queryLoading) {
-                  return <p>Loading...</p>
+                  return <Spinner />
                 }
 
                 if (queryError) {

@@ -3,6 +3,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import DataDuesAction from '../../components/DataDuesAction'
+import Spinner from '../../components/Spinner'
 import { GET_USER_ACTION } from '../../api'
 
 type PageProps = {
@@ -18,7 +19,7 @@ const DataDuesPage = ({ user, slug, title, description }: PageProps) => {
   })
 
   if (loading) {
-    return <p>Loading...</p>
+    return <Spinner />
   }
 
   if (error) {

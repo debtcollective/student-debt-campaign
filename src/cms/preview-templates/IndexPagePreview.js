@@ -4,6 +4,7 @@ import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { client } from '../../apollo/client'
+import Spinner from '../../components/Spinner'
 
 type Props = {
   entry: {
@@ -37,7 +38,7 @@ const IndexPagePreview = ({ entry }: Props) => {
       </ApolloProvider>
     )
   } else {
-    return <div>Loading...</div>
+    return <Spinner />
   }
 }
 

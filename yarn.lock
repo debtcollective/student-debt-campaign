@@ -923,6 +923,21 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@debtcollective/dc-dropdown-component@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.6.3.tgz#e385b1a9ffa48b730c089144265938e1a3719c68"
+  integrity sha512-5AG++poShqFYPf2b8xynVGWhBH6zB4J6KDOkWkLAHU6bvLWmHcQuJKOhA/Tgx6yxcEKIPOz1ZCYO3eZ2PzilzQ==
+  dependencies:
+    lodash.omit "^4.5.0"
+
+"@debtcollective/dc-header-component@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.0.4.tgz#5ea9ecaaa64b05ad3c40bce342c88c41cd093eb5"
+  integrity sha512-cYviETb6FidUBhAxulsddWuoMtTuXQ7ZkbKXM4qA2PMtIZVSygZa3Qb2Bb6fdM/p+dUE9oxf5MA8MncwKmDxXg==
+  dependencies:
+    "@debtcollective/dc-dropdown-component" "^1.6.3"
+    lodash.omit "^4.5.0"
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
@@ -7220,6 +7235,11 @@ gatsby-plugin-google-analytics@^2.1.31:
   dependencies:
     "@babel/runtime" "^7.7.6"
 
+gatsby-plugin-google-fonts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.1.tgz#d71054f7bf207b9a8da227380369e18e6f4e0201"
+  integrity sha512-p1NVkn27GUnDA5qHM+Z4cCcLCJIardzZXMon3640sT4xuL/AZJbsx3HEt2KY/5oZu0UXIkytkxzV2Da4rQeUIg==
+
 gatsby-plugin-netlify-cms@^4.1.6:
   version "4.1.40"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cms/-/gatsby-plugin-netlify-cms-4.1.40.tgz#6c687d68d0252917f7cfccff896304905fb18857"
@@ -10733,6 +10753,11 @@ lodash.mergewith@^4.6.1:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
   integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
+
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
+  integrity sha1-brGa5aHuHdnfC5aeZs4Lf6MLXmA=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"

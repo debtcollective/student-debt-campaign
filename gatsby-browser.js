@@ -1,3 +1,4 @@
+import { defineCustomElements } from '@debtcollective/dc-header-component/loader'
 export { wrapRootElement } from './src/apollo/wrap-root-element'
 
 export const onInitialClientRender = () => {
@@ -10,3 +11,5 @@ export const onInitialClientRender = () => {
   addThisScript.src = `//s7.addthis.com/js/300/addthis_widget.js#pubid=${process.env.GATSBY_ADDTHIS_PUB_ID}`
   document.body.appendChild(addThisScript)
 }
+
+defineCustomElements()

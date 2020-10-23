@@ -5,8 +5,8 @@ import { Helmet } from 'react-helmet'
 import { withPrefix } from 'gatsby'
 import { useQuery } from '@apollo/react-hooks'
 import Footer from './Footer'
-import Header from './Header'
 import SEO from './SEO'
+import Header from './Header'
 import useSiteMetadata from './SiteMetadata'
 import { GET_USER } from '../api'
 import classNames from 'classnames'
@@ -28,7 +28,6 @@ const Layout = ({ children, className }: Props) => {
   const { data: userQueryResponse = {} } = useQuery(GET_USER)
   const user = userQueryResponse.currentUser || {}
   const mainClassName = classNames('main', 'website-content', className)
-
   // Identify with FullStory
   if (!_.isEmpty(user) && window.FS) {
     window.FS.identify(user.external_id, {

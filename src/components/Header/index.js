@@ -1,173 +1,103 @@
-import React, { useState, useLayoutEffect, useRef } from 'react'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import has from 'lodash/has'
+// @flow
 
-import { trackOutboundLink } from '../../lib/metrics'
-import { Collapse } from 'react-bootstrap'
+import React from 'react'
 import { Link } from 'gatsby'
-import Profile from '../Profile'
 
-const redirectParam = `return_url=${process.env.GATSBY_HOST_URL}`
-const loginSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies?${redirectParam}`
-const signupSSOUrl = `${process.env.GATSBY_COMMUNITY_URL}/session/sso_cookies/signup?${redirectParam}`
+type Props = {
+  user?: object
+}
 
-const Header = ({ user }) => {
-  const [scrollY, setScrollY] = useState(false)
-  const [open, setOpen] = useState(false)
-  const headerEl = useRef(null)
-  const isLoggedIn = has(user, 'id')
+type NavigationLinksProps = {
+  isLoggedIn: boolean
+}
 
-  const isScrolled =
-    headerEl.current && scrollY > headerEl.current.scrollHeight / 2
+const GATSBY_HOST_URL = process.env.GATSBY_HOST_URL
+const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL
 
-  const headerClasses = classNames('header', 'fixed-top', {
-    'slider-nav-open': open,
-    active: isScrolled
-  })
-  const menuTriggerClasses = classNames('menu-trigger', { active: open })
+const HEADER_LINKS = [
+  {
+    href: 'https://debtcollective.org/debt-union/',
+    text: 'Join the Union',
+    target: '_blank'
+  },
+  {
+    href: 'https://community.debtcollective.org/',
+    text: 'Community',
+    target: '_blank'
+  },
+  {
+    href: 'https://teespring.com/stores/debt-collective',
+    text: 'Store',
+    target: '_blank'
+  }
+]
 
-  useLayoutEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
-
+const LocalNavigationLinks = ({ isLoggedIn }: NavigationLinksProps) => {
   return (
     <>
-      <header ref={headerEl} className={headerClasses}>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-3 col-lg-3 d-xl-none">
-              <div className="header-col justify-content-start">
-                <div
-                  id="menu-trigger"
-                  className={menuTriggerClasses}
-                  role="button"
-                  onClick={() => setOpen(!open)}
-                  aria-expanded={open}
-                  aria-controls="slider-nav"
-                >
-                  <div className="menu-icon">
-                    <span className="menu-stripe"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-6 col-lg-6 col-xl-9">
-              <div className="header-col justify-content-xl-start">
-                <a href="//debtcollective.org">
-                  <img
-                    className="logo"
-                    src="/img/logo-light.svg"
-                    alt="debtcollective logo"
-                    width="100%"
-                  />
-                </a>
-                <div className="d-none d-xl-flex">
-                  <ul className="nav align-items-center" role="navigation">
-                    {isLoggedIn && (
-                      <li className="nav-item">
-                        <Link to="/app/actions" className="nav-link">
-                          Actions
-                        </Link>
-                      </li>
-                    )}
-                    <li className="nav-item">
-                      <Link to="/#faq" className="nav-link">
-                        FAQ
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="https://membership.debtcollective.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={trackOutboundLink}
-                      >
-                        Donate
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-3 col-lg-3">
-              <div className="header-col justify-content-end buttons">
-                {isLoggedIn ? (
-                  <Profile user={user} />
-                ) : (
-                  <div data-testid="session-links" className="d-flex">
-                    {/* >= lg */}
-                    <a
-                      href={signupSSOUrl}
-                      onClick={trackOutboundLink}
-                      className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
-                    >
-                      Sign up
-                    </a>
-                    {/* >= md */}
-                    <a
-                      href={loginSSOUrl}
-                      onClick={trackOutboundLink}
-                      className="btn btn-primary btn-lg d-none d-md-block btn-session"
-                    >
-                      Login
-                    </a>
-                    {/* small */}
-                    <a
-                      href={loginSSOUrl}
-                      onClick={trackOutboundLink}
-                      className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
-                    >
-                      Login
-                    </a>
-                  </div>
-                )}
-              </div>
-            </div>
+      <div className="nav-item">
+        <Link to="/#faq" className="nav-link">
+          FAQ
+        </Link>
+      </div>
+      {isLoggedIn && (
+        <>
+          <div className="nav-item" data-testid="actions-link">
+            <Link to="/app/actions" className="nav-link">
+              Actions
+            </Link>
           </div>
-        </div>
-      </header>
-      <Collapse in={open}>
-        <div id="slider-nav" className="slider-nav d-xl-none">
-          <ul className="nav flex-column" role="navigation">
-            <li className="nav-item">
-              <Link to="/#faq" className="nav-link">
-                FAQ
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="https://membership.debtcollective.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={trackOutboundLink}
-              >
-                Donate
-              </a>
-            </li>
-          </ul>
-        </div>
-      </Collapse>
+          <div className="nav-item" data-testid="member-hub-link">
+            <a
+              href="https://debtcollective.org/hub/"
+              className="nav-link"
+              target="_blank"
+            >
+              Member hub
+            </a>
+          </div>
+        </>
+      )}
     </>
   )
 }
 
-Header.propTypes = {
-  user: PropTypes.shape({
-    avatar_url: PropTypes.string,
-    username: PropTypes.string,
-    id: PropTypes.string
-  })
+const NavigationLinks = ({ isLoggedIn }: NavigationLinksProps) => {
+  return (
+    <>
+      <LocalNavigationLinks isLoggedIn={isLoggedIn} />
+      {HEADER_LINKS.map((link) => (
+        <div className="nav-item" key={link.href}>
+          <a href={link.href} className="nav-link" target={link.target}>
+            {link.text}
+          </a>
+        </div>
+      ))}
+    </>
+  )
 }
 
-Header.defaultProps = {
-  user: {}
+const Header = ({ user }: Props) => {
+  const isLoggedIn = Boolean(user) && Boolean(user.id)
+
+  return (
+    <dc-header
+      id="dc-header"
+      logo="/img/logo.svg"
+      logoSmall="/img/logo-small.png"
+      host={GATSBY_HOST_URL}
+      memberhuburl={`${GATSBY_HOST_URL}/hub`}
+      community={GATSBY_COMMUNITY_URL}
+      donateurl="/donate"
+    >
+      <div slot="header" className="header-links">
+        <NavigationLinks isLoggedIn={isLoggedIn} />
+      </div>
+      <div slot="menu">
+        <NavigationLinks isLoggedIn={isLoggedIn} />
+      </div>
+    </dc-header>
+  )
 }
 
 export default Header

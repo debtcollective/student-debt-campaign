@@ -122,6 +122,13 @@ module.exports = {
         purgeOnly: ['/all.sass'] // applies purging only on the bulma css file
       }
     }, // must be after other CSS plugins
-    'gatsby-plugin-netlify' // make sure to keep it last in the array
+    'gatsby-plugin-netlify', // make sure to keep it last in the array,
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['Libre+Franklin:400,600,800', 'Material+Icons'],
+        display: 'swap'
+      }
+    }
   ]
 }

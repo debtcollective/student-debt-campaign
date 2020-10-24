@@ -11,10 +11,10 @@ const fakeUser = {
 }
 
 describe('when logged user', () => {
-  it('renders user profile', () => {
+  it('renders the private links when the user is authenticated', () => {
     const wrapper = render(<Header user={fakeUser} />)
 
-    expect(wrapper.queryByTestId('session-links')).not.toBeInTheDocument()
-    expect(wrapper.queryByTestId('profile')).toBeInTheDocument()
+    expect(wrapper.queryAllByTestId('actions-link')).toHaveLength(2)
+    expect(wrapper.queryAllByTestId('member-hub-link')).toHaveLength(2)
   })
 })

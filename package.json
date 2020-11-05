@@ -47,7 +47,7 @@
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.8.4",
-    "react-helmet": "^5.2.0",
+    "react-helmet": "^6.0.0",
     "react-hook-form": "4.10.2",
     "react-jsonschema-form": "2.0.0-alpha.1",
     "react-number-format": "4.4.1",

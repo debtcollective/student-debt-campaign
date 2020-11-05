@@ -52,7 +52,7 @@
     "react-jsonschema-form": "2.0.0-alpha.1",
     "react-number-format": "4.4.1",
     "react-scroll": "1.8.1",
-    "uuid": "^7.0.0",
+    "uuid": "^8.0.0",
     "yup": "0.29.3"
   },
   "keywords": [

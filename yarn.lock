@@ -3205,12 +3205,12 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5, ajv@^6.7.0:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-algolia-places-react@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/algolia-places-react/-/algolia-places-react-1.5.1.tgz#29745a5f30c295d5364066df610da01406efc99a"
-  integrity sha512-x2pECaDI8F6tbCJvN3Ad6pOgtE8eUrB/sPXbnI0aXLKtBqjctFhhSv4kgAIn16QDr4wW7AQz9OZadLtTBGUYig==
+algolia-places-react@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/algolia-places-react/-/algolia-places-react-1.6.0.tgz#b915a9cb749ebeba39c5945b3feb34c291c701e2"
+  integrity sha512-IrBVvc/q3tB7mVkWSACR9DNTu4BaSexFo755qbRYkbHKhAxbzr85NgfztAPLJuyoX3ildoIqwyWJ0wqbOtKgMQ==
   dependencies:
-    places.js "1.17.1"
+    places.js "1.19.0"
     prop-types "^15.6.0"
 
 algoliasearch@^3.35.1:
@@ -14103,10 +14103,10 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-places.js@1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/places.js/-/places.js-1.17.1.tgz#fc6ef07f5ee87ec332820d7d03ac4c894a8ff764"
-  integrity sha512-TzDw893Uo3121vmEg0oV5L0HVbxcHUyanaSmnwcMs0Zll1F83/06lNJRcMiiuwNQWIik6xY3BeDDZzpaMaOILA==
+places.js@1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/places.js/-/places.js-1.19.0.tgz#6361c240713e20713f9f4124181752a257059f92"
+  integrity sha512-OtX8kMT1K2uhwoHZoyMuHWZ3CrkNfjxRDsG2hBHye4S1dsTLU4MlwEmUrlKYYefYXiV6JCvd7bULU3uoJ6NcoA==
   dependencies:
     algoliasearch "^3.35.1"
     autocomplete.js "^0.37.0"

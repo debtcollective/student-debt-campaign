@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import Markdown from 'markdown-to-jsx'
 import _ from 'lodash'
 import { useMutation } from '@apollo/react-hooks'
@@ -74,7 +75,7 @@ const DebtForm = ({
     const isChecked = event.target.checked
     const value = isChecked ? unknown : ''
 
-    setValue(name, value, true)
+    setValue(name, value, { shouldDirty: true })
     setDisabled(isChecked)
   }
 
@@ -103,7 +104,7 @@ const DebtForm = ({
           disabled={debtTypeDisabled}
           defaultValue=""
           ref={register}
-          isInvalid={!!errors[`debts[${debtId}].debtType`]}
+          isInvalid={_.get(errors, `debts[${debtId}].debtType`)}
         >
           <option value="" disabled hidden>
             Select debt type
@@ -116,8 +117,7 @@ const DebtForm = ({
           ))}
         </Form.Control>
         <Form.Control.Feedback type="invalid">
-          {errors[`debts[${debtId}].debtType`] &&
-            errors[`debts[${debtId}].debtType`].message}
+          {_.get(errors, `debts[${debtId}].debtType.message`)}
         </Form.Control.Feedback>
         <Form.Check
           inline
@@ -139,7 +139,7 @@ const DebtForm = ({
             name={`debts[${debtId}].studentDebtType`}
             defaultValue=""
             ref={register}
-            isInvalid={!!errors[`debts[${debtId}].studentDebtType`]}
+            isInvalid={_.get(errors, `debts[${debtId}].studentDebtType`)}
           >
             <option value="" disabled hidden>
               Select a student debt type
@@ -149,8 +149,7 @@ const DebtForm = ({
             ))}
           </Form.Control>
           <Form.Control.Feedback type="invalid">
-            {errors[`debts[${debtId}].studentDebtType`] &&
-              errors[`debts[${debtId}].studentDebtType`].message}
+            {_.get(errors, `debts[${debtId}].studentDebtType.message`)}
           </Form.Control.Feedback>
         </Form.Group>
       )}
@@ -164,14 +163,13 @@ const DebtForm = ({
           unregister={unregister}
           setValue={setValue}
           defaultValue={amount}
-          isInvalid={!!errors[`debts[${debtId}].amount`]}
+          isInvalid={_.get(errors, `debts[${debtId}].amount`)}
         />
         <Form.Text className="text-muted">
           You don’t have to know the exact amount. A good guess is fine!
         </Form.Text>
         <Form.Control.Feedback type="invalid">
-          {errors[`debts[${debtId}].amount`] &&
-            errors[`debts[${debtId}].amount`].message}
+          {_.get(errors, `debts[${debtId}].amount.message`)}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -184,11 +182,10 @@ const DebtForm = ({
           setValue={setValue}
           disabled={interestRateDisabled}
           defaultValue={interestRate}
-          isInvalid={!!errors[`debts[${debtId}].interestRate`]}
+          isInvalid={_.get(errors, `debts[${debtId}].interestRate`)}
         />
         <Form.Control.Feedback type="invalid">
-          {errors[`debts[${debtId}].interestRate`] &&
-            errors[`debts[${debtId}].interestRate`].message}
+          {_.get(errors, `debts[${debtId}].interestRate.message`)}
         </Form.Control.Feedback>
         <Form.Check
           inline
@@ -214,11 +211,10 @@ const DebtForm = ({
           disabled={creditorDisabled}
           name={`debts[${debtId}].creditor`}
           ref={register}
-          isInvalid={!!errors[`debts[${debtId}].creditor`]}
+          isInvalid={_.get(errors, `debts[${debtId}].creditor`)}
         />
         <Form.Control.Feedback type="invalid">
-          {errors[`debts[${debtId}].creditor`] &&
-            errors[`debts[${debtId}].creditor`].message}
+          {_.get(errors, `debts[${debtId}].creditor.message`)}
         </Form.Control.Feedback>
         <Form.Check
           inline
@@ -240,7 +236,7 @@ const DebtForm = ({
           disabled={accountStatusDisabled}
           defaultValue=""
           ref={register}
-          isInvalid={!!errors[`debts[${debtId}].accountStatus`]}
+          isInvalid={_.get(errors, `debts[${debtId}].accountStatus`)}
         >
           <option value="" disabled hidden>
             Select your account status
@@ -253,8 +249,7 @@ const DebtForm = ({
           ))}
         </Form.Control>
         <Form.Control.Feedback type="invalid">
-          {errors[`debts[${debtId}].accountStatus`] &&
-            errors[`debts[${debtId}].accountStatus`].message}
+          {_.get(errors, `debts[${debtId}].accountStatus.message`)}
         </Form.Control.Feedback>
         <Form.Check
           inline
@@ -283,23 +278,22 @@ const DebtForm = ({
           value="true"
           ref={register}
           label="Yes"
-          isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
+          isInvalid={_.get(errors, `debts[${debtId}].beingHarrased`)}
         />
         <Form.Check
           id={`beingHarrasedYes${debtId}`}
-          isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
+          isInvalid={_.get(errors, `debts[${debtId}].beingHarrased`)}
         >
           <Form.Check.Input
             name={`debts[${debtId}].beingHarrased`}
-            isInvalid={!!errors[`debts[${debtId}].beingHarrased`]}
+            isInvalid={_.get(errors, `debts[${debtId}].beingHarrased`)}
             type="radio"
             ref={register}
             value="false"
           />
           <Form.Check.Label>No</Form.Check.Label>
           <Form.Control.Feedback type="invalid">
-            {errors[`debts[${debtId}].beingHarrased`] &&
-              errors[`debts[${debtId}].beingHarrased`].message}
+            {_.get(errors, `debts[${debtId}].beingHarrased.message`)}
           </Form.Control.Feedback>
         </Form.Check>
       </Form.Group>
@@ -314,6 +308,9 @@ const DebtForm = ({
             ref={register}
             placeholder="Debt collectors knock everyday on my door asking for money"
           />
+          <Form.Control.Feedback type="invalid">
+            {_.get(errors, `debts[${debtId}].harrasmentDescription.message`)}
+          </Form.Control.Feedback>
         </Form.Group>
       )}
     </>
@@ -346,9 +343,10 @@ const DataDuesForm = ({ userAction }) => {
     watch,
     setValue,
     unregister,
-    errors
+    errors,
+    setError
   } = useForm({
-    validationSchema: validationSchema,
+    resolver: yupResolver(validationSchema),
     defaultValues: formData
   })
 
@@ -364,7 +362,15 @@ const DataDuesForm = ({ userAction }) => {
   const [upsertDataDuesAction, { loading }] = useMutation(
     UPSERT_DATA_DUES_ACTION,
     {
-      onCompleted({ userAction }) {
+      onCompleted({ userAction, errors }) {
+        if (errors) {
+          // set errors to the form
+          _.forEach(errors, (error) =>
+            setError(error.field, { message: error.message })
+          )
+          return
+        }
+
         navigate('/app/actions', {
           state: {
             alert: {
@@ -374,9 +380,7 @@ const DataDuesForm = ({ userAction }) => {
           }
         })
       },
-      onError({ errors: formErrors }) {
-        // set errors to the form
-      },
+      onError(data) {},
       refetchQueries: [{ query: GET_USER_ACTIONS }]
     }
   )

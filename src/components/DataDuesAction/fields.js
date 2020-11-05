@@ -65,11 +65,11 @@ export const AlgoliaPlacesField = ({
           value
         }
 
-        setValue(fieldName, addressObject, true)
+        setValue(fieldName, addressObject, { shouldDirty: true })
       }}
-      onClear={() => setValue(name, {}, true)}
-      onLimit={message => Sentry.captureMessage(message)}
-      onError={message => Sentry.captureMessage(message)}
+      onClear={() => setValue(name, {}, { shouldDirty: true })}
+      onLimit={(message) => Sentry.captureMessage(message)}
+      onError={(message) => Sentry.captureMessage(message)}
       {...props}
     />
   )
@@ -104,7 +104,7 @@ export const PhoneNumberField = ({
       customInput={Form.Control}
       defaultValue={defaultValue}
       onValueChange={({ formattedValue, value }) => {
-        setValue(name, formattedValue || value, true)
+        setValue(name, formattedValue || value, { shouldDirty: true })
       }}
       format="(###) ###-####"
       mask="_"
@@ -141,7 +141,9 @@ export const CurrencyField = ({
       decimalScale={2}
       defaultValue={defaultValue}
       isNumericString={true}
-      onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
+      onValueChange={({ floatValue }) =>
+        setValue(name, floatValue, { shouldDirty: true })
+      }
       placeholder="$38,000"
       prefix={'$'}
       thousandSeparator={true}
@@ -187,7 +189,9 @@ export const PercentageField = ({
       decimalScale={2}
       defaultValue={defaultValue}
       isNumericString={isNumericString}
-      onValueChange={({ floatValue }) => setValue(name, floatValue, true)}
+      onValueChange={({ floatValue }) =>
+        setValue(name, floatValue, { shouldDirty: true })
+      }
       placeholder={placeholder}
       suffix="%"
       thousandSeparator={false}

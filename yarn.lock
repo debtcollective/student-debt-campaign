@@ -1111,10 +1111,10 @@
   dependencies:
     lodash.omit "^4.5.0"
 
-"@debtcollective/dc-header-component@^2.1.1":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.1.3.tgz#bcfaa7b55ca9da4bcb5d509bfcb171a0517cdd57"
-  integrity sha512-njZENI7o2Pd577T29EzH+3Uv/wwjjH79TwLF69y0sYne9V27doMmrecW66Ds45c+F4ZCjeGfdZAursD33muD4g==
+"@debtcollective/dc-header-component@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.1.4.tgz#75b476167b7960db6dd4925955d0c66749e61c57"
+  integrity sha512-RxY6Xp/Adh2+czpmckJ2Alwus9nH6ZPk4dN1L3yYpyG2GLi6fG4xuQ0jlBThnLZptOh+YqZPsSv2oteITd+Tag==
   dependencies:
     "@debtcollective/dc-dropdown-component" "^1.6.4"
     lodash.omit "^4.5.0"

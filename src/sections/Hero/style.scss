@@ -2,7 +2,7 @@
   .distribute-rows {
     // leave extra space for the header to be placed
     padding-top: $header-height-md;
-    
+
     @include media-breakpoint-up(lg) {
       padding-top: 6rem;
     }
@@ -94,10 +94,15 @@
     }
   }
 
+  &-link,
+  &-link:hover {
+    color: $gray;
+  }
+
   &__title {
     @extend .text-monospace;
-    font-size: $h5-font-size;
     flex: 1;
+    font-size: $h5-font-size;
     line-height: 0.75;
 
     @include media-breakpoint-up(md) {

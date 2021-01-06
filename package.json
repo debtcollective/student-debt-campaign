@@ -7,7 +7,7 @@
     "@apollo/react-hooks": "^4.0.0",
     "@debtcollective/dc-header-component": "^2.1.4",
     "@hookform/resolvers": "1.0.0",
-    "algolia-places-react": "1.6.0",
+    "algolia-places-react": "1.6.1",
     "amplitude-js": "^7.0.0",
     "apollo-boost": "^0.4.4",
     "bootstrap": "^4.3.1",

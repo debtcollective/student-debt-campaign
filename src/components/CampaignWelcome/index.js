@@ -8,17 +8,17 @@ const CampaignWelcomeHeader = () => (
   <>
     <Row>
       <Col>
-        <h1 className="text-center">Thank you for joining!</h1>
+        <h1 className="text-center section-title mb-0 text-monospace">
+          Thank you for joining!
+        </h1>
       </Col>
     </Row>
-    <Row className="my-4">
+    <Row className="my-5">
       <Col>
         <p>
           Thousands of Debt Collective members are working together to win a
-          debt jubilee and free college.
-        </p>
-        <p className="mt-3">
-          For additional actions that you can take, click below.
+          debt jubilee and free college. For additional actions that you can
+          take, click below.
         </p>
       </Col>
     </Row>

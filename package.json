@@ -85,7 +85,7 @@
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-gatsby": "^0.5.0",
     "eslint": "^7.0.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-config-standard": "^16.0.0",
     "eslint-plugin-flowtype": "^5.0.0",
     "eslint-plugin-import": "^2.18.2",

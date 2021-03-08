@@ -20,7 +20,7 @@ module.exports = {
     description:
       'Join the movement to end Student Debt. #CancelStudentDebt #CollegeForAll',
     author: 'Debt Collective',
-    twitterUsername: '@0debtzone',
+    twitterUsername: '@StrikeDebt',
     facebookPage: 'https://www.facebook.com/DebtCollective',
     image: `${siteUrl}/img/seo.png`,
     url: siteUrl

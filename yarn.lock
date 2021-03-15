@@ -2,10 +2,23 @@
 # yarn lockfile v1
 
 
+"@amplitude/types@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@amplitude/types/-/types-1.5.0.tgz#cf34d0f304558d8b0d847a6217d506e6226e653c"
+  integrity sha512-XspuOsUzUcxwAptHeGiIn4giuLWs285xTJa7h8kAEEynxtEI3/krWCoDYZSB9PekaPXB6phxiO/tMd9t5V9LgQ==
+
 "@amplitude/ua-parser-js@0.7.24":
   version "0.7.24"
   resolved "https://registry.yarnpkg.com/@amplitude/ua-parser-js/-/ua-parser-js-0.7.24.tgz#2ce605af7d2c38d4a01313fb2385df55fbbd69aa"
   integrity sha512-VbQuJymJ20WEw0HtI2np7EdC3NJGUWi8+Xdbc7uk8WfMIF308T0howpzkQ3JFMN7ejnrcSM/OyNGveeE3TP3TA==
+
+"@amplitude/utils@^1.0.5":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@amplitude/utils/-/utils-1.5.1.tgz#b94eb27e995bb8ff9b527f2cc267cc4c85a38c0b"
+  integrity sha512-B7xBC6/arymfmwM7sEnvT0jbYg/7+CnSA8s98adV6mNNYT2kOIJN7AVUghoA9oD2wJE1s2GavJeyFZlgQj6uiQ==
+  dependencies:
+    "@amplitude/types" "^1.5.0"
+    tslib "^1.9.3"
 
 "@apollo/client@^3.1.5", "@apollo/client@latest":
   version "3.2.5"
@@ -3114,12 +3127,13 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-amplitude-js@^7.0.0:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/amplitude-js/-/amplitude-js-7.3.1.tgz#f49628ca919f3298e3fa8286d2310227d0270b17"
-  integrity sha512-dsJU9MdtDDAOtKnbHrJuVBgsL5UGxD1P2B7doGdAQ1hxxT/5mFrmJTFzi1tKe+2ir3QtcRa9B0qvH8TMsGw22A==
+amplitude-js@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/amplitude-js/-/amplitude-js-8.0.0.tgz#5e60e3688fb6f466272376c33cbcdf96b6b757a9"
+  integrity sha512-3qLzESpIV2aitJJNBybTMbTO9eXUmxNZVtmEEW1vMEm32g2lMGtPYGSDF54BQFmr8uMs3OKqSCnBg+SOXbTrww==
   dependencies:
     "@amplitude/ua-parser-js" "0.7.24"
+    "@amplitude/utils" "^1.0.5"
     blueimp-md5 "^2.10.0"
     query-string "5"
 

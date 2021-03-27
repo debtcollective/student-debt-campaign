@@ -1104,19 +1104,19 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@debtcollective/dc-dropdown-component@^1.6.4":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.6.4.tgz#476fca9eda3e7116de6238d803a4e376035f2b4f"
-  integrity sha512-Ug+7NNQqwlLPYmukAoXctTMfBd/vHXsIJmlbmkuPol19y4yCYPx3B4C/a/0H2/CEq1BX9gz7QwWrTRVSxi4fzw==
+"@debtcollective/dc-dropdown-component@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.7.0.tgz#140951daf3a194c1e25521638e09fada8e95fc2d"
+  integrity sha512-8F5rRIuOuiWi+co2OGLdvOZU4x2oXOYbmnZQCjP0X8eqDqr5XricTA0zd04YJQCp3S7GD8IevFACk555Xrk9+Q==
   dependencies:
     lodash.omit "^4.5.0"
 
-"@debtcollective/dc-header-component@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.1.4.tgz#75b476167b7960db6dd4925955d0c66749e61c57"
-  integrity sha512-RxY6Xp/Adh2+czpmckJ2Alwus9nH6ZPk4dN1L3yYpyG2GLi6fG4xuQ0jlBThnLZptOh+YqZPsSv2oteITd+Tag==
+"@debtcollective/dc-header-component@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.4.0.tgz#20c6e9c2a72889c234f937a3bd33e50a8b2274c7"
+  integrity sha512-lysKINzxjYPTaGhNRFN5PFq7YOKCyn7ulxP1WLgGfdheJGMQU7IcC4D/11JgYUAk5nG14jGptdIQN3IKyarSZQ==
   dependencies:
-    "@debtcollective/dc-dropdown-component" "^1.6.4"
+    "@debtcollective/dc-dropdown-component" "^1.7.0"
     lodash.omit "^4.5.0"
 
 "@emotion/babel-utils@^0.6.4":

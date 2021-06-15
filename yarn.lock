@@ -1104,20 +1104,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@debtcollective/dc-dropdown-component@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.7.0.tgz#140951daf3a194c1e25521638e09fada8e95fc2d"
-  integrity sha512-8F5rRIuOuiWi+co2OGLdvOZU4x2oXOYbmnZQCjP0X8eqDqr5XricTA0zd04YJQCp3S7GD8IevFACk555Xrk9+Q==
-  dependencies:
-    lodash.omit "^4.5.0"
-
-"@debtcollective/dc-header-component@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.4.0.tgz#20c6e9c2a72889c234f937a3bd33e50a8b2274c7"
-  integrity sha512-lysKINzxjYPTaGhNRFN5PFq7YOKCyn7ulxP1WLgGfdheJGMQU7IcC4D/11JgYUAk5nG14jGptdIQN3IKyarSZQ==
-  dependencies:
-    "@debtcollective/dc-dropdown-component" "^1.7.0"
-    lodash.omit "^4.5.0"
+"@debtcollective/dc-header-component@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-3.5.0.tgz#914b20f1cb82eacd4f08d2e90d25e05ef8d1c092"
+  integrity sha512-U5mbRx7MfgznZt1ihiOU650HQ+VlnLRF5hnTqMrmdJCBbZb2vj9rGpXpdg/a/M7M9Kmg+6baXilt7dqLSL5U3g==
 
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
@@ -11829,11 +11819,6 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
-
-lodash.omit@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
-  integrity sha1-brGa5aHuHdnfC5aeZs4Lf6MLXmA=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"

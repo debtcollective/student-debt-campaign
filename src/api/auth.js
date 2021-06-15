@@ -25,7 +25,7 @@ export const isLoggedIn = async () => {
   return false
 }
 
-export const logout = async user => {
+export const logout = async (user) => {
   const csrfToken = await getCSRFToken()
 
   fetch(`${communityURL}/session/${user.username}`, {
@@ -35,7 +35,7 @@ export const logout = async user => {
       Accept: 'application/json',
       'X-CSRF-Token': csrfToken
     }
-  }).catch(e => {
+  }).catch((e) => {
     // NOTE: Discourse after the request triggers an error that we need to finish the logout
     if (typeof window !== 'undefined') window.location = '/'
   })

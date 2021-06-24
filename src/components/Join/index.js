@@ -19,7 +19,7 @@ type Props = {
 
 const Join = ({ isLoggedIn, motive }: Props) => {
   const [joinCampaign] = useMutation(ADD_USER_TO_CAMPAIGN, {
-    onCompleted: data => {
+    onCompleted: (data) => {
       navigate('/app/welcome')
     },
     refetchQueries: [

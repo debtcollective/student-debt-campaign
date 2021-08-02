@@ -52,7 +52,7 @@
     "react-helmet": "^6.0.0",
     "react-hook-form": "6.10.1",
     "react-jsonschema-form": "2.0.0-alpha.1",
-    "react-number-format": "4.4.1",
+    "react-number-format": "4.5.5",
     "react-scroll": "1.8.1",
     "uuid": "^8.0.0",
     "yup": "0.29.3"

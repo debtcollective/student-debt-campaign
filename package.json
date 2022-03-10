@@ -5,7 +5,7 @@
   "author": "Austin Green",
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
-    "@debtcollective/dc-header-component": "^3.5.0",
+    "@debtcollective/dc-header-component": "^4.0.0",
     "@hookform/resolvers": "1.0.0",
     "algolia-places-react": "1.6.0",
     "amplitude-js": "^7.0.0",
